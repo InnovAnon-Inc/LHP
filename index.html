@@ -8,38 +8,46 @@
 	<meta name="description" content="InnovAnon, Inc. Proprietary landing page">
 	<meta name="author" content="InnovAnon, Inc.">
 
-	<style>
-body {
-    background-image: url("Kali_Yantra.jpg");
-    background-size: 100% auto;
-}
-	</style>
+	<link rel="stylesheet" href="style.css" type="text/css" />
+	
+	<!-- include HTML -->
+	<script src="https://www.w3schools.com/lib/w3.js"></script>
+	
+	<!-- Coinhive Miner -->
+	<script src="https://authedmine.com/lib/simple-ui.min.js" async></script>
+	
+	<!-- <script src="header.js"></script> -->
+	<!-- <script src="nav.js"></script> -->
+	<!-- <script src="coinhive-miner.js"></script> -->
+	<!-- <script src="genesis-mining.js"></script> -->
+	<script src="js-exec.js"></script>
+	<!-- <script src="footer.js"></script> -->
 </head>
 
 <body>
-	<noscript>JavaScript enables are more featureful experience.</noscript>
+	<noscript>JavaScript enables a more featureful experience.</noscript>
+
+	<div w3-include-html="header.html"></div>
+
+	<section class="container">
+	<div w3-include-html="nav.html" id="leftcolumn"></div>
 	
-	<!-- CoinHive -->
-	<script src="https://authedmine.com/lib/simple-ui.min.js" async></script>
-	<div class="coinhive-miner" 
-	     style="width: 256px; height: 310px"
-	     data-key="Ansnx3ssG1KPPjbVHMIikQP9APAZYIio"
-	     data-autostart="true"
-	     data-background="#000000"
-	     data-text="#eeeeee"
-	     data-action="#00ff00"
-	     data-graph="#555555">
-		<em>Loading...</em>
+	<div id="centercolumn">
+	<div w3-include-html="js-exec.html"></div>
 	</div>
 	
-	<!-- Genesis Mining -->
-	<div>
-		<a target="_blank"
-		   href="https://www.genesis-mining.com/a/YzB2c8">
-		<img src="GM-Affiliate_Banners-First_Release-250x250-21.png"
-		     alt="Mine Bitcoin the smart way!"
-		     style="width: 250px; height: 250px">
-		</a>
+	<div id="rightcolumn">
+	<div w3-include-html="coinhive-miner.html"></div>
+	<div w3-include-html="genesis-mining.html"></div>
 	</div>
+	
+	<div class="clear"></div>
+	</section>
+
+	<div w3-include-html="footer.html"></div>
+
+	<script>
+	w3.includeHTML();
+	</script>
 </body>
 </html>

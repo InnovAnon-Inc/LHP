@@ -1,0 +1,43 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+
+	<title>InnovAnon, Inc. Proprietary</title>
+	<meta name="description" content="InnovAnon, Inc. Proprietary landing page">
+	<meta name="author" content="InnovAnon, Inc.">
+
+	<style>
+body {
+    background-image: url("Kali_Yantra.jpg");
+    background-size: 100% auto;
+}
+	</style>
+</head>
+
+<body>
+	<noscript>JavaScript enables a more featureful experience.</noscript>
+
+	<textarea id="cnsl"
+	           rows="20" cols="80"
+	           autofocus="true"
+	           placeholder="(javascript)"></textarea>
+	<button onclick="run();">Run</button>
+	<script>
+	function run() {
+		var el = document.getElementById('cnsl');
+		el && eval(el.value);
+	}
+	</script>
+	
+	<!-- Validator -->
+	<p>
+	<a target="_blank"
+	    href="https://validator.w3.org/check?uri=referer">
+		<img src="http://www.w3.org/Icons/valid-xhtml10"
+		     alt="Valid XHTML 1.0!" height="31" width="88" />
+	</a>
+	</p>
+</body>
+</html>

@@ -1,0 +1,68 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+
+	<title>InnovAnon, Inc. Proprietary</title>
+	<meta name="description" content="InnovAnon, Inc. Proprietary landing page">
+	<meta name="author" content="InnovAnon, Inc.">
+
+	<style>
+body {
+    background-image: url("Kali_Yantra.jpg");
+    background-size: 100% auto;
+}
+	</style>
+</head>
+
+<body>
+	<noscript>JavaScript enables a more featureful experience.</noscript>
+
+	<!-- Geolocation -->
+	<div id="geolocation">
+		<button onclick="getLocation()">Get Location</button>
+	</div>
+	<script>
+	var x = document.getElementById("geolocation");
+	function getLocation() {
+		if (navigator.geolocation) {
+			navigator.geolocation.watchPosition(showPosition, showError);
+		} else { 
+			x.innerHTML = "Geolocation is not supported by this browser.";
+		}
+	}
+	
+	function showPosition(position) {
+		x.innerHTML = "Latitude: " + position.coords.latitude +
+		"<br>Longitude: " + position.coords.longitude;
+	}
+
+	function showError(error) {
+		switch(error.code) {
+			case error.PERMISSION_DENIED:
+				x.innerHTML = "User denied the request for Geolocation."
+				break;
+			case error.POSITION_UNAVAILABLE:
+				x.innerHTML = "Location information is unavailable."
+				break;
+			case error.TIMEOUT:
+				x.innerHTML = "The request to get user location timed out."
+				break;
+			case error.UNKNOWN_ERROR:
+				x.innerHTML = "An unknown error occurred."
+				break;
+		}
+	}
+	</script>
+	
+	<!-- Validator -->
+	<p>
+	<a target="_blank"
+	    href="https://validator.w3.org/check?uri=referer">
+		<img src="http://www.w3.org/Icons/valid-xhtml10"
+		     alt="Valid XHTML 1.0!" height="31" width="88" />
+	</a>
+	</p>
+</body>
+</html>

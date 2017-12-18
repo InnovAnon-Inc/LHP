@@ -1,0 +1,31 @@
+#leftcolumn   { float: left }
+#centercolumn { float: left }
+#rightcolumn  { float: right }
+.clear { clear: both }
+
+h1 {
+	background-color: black;
+	color: green;
+	border-width: 2px;
+	border-color: red;
+	border-style: solid;
+	text-align: center }
+h2 {
+	background-color: black;
+	color: green;
+	border-width: 2px;
+	border-color: red;
+	border-style: solid;
+	text-align: center }
+h3 {
+	background-color: black;
+	color: green;
+	border-width: 2px;
+	border-color: red;
+	border-style: solid;
+	text-align: center }
+
+body {
+	background-image: url("Kali_Yantra.jpg");
+	background-size: 100% auto;
+}

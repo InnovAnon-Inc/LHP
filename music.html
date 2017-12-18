@@ -1,0 +1,426 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+
+	<title>InnovAnon, Inc. Proprietary</title>
+	<meta name="description" content="InnovAnon, Inc. Proprietary landing page">
+	<meta name="author" content="InnovAnon, Inc.">
+
+	<style>
+body {
+    background-image: url("Kali_Yantra.jpg");
+    background-size: 100% auto;
+}
+	</style>
+</head>
+
+<body>
+	<noscript>JavaScript enables a more featureful experience.</noscript>
+
+
+<script>
+	var context = new AudioContext;
+	console.log(context.sampleRate);
+	console.log(context.destination.channelCount);
+	
+	
+function Kick(context) {
+	this.context = context;
+};
+
+Kick.prototype.setup = function() {
+	this.osc = this.context.createOscillator();
+	this.gain = this.context.createGain();
+	this.osc.connect(this.gain);
+	this.gain.connect(this.context.destination)
+};
+
+Kick.prototype.trigger = function(time) {
+	this.setup();
+
+	this.osc.frequency.setValueAtTime(150, time);
+	this.gain.gain.setValueAtTime(1, time);
+
+	this.osc.frequency.exponentialRampToValueAtTime(0.01, time + 0.5);
+	this.gain.gain.exponentialRampToValueAtTime(0.01, time + 0.5);
+
+	this.osc.start(time);
+
+	this.osc.stop(time + 0.5);
+};
+
+var kick = new Kick(context);
+var now = context.currentTime;
+kick.trigger(now);
+kick.trigger(now + 0.5);
+kick.trigger(now + 1);
+	
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--
+<script>
+    window.AudioContext = window.AudioContext || window.webkitAudioContext;
+
+    var context = new AudioContext();
+
+    function playSound(arr) {
+        var buf = new Float32Array(arr.length)
+        for (var i = 0; i < arr.length; i++) buf[i] = arr[i]
+        var buffer = context.createBuffer(1, buf.length, context.sampleRate)
+        buffer.copyToChannel(buf, 0)
+        var source = context.createBufferSource();
+        source.buffer = buffer;
+        source.connect(context.destination);
+        source.start(0);
+    }
+
+    function sineWaveAt(sampleNumber, tone) {
+        var sampleFreq = context.sampleRate / tone
+        return Math.sin(sampleNumber / (sampleFreq / (Math.PI*2)))
+    }
+
+    var arr = [], volume = 0.2, seconds = 0.5, tone = 441
+
+    for (var i = 0; i < context.sampleRate * seconds; i++) {
+        arr[i] = sineWaveAt(i, tone) * volume
+    }
+
+    playSound(arr)
+</script>
+-->
+
+
+
+
+<!--
+	<script>
+		window.onload = init;
+
+var context;
+var bufferLoader;
+
+function init() {
+    try {
+        context = new AudioContext();
+    }
+    catch(e) {
+        alert("Web Audio API is not supported in this browser");
+    }
+    
+    // Start loading the drum kit.
+    bufferLoader = new BufferLoader(
+        context,
+        [
+        "sounds/kick.wav",
+        "sounds/snare.wav",
+        "sounds/hihat.wav"
+        ],
+        bufferLoadCompleted  
+    );
+
+    bufferLoader.load();
+}
+
+function playSound(buffer, time) {
+    var source = context.createBufferSource();
+    source.buffer = buffer;
+    source.connect(context.destination);
+    source.start(time);
+}
+
+// Plays Rhythm 1
+function startPlayingRhythm1(bufferList) {
+    var kick = bufferList[0];
+    var snare = bufferList[1];
+    var hihat = bufferList[2];
+    
+    // We'll start playing the rhythm 100 milliseconds from "now"
+    var startTime = context.currentTime + 0.100;
+    
+    var tempo = 120; // BPM (beats per minute)
+    var quarterNoteTime = 60 / tempo;
+
+    // Play the kick drum on beats 1, 2, 3, 4
+    playSound(kick, startTime);
+    playSound(kick, startTime + quarterNoteTime);
+    playSound(kick, startTime + 2*quarterNoteTime);
+    playSound(kick, startTime + 3*quarterNoteTime);
+
+    // Play the snare drum on beats 2, 4
+    playSound(snare, startTime + quarterNoteTime);
+    playSound(snare, startTime + 3*quarterNoteTime);
+    
+    // Play the hi-hat every 16th note.
+    for (var i = 0; i < 16; ++i) {
+        playSound(hihat, startTime + i*0.25*quarterNoteTime);
+    }
+}
+
+// Plays Rhythm 2
+function startPlayingRhythm2(bufferList) {
+    var kick = bufferList[0];
+    var snare = bufferList[1];
+    var hihat = bufferList[2];
+    
+    // We'll start playing the rhythm 100 milliseconds from "now"
+    var startTime = context.currentTime + 0.100;
+    
+    var tempo = 80; // BPM (beats per minute)
+    var quarterNoteTime = 60 / tempo;
+
+    // Play the kick drum on beats 1, 2, 3, 4
+    playSound(kick, startTime);
+    playSound(kick, startTime + 0.5*quarterNoteTime);	
+    playSound(kick, startTime + 1.75*quarterNoteTime);
+    playSound(kick, startTime + 2*quarterNoteTime);
+    playSound(kick, startTime + 2.5*quarterNoteTime);
+	
+    // Play the snare drum on beats 2, 4
+    playSound(snare, startTime + quarterNoteTime);
+    playSound(snare, startTime + 3*quarterNoteTime);
+    playSound(snare, startTime + 3.75*quarterNoteTime);	
+    
+    // Play the hi-hat every 16th note.
+    for (var i = 0; i < 16; ++i) {
+        playSound(hihat, startTime + i*0.25*quarterNoteTime);
+    }
+    playSound(hihat, startTime + 3.125*quarterNoteTime);
+	
+}
+
+function bufferLoadCompleted() {
+	
+}
+</script>
+-->
+
+
+
+
+
+	<!--
+	<script>
+	var context = new (window.AudioContext || window.webkitAudioContext)();
+	var osc = context.createOscillator(); // instantiate an oscillator
+	gainNode1 = context.createGain();
+	osc.type = 'sine'; // this is the default - also square, sawtooth, triangle
+	osc.frequency.value = 432; // Hz
+	osc.connect(gainNode1);
+	osc.connect(context.destination); // connect it to the destination
+	gainNode1.gain.value = 0.7; // 70%
+	
+	// We'll start playing the rhythm 100 milliseconds from "now"
+	var startTime = context.currentTime + 0.100;
+
+	var tempo = 120; // BPM (beats per minute)
+	var quarterNoteTime = 60 / tempo;
+	
+	for (var i = 0; i < 4; ++i) {
+		osc.start(startTime + i*quarterNoteTime); // start the oscillator
+		osc.stop(startTime  + i*quarterNoteTime + .100);
+	}
+	</script>
+	-->
+	
+	<!--
+	<script>
+	for (var bar = 0; bar < 2; bar++) {
+		var time = startTime + bar * 8 * eighthNoteTime;
+		// Play the bass (kick) drum on beats 1, 5
+		playSound(kick, time);
+		playSound(kick, time + 4 * eighthNoteTime);
+
+		// Play the snare drum on beats 3, 7
+		playSound(snare, time + 2 * eighthNoteTime);
+		playSound(snare, time + 6 * eighthNoteTime);
+
+		// Play the hi-hat every eighth note.
+		for (var i = 0; i < 8; ++i) {
+			playSound(hihat, time + i * eighthNoteTime);
+		}
+	}
+	
+	function playSound(buffer, time) {
+		var source = context.createBufferSource();
+		source.buffer = buffer;
+		source.connect(context.destination);
+		source.start(time);
+	}
+	</script>
+	-->
+	
+	
+	<!--
+	<script>
+	// TODO add cymatic image selector
+	var baseFrequency = 432;
+	
+	// TODO select algorithm to generate scale
+	var scale1 = {
+		1/1, 25/24, 10/9, 9/8, 32/27, 6/5, 5/4, 4/3, 25/18, 45/32, 3/2,
+		25/16, 5/3, 16/9, 9/5, 15/8, 2/1
+	};
+	
+	// TODO select algorithm to select notes from scale1
+	var scale2 = {
+		0, 2, 4, 5, 7, 9, 11
+	};
+	
+	// TODO allow multiple rhythms
+	var rhythm {
+		
+	};
+	
+	// selected from scale2
+	// (0, MAJOR)
+	var chord {
+		// 1, 3, 5
+		0, 2, 4
+	};
+	
+	var chordProgression {
+		// 1, 4, 5 maj 7
+		(0, MAJOR),
+		(3, MAJOR),
+		(4, MAJOR_SEVENTH)
+	};
+	
+	// selected from chord
+	var arppeggio {
+		// 1, 2, 3, 2
+		// 0, 1, 2, 1
+	};
+	
+	// like an arppeggio, but less structured
+	var melody {
+		
+	};
+	</script>
+	-->
+	
+	
+	
+	
+	
+	<!--<canvas id="myCanvas"
+			 width="100%" height="100" style="border:1px solid #ffffff; background-color: black; z-index: 2; position: relative;">
+	</canvas>-->
+
+
+	<!--
+	<script>
+		// one context per document
+		var context = new (window.AudioContext || window.webkitAudioContext)();
+		var osc = context.createOscillator(); // instantiate an oscillator
+		osc.type = 'sine'; // this is the default - also square, sawtooth, triangle
+		osc.frequency.value = 432; // Hz
+		osc.connect(context.destination); // connect it to the destination
+		osc.start(); // start the oscillator
+		//osc.stop(context.currentTime + 4); // stop 2 seconds after the current time
+		
+		var src2 = context.createOscillator();
+		src2.type = 'sine';
+		src2.frequency.value = osc.frequency.value * 3.0/2.0;
+		src2.connect(context.destination);
+		src2.start(context.currentTime + 2);
+		src2.stop(context.currentTime + 8);
+		
+		//C     C#      D     Eb    E     F     F# 	G	Ab	A	Bb	B	C
+		//1/1   16/15   9/8   6/5   5/4   4/3   45/32	3/2	8/5	5/3 	9/5	15/8	2/1
+		
+		var src3 = context.createOscillator();
+		src3.type = 'sine';
+		src3.frequency.value = osc.frequency.value * 6.0/5.0;
+		src3.connect(context.destination);
+		src3.start(context.currentTime + 2);
+		src3.stop(context.currentTime + 4);
+		
+		var src4 = context.createOscillator();
+		src4.type = 'sine';
+		src4.frequency.value = osc.frequency.value * 5.0/4.0;
+		src4.connect(context.destination);
+		src4.start(context.currentTime + 4);
+		src4.stop(context.currentTime + 6);
+		
+		var src5 = context.createOscillator();
+		src5.type = 'sine';
+		src5.frequency.value = osc.frequency.value * 2;
+		src5.gain.value = 100.0/2.0;
+		src5.connect(context.destination);
+		src5.start(context.currentTime + 6);
+		src5.stop(context.currentTime + 8);
+		
+		var src6 = context.createOscillator();
+		src6.type = 'sine';
+		src6.frequency.value = osc.frequency.value * 3;
+		src6.gain.value = 100.0/3.0;
+		src6.connect(context.destination);
+		src6.start(context.currentTime + 6);
+		src6.stop(context.currentTime + 8);
+		
+		var src7 = context.createOscillator();
+		src7.type = 'sine';
+		src7.frequency.value = osc.frequency.value * 4;
+		src7.gain.value = 100.0/4.0;
+		src7.connect(context.destination);
+		src7.start(context.currentTime + 6);
+		src7.stop(context.currentTime + 8);
+		
+		var src8 = context.createOscillator();
+		src8.type = 'sine';
+		src8.frequency.value = osc.frequency.value * 5;
+		src8.gain.value = 100.0/5.0;
+		src8.connect(context.destination);
+		src8.start(context.currentTime + 6);
+		src8.stop(context.currentTime + 8);
+		
+		var src9 = context.createOscillator();
+		src9.type = 'sine';
+		src9.frequency.value = osc.frequency.value * 6;
+		src9.gain.value = 100.0/6.0;
+		src9.connect(context.destination);
+		src9.start(context.currentTime + 6);
+		src9.stop(context.currentTime + 8);
+		
+		var src10 = context.createOscillator();
+		src10.type = 'sine';
+		src10.frequency.value = osc.frequency.value + 7.83;
+		src10.gain.value = 50.0;
+		src10.connect(context.destination);
+		src10.start(context.currentTime + 8);
+		src10.stop(context.currentTime + 8 + 1 * 1.0/7.83);
+		src10.start(context.currentTime + 8 + 2 * 1.0/7.83);
+		src10.stop(context.currentTime + 8 + 3 * 1.0/7.83);
+		src10.start(context.currentTime + 8 + 4 * 1.0/7.83);
+		src10.stop(context.currentTime + 8 + 5 * 1.0/7.83);
+		src10.start(context.currentTime + 8 + 6 * 1.0/7.83);
+	</script>-->
+
+	<div>
+	</div>
+
+
+	<!-- Validator -->
+	<p>
+	<a target="_blank"
+	    href="https://validator.w3.org/check?uri=referer">
+		<img src="http://www.w3.org/Icons/valid-xhtml10"
+		     alt="Valid XHTML 1.0!" height="31" width="88" />
+	</a>
+	</p>
+</body>
+</html>
