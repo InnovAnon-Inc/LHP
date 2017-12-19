@@ -47,6 +47,32 @@ body {
 	background-image: url("Kali_Yantra.jpg");
 	background-size: 100% auto }
 
-cnsl-div {
+#cnsl-table {
 	background-image: url("Kali_yantra_color.jpg");
 	background-size: 100% auto }
+
+#cnsl-button {
+	background-image: url("lord-shiva.gif");
+	background-size: 100% auto;
+	color: red;
+	font-weight: bold }
+
+#geolocation {
+	background-color: black;
+	color: green;
+	border-width: 2px;
+	border-color: red;
+	border-style: solid }
+
+#geolocation-button {
+	background-image: url("lord-shiva.gif");
+	background-size: 100% auto;
+	color: red;
+	font-weight: bold }
+
+#graphics {
+	background-color: black;
+	border-width: 2px;
+	border-color: red;
+	border-style: solid }
+}
