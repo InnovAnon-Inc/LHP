@@ -24,8 +24,29 @@ h3 {
 	border-color: red;
 	border-style: solid;
 	text-align: center }
+	
+textarea {
+	background-color: black;
+	color: green;
+	border-width: 2px;
+	border-color: red;
+	border-style: solid }
+
+header { }
+
+nav {
+	background-color: black;
+	color: green;
+	border-width: 2px;
+	border-color: red;
+	border-style: solid }
+
+footer { }
 
 body {
 	background-image: url("Kali_Yantra.jpg");
-	background-size: 100% auto;
-}
+	background-size: 100% auto }
+
+cnsl-div {
+	background-image: url("Kali_yantra_color.jpg");
+	background-size: 100% auto }
