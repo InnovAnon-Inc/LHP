@@ -23,14 +23,14 @@
 
 	<header>
 	<h1>
-	<a href="#">
+	<a href="index.html">
 	<img src="PKRRF.jpg"
 		 alt="Shiva Tandava"
 		 style="width: 32px; height: 32px"> <!-- śivatāṇḍava -->
 	</a>
 	<acronym title="Innovations Anonymous">InnovAnon</acronym>, Inc.
 	<a target="_blank" href="LICENSE">Proprietary</a>
-	<a href="#">
+	<a href="index.html">
 	<img src="PKRRF.jpg"
 		 alt="Shiva Tandava"
 		 style="width: 32px; height: 32px"> <!-- śivatāṇḍava -->
@@ -44,31 +44,28 @@
 	<section class="container">
 
 		<div id="leftcolumn">
-		<button id="cnsl-button"
-			 onclick="test()">Test</button>
-		<button id="cnsl-button"
-			 onclick="test2()">Test 2</button>
-		<button id="cnsl-button"
-			 onclick="showCircleCall()">Circle 2</button>
-		<button id="cnsl-button"
-			 onclick="showCircleCall2()">Circle 3</button>
-		<button id="cnsl-button"
-			 onclick="showCall(circle, 'testing-canvas')">Circle</button>
+			<table>
+				<tr>
+					<td><button id="cnsl-button"
+						onclick="clearConsole()">Clear Console</td>
+					<td><button id="cnsl-button"
+						onclick="clearCanvas()">Clear Canvas</td>
+				</tr><tr>
+					<td><button id="cnsl-button"
+						onclick="test()">Test</button></td>
+					<td><button id="cnsl-button"
+						onclick="showCall(drawCircle, 'testing-canvas')">Circle</button></td>
+				</tr>
+			</table>
 		</div> <!-- leftcolumn -->
 
 		<section id="centercolumn">
-		<div>
 		<textarea id="cnsl"
 				 rows="20" cols="80"
 				 autofocus="true"
 				 placeholder="(testing)"></textarea>
-		</div>
-		<div>
-		<button id="cnsl-button"
-			 onclick="run()">Execute</button>
-		</div>
 		</section> <!-- centercolumn -->
-
+		
 		<section id="centercolumn">
 		<canvas id="testing-canvas"
 				width="200px" height="200px">
@@ -78,8 +75,16 @@
 		<script src="js-exec.js"></script>
 		<script src="testing.js"></script>
 
-		<!-- TODO YT sucks anyway, so this not working is a feature, rather than a bug -->
 		<aside id="rightcolumn">
+			<button id="execute-button"
+			 onclick="run()">Execute</button>
+		</aside> <!-- rightcolumn -->
+
+		<div class="clear"></div>
+	</section> <!-- container --> <!-- IDE -->
+
+	<!-- TODO YT sucks anyway, so this not working is a feature, rather than a bug -->
+	<div>
 		<!--<iframe width="560" height="315"
 		         src="https://www.youtube-nocookie.com/embed/videoseries?list=PLtpmqWoC3Zfe4US_e20c0-9kn9ntP0664&loop=1&shuffle=1"
 		         frameborder="0"
@@ -96,10 +101,7 @@
 		<iframe width="200" height="100" scrolling="no"
 		         src="https://www.youtube-nocookie.com/embed/videoseries?list=PLtpmqWoC3Zfe4US_e20c0-9kn9ntP0664&loop=1&shuffle=1"
 		         frameborder="0">Coder Playlist</iframe>
-		</aside> <!-- rightcolumn -->
-
-		<div class="clear"></div>
-	</section> <!-- container --> <!-- IDE -->
+	</div>
 
 	<!-- Mibbit WebIRC Client -->
 	<div>
@@ -197,11 +199,7 @@
 	<div class="clear"></div>
 	</section> <!-- container --> <!-- meditations -->
 
-	<ul>
-		<li><a target="_blank" href="https://innovanon.weebly.com/">Old Website</a></li>
-		<li><a target="_blank" href="https://www.facebook.com/InnovAnon/">FaceBook</a></li>
-		<li><a target="_blank" href="https://www.linkedin.com/company/InnovAnon-Inc">LinkedIn</a></li>
-	</ul>
+	
 
 	<div id="typeracer">
 		<a target="_blank"

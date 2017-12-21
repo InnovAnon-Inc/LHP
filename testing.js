@@ -1,44 +1,33 @@
+// TODO helper function to add button to panel
 
+function clearConsole() {
+	var con = document.getElementById("cnsl");
+	con.value = "";
+}
+
+function clearCanvas() {
+	var con = document.getElementById("testing-canvas");
+	// TODO showCall how to clear canvas
+}
 
 function test() {
 	var con = document.getElementById("cnsl");
-	con.value = drawCircle.toString() + "\n" +
-		"drawCircle(\"testing-canvas\")";
-	drawCircle("testing-canvas");
+	con.value += "alert ('test');\n";
 }
-
-function test2() {
-	var con = document.getElementById("cnsl");
-	con.value = "alert ('test 2')";
-	drawCircle("testing-canvas");
-}
-
-function showCircleCall() { showCall (circle, "testing-canvas") }
-
-function showCircleCall2() {
-	var con = document.getElementById("cnsl");
-	con.value = drawCircle.toString() + "\n" +
-		"drawCircle(\"testing-canvas\")";
-	drawCircle("testing-canvas");
-}
-
-
-
-
-
-
 
 function showCall(f, a) {
 	var con = document.getElementById("cnsl");
-	con.value = f.toString();
+	con.value += f.toString();
 	con.value += "\n";
-	con.value += f + "(" + a + ")";
+	con.value += f.name + "(\"" + a + "\");\n";
 	//f(a);
 }
 
 function drawCircle(graphics) {
 	var c = document.getElementById(graphics);
 	var ctx = c.getContext("2d");
+	ctx.strokeStyle = "white";
+	ctx.fillStyle = "white";
 
 	var width=c.width;
 	var height=c.height;

@@ -63,6 +63,14 @@ button {
 	color: red;
 	font-weight: bold }
 
+#execute-button {
+	background-image: url("lord-shiva.gif");
+	background-size: 100% auto;
+	width: 300px;
+	height: 288px;
+	color: red;
+	font-weight: bold }
+
 #geolocation {
 	background-color: black;
 	color: green;
@@ -77,14 +85,12 @@ button {
 	font-weight: bold }
 
 canvas {
-	color: white;
 	background-color: black;
 	border-width: 1px;
 	border-color: red;
 	border-style: solid }
 
 #graphics {
-	color: white;
 	background-color: black;
 	border-width: 1px;
 	border-color: red;
@@ -99,11 +105,12 @@ canvas {
 	background-size: 100% auto }
 
 #testing-canvas {
-	color: white;
 	background-color: black;
 	border-width: 1px;
 	border-color: red;
-	border-style: solid }
+	border-style: solid;
+	/*width: 100%;*/
+	height: 100% }
 
 .image { 
 	position: relative;
