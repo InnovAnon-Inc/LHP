@@ -75,4 +75,17 @@ body {
 	border-width: 2px;
 	border-color: red;
 	border-style: solid }
-}
+
+#seva {
+	background-image: url("Tara_yantra_color.jpg");
+	background-size: 100% auto }
+
+#testing-div {
+	background-image: url("Tripura-bhairavi_yantra_color.jpg");
+	background-size: 100% auto }
+
+#testing-canvas {
+	background-color: black;
+	border-width: 2px;
+	border-color: red;
+	border-style: solid }

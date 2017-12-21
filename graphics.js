@@ -1,8 +1,8 @@
 //var c = document.getElementById("graphics");
 //var ctx = c.getContext("2d");
 
-var width=100
-var height=100
+var width=100;
+var height=100;
 
 //ctx.moveTo(0,0);
 //ctx.lineTo(200,100);

@@ -16,53 +16,58 @@
 	<!-- Coinhive Miner -->
 	<script src="https://authedmine.com/lib/simple-ui.min.js" async></script>
 
-	<!-- TODO -->
-	<script src="graphics.js"></script>
-
 	<!-- include HTML -->
 	<script src="https://www.w3schools.com/lib/w3.js"></script>
 </head>
 
 <body>
 	<noscript>JavaScript enables a more featureful experience.</noscript> <!-- :( -->
-	
-	<!-- add donated boinc cycles, etc -->
 
-	<!-- Hail Eris! -->
 	<header>
 	<h1>
-	<a href="#">
+	<a href="https://innovanon-inc.github.io/LHP/">
 	<img src="PKRRF.jpg"
 		 alt="Shiva Tandava"
 		 style="width: 32px; height: 32px"> <!-- śivatāṇḍava -->
 	</a>
 	<acronym title="Innovations Anonymous">InnovAnon</acronym>, Inc.
 	<a target="_blank" href="LICENSE">Proprietary</a>
-	<a href="#">
+	<a href="https://innovanon-inc.github.io/LHP/">
 	<img src="PKRRF.jpg"
 		 alt="Shiva Tandava"
 		 style="width: 32px; height: 32px"> <!-- śivatāṇḍava -->
 	</a>
 	</h1>
-	<h2><acronym title="Landing/Home Page">LHP</acronym></h2> <!-- Left-Hand Path -->
+	<h2><acronym title="Landing/Home Page">LHP</acronym></h2>
+	<h3>Testing</h3>
 	</header>
 
+	<!-- body container -->
 	<section class="container">
-		
+
 	<div id="leftcolumn">
 
-		<div w3-include-html="nav.html"></div>
-	
+		<nav>
+		<ul>
+			<li><a href="#">Home</a></li>
+			<li><a target="_blank" href="testing.html">Testing</a></li>
+			<li><a href="#" onclick="alert('not yet implemented'); return false">About</a></li>
+			<li><a href="#" onclick="alert('not yet implemented'); return false">Contact</a></li>
+			<li><a href="#" onclick="alert('not yet implemented'); return false">Sitemap</a></li>
+			<li><a href="#" onclick="alert('not yet implemented'); return false">Tattvas</a></li>
+		</ul>
+		</nav>
+
 		<!-- Geolocation -->
 		<!-- TODO this could be fun to play with -->
 		<div id="geolocation">
 			<button id="geolocation-button"
-					 onclick="getLocation();">Geolocate</button>
+					 onclick="getLocation()">Geolocate</button>
 		</div>
 		<script src="geolocation.js"></script>
 
 	</div> <!-- leftcolumn -->
-	
+
 	<section id="centercolumn">
 
 	<!-- Execute Arbitrary JavaScript -->
@@ -71,16 +76,30 @@
 	<textarea id="cnsl"
 				 rows="20" cols="80"
 				 autofocus="true"
-				 placeholder="(javascript)"></textarea>
+				 placeholder="alert ('javascript here')"></textarea>
 	</td></tr>
 	<tr><td>
 	<button id="cnsl-button"
-			 onclick="run();">Execute</button>
+			 onclick="run()">Execute</button>
 	</td></tr>
 	</table> <!-- cnsl-table -->
 	<script src="js-exec.js"></script>
 
+	<!-- Seva -->
+	<div id="seva">
+		<!-- TODO donated FOSS (i.e., GitHub Stats) -->
+		
+		<!-- BoincStats -->
+		<a target="_blank" href="https://boincstats.com/en/page/profile/user/114433">
+		<img src="https://boincstats.com/signature/-1/user/2354783/sig.png"
+		     alt="Computational Resources Donated to Science"
+		     style="width: 355; height=140">
+		</a>
+	</div>
+
+	<!-- TODO -->
 	<!--<div w3-include-html="graphics.html"></div>-->
+	<!--<script src="graphics.js"></script>-->
 
 	</section> <!-- centercolumn -->
 	
@@ -125,7 +144,7 @@
 	</aside> <!-- rightcolumn -->
 	
 	<div class="clear"></div>
-	</section>
+	</section> <!-- body container -->
 
 	<footer>
 	<section class="container">
@@ -147,7 +166,6 @@
 		</a>
 
 		<div class="statcounter"></div>
-	</div>
 	<script src="stat-counter.js"></script>
 	<noscript>
 		<div class="statcounter">
@@ -159,6 +177,7 @@
 			</a>
 		</div>
 	</noscript>
+	</div>
 
 	<!-- Source Code on Github -->
 	<div id="rightcolumn">
