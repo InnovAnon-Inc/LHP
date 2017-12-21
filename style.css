@@ -6,21 +6,21 @@
 h1 {
 	background-color: black;
 	color: green;
-	border-width: 2px;
+	border-width: 1px;
 	border-color: red;
 	border-style: solid;
 	text-align: center }
 h2 {
 	background-color: black;
 	color: green;
-	border-width: 2px;
+	border-width: 1px;
 	border-color: red;
 	border-style: solid;
 	text-align: center }
 h3 {
 	background-color: black;
 	color: green;
-	border-width: 2px;
+	border-width: 1px;
 	border-color: red;
 	border-style: solid;
 	text-align: center }
@@ -28,7 +28,7 @@ h3 {
 textarea {
 	background-color: black;
 	color: green;
-	border-width: 2px;
+	border-width: 1px;
 	border-color: red;
 	border-style: solid }
 
@@ -37,7 +37,7 @@ header { }
 nav {
 	background-color: black;
 	color: green;
-	border-width: 2px;
+	border-width: 1px;
 	border-color: red;
 	border-style: solid }
 
@@ -66,7 +66,7 @@ button {
 #geolocation {
 	background-color: black;
 	color: green;
-	border-width: 2px;
+	border-width: 1px;
 	border-color: red;
 	border-style: solid }
 
@@ -77,14 +77,16 @@ button {
 	font-weight: bold }
 
 canvas {
+	color: white;
 	background-color: black;
-	border-width: 2px;
+	border-width: 1px;
 	border-color: red;
 	border-style: solid }
 
 #graphics {
+	color: white;
 	background-color: black;
-	border-width: 2px;
+	border-width: 1px;
 	border-color: red;
 	border-style: solid }
 
@@ -97,8 +99,9 @@ canvas {
 	background-size: 100% auto }
 
 #testing-canvas {
+	color: white;
 	background-color: black;
-	border-width: 2px;
+	border-width: 1px;
 	border-color: red;
 	border-style: solid }
 
