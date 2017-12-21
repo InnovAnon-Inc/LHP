@@ -24,7 +24,7 @@ h3 {
 	border-color: red;
 	border-style: solid;
 	text-align: center }
-	
+
 textarea {
 	background-color: black;
 	color: green;
@@ -51,6 +51,12 @@ body {
 	background-image: url("Kali_yantra_color.jpg");
 	background-size: 100% auto }
 
+button {
+	background-image: url("lord-shiva.gif");
+	background-size: 100% auto;
+	color: red;
+	font-weight: bold }
+
 #cnsl-button {
 	background-image: url("lord-shiva.gif");
 	background-size: 100% auto;
@@ -69,6 +75,12 @@ body {
 	background-size: 100% auto;
 	color: red;
 	font-weight: bold }
+
+canvas {
+	background-color: black;
+	border-width: 2px;
+	border-color: red;
+	border-style: solid }
 
 #graphics {
 	background-color: black;
@@ -89,3 +101,15 @@ body {
 	border-width: 2px;
 	border-color: red;
 	border-style: solid }
+
+.image { 
+	position: relative;
+	width: 100%; /* for IE 6 */
+}
+
+.image-text {
+	position: absolute;
+	top: 10px;
+	left: 10px;
+	width: 100%;
+}

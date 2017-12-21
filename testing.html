@@ -16,8 +16,6 @@
 	<!--<link rel="stylesheet" href="style.css?v=1.2" type="text/css">-->
 	<!--<link rel="stylesheet" href="style.css?v=time()" type="text/css">-->
 	<link rel="stylesheet" href="style.css" type="text/css">
-
-	<script src="testing.js"></script>
 </head>
 
 <body>
@@ -52,25 +50,35 @@
 		<button id="cnsl-button"
 			 onclick="showCircleCall()">Circle 2</button>
 		<button id="cnsl-button"
+			 onclick="showCircleCall2()">Circle 3</button>
+		<button id="cnsl-button"
 			 onclick="showCall(circle, 'testing-canvas')">Circle</button>
 		</div> <!-- leftcolumn -->
 
 		<section id="centercolumn">
+		<div>
 		<textarea id="cnsl"
 				 rows="20" cols="80"
 				 autofocus="true"
 				 placeholder="(testing)"></textarea>
+		</div>
+		<div>
+		<button id="cnsl-button"
+			 onclick="run()">Execute</button>
+		</div>
 		</section> <!-- centercolumn -->
 
 		<aside id="rightcolumn">
 		<canvas id="testing-canvas"
-				width="100" height="100">
+				width="200" height="200">
 		</canvas>
 		</aside> <!-- rightcolumn -->
 
 		<div class="clear"></div>
 	</section>
 	</div>
+	<script src="js-exec.js"></script>
+	<script src="testing.js"></script>
 
 	<div id="typeracer">
 		<a target="_blank"
