@@ -1,6 +1,6 @@
-#leftcolumn   { float: left }
-#centercolumn { float: left }
-#rightcolumn  { float: right }
+.leftcolumn   { float: left }
+.centercolumn { float: left }
+.rightcolumn  { float: right }
 .clear { clear: both }
 
 .hard-to-see {
