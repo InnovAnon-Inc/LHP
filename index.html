@@ -21,10 +21,16 @@
 </head>
 
 <body>
+	<!-- Layout: -->
+	<!-- - Header -->
+	<!-- - Body -->
+	<!-- - Footer -->
+
 	<noscript>JavaScript enables a more featureful experience.</noscript> <!-- :( -->
 
 	<header>
 	<h1>
+	<!-- link to production site -->
 	<a href="https://innovanon-inc.github.io/LHP/">
 	<img src="PKRRF.jpg"
 		 alt="Shiva Tandava"
@@ -32,6 +38,7 @@
 	</a>
 	<abbr title="Innovations Anonymous">InnovAnon</abbr>, Inc.
 	<a target="_blank" href="LICENSE">Proprietary</a>
+	<!-- link to production site -->
 	<a href="https://innovanon-inc.github.io/LHP/">
 	<img src="PKRRF.jpg"
 		 alt="Shiva Tandava"
@@ -43,26 +50,84 @@
 
 	<!-- body container -->
 	<section class="container">
+		<!-- Layout: -->
+		<!-- - Left -->
+		<!-- - Center -->
+		<!-- - Right -->
 
-	<div id="leftcolumn">
+		<div id="leftcolumn">
+			<!-- intra-site links -->
+			<nav>
+			<ul>
+			<li><a href="#">Home</a></li>
+			<li><a target="_blank" href="testing.html">Testing</a></li>
+			<li><a href="#" onclick="alert('not yet implemented'); return false">About</a></li>
+			<li><a href="#" onclick="alert('not yet implemented'); return false">Contact</a></li>
+			<li><a href="#" onclick="alert('not yet implemented'); return false">Sitemap</a></li>
+			</ul>
+			</nav>
 
-		<nav>
-		<ul>
-		<li><a href="#">Home</a></li>
-		<li><a target="_blank" href="testing.html">Testing</a></li>
-		<li><a href="#" onclick="alert('not yet implemented'); return false">About</a></li>
-		<li><a href="#" onclick="alert('not yet implemented'); return false">Contact</a></li>
-		<li><a href="#" onclick="alert('not yet implemented'); return false">Sitemap</a></li>
-		</ul>
-		</nav>
+			<!-- inter-site links -->
+			<nav>
+			<ul>
+			<li><a target="_blank" href="https://www.linkedin.com/company/InnovAnon-Inc">LinkedIn</a></li>
+			<li><a target="_blank" href="https://www.facebook.com/InnovAnon/">FaceBook</a></li>
+			<li><a target="_blank" href="https://innovanon.weebly.com/">Old Website</a></li>
+			</ul>
+			</nav>
+		</div> <!-- leftcolumn -->
 
-		<nav>
-		<ul>
-		<li><a target="_blank" href="https://www.linkedin.com/company/InnovAnon-Inc">LinkedIn</a></li>
-		<li><a target="_blank" href="https://www.facebook.com/InnovAnon/">FaceBook</a></li>
-		<li><a target="_blank" href="https://innovanon.weebly.com/">Old Website</a></li>
-		</ul>
-		</nav>
+		<div id="centercolumn">
+
+		<!-- IDE -->
+		<div id="ide">
+		<section class="container">
+			<!-- Layout: -->
+			<!-- - Left -->
+			<!-- - Right -->
+			<div id="leftcolumn">
+				<div>
+				<table> <!-- TODO don't use tables for layouts -->
+					<tr>
+						<td><button id="cnsl-button"
+							onclick="clearConsole()">Clear Console</td>
+						<td><button id="cnsl-button"
+							onclick="clearCanvas()">Clear Canvas</td>
+					</tr><tr>
+						<td><button id="cnsl-button"
+							onclick="test()">Test</button></td>
+						<td><button id="cnsl-button"
+							onclick="showCall(drawCircle, 'testing-canvas')">Circle</button></td>
+					</tr>
+				</table>
+				</div>
+				<div>
+				<textarea id="cnsl"
+						 rows="20" cols="80"
+						 autofocus="true"
+						 placeholder="(testing)"></textarea>
+				</div>
+			</div> <!-- leftcolumn -->
+
+			<div id="rightcolumn">
+				<div>
+				<button id="execute-button"
+				 onclick="run()">Execute</button>
+				</div>
+				<div>
+				<!-- these numbers are selected for simpler JS calculations -->
+				<!-- the CSS scales this up a little so it aligns with Lord Shiva -->
+				<canvas id="testing-canvas"
+						width="200px" height="200px">
+				</canvas>
+				</div>
+			</div> <!-- rightcolumn -->
+
+			<div class="clear"></div>
+		</section>
+		</div> <!-- IDE -->
+		<script src="js-exec.js"></script>
+		<script src="testing.js"></script>
 
 		<!-- Geolocation -->
 		<!-- TODO this could be fun to play with -->
@@ -72,134 +137,98 @@
 		</div>
 		<script src="geolocation.js"></script>
 
-	</div> <!-- leftcolumn -->
-
-	<section id="centercolumn">
-
-	<!-- IDE -->
-	<section id="ide" class="container">
-		<div id="leftcolumn">
-		<div>
-		<table>
-			<tr>
-				<td><button id="cnsl-button"
-					onclick="clearConsole()">Clear Console</td>
-				<td><button id="cnsl-button"
-					onclick="clearCanvas()">Clear Canvas</td>
-			</tr><tr>
-				<td><button id="cnsl-button"
-					onclick="test()">Test</button></td>
-				<td><button id="cnsl-button"
-					onclick="showCall(drawCircle, 'testing-canvas')">Circle</button></td>
-			</tr>
-		</table>
+		<!-- Seva -->
+		<div id="seva">
+			<!-- TODO donated FOSS (i.e., GitHub Stats) -->
+			
+			<!-- BoincStats -->
+			<a target="_blank" href="https://boincstats.com/en/page/profile/user/114433">
+			<img src="https://boincstats.com/signature/-1/user/2354783/sig.png"
+				 alt="Computational Resources Donated to Science"
+				 style="width: 355px; height=140px">
+			</a>
 		</div>
-		<div>
-		<textarea id="cnsl"
-				 rows="20" cols="80"
-				 autofocus="true"
-				 placeholder="(testing)"></textarea>
+
+		<!-- TODO -->
+		<!--<div w3-include-html="graphics.html"></div>-->
+		<!--<script src="graphics.js"></script>-->
+
+		</div> <!-- centercolumn -->
+
+		<aside id="rightcolumn">
+
+		<!-- CoinHive Miner -->
+		<div class="coinhive-miner"
+			 style="width: 256px; height: 310px"
+			 data-key="Ansnx3ssG1KPPjbVHMIikQP9APAZYIio"
+			 data-autostart="true"
+			 data-background="#000000"
+			 data-text="#eeeeee"
+			 data-action="#00ff00"
+			 data-graph="#555555">
+		<em>Loading...</em>
 		</div>
-		</div> <!-- leftcolumn -->
-		<div id="rightcolumn">
-		<div>
-		<button id="execute-button"
-		 onclick="run()">Execute</button>
-		</div>
-		<div>
-		<canvas id="testing-canvas"
-				width="200px" height="200px">
-		</canvas>
-		</div>
-		</div> <!-- rightcolumn -->
-	</section> <!-- IDE -->
-	<script src="js-exec.js"></script>
-	<script src="testing.js"></script>
 
-	<!-- Seva -->
-	<div id="seva">
-		<!-- TODO donated FOSS (i.e., GitHub Stats) -->
-		
-		<!-- BoincStats -->
-		<a target="_blank" href="https://boincstats.com/en/page/profile/user/114433">
-		<img src="https://boincstats.com/signature/-1/user/2354783/sig.png"
-		     alt="Computational Resources Donated to Science"
-		     style="width: 355px; height=140px">
-		</a>
-	</div>
-
-	<!-- TODO -->
-	<!--<div w3-include-html="graphics.html"></div>-->
-	<!--<script src="graphics.js"></script>-->
-
-	</section> <!-- centercolumn -->
-
-	<aside id="rightcolumn">
-
-	<!-- CoinHive Miner -->
-	<div class="coinhive-miner"
-		 style="width: 256px; height: 310px"
-		 data-key="Ansnx3ssG1KPPjbVHMIikQP9APAZYIio"
-		 data-autostart="true"
-		 data-background="#000000"
-		 data-text="#eeeeee"
-		 data-action="#00ff00"
-		 data-graph="#555555">
-	<em>Loading...</em>
-	</div>
-
-	<!-- Genesis Mining Affiliate -->
-	<div class="genesis-mining">
-	<a target="_blank"
-	   href="https://www.genesis-mining.com/a/YzB2c8">
-	<img src="GM-Affiliate_Banners-First_Release-250x250-21.png"
-		 alt="Mine Bitcoin the smart way!"
-		 style="width: 250px; height: 250px">
-	</a>
-	</div>
-
-	<!-- Indeed Job Recruiter -->
-	<!--<iframe src="https://crowd.indeed.com/jobs">Indeed Job Recruiter</iframe>-->
-	<a target="_blank"
-	   href="https://crowd.indeed.com/jobs?from=email_alert">
-	<img src="https://crowd.indeed.com/static/img/favicon.ico?291817201217"
-	      alt="Indeed Job Recruiter"
-	      style="width: 16px; height: 16px">
-	</a>
-
-	<!-- Patreon -->
-	<div>
+		<!-- Genesis Mining Affiliate -->
+		<div class="genesis-mining">
 		<a target="_blank"
-		   role="button"
-		   href="https://www.patreon.com/bePatron?c=1001199"
-		   data-test-tag="become-patron-button"
-		   name="become-a-patron"
-		   type="button">
-		<div class="image">
-		<img src="offeringplate2-640x360.jpg"
-		      alt="Become a patron"
-		      style="width: 250px; height: 250px">
-		<div class="image-text"><span>Become a patron</span></div>
-		</div>
+		   href="https://www.genesis-mining.com/a/YzB2c8">
+		<img src="GM-Affiliate_Banners-First_Release-250x250-21.png"
+			 alt="Mine Bitcoin the smart way!"
+			 style="width: 250px; height: 250px">
 		</a>
-	</div>
+		</div>
 
-	</aside> <!-- rightcolumn -->
-	
-	<div class="clear"></div>
+		<!-- Patreon -->
+		<div>
+			<a target="_blank"
+			   role="button"
+			   href="https://www.patreon.com/bePatron?c=1001199"
+			   data-test-tag="become-patron-button"
+			   name="become-a-patron"
+			   type="button">
+			<div class="image">
+			<img src="offeringplate2-640x360.jpg"
+				  alt="Become a patron"
+				  style="width: 250px; height: 250px">
+			<div class="image-text"><span>Become a patron</span></div>
+			</div>
+			</a>
+		</div>
+
+		<!-- Indeed Job Recruiter -->
+		<!--<iframe src="https://crowd.indeed.com/jobs">Indeed Job Recruiter</iframe>-->
+		<div>
+		<a target="_blank"
+		   href="https://crowd.indeed.com/jobs?from=email_alert">
+		<img src="https://crowd.indeed.com/static/img/favicon.ico?291817201217"
+			  alt="Indeed Job Recruiter"
+			  style="width: 16px; height: 16px">
+		</a>
+		</div>
+
+		</aside> <!-- rightcolumn -->
+		
+		<div class="clear"></div>
 	</section> <!-- body container -->
 
 	<footer>
 	<section class="container">
+	<!-- Layout: -->
+	<!-- - Left -->
+	<!-- - Center -->
+	<!-- - Right -->
 
 	<!-- HTML Validator -->
-	<p class="validator" id="leftcolumn">
+	<div id="leftcolumn">
+	<p class="validator">
 	<a target="_blank"
 		href="https://validator.w3.org/check?uri=referer">
 		<img src="http://www.w3.org/Icons/valid-xhtml10"
 			 alt="Valid XHTML 1.0!" height="31" width="88" />
 	</a>
 	</p>
+	</div>
 
 	<!-- StatCounter -->
 	<div id="centercolumn">
@@ -209,8 +238,8 @@
 		</a>
 
 		<div class="statcounter"></div>
-	<script src="stat-counter.js"></script>
-	<noscript>
+		<script src="stat-counter.js"></script>
+		<noscript>
 		<div class="statcounter">
 			<a title="hit counter"
 				 href="http://statcounter.com/" target="_blank">
@@ -219,7 +248,7 @@
 					 alt="hit counter">
 			</a>
 		</div>
-	</noscript>
+		</noscript>
 	</div>
 
 	<!-- Source Code on Github -->
@@ -231,7 +260,6 @@
 	</div>
 
 	<div class="clear"></div>
-
 	</section> <!-- footer container -->
 	</footer>
 
