@@ -10,6 +10,10 @@
 	border-color: red;
 	border-style: solid }
 
+.white-background {
+	background-color: white;
+	color: black }
+
 h1 {
 	background-color: black;
 	color: green;
