@@ -76,20 +76,45 @@
 
 	<section id="centercolumn">
 
-	<!-- Execute Arbitrary JavaScript -->
-	<table id="cnsl-table">
-	<tr><td>
-	<textarea id="cnsl"
+	<!-- IDE -->
+	<section class="container">
+		<div id="leftcolumn">
+		<div>
+		<table>
+			<tr>
+				<td><button id="cnsl-button"
+					onclick="clearConsole()">Clear Console</td>
+				<td><button id="cnsl-button"
+					onclick="clearCanvas()">Clear Canvas</td>
+			</tr><tr>
+				<td><button id="cnsl-button"
+					onclick="test()">Test</button></td>
+				<td><button id="cnsl-button"
+					onclick="showCall(drawCircle, 'testing-canvas')">Circle</button></td>
+			</tr>
+		</table>
+		</div>
+		<div>
+		<textarea id="cnsl"
 				 rows="20" cols="80"
 				 autofocus="true"
-				 placeholder="alert ('javascript here')"></textarea>
-	</td></tr>
-	<tr><td>
-	<button id="cnsl-button"
-			 onclick="run()">Execute</button>
-	</td></tr>
-	</table> <!-- cnsl-table -->
+				 placeholder="(testing)"></textarea>
+		</div>
+		</div> <!-- leftcolumn -->
+		<div id="rightcolumn">
+		<div>
+		<button id="execute-button"
+		 onclick="run()">Execute</button>
+		</div>
+		<div>
+		<canvas id="testing-canvas"
+				width="200px" height="200px">
+		</canvas>
+		</div>
+		</div> <!-- rightcolumn -->
+	</section> <!-- IDE -->
 	<script src="js-exec.js"></script>
+	<script src="testing.js"></script>
 
 	<!-- Seva -->
 	<div id="seva">
@@ -108,7 +133,7 @@
 	<!--<script src="graphics.js"></script>-->
 
 	</section> <!-- centercolumn -->
-	
+
 	<aside id="rightcolumn">
 
 	<!-- CoinHive Miner -->

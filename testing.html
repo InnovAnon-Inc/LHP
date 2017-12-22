@@ -40,48 +40,66 @@
 	<h3>Testing</h3>
 	</header>
 
-	<!-- IDE -->
-	<section class="container">
+	
 
-		<div id="leftcolumn">
-			<table>
-				<tr>
-					<td><button id="cnsl-button"
-						onclick="clearConsole()">Clear Console</td>
-					<td><button id="cnsl-button"
-						onclick="clearCanvas()">Clear Canvas</td>
-				</tr><tr>
-					<td><button id="cnsl-button"
-						onclick="test()">Test</button></td>
-					<td><button id="cnsl-button"
-						onclick="showCall(drawCircle, 'testing-canvas')">Circle</button></td>
-				</tr>
-			</table>
-		</div> <!-- leftcolumn -->
-
-		<section id="centercolumn">
-		<textarea id="cnsl"
-				 rows="20" cols="80"
-				 autofocus="true"
-				 placeholder="(testing)"></textarea>
-		</section> <!-- centercolumn -->
-		
-		<section id="centercolumn">
-		<canvas id="testing-canvas"
-				width="200px" height="200px">
-		</canvas>
-		</section> <!-- centercolumn -->
-
-		<script src="js-exec.js"></script>
-		<script src="testing.js"></script>
-
-		<aside id="rightcolumn">
-			<button id="execute-button"
-			 onclick="run()">Execute</button>
-		</aside> <!-- rightcolumn -->
-
-		<div class="clear"></div>
-	</section> <!-- container --> <!-- IDE -->
+	<table>
+    <tr><td>Text to Save:</td></tr>
+    <tr>
+        <td colspan="3">
+            <textarea id="inputTextToSave" cols="80" rows="25"></textarea>
+        </td>
+    </tr>
+    <tr>
+        <td>Filename to Save As:</td>
+        <td><input id="inputFileNameToSaveAs"></input></td>
+        <td><button onclick="saveTextAsFile()">Save Text to File</button></td>
+    </tr>
+    <tr>
+        <td>Select a File to Load:</td>
+        <td><input type="file" id="fileToLoad"></td>
+        <td><button onclick="loadFileAsText()">Load Selected File</button><td>
+    </tr>
+</table>
+ 
+<script type="text/javascript">
+ 
+function saveTextAsFile()
+{
+    var textToSave = document.getElementById("inputTextToSave").value;
+    var textToSaveAsBlob = new Blob([textToSave], {type:"text/plain"});
+    var textToSaveAsURL = window.URL.createObjectURL(textToSaveAsBlob);
+    var fileNameToSaveAs = document.getElementById("inputFileNameToSaveAs").value;
+ 
+    var downloadLink = document.createElement("a");
+    downloadLink.download = fileNameToSaveAs;
+    downloadLink.innerHTML = "Download File";
+    downloadLink.href = textToSaveAsURL;
+    downloadLink.onclick = destroyClickedElement;
+    downloadLink.style.display = "none";
+    document.body.appendChild(downloadLink);
+ 
+    downloadLink.click();
+}
+ 
+function destroyClickedElement(event)
+{
+    document.body.removeChild(event.target);
+}
+ 
+function loadFileAsText()
+{
+    var fileToLoad = document.getElementById("fileToLoad").files[0];
+ 
+    var fileReader = new FileReader();
+    fileReader.onload = function(fileLoadedEvent) 
+    {
+        var textFromFileLoaded = fileLoadedEvent.target.result;
+        document.getElementById("inputTextToSave").value = textFromFileLoaded;
+    };
+    fileReader.readAsText(fileToLoad, "UTF-8");
+}
+ 
+</script>
 
 	<!-- TODO YT sucks anyway, so this not working is a feature, rather than a bug -->
 	<div>
@@ -115,6 +133,8 @@
 	   href="https://widget.mibbit.com/?settings=d8d241ba2cf985a43f95edc4f9282e68&server=irc.mibbit.net%3A%2B6697&channel=%23InnovAnon-Inc">Mibbit WebIRC Client</a>
 	</div>
 	</div>
+
+	<iframe src="https://duckduckgo.com/search.html?duck=yes&kn=1&site=https://innovanon-inc.github.io/LHP/&prefill=Search DuckDuckGo&bgcolor=000000" style="overflow:hidden;margin:0;padding:0;width:483px;height:60px;" frameborder="0">Search DuckDuckGo</iframe>
 
 	<!-- TODO code visualizations (e.g., sorting algorithms, maybe a y86 emulator) -->
 
@@ -198,8 +218,6 @@
 
 	<div class="clear"></div>
 	</section> <!-- container --> <!-- meditations -->
-
-	
 
 	<div id="typeracer">
 		<a target="_blank"
