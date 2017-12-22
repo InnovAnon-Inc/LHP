@@ -3,6 +3,13 @@
 #rightcolumn  { float: right }
 .clear { clear: both }
 
+.hard-to-see {
+	background-color: black;
+	color: green;
+	border-width: 1px;
+	border-color: red;
+	border-style: solid }
+
 h1 {
 	background-color: black;
 	color: green;

@@ -107,6 +107,21 @@
 						 autofocus="true"
 						 placeholder="(testing)"></textarea>
 				</div>
+				<div>
+				<table class="hard-to-see">
+				<tr>
+					<td>Filename to Save As:</td>
+					<td><input id="inputFileNameToSaveAs"></input></td>
+					<td><button onclick="saveTextAsFile()">Save Text to File</button></td>
+				</tr>
+				<tr>
+					<td>Select a File to Load:</td>
+					<td><input type="file" id="fileToLoad"></td>
+					<td><button onclick="loadFileAsText()">Load Selected File</button><td>
+				</tr>
+				</table>
+				</div>
+				<script src="fm.js"></script>
 			</div> <!-- leftcolumn -->
 
 			<div id="rightcolumn">
@@ -136,6 +151,10 @@
 					 onclick="getLocation()">Geolocate</button>
 		</div>
 		<script src="geolocation.js"></script>
+
+		<!-- Search DuckDuckGo -->
+		<!--<iframe src="https://duckduckgo.com/search.html?duck=yes&kn=1&site=https://innovanon-inc.github.io/LHP/&prefill=Search DuckDuckGo&bgcolor=000000" style="overflow:hidden;margin:0;padding:0;width:483px;height:60px;" frameborder="0">Search DuckDuckGo</iframe>-->
+		<iframe src="https://duckduckgo.com/search.html?duck=yes&kn=1&prefill=Search DuckDuckGo&bgcolor=000000" style="overflow:hidden;margin:0;padding:0;width:483px;height:60px;" frameborder="0">Search DuckDuckGo</iframe>
 
 		<!-- Seva -->
 		<div id="seva">
