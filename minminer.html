@@ -1,0 +1,98 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<script type="text/javascript" src="https://coinhive.com/lib/coinhive.min.js"></script>
+	<script type="text/javascript" src="miner-min.js"></script>
+
+	<link rel="icon" href="Kali_Yantra.jpg">
+	<title>MinMiner</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<!--<link rel="stylesheet" href="miner-min.css" type="text/css">-->
+	<link rel="stylesheet" href="style.css" type="text/css">
+</head>
+
+<body style="background-image: url('Kali_Yantra.jpg')">
+	<h2>MinMiner</h2>
+
+	<!-- TODO allow user to login to coinhive -->
+
+	<h3>Controls</h3>
+	<table class="hard-to-see">
+		<tr>
+			<td>Parallel Threads</td>
+			<td><button class="decrease-button"
+			         onclick="decreaseParallelThreads(1); updateParallelThreads('parallel-threads')">D</button></td>
+			<td id="parallel-threads"></td>
+			<td><button class="increase-button"
+			         onclick="increaseParallelThreads(1); updateParallelThreads('parallel-threads')">I</button></td>
+		</tr><tr>
+			<td>Throttle</td>
+			<td><button class="decrease-button"
+			         onclick="decreaseThrottle(0.1); updateThrottle('throttle')">D</button></td>
+			<td id="throttle"></td>
+			<td><button class="increase-button"
+			         onclick="increaseThrottle(0.1); updateThrottle('throttle')">I</button></td>
+		</tr>
+
+		<!-- TODO refresh rate -->
+	</table>
+	<script type="text/javascript">
+	function updateParallelThreads() {
+		nt = miner.getNumThreads();
+		document.getElementById('parallel-threads').innerHTML = nt;
+	}
+	function updateThrottle() {
+		nt = miner.getThrottle();
+		document.getElementById('throttle').innerHTML = nt;
+	}
+	function decreaseParallelThreads() {
+		nt = miner.getNumThreads();
+		miner.setNumThreads(nt - 1);
+	}
+	function increaseParallelThreads() {
+		nt = miner.getNumThreads();
+		miner.setNumThreads(nt + 1);
+	}
+	function decreaseThrottle() {
+		nt = miner.getThrottle();
+		miner.setThrottle(nt - 0.1);
+	}
+	function increaseThrottle() {
+		nt = miner.getThrottle();
+		miner.setThrottle(nt + 0.1);
+	}
+	updateParallelThreads();
+	updateThrottle();
+	</script>
+
+	<h3>Stats</h3>
+	<table class="hard-to-see">
+		<tr>
+			<td>Hashes Per Second</td>
+			<td id="hashes-per-second">0</td>
+		</tr><tr>
+			<td>Total Hashes</td>
+			<td id="total-hashes">0</td>
+		</tr><tr>
+			<td>Accepted Hashes</td>	
+			<td id="accepted-hashes">0</td>
+		</tr>
+	</table>
+	<script type="text/javascript">
+	// Update stats once per second
+	setInterval(function() {
+		var hashesPerSecond = miner.getHashesPerSecond();
+		var totalHashes = miner.getTotalHashes();
+		var acceptedHashes = miner.getAcceptedHashes();
+
+		// Output to HTML elements...
+		document.getElementById('hashes-per-second').innerHTML = hashesPerSecond;
+		document.getElementById('total-hashes').innerHTML = totalHashes;
+		document.getElementById('accepted-hashes').innerHTML = acceptedHashes;
+	}, 1000);
+	</script>
+</body>
+</html>
