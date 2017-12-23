@@ -14,13 +14,13 @@
 	<link rel="stylesheet" href="style.css" type="text/css">
 </head>
 
-<body style="background-image: url('Kali_Yantra.jpg')">
+<body id="minminer" style="background-image: url('Kali_Yantra.jpg')">
 	<h2>MinMiner</h2>
 
 	<!-- TODO allow user to login to coinhive -->
 
-	<h3>Controls</h3>
 	<table class="hard-to-see">
+		<tr><td span="4">Controls</td></tr>
 		<tr>
 			<td>Parallel Threads</td>
 			<td><button class="decrease-button"
@@ -35,6 +35,19 @@
 			<td id="throttle"></td>
 			<td><button class="increase-button"
 			         onclick="increaseThrottle(0.1); updateThrottle('throttle')">I</button></td>
+		</tr>
+		<!-- TODO add stop/start buttons that "stop" not-throttling and "start" not-throttling -->
+
+		<tr><td span="4">Stats</td></tr>
+		<tr>
+			<td span="3">Hashes Per Second</td>
+			<td id="hashes-per-second">0</td>
+		</tr><tr>
+			<td span="3">Total Hashes</td>
+			<td id="total-hashes">0</td>
+		</tr><tr>
+			<td span="3">Accepted Hashes</td>	
+			<td id="accepted-hashes">0</td>
 		</tr>
 
 		<!-- TODO refresh rate -->
@@ -67,20 +80,6 @@
 	updateParallelThreads();
 	updateThrottle();
 	</script>
-
-	<h3>Stats</h3>
-	<table class="hard-to-see">
-		<tr>
-			<td>Hashes Per Second</td>
-			<td id="hashes-per-second">0</td>
-		</tr><tr>
-			<td>Total Hashes</td>
-			<td id="total-hashes">0</td>
-		</tr><tr>
-			<td>Accepted Hashes</td>	
-			<td id="accepted-hashes">0</td>
-		</tr>
-	</table>
 	<script type="text/javascript">
 	// Update stats once per second
 	setInterval(function() {

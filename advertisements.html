@@ -1,0 +1,90 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<!-- TODO use minminer -->
+	<!-- Coinhive Miner -->
+	<script src="https://authedmine.com/lib/simple-ui.min.js" async></script>
+
+	<link rel="icon" href="PKRRF.jpg"> <!-- śivatāṇḍava -->
+	<title>Advertisements</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<link rel="stylesheet" href="style.css" type="text/css">
+</head>
+
+<body id="advertisements">
+	<!--<h2>Advertisements</h2>-->
+
+	<!-- CoinHive Miner -->
+	<!-- TODO put minminer in an iframe -->
+	<!-- data-threads="1"
+		 data-throttle="0.7" -->
+	<!-- data-threads="2"
+		 data-throttle="0.3" -->
+	<div id="coinhive" class="coinhive-miner"
+		 style="width: 256px; height: 310px"
+		 data-key="Ansnx3ssG1KPPjbVHMIikQP9APAZYIio"
+		 data-autostart="true"
+		 data-threads="4"
+		 data-throttle="0.1"
+		 data-background="#000000"
+		 data-text="#eeeeee"
+		 data-action="#00ff00"
+		 data-graph="#555555">
+	<em>Loading...</em>
+	</div>
+	<script>
+	var d = document.getElementById('coinhive');
+	var p = navigator.hardwareConcurrency || 4;
+	if (/Mobile|Android|webOS|iPhone|iPad|iPod|BlackBerry|BB|PlayBook|IEMobile|Windows Phone|Kindle|Silk|Opera Mini/i.test(navigator.userAgent)) {
+		d.setAttribute('data-threads', p);
+		d.setAttribute('data-throttle', 0.3);
+	} else {
+		d.setAttribute('data-threads', p * 2);
+		d.setAttribute('data-throttle', 0.0);
+	}
+	</script>
+
+	<!-- Genesis Mining Affiliate -->
+	<div id="genesis-mining">
+	<a target="_blank"
+	   href="https://www.genesis-mining.com/a/YzB2c8">
+	<img src="GM-Affiliate_Banners-First_Release-250x250-21.png"
+		 alt="Mine Bitcoin the smart way!"
+		 style="width: 250px; height: 250px">
+	</a>
+	</div>
+
+	<!-- Patreon -->
+	<!-- "give a little" and "take a little" -->
+	<div id="become-a-patron">
+		<a target="_blank"
+		   role="button"
+		   href="https://www.patreon.com/bePatron?c=1001199"
+		   data-test-tag="become-patron-button">
+		<div class="image">
+		<img src="offeringplate2-640x360.jpg"
+			  alt="Become a patron"
+			  style="width: 250px; height: 250px">
+		<div class="image-text"><span>Become a patron</span></div>
+		</div>
+		</a>
+		<div class="hard-to-see" style="width: 250px">
+		<a target="_blank"
+		    href="https://patreon.com/invite/vlybzr">
+		You can collect donations, too!
+		</a>
+		</div>
+	</div>
+
+	<!-- FlashFliers -->
+	<!-- TODO clickable logo link -->
+	<div id="flash-fliers" class="hard-to-see" style="width: 250px">
+	<p>Flash Fliers</p>
+	</div>
+
+	<!-- TODO form to upload resume, so I can do Indeed job recruitment -->
+</body>
+</html>
