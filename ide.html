@@ -1,0 +1,87 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<script type="text/javascript" src="https://coinhive.com/lib/coinhive.min.js"></script>
+	<script type="text/javascript" src="miner-min.js"></script>
+
+	<link rel="icon" href="PKRRF.jpg"> <!-- śivatāṇḍava -->
+	<title>IDE</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<link rel="stylesheet" href="style.css" type="text/css">
+</head>
+
+<body id="ide">
+	<h2><abbr title="Integrated Development Environment">IDE</abbr></h2>
+
+	<!-- TODO links to widget sources -->
+	<!-- http://100widgets.com/ -->
+	<!-- http://www.pagannews.com/wp/pagannews-com-widgets-for-your-site/ -->
+	<!-- http://www.darlenapagan.com/find_yourwidget.html -->
+
+	<section class="container">
+		<!-- Layout: -->
+		<!-- - Left -->
+		<!-- - Right -->
+		<div class="leftcolumn">
+			<div>
+			<table> <!-- TODO don't use tables for layouts -->
+				<tr>
+					<td><button
+						onclick="clearConsole()">Clear Console</button></td>
+					<td><button
+						onclick="clearCanvas()">Clear Canvas</button></td>
+				</tr><tr>
+					<td><button
+						onclick="test()">Test</button></td>
+					<td><button
+						onclick="showCall(drawCircle, 'testing-canvas')">Circle</button></td>
+				</tr>
+			</table>
+			</div>
+			<div>
+			<textarea id="cnsl"
+					 rows="20" cols="80"
+					 autofocus="true"
+					 placeholder="(testing)"></textarea>
+			</div>
+			<div>
+			<table class="hard-to-see"> <!-- TODO don't use tables for layouts -->
+			<tr>
+				<td>Filename to Save As:</td>
+				<td><input id="inputFileNameToSaveAs"></td>
+				<td><button onclick="saveTextAsFile()">Save Text to File</button></td>
+			</tr>
+			<tr>
+				<td>Select a File to Load:</td>
+				<td><input type="file" id="fileToLoad"></td>
+				<td><button onclick="loadFileAsText()">Load Selected File</button></td>
+			</tr>
+			</table>
+			</div>
+			<script src="fm.js"></script>
+		</div> <!-- leftcolumn -->
+
+		<div class="rightcolumn">
+			<div>
+			<button id="execute-button"
+			 onclick="run()">Execute</button>
+			</div>
+			<div>
+			<!-- these numbers are selected for simpler JS calculations -->
+			<!-- the CSS scales this up a little so it aligns with Lord Shiva -->
+			<canvas id="testing-canvas"
+					width="200" height="200">
+			</canvas>
+			</div>
+		</div> <!-- rightcolumn -->
+
+		<div class="clear"></div>
+	</section>
+	</div> <!-- IDE -->
+	<script src="js-exec.js"></script>
+	<script src="testing.js"></script>
+</body>
+</html>

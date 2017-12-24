@@ -63,6 +63,7 @@ body {
 	background-size: 100% auto }
 
 button {
+	/* TODO use a PDL image */
 	background-image: url("lord-shiva.gif");
 	background-size: 100% auto;
 	color: red;

@@ -1,0 +1,26 @@
+<div id="ide">
+	<div id="editor">
+	function foo(items) {
+	var x = "All this is syntax highlighted";
+	return x;
+	}
+	</div>
+	
+	<!-- TODO save/open file -->
+	<!-- TODO exec button -->
+	<!-- TODO load in iframe button -->
+	<!-- TODO load in div button -->
+	<!-- TODO generate static page, encode in url, then redirect to it... button -->
+	<!-- TODO resizable testing canvas -->
+	
+	
+	
+	
+	
+	<script src="https://raw.githubusercontent.com/ajaxorg/ace-builds/master/src/ace.js" type="text/javascript" charset="utf-8"></script>
+	<script>
+	var editor = ace.edit("editor");
+	editor.setTheme("ace/theme/monokai");
+	editor.getSession().setMode("ace/mode/javascript");
+	</script>
+</div>
