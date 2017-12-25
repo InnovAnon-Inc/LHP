@@ -1,0 +1,21 @@
+<html>
+<head>
+</head>
+<body>
+	<script>
+	try {
+		var request = new XMLHttpRequest();
+		request.onload = function () {
+			var responseObj = JSON.parse(this.responseText);
+			var iframe = document.createElement ('iframe');
+			var html = atob (responseObj.content);
+			iframe.srcdoc = html;
+			document.body.appendChild (iframe);
+			//document.write ('<iframe srcdoc="' + atob (responseObj.content) + '"></iframe>');
+		};
+		request.open('get', 'https://api.github.com/repos/InnovAnon-Inc/LHP/contents/index.html', true);
+		request.send();
+	} catch (e) { alert (e) }
+	</script>
+</body>
+</html>
