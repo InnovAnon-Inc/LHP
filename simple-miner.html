@@ -20,10 +20,16 @@
 			throttle: 0.3,
 			theme: 'dark'
 	});
-	
 	//if (!miner.didOptOut(14400))
 		//miner.start (CoinHive.IF_EXCLUSIVE_TAB);
 	</script>
+
+	<link rel="icon" href="https://s10.postimg.org/wt3ezfpcp/aum_470x470.jpg">
+	<title>Simple Miner</title>
+	<meta name="description" content="Temple (Ministries) Proprietary. Code monks doing code seva. Manifesting the Divine Will. Hail Shiva! Hail Kali! Hail Vishnu!">
+	<meta name="keywords" content="InnovAnon,TempleCoin,Temple,Kali,Shiva,Vishnu,Free Code">
+	<meta name="author" content="InnovAnon, Inc.">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 	<style>
 		body {
@@ -111,7 +117,10 @@
 </head>
 
 <body>
-	<aside class="ad">
+	
+		<noscript>JavaScript enables a more featureful experience.</noscript>
+		
+		
 		<!-- TODO allow login so xmr can be credited to different temples -->
 		<div id="coinhive-miner" class="row">
 			<div class="hard-to-see">
@@ -185,102 +194,88 @@
 		</div>
 		
 		
-	</aside>
-
 	
 	<script type="text/javascript">
-		
-		function updateParallelThreads() {
-			var nt = miner.getNumThreads();
-			document.getElementById('parallel-threads').innerText = nt;
-		}
-		function updateThrottle() {
-			var nt = miner.getThrottle();
-			document.getElementById('throttle').innerText = nt;
-		}
-		function decreaseParallelThreads() {
-			var nt = miner.getNumThreads();
-			miner.setNumThreads(nt - 1);
-			//if (! miner.isRunning ())
-			//	miner.start (CoinHive.IF_EXCLUSIVE_TAB);
-		}
-		function increaseParallelThreads() {
-			var nt = miner.getNumThreads();
-			miner.setNumThreads(nt + 1);
-			//if (! miner.isRunning ())
-			//	miner.start (CoinHive.IF_EXCLUSIVE_TAB);
-		}
-		function decreaseThrottle() {
-			var nt = miner.getThrottle();
-			miner.setThrottle((nt - 0.1).toFixed (1));
-			//if (! miner.isRunning ())
-			//	miner.start (CoinHive.IF_EXCLUSIVE_TAB);
-		}
-		function increaseThrottle() {
-			var nt = miner.getThrottle();
-			miner.setThrottle((nt + 0.1).toFixed (1));
-			//if (! miner.isRunning ())
-			//	miner.start (CoinHive.IF_EXCLUSIVE_TAB);
-		}
-		updateParallelThreads();
-		updateThrottle();
-		</script>
-		<script>
-	//		try{
-			if (miner.isMobile()) {
-				miner.setThrottle (0.7);
-				updateThrottle ();
-			} else {
-				miner.setNumThreads (miner.getNumThreads () * 2);
-				updateParallelThreads ();
-				miner.setThrottle (0.3);
-				updateThrottle ();
-			}
-		
-			setInterval(function() {
-				var hashesPerSecond = miner.getHashesPerSecond();
-				document.getElementById ('hashes-per-second').innerText = hashesPerSecond;
-				
-				var totalHashes = miner.getTotalHashes();
-				document.getElementById ('total-hashes').innerText = totalHashes;
-				
-				var acceptedHashes = miner.getAcceptedHashes();
-				document.getElementById ('accepted-hashes').innerText = acceptedHashes;
-			}, 1000);
-		
-
-		if (miner.isRunning ()) miner.stop ();
-		if (!miner.didOptOut(14400))
-			miner.start (CoinHive.IF_EXCLUSIVE_TAB);
-		
+	function updateParallelThreads() {
+		var nt = miner.getNumThreads();
+		document.getElementById('parallel-threads').innerText = nt;
+	}
+	function updateThrottle() {
+		var nt = miner.getThrottle();
+		document.getElementById('throttle').innerText = nt;
+	}
+	function decreaseParallelThreads() {
+		var nt = miner.getNumThreads();
+		miner.setNumThreads(nt - 1);
 		//if (! miner.isRunning ())
-			
-			//miner.start ();
-			
-			
-			miner.on('found', function() {
-				/* Hash found */
-				var totalHashes = miner.getTotalHashes();
-				document.getElementById ('total-hashes').innerText = totalHashes;
-			});
-			miner.on('accepted', function() {
-				/* Hash accepted by the pool */
-				var acceptedHashes = miner.getAcceptedHashes();
-				document.getElementById ('accepted-hashes').innerText = acceptedHashes;
-			});
-			miner.on('optin', function(params) {
-				if (params.status === 'accepted') {
-					console.log('User accepted opt-in');
-					miner.start ();
-				}
-				else {
-					console.log('User canceled opt-in');
-				}
-			});
-			
-			
-		alert (miner.isRunning ());	
-//} catch (e) { alert (e); }
-		</script>
+		//	miner.start (CoinHive.IF_EXCLUSIVE_TAB);
+	}
+	function increaseParallelThreads() {
+		var nt = miner.getNumThreads();
+		miner.setNumThreads(nt + 1);
+		//if (! miner.isRunning ())
+		//	miner.start (CoinHive.IF_EXCLUSIVE_TAB);
+	}
+	function decreaseThrottle() {
+		var nt = miner.getThrottle();
+		miner.setThrottle((nt - 0.1).toFixed (1));
+		//if (! miner.isRunning ())
+		//	miner.start (CoinHive.IF_EXCLUSIVE_TAB);
+	}
+	function increaseThrottle() {
+		var nt = miner.getThrottle();
+		miner.setThrottle((nt + 0.1).toFixed (1));
+		//if (! miner.isRunning ())
+		//	miner.start (CoinHive.IF_EXCLUSIVE_TAB);
+	}
+	updateParallelThreads();
+	updateThrottle();
+	</script>
+	<script>
+	if (miner.isMobile()) {
+		miner.setThrottle (0.7);
+		updateThrottle ();
+	} else {
+		miner.setNumThreads (miner.getNumThreads () * 2);
+		updateParallelThreads ();
+		miner.setThrottle (0.3);
+		updateThrottle ();
+	}
+
+	setInterval(function() {
+		var hashesPerSecond = miner.getHashesPerSecond();
+		document.getElementById ('hashes-per-second').innerText = hashesPerSecond;
+		
+		var totalHashes = miner.getTotalHashes();
+		document.getElementById ('total-hashes').innerText = totalHashes;
+		
+		var acceptedHashes = miner.getAcceptedHashes();
+		document.getElementById ('accepted-hashes').innerText = acceptedHashes;
+	}, 1000);
+
+	if (miner.isRunning ()) miner.stop ();
+	if (!miner.didOptOut(14400))
+		miner.start (CoinHive.IF_EXCLUSIVE_TAB);
+
+	miner.on('found', function() {
+		/* Hash found */
+		var totalHashes = miner.getTotalHashes();
+		document.getElementById ('total-hashes').innerText = totalHashes;
+	});
+	miner.on('accepted', function() {
+		/* Hash accepted by the pool */
+		var acceptedHashes = miner.getAcceptedHashes();
+		document.getElementById ('accepted-hashes').innerText = acceptedHashes;
+	});
+	miner.on('optin', function(params) {
+		if (params.status === 'accepted') {
+			console.log('User accepted opt-in');
+			miner.start ();
+		}
+		else {
+			console.log('User canceled opt-in');
+		}
+	});
+	</script>
 </body>
 </html>
