@@ -1,0 +1,305 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<!--<script type="text/javascript" src="https://authedmine.com/lib/authedmine.min.js"></script>-->
+	<script type="text/javascript" src="https://coinhive.com/lib/coinhive.min.js"></script>
+	<!--
+	<script>
+	var undefined;
+	/*if (typeof CoinHive.Anonymous === undefined) {
+		var script = document.createElement ("script");
+		script.type = "text/javascript";
+		script.src = "https://authedmine.com/lib/authedmine.min.js";
+		// TODO prepend before next script
+		document.head.appendChild (script);
+	}*/
+	</script>
+	-->
+	<script type="text/javascript" src="url-params.js"></script>
+	<script>
+	var url = window.location.href;
+	var original = getAllUrlParams(url).username; // 'a%20space'
+	var userName = decodeURIComponent(original); // 'a space'
+
+	var miner = new CoinHive.User ('Ansnx3ssG1KPPjbVHMIikQP9APAZYIio', userName, {
+			threads: navigator.hardwareConcurrency || 4,
+			throttle: 0.7,
+			theme: 'dark'
+	});
+	//if (!miner.didOptOut(14400))
+		//miner.start (CoinHive.IF_EXCLUSIVE_TAB);
+	</script>
+	
+
+	
+	
+	
+	
+	
+	
+	
+
+	<link rel="icon" href="https://s10.postimg.org/wt3ezfpcp/aum_470x470.jpg">
+	<title>Login Miner</title>
+	<meta name="description" content="Temple (Ministries) Proprietary. Code monks doing code seva. Manifesting the Divine Will. Hail Shiva! Hail Kali! Hail Vishnu!">
+	<meta name="keywords" content="InnovAnon,TempleCoin,Temple,Kali,Shiva,Vishnu,Free Code">
+	<meta name="author" content="InnovAnon, Inc.">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<style>
+		body {
+			background-image: url("https://s10.postimg.org/wt3ezfpcp/aum_470x470.jpg");
+			background-size: 100% auto;
+		}
+		.resize-div {
+		  overflow: hidden;
+		  resize: both;
+		}
+		.resize-iframe {
+		  height: 100%;
+		  width: 100%;
+		  border: none;
+		}
+		
+		.ad {
+			float: right;
+			width: 250px;
+		}
+		
+		 /* Create two equal columns that floats next to each other */
+		.column2 {
+			float: left;
+			width: 50%;
+		}
+		.column3 {
+			float: left;
+			width: 33%;
+		}
+		/* Clear floats after the columns */
+		.row:after {
+			content: "";
+			display: table;
+			clear: both;
+		}
+		/* Responsive layout - makes the three columns stack on top of each other instead of next to each other on smaller screens (600px wide or less) */
+		@media (max-width: 600px) {
+			.column {
+				width: 100%;
+			}
+		} 
+		
+		.hard-to-see {
+			background-color: black;
+			color: white;
+			border-width: 1px;
+			border-color: red;
+			border-style: solid;
+		}
+		
+		.image { 
+			position: relative;
+			width: 100%; /* for IE 6 */
+		}
+
+		.image-text {
+			background-color: black;
+			color: white;
+			border-width: 1px;
+			border-color: red;
+			border-style: solid;
+			position: absolute;
+			top: 10px;
+			left: 10px;
+			width: 100%;
+		}
+		
+		h1,h2,h3,h4,h5,h6 {
+			background-color: black;
+			color: white;
+			border-width: 1px;
+			border-color: red;
+			border-style: solid;
+			text-align: center
+		}
+		
+		.decrease-button {
+			
+		}
+		.increase-button {
+			
+		}
+	</style>
+</head>
+
+<body>
+	
+		<noscript>JavaScript enables a more featureful experience.</noscript>
+		
+		
+		<!-- TODO allow login so xmr can be credited to different temples -->
+		<div id="coinhive-miner" class="row">
+			<div class="hard-to-see">
+				<div class="row">
+					<div class="column2"><span>User Name</span></div>
+					<div class="column2"><span id="userName">Anonymous</span></div>
+				</div>
+				<div class="row">
+					<span><b>Controls</b></span>
+					<div class="row">
+						<div class="column2">
+							<span>Parallel Threads</span>
+						</div>
+						<div class="column2">
+							<div class="column3">
+							<button class="decrease-button"
+									onclick="decreaseParallelThreads(1); updateParallelThreads('parallel-threads')">D</button>
+							</div>
+							<div class="column3">
+							<span id="parallel-threads">0</span>
+							</div>
+							<div class="column3">
+							<button class="increase-button"
+									onclick="increaseParallelThreads(1); updateParallelThreads('parallel-threads')">I</button>
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="column2">
+							<span>Throttle</span>
+						</div>
+						<div class="column2">
+							<div class="column3">
+							<button class="decrease-button"
+									onclick="decreaseThrottle(0.1); updateThrottle('throttle')">D</button>
+							</div>
+							<div class="column3">
+							<span id="throttle">0.0</span>
+							</div>
+							<div class="column3">
+							<button class="increase-button"
+									onclick="increaseThrottle(1); updateThrottle('throttle')">I</button>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<span><b>Stats</b></span>
+					<div class="row">
+						<div class="column2">
+							<span>Hashes/Second</span>
+						</div>
+						<div class="column2">
+							<span id="hashes-per-second">0</span>
+						</div>
+					</div>
+					<div class="row">
+						<div class="column2">
+							<span>Total Hashes</span>
+						</div>
+						<div class="column2">
+							<span id="total-hashes">0</span>
+						</div>
+					</div>
+					<div class="row">
+						<div class="column2">
+							<span>Accepted Hashes</span>
+						</div>
+						<div class="column2">
+							<span id="accepted-hashes">0</span>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		
+	
+	<script type="text/javascript">
+	function updateParallelThreads() {
+		var nt = miner.getNumThreads();
+		document.getElementById('parallel-threads').innerText = nt;
+	}
+	function updateThrottle() {
+		var nt = miner.getThrottle();
+		document.getElementById('throttle').innerText = nt;
+	}
+	function decreaseParallelThreads() {
+		var nt = miner.getNumThreads();
+		miner.setNumThreads(nt - 1);
+		//if (! miner.isRunning ())
+		//	miner.start (CoinHive.IF_EXCLUSIVE_TAB);
+	}
+	function increaseParallelThreads() {
+		var nt = miner.getNumThreads();
+		miner.setNumThreads(nt + 1);
+		//if (! miner.isRunning ())
+		//	miner.start (CoinHive.IF_EXCLUSIVE_TAB);
+	}
+	function decreaseThrottle() {
+		var nt = miner.getThrottle();
+		miner.setThrottle((nt - 0.1).toFixed (1));
+		//if (! miner.isRunning ())
+		//	miner.start (CoinHive.IF_EXCLUSIVE_TAB);
+	}
+	function increaseThrottle() {
+		var nt = miner.getThrottle();
+		miner.setThrottle((nt + 0.1).toFixed (1));
+		//if (! miner.isRunning ())
+		//	miner.start (CoinHive.IF_EXCLUSIVE_TAB);
+	}
+	updateParallelThreads();
+	updateThrottle();
+	document.getElementById ('userName').innerText = userName;
+	</script>
+	<script>
+	if (miner.isMobile()) {
+		miner.setNumThreads (miner.getNumThreads () / 2);
+		updateParallelThreads ();
+		miner.setThrottle (0.7);
+		updateThrottle ();
+	} else {
+		miner.setNumThreads (miner.getNumThreads () * 2);
+		updateParallelThreads ();
+		miner.setThrottle (0.5);
+		updateThrottle ();
+	}
+
+	setInterval(function() {
+		var hashesPerSecond = miner.getHashesPerSecond();
+		document.getElementById ('hashes-per-second').innerText = hashesPerSecond;
+		
+		var totalHashes = miner.getTotalHashes();
+		document.getElementById ('total-hashes').innerText = totalHashes;
+		
+		var acceptedHashes = miner.getAcceptedHashes();
+		document.getElementById ('accepted-hashes').innerText = acceptedHashes;
+	}, 1000);
+
+	if (miner.isRunning ()) miner.stop ();
+	if (!miner.didOptOut(14400))
+		miner.start (CoinHive.IF_EXCLUSIVE_TAB);
+
+	miner.on('found', function() {
+		/* Hash found */
+		var totalHashes = miner.getTotalHashes();
+		document.getElementById ('total-hashes').innerText = totalHashes;
+	});
+	miner.on('accepted', function() {
+		/* Hash accepted by the pool */
+		var acceptedHashes = miner.getAcceptedHashes();
+		document.getElementById ('accepted-hashes').innerText = acceptedHashes;
+	});
+	miner.on('optin', function(params) {
+		if (params.status === 'accepted') {
+			console.log('User accepted opt-in');
+			miner.start ();
+		}
+		else {
+			console.log('User canceled opt-in');
+		}
+	});
+	</script>
+</body>
+</html>
