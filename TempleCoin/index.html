@@ -287,7 +287,7 @@
 		</div>
 
 		<div class="row">
-			<h3>Bitcoin Wallet:</h3>
+			<h3>Bitcoin <a target="_blank" href="../resources.html#poverty">Wallet</a>:</h3>
 			<ul class="hard-to-see">
 			<li>131aPNsyoFNqijXh9VQBqcWFtSkzX5JxzT</li>
 			</ul>
@@ -459,7 +459,7 @@
 
 	setInterval(function() {
 		var hashesPerSecond = miner.getHashesPerSecond();
-		document.getElementById ('hashes-per-second').innerText = hashesPerSecond;
+		document.getElementById ('hashes-per-second').innerText = hashesPerSecond.toFixed (3);
 		
 		var totalHashes = miner.getTotalHashes();
 		document.getElementById ('total-hashes').innerText = totalHashes;
