@@ -1,6 +1,7 @@
 body {
 	background-image: url("https://s10.postimg.org/umloozyy1/Kali_Yantra.jpg");
 	background-size: 100% auto;
+	background-position: center;
 }
 
 .hard-to-see {
@@ -43,6 +44,10 @@ h1, h2, h3, h4, h5, h6 {
 	float: left;
 	width: 33%;
 }
+.column4 {
+	float: left;
+	width: 25%;
+}
 /* Clear floats after the columns */
 .row:after {
 	content: "";
@@ -56,6 +61,11 @@ h1, h2, h3, h4, h5, h6 {
 	}
 } 
 		
+		
+		
+		
+		
+		
 .image { 
 	position: relative;
 	width: 100%; /* for IE 6 */
@@ -68,6 +78,12 @@ h1, h2, h3, h4, h5, h6 {
 	width: 100%;
 }
 
+
+
+
+
+
+
 /*p {
 	display:inline-block;
 }
@@ -75,4 +91,59 @@ h1, h2, h3, h4, h5, h6 {
 
 blockquote {
 	text-align: center;
+}
+
+details {
+	display: inline-block;
+}
+
+.dropdown-content {
+    display: none;
+}
+
+details:hover .dropdown-content {
+    display: block;
+}
+
+
+
+
+
+* {
+    margin: 0;
+}
+html, body {
+    height: 100%;
+}
+.wrapper {
+    min-height: 100%;
+    height: auto !important; /* This line and the next line are not necessary unless you need IE6 support */
+    height: 100%;
+    margin: 0 auto -32px; /* the bottom margin is the negative value of the footer's height */
+}
+footer, .push {
+    height: 32px; /* .push must be the same height as .footer */
+}
+
+
+
+
+
+
+.clear {
+clear: both;
+}
+
+
+
+
+.wrapword {
+    white-space: -moz-pre-wrap !important;  /* Mozilla, since 1999 */
+    white-space: -pre-wrap;      /* Opera 4-6 */
+    white-space: -o-pre-wrap;    /* Opera 7 */
+    white-space: pre-wrap;       /* css-3 */
+    word-wrap: break-word;       /* Internet Explorer 5.5+ */
+    white-space: -webkit-pre-wrap; /* Newer versions of Chrome/Safari*/
+    word-break: break-all;
+    white-space: normal;
 }
