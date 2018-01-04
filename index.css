@@ -1,0 +1,16 @@
+body {
+	background-image: url("https://s10.postimg.org/umloozyy1/Kali_Yantra.jpg");
+	background-size: 100% auto;
+}
+
+.hard-to-see {
+	background-color: black;
+	color: green;
+	border-width: 1px;
+	border-color: red;
+	border-style: solid;
+}
+
+h1, h2, h3, h4, h5, h6 {
+	text-align: center;
+}
