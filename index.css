@@ -14,3 +14,56 @@ body {
 h1, h2, h3, h4, h5, h6 {
 	text-align: center;
 }
+
+
+
+
+
+.resize-div {
+	overflow: hidden;
+	resize: both;
+}
+.resize-iframe {
+	height: 100%;
+	width: 100%;
+	border: none;
+}
+		
+.ad {
+	float: right;
+	width: 250px;
+}
+		
+/* Create two equal columns that floats next to each other */
+.column2 {
+	float: left;
+	width: 50%;
+}
+.column3 {
+	float: left;
+	width: 33%;
+}
+/* Clear floats after the columns */
+.row:after {
+	content: "";
+	display: table;
+	clear: both;
+}
+/* Responsive layout - makes the three columns stack on top of each other instead of next to each other on smaller screens (600px wide or less) */
+@media (max-width: 600px) {
+	.column {
+		width: 100%;
+	}
+} 
+		
+.image { 
+	position: relative;
+	width: 100%; /* for IE 6 */
+}
+
+.image-text {
+	position: absolute;
+	top: 10px;
+	left: 10px;
+	width: 100%;
+}

