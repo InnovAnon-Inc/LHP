@@ -36,6 +36,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 		
 /* Create two equal columns that floats next to each other */
+/*
 .column2 {
 	float: left;
 	width: 50%;
@@ -48,21 +49,69 @@ h1, h2, h3, h4, h5, h6 {
 	float: left;
 	width: 25%;
 }
+*/
+
+/* Responsive layout - makes the three columns stack on top of each other instead of next to each other on smaller screens (600px wide or less) */
+@media (min-width: 1000px) {
+	.column2 {
+		float: left;
+		width: 50%;
+	}
+	.column3 {
+		float: left;
+		width: 33%;
+	}
+	.column4 {
+		float: left;
+		width: 25%;
+	}
+}
+@media (max-width: 999px)
+ and   (min-width: 800px) {
+	.column2 {
+		width: 100%;
+	}
+	.column3 {
+		float: left;
+		width: 33%;
+	}
+	.column4 {
+		float: left;
+		width: 25%;
+	}
+}
+@media (max-width: 799px)
+ and   (min-width: 600px) {
+	.column2 {
+		width: 100%;
+	}
+	.column3 {
+		width: 100%;
+	}
+	.column4 {
+		float: left;
+		width: 25%;
+	}
+}
+@media (max-width: 599px) {
+	.column2 {
+		width: 100%;
+	}
+	.column3 {
+		width: 100%;
+	}
+	.column4 {
+		width: 100%;
+	}
+}
+
+		
 /* Clear floats after the columns */
 .row:after {
 	content: "";
 	display: table;
 	clear: both;
-}
-/* Responsive layout - makes the three columns stack on top of each other instead of next to each other on smaller screens (600px wide or less) */
-@media (max-width: 600px) {
-	.column {
-		width: 100%;
-	}
-} 
-		
-		
-		
+}	
 		
 		
 		
@@ -107,6 +156,18 @@ details:hover .dropdown-content {
 
 
 
+.hidden {
+	display: inline-block;
+}
+.show-content {
+    display: none;
+}
+.hidden:hover .show-content {
+    display: block;
+}
+
+
+
 
 
 * {
@@ -131,19 +192,58 @@ footer, .push {
 
 
 .clear {
-clear: both;
+	clear: both;
 }
 
 
 
-
+/*
 .wrapword {
-    white-space: -moz-pre-wrap !important;  /* Mozilla, since 1999 */
-    white-space: -pre-wrap;      /* Opera 4-6 */
-    white-space: -o-pre-wrap;    /* Opera 7 */
-    white-space: pre-wrap;       /* css-3 */
-    word-wrap: break-word;       /* Internet Explorer 5.5+ */
-    white-space: -webkit-pre-wrap; /* Newer versions of Chrome/Safari*/
+    white-space: -moz-pre-wrap !important;  / * Mozilla, since 1999            * /
+    white-space: -pre-wrap;                 / * Opera 4-6                      * /
+    white-space: -o-pre-wrap;               / * Opera 7                        * /
+    white-space: pre-wrap;                  / * css-3                          * /
+    word-wrap: break-word;                  / * Internet Explorer 5.5+         * /
+    white-space: -webkit-pre-wrap;          / * Newer versions of Chrome/Safari* /
     word-break: break-all;
     white-space: normal;
+}
+*/
+
+
+
+/*
+.example-animation {
+	background-color: red;
+	width:  100px;
+	height: 100px;
+	animation-name: example;
+	animation-iteration-count: infinite;
+	animation-play-state: play;
+	animation-duration: / *0.12771392082s* / 1s;
+	-webkit-animation-name: example; / * Safari 4.0 - 8.0 * /
+    -webkit-animation-duration: 4s; / * Safari 4.0 - 8.0 * /
+}
+/ * Safari 4.0 - 8.0 * /
+@-webkit-keyframes example {
+	from	{ background-color: red; }
+	to		{ background-color: black; }
+}
+@keyframes example {
+	from	{ background-color: red; }
+	to		{ background-color: black; }
+}
+*/
+
+
+#shiva {
+	background-color: white;
+	animation-name: shiva;
+	animation-iteration-count: infinite;
+	animation-play-state: play;
+	animation-duration: 1s;
+}
+@keyframes shiva {
+	from	{ background-color: red; }
+	to		{ background-color: black; }
 }

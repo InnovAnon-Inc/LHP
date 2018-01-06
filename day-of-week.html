@@ -1,0 +1,94 @@
+<!doctype html>
+
+<html lang="en">
+<!-- Aum
+     Kreem Kreem Kreem Hoom Hoom Hreem Hreem Daksine Kalike
+     Kreem Kreem Kreem Hoom Hoom Hreem Hreem Svaha -->
+<head>
+	<meta charset="utf-8">
+
+	<!-- TODO -->
+	<link rel="icon" href="https://s10.postimg.org/a00nejwq1/PKRRF.jpg"> <!-- śivatāṇḍava -->
+	<title>InnovAnon, Inc. Proprietary</title>
+	<meta name="description" content="InnovAnon, Inc. (Ministries) Proprietary LHP. Code monks doing code seva. Chaos magick coding. Manifesting acauasal entities. Hail Kali! Hail Shiva!"> <!-- Καλλίστῃ -->
+	<meta name="keywords" content="InnovAnon,Innovations,Anonymous,Innovations Anonymous,Free,Code,Free Code,Chaos,Magick,Chaos Magick,Monk,Code Monk,Seva,Code Seva,Acausal,Kali,Shiva">
+	<meta name="author" content="InnovAnon, Inc.">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<link rel="stylesheet" href="index.css" type="text/css">
+</head>
+
+<body>
+	<canvas id="day-of-week" width="2000" height="2000" style="width: 100px; height: 100px; background-color: white;">
+	</canvas>
+	<script>
+	var canvas = document.getElementById ('canvas');
+	var context = canvas.getContext("2d");
+	
+	function Point (x, y) {
+		this.x = x;
+		this.y = y;
+	}
+	
+	function Circumscription (n) {
+		this.pts = new Array (n);
+
+		for (var i = 0; i < n; i++)
+			var theta = i / n * 2 * Math.PI;
+			this.pts[i] = new Point (cos (theta), sin (theta)) {
+		}
+	}
+	
+	function CircularArray (array) {
+		this.array = array;
+	}
+	CircularArray.prototype.get = function (key) {
+		return this.array[normalizedModulus (key, array.length)];
+	};
+	CircularArray.prototype.set = function (key, item) {
+		this.array[normalizedModulus (key, array.length)] = item;
+	};
+	
+	function Polygon (pts) {
+	pts = new CircularArray (pts);
+	var lines = new Array (pts.length);
+	for (var i = 0; i < n; i++) {
+		lines[i] = new Line (pts[i], pts[i + 1]);
+	}
+	this.lines = lines;
+}
+	
+	
+	context.clearRect (0, 0, canvas.width, canvas.height);
+	context.save ();
+	try {
+		context.scale (canvas.width / 2, canvas.height / 2); // scale to unit circle's cartesian coordinates
+		context.scale (1, -1); // reflect about x-axis
+		context.translate(1, -1); // reposition origin
+
+		var origin = new Point (0, 0);
+		//var originView = new PointView (origin, context, canvas);
+
+		context.fillStyle = "white";
+		//originView.draw ();
+		
+		ngon.draw ();
+		ngram.draw ();
+		constellation.draw ();
+		// TODO inscribe planets in circles at each point
+		// colors as backgrounds to planets--white background denotes d.o.w.
+		// underneath, text label saying the day of week
+		// on mouse over, display name of planet
+		
+	} catch (e) {
+		alert (e);
+		throw e;
+	} finally {
+		context.restore ();
+	}
+	</script>
+</body>
+<!-- Aum
+     Kreem Kreem Kreem Hoom Hoom Hreem Hreem Daksine Kalike
+     Kreem Kreem Kreem Hoom Hoom Hreem Hreem Svaha -->
+</html>

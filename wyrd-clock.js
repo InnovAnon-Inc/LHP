@@ -134,7 +134,13 @@ var create = function (buffer) {
 
 
 
-
+// sun - center - gold
+// moon - bottom - blue
+// mars - top left - red
+// mercury - bottom left - yellow
+// jupiter - top right - pink
+// venus - bottom right - green
+// saturn - top - purple
 
 var d = new Date ();
 var weekday = new Array (7);
@@ -155,16 +161,28 @@ weekimg[4] = "jupiter.png";
 weekimg[5] = "venus.png";
 weekimg[6] = "saturn.png";
 
-// yellow or gold
-// violet or silver
-// red
-// ?
-// blue
-// green
-// black
+var weekcolor = new Array (7);
+weekcolor[0] = "gold";
+weekcolor[1] = "blue";
+weekcolor[2] = "red";
+weekcolor[3] = "yellow";
+weekcolor[4] = "pink";
+weekcolor[5] = "green";
+weekcolor[6] = "purple";
+
+var weekpt = new Array (7);
+weekpt[0] = origin;
+weekpt[1] = circumscription[3];
+weekpt[2] = circumscription[1];
+weekpt[3] = circumscription[2];
+weekpt[4] = circumscription[5];
+weekpt[5] = circumscription[4];
+weekpt[6] = circumscription[0];
 
 var name = weekday[d.getDay ()];
 var img  = weekimg[d.getDay ()];
+
+
 
 
 
