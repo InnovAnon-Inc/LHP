@@ -236,14 +236,3 @@ footer, .push {
 */
 
 
-#shiva {
-	background-color: white;
-	animation-name: shiva;
-	animation-iteration-count: infinite;
-	animation-play-state: play;
-	animation-duration: 1s;
-}
-@keyframes shiva {
-	from	{ background-color: red; }
-	to		{ background-color: black; }
-}

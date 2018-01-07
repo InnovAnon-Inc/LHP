@@ -1,0 +1,137 @@
+<style>
+.rotate {
+	width: 100px;
+    height: 100px;
+	background-color: black;
+	animation-name: rotate;
+	animation-iteration-count: infinite;
+	animation-play-state: play;
+	animation-duration: 1s;
+}
+@keyframes rotate {
+	from {
+		transform: rotate(0deg);
+	}
+	10% { transform: rotate(36deg); }
+	20% { transform: rotate(72deg); }
+	30% { transform: rotate(108deg); }
+	40% { transform: rotate(144deg); }
+	50% { transform: rotate(180deg); }
+	60% { transform: rotate(216deg); }
+	70% { transform: rotate(252deg); }
+	80% { transform: rotate(288deg); }
+	90% { transform: rotate(324deg); }
+	to {
+		transform: rotate(360deg);
+	}
+}
+.skewX {
+	width: 100px;
+    height: 100px;
+	background-color: red;
+	animation-name: skewX;
+	animation-iteration-count: infinite;
+	animation-play-state: play;
+	animation-duration: 1s;
+}
+@keyframes skewX {
+	from { transform: skewX(0deg); }
+	10% { transform: skewX(36deg); }
+	20% { transform: skewX(72deg); }
+	30% { transform: skewX(108deg); }
+	40% { transform: skewX(144deg); }
+	50% { transform: skewX(180deg); }
+	60% { transform: skewX(216deg); }
+	70% { transform: skewX(252deg); }
+	80% { transform: skewX(288deg); }
+	90% { transform: skewX(324deg); }
+	to { transform: skewX(360deg); }
+}
+.skewY {
+	width: 100px;
+    height: 100px;
+	background-color: green;
+	animation-name: skewY;
+	animation-iteration-count: infinite;
+	animation-play-state: play;
+	animation-duration: 1s;
+}
+@keyframes skewY {
+	from { transform: skewY(0deg); }
+	10% { transform: skewY(36deg); }
+	20% { transform: skewY(72deg); }
+	30% { transform: skewY(108deg); }
+	40% { transform: skewY(144deg); }
+	50% { transform: skewY(180deg); }
+	60% { transform: skewY(216deg); }
+	70% { transform: skewY(252deg); }
+	80% { transform: skewY(288deg); }
+	90% { transform: skewY(324deg); }
+	to { transform: skewY(360deg); }
+}
+.scale {
+	width: 100px;
+    height: 100px;
+	background-color: blue;
+	animation-name: scale;
+	animation-iteration-count: infinite;
+	animation-play-state: play;
+	animation-duration: 1s;
+}
+@keyframes scale {
+	from { transform: scale(1,1); }
+	25% { transform: scale(1,-1); }
+	50% { transform: scale(-1,-1); }
+	75% { transform: scale(-1,1); }
+	to { transform: scale(1,1); }
+}
+</style>
+<script>
+</script>
+<div class="rotate"><img
+     src="https://s10.postimg.org/a00nejwq1/PKRRF.jpg"
+     alt="Shiva Tandava"
+     style="width: 100%; height: 100%"></div>
+<div class="skewX"><img
+     src="https://s10.postimg.org/a00nejwq1/PKRRF.jpg"
+     alt="Shiva Tandava"
+     style="width: 100%; height: 100%"></div>
+<div class="skewY"><img
+     src="https://s10.postimg.org/a00nejwq1/PKRRF.jpg"
+     alt="Shiva Tandava"
+     style="width: 100%; height: 100%"></div>
+<div class="scale"><img
+     src="https://s10.postimg.org/a00nejwq1/PKRRF.jpg"
+     alt="Shiva Tandava"
+     style="width: 100%; height: 100%"></div>
+     
+     
+     
+     
+<div class="rotate" style="animation-duration: 10s">
+<div class="scale"><img
+     src="https://s10.postimg.org/a00nejwq1/PKRRF.jpg"
+     alt="Shiva Tandava"
+     style="width: 100%; height: 100%"></div>
+</div>
+
+<div class="rotate" style="animation-duration: 10s">
+<div class="skewX"><img
+     src="https://s10.postimg.org/a00nejwq1/PKRRF.jpg"
+     alt="Shiva Tandava"
+     style="width: 100%; height: 100%"></div>
+</div>
+
+<div class="scale" style="animation-duration: 10s">
+<div class="rotate"><img
+     src="https://s10.postimg.org/a00nejwq1/PKRRF.jpg"
+     alt="Shiva Tandava"
+     style="width: 100%; height: 100%"></div>
+</div>
+
+<div class="skewY" style="animation-duration: 10s">
+<div class="skewX"><img
+     src="https://s10.postimg.org/a00nejwq1/PKRRF.jpg"
+     alt="Shiva Tandava"
+     style="width: 100%; height: 100%"></div>
+</div>
