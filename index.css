@@ -236,3 +236,60 @@ footer, .push {
 */
 
 
+
+
+
+
+
+.rotate {
+	width: 70px;
+    height: 70px;
+	background-color: white;
+	animation-name: rotate;
+	animation-iteration-count: infinite;
+	animation-play-state: play;
+	animation-duration: 1s;
+	
+	border-width: 1px;
+	border-color: red;
+	border-style: solid;
+	
+	margin: 15px 15px;
+}
+@keyframes rotate {
+	from {
+		transform: rotate(0deg);
+	}
+	10% { transform: rotate(36deg); }
+	20% { transform: rotate(72deg); }
+	30% { transform: rotate(108deg); }
+	40% { transform: rotate(144deg); }
+	50% { transform: rotate(180deg); }
+	60% { transform: rotate(216deg); }
+	70% { transform: rotate(252deg); }
+	80% { transform: rotate(288deg); }
+	90% { transform: rotate(324deg); }
+	to {
+		transform: rotate(360deg);
+	}
+}
+.scale {
+	width: 100px;
+    height: 100px;
+	background-color: black;
+	animation-name: scale;
+	animation-iteration-count: infinite;
+	animation-play-state: play;
+	animation-duration: 1s;
+	
+	border-width: 1px;
+	border-color: red;
+	border-style: solid;
+}
+@keyframes scale {
+	from { transform: scale(1,1); }
+	25% { transform: scale(1,-1); }
+	50% { transform: scale(-1,-1); }
+	75% { transform: scale(-1,1); }
+	to { transform: scale(1,1); }
+}
