@@ -277,6 +277,11 @@ footer, .push {
 	width: 100px;
     height: 100px;
 	background-color: black;
+	
+	background-image: url("https://s10.postimg.org/umloozyy1/Kali_Yantra.jpg");
+	background-size: 100% 100%;
+	background-position: center center;
+	
 	animation-name: scale;
 	animation-iteration-count: infinite;
 	animation-play-state: play;
