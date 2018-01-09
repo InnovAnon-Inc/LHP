@@ -63,3 +63,16 @@ html, body {
 .footer{
   /*background: lime;*/
 }
+
+
+
+
+
+
+
+
+
+.column2 {
+		float: left;
+		width: 50%;
+	}

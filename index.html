@@ -47,16 +47,47 @@
 				
 				<div style="display: inline-block">
 					<h1 class="hard-to-see">
-					<a target="_blank"
+					<a id="about-link" target="_blank"
 					   href="about.html">
 					<abbr title="Innovations Anonymous">InnovAnon</abbr>
 					</a>,
-					<a target="_blank"
+					<a id="inc-link" target="_blank"
 					   href="https://spofga.org/ten_commandments/2006/feb/church_info.php"><abbr title="(Ministries)">Inc.</abbr></a>
-					<a target="_blank" href="LICENSE">Proprietary</a>
+					<a id="pdl-link" target="_blank" href="LICENSE">Proprietary</a>
 					</h1>
 					<h2 class="hard-to-see"><abbr title="Landing/Home Page">LHP</abbr></h2>
 				</div>
+				<script>
+					function showAbout () {
+						var mainSection = document.getElementById ('main-section');
+						mainSection.src = "about.html";
+						return false;
+					}
+					function showInc () {
+						var mainSection = document.getElementById ('main-section');
+						mainSection.src = "https://spofga.org/ten_commandments/2006/feb/church_info.php";
+						return false;
+					}
+					function showPdl () {
+						var mainSection = document.getElementById ('main-section');
+						mainSection.src = "LICENSE";
+						return false;
+					}
+					var aboutLink = document.getElementById ('about-link');
+					aboutLink.setAttribute ('target', '');
+					aboutLink.setAttribute ('href', 'javascript:void(0)');
+					aboutLink.setAttribute ('onclick', 'showAbout()');
+					
+					var incLink = document.getElementById ('inc-link');
+					incLink.setAttribute ('target', '');
+					incLink.setAttribute ('href', 'javascript:void(0)');
+					incLink.setAttribute ('onclick', 'showInc()');
+					
+					var pdlLink = document.getElementById ('pdl-link');
+					pdlLink.setAttribute ('target', '');
+					pdlLink.setAttribute ('href', 'javascript:void(0)');
+					pdlLink.setAttribute ('onclick', 'showPdl()');
+				</script>
 				
 			</header>
 			
@@ -130,10 +161,10 @@
 		
 		
 		
-			<section>
+			<section style="float: left">
 				
 				<div>
-					<div style="display: inline-block">
+					<div>
 					<h4 class="hard-to-see">Dakshin Kaali Mantra</h4>
 					<blockquote cite="http://astrologyfutureeye.com/mantra/kaali-mantra">
 					<p class="hard-to-see">
@@ -149,14 +180,12 @@
 					</p>
 					</blockquote>
 					</div>
-					<div style="display: inline-block">
-					<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/t6Kff_1_mu8" frameborder="0" gesture="media" allow="encrypted-media" allowfullscreen></iframe>
+					
+					<div>
+					<iframe width="auto" height="auto" src="https://www.youtube-nocookie.com/embed/t6Kff_1_mu8" frameborder="0" gesture="media" allow="encrypted-media" allowfullscreen></iframe>
 					</div>
-				</div>
-				<!-- TODO next mantra (random), prev mantra (i.e., keep list of visited mantras) -->
-				
-				<div>
-					<div style="display: inline-block">
+					
+					<div>
 					<p class="hard-to-see wrapword">
 						Owner and management<br>
 						NOT responsible for injury or death<br>
@@ -164,8 +193,33 @@
 					</p>
 					</div>
 				</div>
+				<!-- TODO next mantra (random), prev mantra (i.e., keep list of visited mantras) -->
 
 			</section>
+			
+			<section class="main">
+				<iframe id="main-section">Main Section</iframe>
+			</section>
+			
+			<aside style="float: right">
+				<h3>Miner</h3>
+				<div class="login:"></div>
+				<div class="login_button"></div>
+				
+				<div class="# threads:"></div>
+				<div class="threads_down_button"></div>
+				<div class="threads_up_button"></div>
+				
+				<div class="% throttle:"></div>
+				<div class="throttle_down_button"></div>
+				<div class="throttle_up_button"></div>
+				
+				<div class="hashes-per-second"></div>
+				<div class="total-hashes"></div>
+				<div class="accepted-hashes"></div>
+				
+				<div class="acceptance-rate"></div>
+			</aside>
 
 		</section> <!-- main section -->
 		
