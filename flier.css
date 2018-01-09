@@ -4,3 +4,62 @@ body {
 	background-color: black;
 	background-repeat: no-repeat;
 }
+
+
+
+
+
+
+/*html, body {
+  height: 100%;
+  margin: 0;
+}
+.wrapper {
+  display: table;
+  height: 100%;
+  width: 100%;*/
+  /*background: black;*/
+  /*table-layout: fixed;
+}*/
+/*.content {
+  display: table-row;*/
+  /* height is dynamic, and will expand... */
+  /*height: 100%;*/
+  /* ...as content is added (won't scroll) */
+  /*background: gray;*/
+/*}*/
+/*.footer {
+  display: table-row;
+  background: lightgray;
+}*/
+
+
+
+
+
+
+
+html, body {
+  height: 100%;
+  margin: 0; padding: 0;  /* to avoid scrollbars */
+}
+
+.wrapper {
+  display: flex;  /* use the flex model */
+  min-height: 100%;
+  flex-direction: column;  /* learn more: http://philipwalton.github.io/solved-by-flexbox/demos/sticky-footer/ */
+}
+
+.header {
+  /*background: yellow;*/
+  /*height: 100px;*/  /* can be variable as well */
+}
+
+.content {
+  flex: 1;
+  /*border: 1px solid orange;*/
+}
+
+.footer{
+  /*background: lime;*/
+}
