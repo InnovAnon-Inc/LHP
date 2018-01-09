@@ -86,7 +86,8 @@ h1, h2, h3, h4, h5, h6 {
 		width: 100%;
 	}
 	.column3 {
-		width: 100%;
+		float: left;
+		width: 33%;
 	}
 	.column4 {
 		float: left;
@@ -285,7 +286,7 @@ footer, .push {
 	animation-name: scale;
 	animation-iteration-count: infinite;
 	animation-play-state: play;
-	animation-duration: 1s;
+	animation-duration: 7s;
 	
 	border-width: 1px;
 	border-color: red;
@@ -298,3 +299,75 @@ footer, .push {
 	75% { transform: scale(-1,1); }
 	to { transform: scale(1,1); }
 }
+
+
+
+
+
+
+
+
+
+.toggle {
+	display: inline-block;
+}
+.toggle-block {
+    display: inline-block;
+}
+.toggle-content {
+	display: none;
+}
+.toggle:hover .toggle-block {
+	display: block;
+}
+.toggle:hover .toggle-content {
+	display: inline-block;
+}
+
+
+@media (min-width: 600px) {
+	.container {
+		display: inline-block
+	}
+}
+@media (max-width: 599px) {
+.container{
+    float: left;
+    left: 50%;
+    position: relative;
+}
+.center_div{
+   position: relative;
+   left: -50%;
+   float: left;
+}
+}
+
+
+/* there goes shiva
+@media (max-width: 599px) {
+	.shiva {
+	position: relative;
+	top: 0px;
+	
+	animation-name: slide;
+	animation-iteration-count: infinite;
+	animation-play-state: play;
+	animation-duration: 12s;
+	animation-direction: alternate;
+	}
+	@keyframes slide {
+	from { left: 0% }
+	10% { left: 10% }
+	20% { left: 20% }
+	30% { left: 30% }
+	40% { left: 40% }
+	50% { left: 50% }
+	60% { left: 60% }
+	70% { left: 70% }
+	80% { left: 80% }
+	90% { left: 90% }
+	to { left: 100% }
+}
+}
+*/
