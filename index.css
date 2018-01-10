@@ -174,18 +174,62 @@ details:hover .dropdown-content {
 * {
     margin: 0;
 }
+/*
 html, body {
     height: 100%;
 }
 .wrapper {
     min-height: 100%;
-    height: auto !important; /* This line and the next line are not necessary unless you need IE6 support */
+    height: auto !important; / * This line and the next line are not necessary unless you need IE6 support * /
     height: 100%;
-    margin: 0 auto -32px; /* the bottom margin is the negative value of the footer's height */
+    margin: 0 auto -32px; / * the bottom margin is the negative value of the footer's height * /
 }
 footer, .push {
-    height: 32px; /* .push must be the same height as .footer */
+    height: 32px; / * .push must be the same height as .footer * /
 }
+*/
+
+
+
+
+html, body {
+  height: 100%;
+  margin: 0; padding: 0;  /* to avoid scrollbars */
+}
+
+.wrapper {
+  display: flex;  /* use the flex model */
+  min-height: 100%;
+  flex-direction: column;  /* learn more: http://philipwalton.github.io/solved-by-flexbox/demos/sticky-footer/ */
+}
+
+header {
+  /*background: yellow;*/
+  /*height: 100px;*/  /* can be variable as well */
+}
+
+.content {
+  flex: 1;
+  /*border: 1px solid orange;*/
+}
+
+footer{
+  /*background: lime;*/
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
