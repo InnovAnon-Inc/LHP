@@ -30,12 +30,12 @@
 		<div class="row">
 
 			<header class="column2">
-				
 				<div class="container"><div class="center_div">
 				<div class="shiva">
 					<div class="scale">
 						<div class="rotate">
 							<!-- link to production site -->
+							<!-- TODO skip this link when switching links -->
 							<a href="https://innovanon-inc.github.io/LHP/"><img
 							   src="https://s10.postimg.org/a00nejwq1/PKRRF.jpg"
 							   alt="Shiva Tandava"
@@ -45,6 +45,7 @@
 				</div>
 				</div></div>
 				
+				<!-- TODO remove link IDs? -->
 				<div style="display: inline-block">
 					<h1 class="hard-to-see">
 					<a id="about-link" target="_blank"
@@ -56,39 +57,7 @@
 					<a id="pdl-link" target="_blank" href="LICENSE">Proprietary</a>
 					</h1>
 					<h2 class="hard-to-see"><abbr title="Landing/Home Page">LHP</abbr></h2>
-				</div>
-				<script>
-					function showAbout () {
-						var mainSection = document.getElementById ('main-section');
-						mainSection.src = "about.html";
-						return false;
-					}
-					function showInc () {
-						var mainSection = document.getElementById ('main-section');
-						mainSection.src = "https://spofga.org/ten_commandments/2006/feb/church_info.php";
-						return false;
-					}
-					function showPdl () {
-						var mainSection = document.getElementById ('main-section');
-						mainSection.src = "LICENSE";
-						return false;
-					}
-					var aboutLink = document.getElementById ('about-link');
-					aboutLink.setAttribute ('target', '');
-					aboutLink.setAttribute ('href', 'javascript:void(0)');
-					aboutLink.setAttribute ('onclick', 'showAbout()');
-					
-					var incLink = document.getElementById ('inc-link');
-					incLink.setAttribute ('target', '');
-					incLink.setAttribute ('href', 'javascript:void(0)');
-					incLink.setAttribute ('onclick', 'showInc()');
-					
-					var pdlLink = document.getElementById ('pdl-link');
-					pdlLink.setAttribute ('target', '');
-					pdlLink.setAttribute ('href', 'javascript:void(0)');
-					pdlLink.setAttribute ('onclick', 'showPdl()');
-				</script>
-				
+				</div>				
 			</header>
 			
 			<!-- home about contact locations "new here?" "get involved" "serve" "give" "sermons" "resources" "what's next?" "calendar/events" "pray" "store" "social" -->
@@ -276,6 +245,46 @@
 			</svg></a>
 		</div>
 	</footer>
+	
+	<script>
+					function show (url) {
+						var mainSection = document.getElementById ('main-section');
+						mainSection.src = url;
+						return false;
+					}
+					
+					function switchLink (id) {
+						var a = document.getElementById (id);
+						var href = a.getAttribute ('href');
+						var jsvoid = 'javascript:void(0)';
+						if (href == jsvoid) return;
+						a.setAttribute('target', '');
+						a.setAttribute('href', jsvoid);
+						a.setAttribute('onclick', "show('" + href + "')");
+					}
+					
+					function switchAllLinks () {
+						var anchors = document.getElementsByTagName ('a');
+						for (var i=0; i < anchors.length; i++) {
+							// var id = anchors[i].getId (); // ?
+							// switchLink (id);
+							var a = anchors[i];
+							var href = a.getAttribute ('href');
+							var jsvoid = 'javascript:void(0)';
+							if (href == jsvoid) continue;
+							a.setAttribute('target', '');
+							a.setAttribute('href', jsvoid);
+							a.setAttribute('onclick', "show('" + href + "')");
+						}
+					}
+					try {
+					//switchLink ('about-link');
+					//switchLink ('inc-link');
+					//switchLink ('pdl-link');
+					
+					switchAllLinks ();
+					} catch (e) { alert (e); }
+				</script>
 </body>
 <!-- Aum
      Kreem Kreem Kreem Hoom Hoom Hreem Hreem Daksine Kalike
