@@ -1,0 +1,258 @@
+<style>
+div {
+	float: left;
+	width: auto;
+}
+	
+.column {
+	/*display: inline-block;*/
+	float: left;
+	/*max-width: 50%;*/
+}
+
+.label .field .labelled {
+	display: inline-block;
+}
+
+.row:after {
+	content: "";
+	display: table;
+	clear: both;
+	max-width: 100%;
+}
+
+.labelled {
+	border-width: 1px;
+	border-color: red;
+	border-style: solid;
+}
+
+.column {
+	border-width: 1px;
+	border-color: black;
+	border-style: solid;
+}
+
+.row {
+	border-width: 1px;
+	border-color: grey;
+	border-style: solid;
+}
+</style>
+
+<div class="row">
+	<div id="title" class="column">
+		<h1>This Incarnation:</h1>
+		<h2>The Pawn becomes the Player</h2>
+	</div>
+
+	<div id="meta_stats" class="column">
+		<!--<h5>Meta</h5>-->
+		<div class="labelled">
+			<div class="label"><h6>Player</h6></div>
+			<div class="field"><input type="text" id="player"></input></div>
+		</div>
+		<div class="labelled">
+			<div class="label"><h6>Campaign</h6></div>
+			<div class="field"><input type="text" id="campaign"></input></div>
+		</div>
+	</div>
+</div>
+
+<div class="row">
+	<div id="vital_stats" class="column">
+		<!--<h5>Vital</h5>-->
+		
+		<div class="row">
+			<div class="labelled">
+				<div class="label"><h6>Name</h6></div>
+				<div class="field"><input type="text" id="name"></input></div>
+			</div>
+			
+			<div class="labelled">
+				<div class="label"><h6>Portrait</h6></div>
+				<div class="field"><input type="file" accept="image/*" id="portrait"></input></div>
+			</div>
+			
+			<div class="labelled">
+				<div class="label"><h6>Alignment</h6></div>
+				<div class="field"><select id="alignment1">
+					<option value="chaotic">Chaotic</option>
+					<option selected value="neutral">Neutral</option>
+					<option value="lawful">Lawful</option>
+				</select></div>
+				<div class="field"><select id="alignment2">
+					<option value="evil">Evil</option>
+					<option value="neutral">Neutral</option>
+					<option selected value="good">Good</option>
+				</select></div>
+			</div>
+			
+			<!--<div class="labelled">
+				<div class="label"><h6>Level</h6></div>
+				<div class="field"><input type="text" id="level"></input></div>
+			</div>-->
+		</div>
+		
+		<div class="row">
+			<div class="labelled">
+				<div class="label"><h6>Homeland</h6></div>
+				<div class="field"><input type="text" id="homeland"></input></div>
+			</div>
+			
+			<div class="labelled">
+				<div class="label"><h6>Flag</h6></div>
+				<div class="field"><input type="file" accept="image/*" id="flag"></input></div>
+			</div>
+		
+			<div class="labelled">
+				<div class="label"><h6>Race</h6></div>
+				<div class="field"><select id="race">
+					<option value="black">Black</option>
+					<option value="yellow">Yellow</option>
+					<option selected value="white">White</option>
+					<option value="grey">Grey</option>
+				</select></div>
+			</div>
+			<div class="labelled">
+				<div class="label"><h6>Deity</h6></div>
+				<div class="field"><input type="text" id="deity"></input></div>
+			</div>
+		</div>
+		
+		<div class="row">
+			<div class="labelled">
+				<div class="label"><h6>Size</h6></div>
+				<div class="field"><select id="size">
+					<option value="small">Small</option>
+					<option selected value="medium">Medium</option>
+					<option value="large">Large</option>
+				</select></div>
+			</div>
+			<div class="labelled">
+				<div class="label"><h6>Height (cm)</h6></div>
+				<div class="field"><input type="number" id="height" value="183"></input></div>
+			</div>
+			<div class="labelled">
+				<div class="label"><h6>Weight (kg)</h6></div>
+				<div class="field"><input type="number" id="weight" value="81"></input></div>
+			</div>
+		</div>
+		
+		<div class="row">
+			<div class="labelled">
+				<div class="label"><h6>Gender</h6></div>
+				<div class="field"><select id="gender">
+					<option value="female">Female</option>
+					<option selected value="male">Male</option>
+				</select></div>
+			</div>
+			<div class="labelled">
+				<div class="label"><h6>Age (yr)</h6></div>
+				<div class="field"><input type="number" id="age" value="18"></input></div>
+			</div>
+			
+			<div class="labelled">
+				<div class="label"><h6>Hair</h6></div>
+				<div class="field"><input type="color" id="hair" value="#FFFF00"></input></div>
+			</div>
+			<div class="labelled">
+				<div class="label"><h6>Eyes</h6></div>
+				<div class="field"><input type="color" id="eyes" value="#0000FF"></input></div>
+			</div>
+		</div>
+	</div>
+	<div class="column">
+		<div class="row">
+			<!-- TODO uploaded portrait -->
+		</div>
+		<div class="row">
+			<!-- TODO uploaded flag -->
+		</div>
+	</div>
+</div>
+
+<div id="attributes">
+	<div id="str"></div>
+	<div id="dex"></div>
+	<div id="con"></div>
+	<div id="int"></div>
+	<div id="wis"></div>
+	<div id="cha"></div>
+</div>
+
+<div id="meters">
+	<div id="hp"></div>
+	<!--<div id="mp"></div>-->
+	<div id="xp"></div>
+	<!--<div id="lvl"></div>-->
+</div>
+
+<div id="other_stats">
+	<div id="speed"></div>
+	<div id="initiative"></div>
+</div>
+
+<div id="saving_throws">
+	<div id="fortitude"></div>
+	<div id="reflex"></div>
+	<div id="will"></div>
+</div>
+
+<div id="resistence">
+	<!--<div id="piercing"></div>
+	<div id="slashing"></div>
+	<div id="crushing"></div>-->
+	<div id="spells"></div>
+	<!--<div id="fire_resistence"></div>
+	<div id="water_resistence"></div>
+	<div id="earth_resistence"></div>
+	<div id="air_resistence"></div>
+	<div id="aether_resistence"></div>-->
+</div>
+
+<div id="skills">
+	<div id="acrobatics"></div>
+	<div id="appraise"></div>
+	<div id="bluff"></div>
+	<div id="craft"><!-- TODO specific craft skills --></div>
+	<div id="diplomacy"></div>
+	<div id="disable_device"></div>
+	<div id="disguise"></div>
+	<div id="escape_artist"></div>
+	<div id="fly"></div>
+	<div id="handle_animal"></div>
+	<div id="heal"></div>
+	<div id="intimidate"></div>
+	<div id="knowledge"><!-- TODO arcana, dungeoneering, engineering, geography, history, local, nature, nobility, planes, religion --></div>
+	<div id="linguistics"></div>
+	<div id="perception"></div>
+	<div id="perform"><!-- TODO --></div>
+	<div id="profession"><!-- TODO --></div>
+	<div id="ride"></div>
+	<div id="sense_motive"></div>
+	<div id="sleight_of_hand"></div>
+	<div id="spellcraft"></div>
+	<div id="stealth"></div>
+	<div id="survival"></div>
+	<div id="swim"></div>
+	<div id="use_magic_device"></div>
+	
+	<div id="languages"></div>
+	
+	<!-- -->
+	<div id="dream_recall"></div>
+	<div id="visualization"></div>
+	<div id="meditation"></div>
+</div>
+
+<div id="abilities">
+	<div id="lucid_dreaming"></div>
+	<div id="darshan"></div>
+	<div id="ashta"></div>
+</div>
+
+<div id="spells">
+	<div id="dream_quest"></div>
+	<div id="vision_quest"></div>
+</div>
