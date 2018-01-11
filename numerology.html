@@ -1,0 +1,35 @@
+<script>
+function foo () {
+	try{
+	var name = document.getElementById ('name');
+	name = name.value;
+	name = name.toUpperCase ();
+	var sum = 0;
+	for (var i = 0; i < name.length; i++)
+		sum += name.charCodeAt(i);
+	sum = sum % 128;
+	
+	var number = document.getElementById ('number');
+	number.value = sum;
+	
+	var symbol = document.getElementById ('symbol');
+	sum = String.fromCharCode (sum);
+	symbol.value = sum;
+}catch (e) { alert (e) }
+}
+</script>
+
+<div>
+	<input type="text" id="name" placeholder="name">
+</div>
+<div>
+	<input type="button" onclick="foo()" value="Compute">
+</div>
+<div>
+	<input type="number" id="number" disabled="true">
+</div>
+<div>
+	<input type="text" id="symbol" disabled="true">
+</div>
+
+
