@@ -1,18 +1,22 @@
 <style>
-div {
+/*div {
 	float: left;
 	width: auto;
-}
+}*/
 	
 .column {
 	/*display: inline-block;*/
 	float: left;
 	/*max-width: 50%;*/
+	width: auto;
 }
 
-.label .field .labelled {
+/*.label .field .labelled {
 	display: inline-block;
-}
+}*/
+
+.label { display: inline-block; }
+.field { display: inline-block; }
 
 .row:after {
 	content: "";
@@ -27,6 +31,7 @@ div {
 	border-style: solid;
 }
 
+/*
 .column {
 	border-width: 1px;
 	border-color: black;
@@ -38,6 +43,7 @@ div {
 	border-color: grey;
 	border-style: solid;
 }
+*/
 </style>
 
 <div class="row">
@@ -48,13 +54,17 @@ div {
 
 	<div id="meta_stats" class="column">
 		<!--<h5>Meta</h5>-->
-		<div class="labelled">
-			<div class="label"><h6>Player</h6></div>
-			<div class="field"><input type="text" id="player"></input></div>
+		<div class="column">
+			<div class="labelled">
+				<div class="label"><h6>Player</h6></div>
+				<div class="field"><input type="text" id="player"></input></div>
+			</div>
 		</div>
-		<div class="labelled">
-			<div class="label"><h6>Campaign</h6></div>
-			<div class="field"><input type="text" id="campaign"></input></div>
+		<div class="column">
+			<div class="labelled">
+				<div class="label"><h6>Campaign</h6></div>
+				<div class="field"><input type="text" id="campaign"></input></div>
+			</div>
 		</div>
 	</div>
 </div>
@@ -63,196 +73,493 @@ div {
 	<div id="vital_stats" class="column">
 		<!--<h5>Vital</h5>-->
 		
-		<div class="row">
-			<div class="labelled">
-				<div class="label"><h6>Name</h6></div>
-				<div class="field"><input type="text" id="name"></input></div>
+		<div class="column">
+			<div class="column">
+				<div class="labelled">
+					<div class="label"><h6>Name</h6></div>
+					<div class="field"><input type="text" id="name"></input></div>
+				</div>
 			</div>
-			
-			<div class="labelled">
-				<div class="label"><h6>Portrait</h6></div>
-				<div class="field"><input type="file" accept="image/*" id="portrait"></input></div>
+			<div class="column">
+				<div class="labelled">
+					<div class="label"><h6>Portrait</h6></div>
+					<div class="field"><input type="file" accept="image/*" id="portrait"></input></div>
+				</div>
 			</div>
-			
-			<div class="labelled">
-				<div class="label"><h6>Alignment</h6></div>
-				<div class="field"><select id="alignment1">
-					<option value="chaotic">Chaotic</option>
-					<option selected value="neutral">Neutral</option>
-					<option value="lawful">Lawful</option>
-				</select></div>
-				<div class="field"><select id="alignment2">
-					<option value="evil">Evil</option>
-					<option value="neutral">Neutral</option>
-					<option selected value="good">Good</option>
-				</select></div>
+			<div class="column">
+				<div class="labelled">
+					<div class="label"><h6>Alignment</h6></div>
+					<!--<div class="row">-->
+					<div class="field">
+						<div class="column">
+							<div class="field"><select id="alignment1">
+								<option value="chaotic">Chaotic</option>
+								<option selected value="neutral">Neutral</option>
+								<option value="lawful">Lawful</option>
+							</select></div>
+						</div>
+						<div class="column">
+							<div class="field"><select id="alignment2">
+								<option value="evil">Evil</option>
+								<option value="neutral">Neutral</option>
+								<option selected value="good">Good</option>
+							</select></div>
+						</div>
+					</div>
+				</div>
 			</div>
-			
 			<!--<div class="labelled">
 				<div class="label"><h6>Level</h6></div>
 				<div class="field"><input type="text" id="level"></input></div>
 			</div>-->
 		</div>
 		
-		<div class="row">
-			<div class="labelled">
-				<div class="label"><h6>Homeland</h6></div>
-				<div class="field"><input type="text" id="homeland"></input></div>
+		<div class="column">
+			<div class="column">
+				<div class="labelled">
+					<div class="label"><h6>Homeland</h6></div>
+					<div class="field"><input type="text" id="homeland"></input></div>
+				</div>
 			</div>
-			
-			<div class="labelled">
-				<div class="label"><h6>Flag</h6></div>
-				<div class="field"><input type="file" accept="image/*" id="flag"></input></div>
+			<div class="column">
+				<div class="labelled">
+					<div class="label"><h6>Flag</h6></div>
+					<div class="field"><input type="file" accept="image/*" id="flag"></input></div>
+				</div>
 			</div>
-		
-			<div class="labelled">
-				<div class="label"><h6>Race</h6></div>
-				<div class="field"><select id="race">
-					<option value="black">Black</option>
-					<option value="yellow">Yellow</option>
-					<option selected value="white">White</option>
-					<option value="grey">Grey</option>
-				</select></div>
+			<div class="column">
+				<div class="labelled">
+					<div class="label"><h6>Race</h6></div>
+					<div class="field"><select id="race">
+						<option value="black">Black</option>
+						<option value="yellow">Yellow</option>
+						<option selected value="white">White</option>
+						<option value="grey">Grey</option>
+					</select></div>
+				</div>
 			</div>
-			<div class="labelled">
-				<div class="label"><h6>Deity</h6></div>
-				<div class="field"><input type="text" id="deity"></input></div>
-			</div>
-		</div>
-		
-		<div class="row">
-			<div class="labelled">
-				<div class="label"><h6>Size</h6></div>
-				<div class="field"><select id="size">
-					<option value="small">Small</option>
-					<option selected value="medium">Medium</option>
-					<option value="large">Large</option>
-				</select></div>
-			</div>
-			<div class="labelled">
-				<div class="label"><h6>Height (cm)</h6></div>
-				<div class="field"><input type="number" id="height" value="183"></input></div>
-			</div>
-			<div class="labelled">
-				<div class="label"><h6>Weight (kg)</h6></div>
-				<div class="field"><input type="number" id="weight" value="81"></input></div>
+			<div class="column">
+				<div class="labelled">
+					<div class="label"><h6>Deity</h6></div>
+					<div class="field"><input type="text" id="deity"></input></div>
+				</div>
 			</div>
 		</div>
 		
+		<div class="column">
+			<div class="column">
+				<div class="labelled">
+					<div class="label"><h6>Size</h6></div>
+					<div class="field"><select id="size">
+						<option value="small">Small</option>
+						<option selected value="medium">Medium</option>
+						<option value="large">Large</option>
+					</select></div>
+				</div>
+			</div>
+			<div class="column">
+				<div class="labelled">
+					<div class="label"><h6>Height (cm)</h6></div>
+					<div class="field"><input type="number" id="height" value="183"></input></div>
+				</div>
+			</div>
+			<div class="column">
+				<div class="labelled">
+					<div class="label"><h6>Weight (kg)</h6></div>
+					<div class="field"><input type="number" id="weight" value="81"></input></div>
+				</div>
+			</div>
+		</div>
+		
+		<div class="column">
+			<div class="column">
+				<div class="labelled">
+					<div class="label"><h6>Gender</h6></div>
+					<div class="field"><select id="gender">
+						<option value="female">Female</option>
+						<option selected value="male">Male</option>
+					</select></div>
+				</div>
+			</div>
+			<div class="column">
+				<div class="labelled">
+					<div class="label"><h6>Age (yr)</h6></div>
+					<div class="field"><input type="number" id="age" value="18"></input></div>
+				</div>
+			</div>
+			<div class="column">
+				<div class="labelled">
+					<div class="label"><h6>Hair</h6></div>
+					<div class="field"><input type="color" id="hair" value="#FFFF00"></input></div>
+				</div>
+			</div>
+			<div class="column">
+				<div class="labelled">
+					<div class="label"><h6>Eyes</h6></div>
+					<div class="field"><input type="color" id="eyes" value="#0000FF"></input></div>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	<!-- TODO uploaded portrait -->
+	<!-- TODO uploaded flag -->
+	<!--<div class="column">
+		<div class="column">
+			<div style="width: 100px; height: 100px; background-color: black"></div>
+		</div>
+		<div class="column">
+			<div style="width: 100px; height: 100px; background-color: red"></div>
+		</div>
+	</div>-->
+</div>
+
+<div class="row">
+	<div id="attributes" class="column">
 		<div class="row">
 			<div class="labelled">
-				<div class="label"><h6>Gender</h6></div>
-				<div class="field"><select id="gender">
-					<option value="female">Female</option>
-					<option selected value="male">Male</option>
-				</select></div>
+				<div class="label"><h6>Str</h6></div>
+				<div class="field"><input type="number" id="str" value="10"></input></div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="labelled">
+				<div class="label"><h6>Dex</h6></div>
+				<div class="field"><input type="number" id="dex" value="10"></input></div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="labelled">
+				<div class="label"><h6>Con</h6></div>
+				<div class="field"><input type="number" id="con" value="10"></input></div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="labelled">
+				<div class="label"><h6>Int</h6></div>
+				<div class="field"><input type="number" id="int" value="10"></input></div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="labelled">
+				<div class="label"><h6>Wis</h6></div>
+				<div class="field"><input type="number" id="wis" value="10"></input></div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="labelled">
+				<div class="label"><h6>Cha</h6></div>
+				<div class="field"><input type="number" id="cha" value="10"></input></div>
+			</div>
+		</div>
+	</div>
+
+	<div class="column">
+		<div id="meters">
+			<div class="row">
+				<div class="labelled">
+					<div class="label"><h6>HP</h6></div>
+					<div class="field"><input type="number" id="hp" disabled="true" value="100"></input></div>
+				</div>
+			</div>
+			<!--<div class="row">
+				<div class="labelled">
+					<div class="label"><h6>MP</h6></div>
+					<div class="field"><input type="number" id="mp" disabled="true" value="100"></input></div>
+				</div>
+			</div>-->
+			<div class="row">
+				<div class="labelled">
+					<div class="label"><h6>XP</h6></div>
+					<div class="field"><input type="number" id="xp" disabled="true" value="0"></input></div>
+				</div>
+			</div>
+			<!--<div id="lvl"></div>-->
+		</div>
+	</div>
+
+	<div class="column">
+		<div id="other_stats">
+			<div class="labelled">
+				<div class="label"><h6>Speed</h6></div>
+				<!-- TODO reasonable default M/s -->
+				<div class="field"><input type="number" id="speed" disabled="true" value="3"></input></div>
 			</div>
 			<div class="labelled">
-				<div class="label"><h6>Age (yr)</h6></div>
-				<div class="field"><input type="number" id="age" value="18"></input></div>
+				<div class="label"><h6>Initiative</h6></div>
+				<!-- TODO ? -->
+				<div class="field"><input type="number" id="initiative" disabled="true" value="100"></input></div>
 			</div>
-			
+		</div>
+	</div>
+
+	<div class="column">
+		<div id="saving_throws">
 			<div class="labelled">
-				<div class="label"><h6>Hair</h6></div>
-				<div class="field"><input type="color" id="hair" value="#FFFF00"></input></div>
+				<div class="label"><h6>Fortitude</h6></div>
+				<div class="field"><input type="number" id="fortitude" disabled="true" value="10"></input></div>
 			</div>
 			<div class="labelled">
-				<div class="label"><h6>Eyes</h6></div>
-				<div class="field"><input type="color" id="eyes" value="#0000FF"></input></div>
+				<div class="label"><h6>Reflex</h6></div>
+				<div class="field"><input type="number" id="reflex" disabled="true" value="10"></input></div>
+			</div>
+			<div class="labelled">
+				<div class="label"><h6>Will</h6></div>
+				<div class="field"><input type="number" id="will" disabled="true" value="10"></input></div>
+			</div>
+		</div>
+	</div>
+	
+	<div class="column">
+	<div class="column">
+		<div id="resistence">
+			<div class="labelled">
+				<div class="label"><h6>Resist: Piercing</h6></div>
+				<div class="field"><input type="number" id="piercing" disabled="true" value="0"></input></div>
+			</div>
+			<div class="labelled">
+				<div class="label"><h6>Resist: Slashing</h6></div>
+				<div class="field"><input type="number" id="slashing" disabled="true" value="0"></input></div>
+			</div>
+			<div class="labelled">
+				<div class="label"><h6>Resist: Crushing</h6></div>
+				<div class="field"><input type="number" id="crushing" disabled="true" value="0"></input></div>
+			</div>
+			<div class="labelled">
+				<div class="label"><h6>Resist: Magic</h6></div>
+				<div class="field"><input type="number" id="magic" disabled="true" value="0"></input></div>
 			</div>
 		</div>
 	</div>
 	<div class="column">
-		<div class="row">
-			<!-- TODO uploaded portrait -->
+		<div id="elements">
+			<div class="labelled">
+				<div class="label"><h6>Resist: Earth</h6></div>
+				<div class="field"><input type="number" id="earth" disabled="true" value="0"></input></div>
+			</div>
+			<div class="labelled">
+				<div class="label"><h6>Resist: Water</h6></div>
+				<div class="field"><input type="number" id="water" disabled="true" value="0"></input></div>
+			</div>
+			<div class="labelled">
+				<div class="label"><h6>Resist: Fire</h6></div>
+				<div class="field"><input type="number" id="fire" disabled="true" value="0"></input></div>
+			</div>
+			<div class="labelled">
+				<div class="label"><h6>Resist: Air</h6></div>
+				<div class="field"><input type="number" id="air" disabled="true" value="0"></input></div>
+			</div>
+			<div class="labelled">
+				<div class="label"><h6>Resist: Aether</h6></div>
+				<div class="field"><input type="number" id="aether" disabled="true" value="0"></input></div>
+			</div>
 		</div>
-		<div class="row">
-			<!-- TODO uploaded flag -->
-		</div>
+	</div>
 	</div>
 </div>
 
-<div id="attributes">
-	<div id="str"></div>
-	<div id="dex"></div>
-	<div id="con"></div>
-	<div id="int"></div>
-	<div id="wis"></div>
-	<div id="cha"></div>
-</div>
-
-<div id="meters">
-	<div id="hp"></div>
-	<!--<div id="mp"></div>-->
-	<div id="xp"></div>
-	<!--<div id="lvl"></div>-->
-</div>
-
-<div id="other_stats">
-	<div id="speed"></div>
-	<div id="initiative"></div>
-</div>
-
-<div id="saving_throws">
-	<div id="fortitude"></div>
-	<div id="reflex"></div>
-	<div id="will"></div>
-</div>
-
-<div id="resistence">
-	<!--<div id="piercing"></div>
-	<div id="slashing"></div>
-	<div id="crushing"></div>-->
-	<div id="spells"></div>
-	<!--<div id="fire_resistence"></div>
-	<div id="water_resistence"></div>
-	<div id="earth_resistence"></div>
-	<div id="air_resistence"></div>
-	<div id="aether_resistence"></div>-->
-</div>
-
-<div id="skills">
-	<div id="acrobatics"></div>
-	<div id="appraise"></div>
-	<div id="bluff"></div>
-	<div id="craft"><!-- TODO specific craft skills --></div>
-	<div id="diplomacy"></div>
-	<div id="disable_device"></div>
-	<div id="disguise"></div>
-	<div id="escape_artist"></div>
-	<div id="fly"></div>
-	<div id="handle_animal"></div>
-	<div id="heal"></div>
-	<div id="intimidate"></div>
-	<div id="knowledge"><!-- TODO arcana, dungeoneering, engineering, geography, history, local, nature, nobility, planes, religion --></div>
-	<div id="linguistics"></div>
-	<div id="perception"></div>
-	<div id="perform"><!-- TODO --></div>
-	<div id="profession"><!-- TODO --></div>
-	<div id="ride"></div>
-	<div id="sense_motive"></div>
-	<div id="sleight_of_hand"></div>
-	<div id="spellcraft"></div>
-	<div id="stealth"></div>
-	<div id="survival"></div>
-	<div id="swim"></div>
-	<div id="use_magic_device"></div>
+<div class="row">
+	<div class="column">
+		<div class="row">
+			<div id="abilities">
+				
+				
+				<div id="lucid_dreaming"></div>
+				<div id="darshan"></div>
+				<div id="ashta"></div>
+			</div>
+		</div>
+		<div class="row">
+			<div id="spells">
+				<div id="dream_quest"></div>
+				<div id="vision_quest"></div>
+			</div>
+		</div>
+	</div>
 	
-	<div id="languages"></div>
-	
-	<!-- -->
-	<div id="dream_recall"></div>
-	<div id="visualization"></div>
-	<div id="meditation"></div>
-</div>
-
-<div id="abilities">
-	<div id="lucid_dreaming"></div>
-	<div id="darshan"></div>
-	<div id="ashta"></div>
-</div>
-
-<div id="spells">
-	<div id="dream_quest"></div>
-	<div id="vision_quest"></div>
+	<div class="column">
+		<div id="skills">
+			<div class="row">
+				<div class="labelled">
+					<div class="label"><h6>Acrobatics</h6></div>
+					<div class="field"><input type="number" id="acrobatics" disabled="true" value="0"></input></div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="labelled">
+					<div class="label"><h6>Appraise</h6></div>
+					<div class="field"><input type="number" id="appraise" disabled="true" value="0"></input></div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="labelled">
+					<div class="label"><h6>Bluff</h6></div>
+					<div class="field"><input type="number" id="bluff" disabled="true" value="0"></input></div>
+				</div>
+			</div>
+			<!-- TODO specific craft skills -->
+			<div class="row">
+				<div class="labelled">
+					<div class="label"><h6>Craft</h6></div>
+					<div class="field"><input type="number" id="craft" disabled="true" value="0"></input></div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="labelled">
+					<div class="label"><h6>Diplomacy</h6></div>
+					<div class="field"><input type="number" id="diplomacy" disabled="true" value="0"></input></div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="labelled">
+					<div class="label"><h6>Disable Device</h6></div>
+					<div class="field"><input type="number" id="disable_device" disabled="true" value="0"></input></div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="labelled">
+					<div class="label"><h6>Disguise</h6></div>
+					<div class="field"><input type="number" id="disguise" disabled="true" value="0"></input></div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="labelled">
+					<div class="label"><h6>Escape Artist</h6></div>
+					<div class="field"><input type="number" id="escape_artist" disabled="true" value="0"></input></div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="labelled">
+					<div class="label"><h6>Fly</h6></div>
+					<div class="field"><input type="number" id="fly" disabled="true" value="0"></input></div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="labelled">
+					<div class="label"><h6>Handle Animal</h6></div>
+					<div class="field"><input type="number" id="handle_animal" disabled="true" value="0"></input></div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="labelled">
+					<div class="label"><h6>Heal</h6></div>
+					<div class="field"><input type="number" id="heal" disabled="true" value="0"></input></div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="labelled">
+					<div class="label"><h6>Intimidate</h6></div>
+					<div class="field"><input type="number" id="intimidate" disabled="true" value="0"></input></div>
+				</div>
+			</div>
+			<!-- TODO arcana, dungeoneering, engineering, geography, history, local, nature, nobility, planes, religion --></div>
+			<div class="row">
+				<div class="labelled">
+					<div class="label"><h6>Knowledge</h6></div>
+					<div class="field"><input type="number" id="knowledge" disabled="true" value="0"></input></div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="labelled">
+					<div class="label"><h6>Linguistics</h6></div>
+					<div class="field"><input type="number" id="linguistics" disabled="true" value="0"></input></div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="labelled">
+					<div class="label"><h6>Perception</h6></div>
+					<div class="field"><input type="number" id="perception" disabled="true" value="0"></input></div>
+				</div>
+			</div>
+			<!-- TODO allow multiple -->
+			<div class="row">
+				<div class="labelled">
+					<div class="label"><h6>Perform</h6></div>
+					<div class="field"><input type="number" id="perform" disabled="true" value="0"></input></div>
+				</div>
+			</div>
+			<!-- TODO allow multiple -->
+			<div class="row">
+				<div class="labelled">
+					<div class="label"><h6>Profession</h6></div>
+					<div class="field"><input type="number" id="profession" disabled="true" value="0"></input></div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="labelled">
+					<div class="label"><h6>Ride</h6></div>
+					<div class="field"><input type="number" id="ride" disabled="true" value="0"></input></div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="labelled">
+					<div class="label"><h6>Sense Motive</h6></div>
+					<div class="field"><input type="number" id="sense_motive" disabled="true" value="0"></input></div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="labelled">
+					<div class="label"><h6>Sleight of Hand</h6></div>
+					<div class="field"><input type="number" id="sleight_of_hand" disabled="true" value="0"></input></div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="labelled">
+					<div class="label"><h6>Spellcraft</h6></div>
+					<div class="field"><input type="number" id="spellcraft" disabled="true" value="0"></input></div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="labelled">
+					<div class="label"><h6>Stealth</h6></div>
+					<div class="field"><input type="number" id="stealth" disabled="true" value="0"></input></div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="labelled">
+					<div class="label"><h6>Survival</h6></div>
+					<div class="field"><input type="number" id="survival" disabled="true" value="0"></input></div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="labelled">
+					<div class="label"><h6>Swim</h6></div>
+					<div class="field"><input type="number" id="swim" disabled="true" value="0"></input></div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="labelled">
+					<div class="label"><h6>Use Magic Device</h6></div>
+					<div class="field"><input type="number" id="use_magic_device" disabled="true" value="0"></input></div>
+				</div>
+			</div>
+			
+			
+			
+			
+			<!-- TODO allow to write in multiple -->
+			<div id="languages"></div>
+			
+			<!-- -->
+			
+			<div class="row">
+				<div class="labelled">
+					<div class="label"><h6>Dream Recall</h6></div>
+					<div class="field"><input type="number" id="dream_recall" disabled="true" value="0"></input></div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="labelled">
+					<div class="label"><h6>Visualization</h6></div>
+					<div class="field"><input type="number" id="visualization" disabled="true" value="0"></input></div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="labelled">
+					<div class="label"><h6>Meditation</h6></div>
+					<div class="field"><input type="number" id="meditation" disabled="true" value="0"></input></div>
+				</div>
+			</div>
+		</div>
+	</div>
 </div>
