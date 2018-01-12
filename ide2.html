@@ -17,6 +17,8 @@
 </div>
 
 <div>
+	<input id="user" type="text" placeholder="username">
+	<input id="password" type="password" placeholder="password">
 	<input id="message" type="text" placeholder="commit message">
 	<!-- TODO add selector for committer vs author -->
 	<input id="name" type="fname" placeholder="full name">
@@ -26,6 +28,18 @@
 </div>
 
 <div id="editor" style="height: 500px; width: 500px"></div>
+<script src="ace-builds/src-noconflict/ace.js" type="text/javascript" charset="utf-8"></script>
+<script>
+    var editor = ace.edit("editor");
+    editor.setTheme("ace/theme/terminal");
+    //editor.getSession().setMode("ace/mode/javascript");
+    editor.getSession().setMode("ace/mode/html");
+    
+    editor.setKeyboardHandler("ace/keyboard/vim");
+</script>
+
+
+
     
 <script>
 function b64EncodeUnicode(str) {
@@ -59,9 +73,7 @@ function clone () {
 					//content = btoa (content);
 					content = b64DecodeUnicode (content);
 					
-					 var editor = document.getElementById('editor');
-					editor.innerText = content;
-					// TODO alert editor that content has changed
+					editor.setValue (content);
 				} else if (type == "dir") {
 					// TODO display dir listing
 				} else { 
@@ -80,20 +92,21 @@ function clone () {
 }
 
 function create () {
+try{
 	var xhttp = new XMLHttpRequest();
 	xhttp.onreadystatechange = function() {
 		// TODO
-		if (this.readyState == 4 && this.status == 200) {
+		if (this.readyState == 4 && this.status == 201) {
 		   // Typical action to be performed when the document is ready:
-		  
+		  alert ('created');
 		}
+		//alert (JSON.stringify (this) + String (this));
 	};
 	
 	var message = document.getElementById ('message').value;
 	var name = document.getElementById ('name').value;
 	var email = document.getElementById ('email').value;
-	var editor = document.getElementById('editor');
-	var content = editor.innerText;
+	var content = editor.getValue ();
 	content = b64EncodeUnicode (content);
 	content = {
 		"message" : message,
@@ -103,30 +116,23 @@ function create () {
 		},
 		"content" : content
 	};
+	content = JSON.stringify (content);
 
 	var url = document.getElementById ('url').value;
 	var owner = document.getElementById ('owner').value;
 	var repo = document.getElementById ('repo').value;
 	var path = document.getElementById ('path').value;
-	xhttp.open("PUT", url +	"/" + owner + "/" + repo + "/contents/" + path, true);
+	var user = document.getElementById ('user').value;
+	var password = document.getElementById ('password').value;
+	xhttp.open("PUT", url +	"/" + owner + "/" + repo + "/contents/" + path, true, user, password);
 	xhttp.send(content);
+}catch(e){alert(e)}
 }
 </script>
 
-<script>
-function 
-</script>
 
 
 
 
 
-<script src="ace-builds/src-noconflict/ace.js" type="text/javascript" charset="utf-8"></script>
-<script>
-    var editor = ace.edit("editor");
-    editor.setTheme("ace/theme/terminal");
-    //editor.getSession().setMode("ace/mode/javascript");
-    editor.getSession().setMode("ace/mode/html");
-    
-    editor.setKeyboardHandler("ace/keyboard/vim");
-</script>
+
