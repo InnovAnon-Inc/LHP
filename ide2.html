@@ -87,7 +87,12 @@ function clone () {
 	var owner = document.getElementById ('owner').value;
 	var repo = document.getElementById ('repo').value;
 	var path = document.getElementById ('path').value;
-	xhttp.open("GET", url +	"/" + owner + "/" + repo + "/contents/" + path, true);
+	xhttp.open("GET",
+		url +	"/" + owner + "/" + repo + "/contents/" + path,
+		true);
+		
+		//xhttp.setRequestHeader('Content-Type', 'application/json');
+		
 	xhttp.send();
 }
 
@@ -124,7 +129,15 @@ try{
 	var path = document.getElementById ('path').value;
 	var user = document.getElementById ('user').value;
 	var password = document.getElementById ('password').value;
-	xhttp.open("PUT", url +	"/" + owner + "/" + repo + "/contents/" + path, true, user, password);
+	//xhttp.UserAgent = "InnovAnon-Inc-LHP";
+	xhttp.open("PUT",
+		url +	"/" + owner + "/" + repo + "/contents/" + path,
+		true, user, password);
+		
+		//xhttp.setRequestHeader('Content-Type', 'application/json');
+		//xhttp.setRequestHeader('UserAgent', "InnovAnon-Inc-LHP");
+
+		
 	xhttp.send(content);
 }catch(e){alert(e)}
 }
