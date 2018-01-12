@@ -3,159 +3,130 @@
 </style>
 
 <div>
-	<input id="clone_url" type="url">
-	<button>Clone</button>
-	
-	<button>Commit</button>
+<!-- TODO file open, file save -->
 </div>
+
+<div>
+<div>
+	<input id="url" type="url" value="https://api.github.com/repos">
+	<input id="owner" type="text" value=InnovAnon-Inc>
+	<input id="repo" type="text" value="LHP">
+	<!-- TODO populate with window.location.href or something -->
+	<input id="path" type="text" value="ide2.html"></input>
+	<button onclick="clone()">Clone</button>
+</div>
+
+<div>
+	<input id="message" type="text" placeholder="commit message">
+	<!-- TODO add selector for committer vs author -->
+	<input id="name" type="fname" placeholder="full name">
+	<input id="email" type="email" placeholder="your e-mail">
+	<button onclick="create()">Create</button>
+</div>
+</div>
+
+<div id="editor" style="height: 500px; width: 500px"></div>
+    
 <script>
-	var cloneUrl = document.getElementById ('clone_url');
-	<!-- TODO use a reasonable URL -->
-	cloneUrl.value = window.location.href;
+function b64EncodeUnicode(str) {
+    return btoa(encodeURIComponent(str).replace(/%([0-9A-F]{2})/g, function(match, p1) {
+        return String.fromCharCode(parseInt(p1, 16))
+    }))
+}
+function b64DecodeUnicode(str) {
+    return decodeURIComponent(Array.prototype.map.call(atob(str), function(c) {
+        return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2)
+    }).join(''))
+}
 </script>
 
-<div id="editor" style="height: 500px; width: 500px">function foo(items) {
-	var x = "All this is syntax highlighted";
-	return x;
-}</div>
-    
+<script>
+	
+function buildUrl (api, owner, repo, path) {
+	return "/".join (api, owner, repo, "contents", path);
+}
+	
+function clone () {
+	var xhttp = new XMLHttpRequest();
+	xhttp.onreadystatechange = function() {
+		if (this.readyState == 4 && this.status == 200) {
+		   // Typical action to be performed when the document is ready: 
+		   try{
+			   var response = JSON.parse (xhttp.responseText);			   
+			   var type = response.type;
+			   if (type == "file") {
+				   var content = response.content;
+					//content = btoa (content);
+					content = b64DecodeUnicode (content);
+					
+					 var editor = document.getElementById('editor');
+					editor.innerText = content;
+					// TODO alert editor that content has changed
+				} else if (type == "dir") {
+					// TODO display dir listing
+				} else { 
+					// TODO symlink, submodule
+				}
+			}catch (e) {alert (e)}
+		}
+	};
+
+	var url = document.getElementById ('url').value;
+	var owner = document.getElementById ('owner').value;
+	var repo = document.getElementById ('repo').value;
+	var path = document.getElementById ('path').value;
+	xhttp.open("GET", url +	"/" + owner + "/" + repo + "/contents/" + path, true);
+	xhttp.send();
+}
+
+function create () {
+	var xhttp = new XMLHttpRequest();
+	xhttp.onreadystatechange = function() {
+		// TODO
+		if (this.readyState == 4 && this.status == 200) {
+		   // Typical action to be performed when the document is ready:
+		  
+		}
+	};
+	
+	var message = document.getElementById ('message').value;
+	var name = document.getElementById ('name').value;
+	var email = document.getElementById ('email').value;
+	var editor = document.getElementById('editor');
+	var content = editor.innerText;
+	content = b64EncodeUnicode (content);
+	content = {
+		"message" : message,
+		"author"  : {
+			"name"  : name,
+			"email" : email
+		},
+		"content" : content
+	};
+
+	var url = document.getElementById ('url').value;
+	var owner = document.getElementById ('owner').value;
+	var repo = document.getElementById ('repo').value;
+	var path = document.getElementById ('path').value;
+	xhttp.open("PUT", url +	"/" + owner + "/" + repo + "/contents/" + path, true);
+	xhttp.send(content);
+}
+</script>
+
+<script>
+function 
+</script>
+
+
+
+
+
 <script src="ace-builds/src-noconflict/ace.js" type="text/javascript" charset="utf-8"></script>
 <script>
     var editor = ace.edit("editor");
     editor.setTheme("ace/theme/terminal");
-    editor.getSession().setMode("ace/mode/javascript");
+    //editor.getSession().setMode("ace/mode/javascript");
+    editor.getSession().setMode("ace/mode/html");
     
     editor.setKeyboardHandler("ace/keyboard/vim");
-</script>
-
-
-
-
-<script src="http://requirejs.org/docs/release/2.3.5/comments/require.js"></script>
-
-<script src="https://raw.github.com/ryanackley/git-html5.js/master/api-built.js"></script>
-<script>
-try {
-	
-// To obtain a reference to a directory named "projectHome" under the root filesystem directory you would use the following code.
-window.requestFileSystem(window.PERSISTENT, 5*1024*1024*1024, function(fs){
-    fs.root.getDirectory('projectHome', {create:true}, function(projectHome){
-        // git-html5.js function calls go here.
-        var options = {
-			dir: projectHome,
-			url: 'https://github.com/ryanackley/git-html5.js.git',
-			depth: 1
-		};
-
-		GitApi.clone(options, function(){ 
-			// clone has completed at this point, do something with the files that have been imported into dir
-		});
-    });
-});
-
-} catch (e) { alert (e) }
-</script>
-
-
-
-
-
-
-
-
-<script src="gitkit-js/bin/gitkit.js"></script>
-
-
-<script>
-try {
-	
-	var transport = new GitKit.HTTPTransport('https://github.com/InnovAnon-Inc/LHP.git');
-} catch (e) { alert (e) }
-</script>
-
-
-
-<script>
-try {
-
-var repo = {};
-
-// This only works for normal repos.  Github doesn't allow access to gists as
-// far as I can tell.
-var githubName = "InnovAnon-Inc/LHP";
-
-// Your user can generate these manually at https://github.com/settings/tokens/new
-// Or you can use an oauth flow to get a token for the user.
-var githubToken = "";
-
-// Mixin the main library using github to provide the following:
-// - repo.loadAs(type, hash) => value
-// - repo.saveAs(type, value) => hash
-// - repo.readRef(ref) => hash
-// - repo.updateRef(ref, hash) => hash
-// - repo.createTree(entries) => hash
-// - repo.hasHash(hash) => has
-require('js-github/mixins/github-db')(repo, githubName, githubToken);
-
-
-// Github has this built-in, but it's currently very buggy so we replace with
-// the manual implementation in js-git.
-require('js-git/mixins/create-tree')(repo);
-
-// Cache everything except blobs over 100 bytes in memory.
-// This makes path-to-hash lookup a sync operation in most cases.
-require('js-git/mixins/mem-cache')(repo);
-
-// Combine concurrent read requests for the same hash
-require('js-git/mixins/read-combiner')(repo);
-
-// Add in value formatting niceties.  Also adds text and array types.
-require('js-git/mixins/formats')(repo);
-
-// I'm using generator syntax, but callback style also works.
-// See js-git main docs for more details.
-var run = require('gen-run');
-run(function* () {
-  var headHash = yield repo.readRef("refs/heads/master");
-  var commit = yield repo.loadAs("commit", headHash);
-  var tree = yield repo.loadAs("tree", commit.tree);
-  var entry = tree["README.md"];
-  var readme = yield repo.loadAs("text", entry.hash);
-
-  // Build the updates array
-  var updates = [
-    {
-      path: "README.md", // Update the existing entry
-      mode: entry.mode,  // Preserve the mode (it might have been executible)
-      content: readme.toUpperCase() // Write the new content
-    }
-  ];
-  // Based on the existing tree, we only want to update, not replace.
-  updates.base = commit.tree;
-
-  // Create the new file and the updated tree.
-  var treeHash = yield repo.createTree(updates);
-
-  var commitHash = yield repo.saveAs("commit", {
-    tree: treeHash,
-    author: {
-      name: "Tim Caswell",
-      email: "tim@creationix.com"
-    },
-    parent: headHash,
-    message: "Change README.md to be all uppercase using js-github"
-  });
-
-  // Now we can browse to this commit by hash, but it's still not in master.
-  // We need to update the ref to point to this new commit.
-  console.log("COMMIT", commitHash)
-
-  // Save it to a new branch (Or update existing one)
-  var new_hash = yield repo.updateRef("refs/heads/new-branch", commitHash);
-
-  // And delete this new branch:
-  yield repo.deleteRef("refs/heads/new-branch");
-});
-
-} catch (e) { alert (e) }
 </script>
