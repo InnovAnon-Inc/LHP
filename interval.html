@@ -1,0 +1,178 @@
+<canvas width="200" height="200">
+</canvas>
+
+<script>
+var baseFrequency;
+var scale = new Array (12);
+var mode  = new Array (7);
+
+/*
+var chords = [
+	[1, 3, 5],
+	[1, 3, 5, 7],
+];
+*/
+
+</script>
+
+
+
+
+
+<script>
+var context = new AudioContext;
+	console.log(context.sampleRate);
+	console.log(context.destination.channelCount);
+	
+	
+function Kick(context, freq, gainV) {
+	this.context = context;
+	this.freq = freq;
+	this.gainV = gainV;
+};
+
+Kick.prototype.setup = function() {
+	this.osc = this.context.createOscillator();
+	this.gain = this.context.createGain();
+	this.osc.connect(this.gain);
+	this.gain.connect(this.context.destination)
+};
+
+Kick.prototype.trigger = function(time) {
+	this.setup();
+
+	this.osc.frequency.setValueAtTime(this.freq, time);
+	this.gain.gain.setValueAtTime(this.gainV, time);
+	this.gain.gain.setValueAtTime(1, time);
+
+	this.osc.frequency.exponentialRampToValueAtTime(0.01, time + 1 / 7.83);
+	this.gain.gain.exponentialRampToValueAtTime(0.01, time + 1 / 7.83);
+
+	this.osc.start(time);
+
+	this.osc.stop(time + 1 / 7.83);
+};
+
+var kicks = new Array(2);
+
+for (var i = 0; i < kicks.length; i++)
+	kicks[i] = new Kick(context, 7.83 * (1 + i), 1 - i / kicks.length);
+var now = context.currentTime;
+for (var k = 0; k <= 100; k++) {
+	for (var i = 0; i < kicks.length; i++)
+		kicks[i].trigger(now);
+	now += 1 / 7.83;
+}
+
+</script>
+
+
+
+
+
+
+<script>
+	
+var context = new AudioContext;
+	console.log(context.sampleRate);
+	console.log(context.destination.channelCount);
+	
+	
+function Kick(context, freq, gainV) {
+	this.context = context;
+	this.freq = freq;
+	this.gainV = gainV;
+};
+
+Kick.prototype.setup = function() {
+	this.osc = this.context.createOscillator();
+	this.gain = this.context.createGain();
+	this.osc.connect(this.gain);
+	this.gain.connect(this.context.destination)
+};
+
+Kick.prototype.trigger = function(time) {
+	this.setup();
+
+	this.osc.frequency.setValueAtTime(this.freq, time);
+	this.gain.gain.setValueAtTime(this.gainV, time);
+	//this.gain.gain.setValueAtTime(1, time);
+
+	this.osc.frequency.exponentialRampToValueAtTime(0.01, time + 100);
+	this.gain.gain.exponentialRampToValueAtTime(0.01, time + 100);
+
+	this.osc.start(time);
+
+	this.osc.stop(time + 100);
+};
+
+var kicks = new Array(2);
+
+for (var i = 0; i < kicks.length; i++)
+	kicks[i] = new Kick(context, 7.83 * (1 + i), 1 - i / kicks.length);
+//var now = context.currentTime;
+for (var i = 0; i < kicks.length; i++)
+	kicks[i].trigger(now);
+	
+
+</script>
+
+
+<script>
+	/*
+var baseFrequency = 432;
+var scale1 = [
+	1/1,	// 1
+	16 / 15,//
+	9 / 8,	// M2
+	6 / 5,	//
+	5 / 4,	//	M3
+	4 / 3,	// p4
+	3 / 2,	// p5
+	8 / 5,
+	5 / 3,	// M6
+	16 / 9,
+	15 / 8,	// M7
+	2 / 1];
+var scale2 = [0, 2, 4, 5, 6, 8, 10];
+var mode = 0;
+
+
+var chord = [1, 3, 5];
+// minor
+// sevenths
+// etc
+
+var intervals = [[1, 3], ...];
+
+function noteToPoint (note) {
+	var x = log (note.ratio) / log (2);
+	var theta = x * 2 * Math.PI;
+	return new Point (cos (theta), sin (theta));
+}
+
+function chordToPoints (chord) {
+	
+}
+
+// do chordToPoints() with an interval
+// use center or baseFrequency?
+
+function eulersLine (triangle) {
+	
+}
+
+
+
+
+
+
+
+// chord progression
+// c     | f     | g 
+// c e g | f a c | g b d
+// these arpeggio leaps need to be more sparing
+// need "home melody" based on steps or woven scale
+// 
+*/
+</script>

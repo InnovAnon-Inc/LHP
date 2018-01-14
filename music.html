@@ -53,10 +53,103 @@ Kick.prototype.trigger = function(time) {
 
 var kick = new Kick(context);
 var now = context.currentTime;
-kick.trigger(now);
-kick.trigger(now + 0.5);
-kick.trigger(now + 1);
+//kick.trigger(now);
+//kick.trigger(now + 0.5);
+//kick.trigger(now + 1);
+
+function divideMeasure (time, measure, measureLength, note) {
+	var d = measureLength / note;
+	var t = time + measure * measureLength;
+	for (var n = 0; n < note; n++)
+		kick.trigger (t + n * d);
+}
+
+var measureLength = 60 / 40 * 4;
+var measure = 0;
+//divideMeasure (now, measure++, measureLength, 2);
+//divideMeasure (now, measure++, measureLength, 3);
+measure++;
+
+function polyRhythm (time, measure, measureLength, notes) {
+	for (var i = 0; i < notes.length; i++)
+		divideMeasure (time, measure, measureLength, notes[i]);
+}
+
+
+/*for (var c = 1; c <= 4; c++)
+	polyRhythm (now, measure++, measureLength, [5, 4, 3]);
+measure++;
+for (var c = 1; c <= 4; c++)
+	polyRhythm (now, measure++, measureLength, [6, 5]);
+measure++;*/
+
+
+
+for (var c = 1; c <= 4; c++)
+	polyRhythm (now, measure++, measureLength, [1]);
+measure++;
+
+// TODO slow down measure
+for (var c = 1; c <= 4; c++)
+	polyRhythm (now, measure++, measureLength, [16, 15]);
+measure++;
+
+for (var c = 1; c <= 4; c++)
+	polyRhythm (now, measure++, measureLength, [9, 8]);
+measure++;
 	
+for (var c = 1; c <= 4; c++)
+	polyRhythm (now, measure++, measureLength, [6, 5]);
+measure++;
+
+for (var c = 1; c <= 4; c++)
+	polyRhythm (now, measure++, measureLength, [5, 4]);
+measure++;
+	
+for (var c = 1; c <= 4; c++)
+	polyRhythm (now, measure++, measureLength, [4, 3]);
+measure++;
+
+for (var c = 1; c <= 4; c++)
+	polyRhythm (now, measure++, measureLength, [3, 2]);
+measure++;
+
+for (var c = 1; c <= 4; c++)
+	polyRhythm (now, measure++, measureLength, [8, 5]);
+measure++;
+
+for (var c = 1; c <= 4; c++)
+	polyRhythm (now, measure++, measureLength, [5, 3]);
+measure++;
+
+for (var c = 1; c <= 4; c++)
+	polyRhythm (now, measure++, measureLength, [16, 9]);
+measure++;	
+
+for (var c = 1; c <= 4; c++)
+	polyRhythm (now, measure++, measureLength, [15, 8]);
+measure++;	
+
+for (var c = 1; c <= 4; c++)
+	polyRhythm (now, measure++, measureLength, [2, 1]);
+measure++;
+
+/*
+var intervals = {
+	"perfect unison" : 1/1,
+	"minor second"   : 16 / 15,
+	"major second"   : 9 / 8,
+	"minor third"    : 6 / 5;
+	"major third"    : 5 / 4;
+	"perfect fourth" : 4 / 3;
+	"perfect fifth"  : 3 / 2;
+	"minor sixth"    : 8 / 5;
+	"major sixth"    : 5 / 3;
+	"minor seventh"  : 16 / 9;
+	"major seventh"  : 15 / 8;
+	"octave"         : 2 / 1;
+};
+	*/
 </script>
 
 

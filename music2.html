@@ -1,0 +1,178 @@
+
+<script>
+var context = new AudioContext;
+	console.log(context.sampleRate);
+	console.log(context.destination.channelCount);
+	
+	
+function Kick(context, bf) {
+	this.context = context;
+	this.bf = bf;
+};
+
+Kick.prototype.setup = function() {
+	this.osc = this.context.createOscillator();
+	this.gain = this.context.createGain();
+	this.osc.connect(this.gain);
+	this.gain.connect(this.context.destination)
+};
+
+Kick.prototype.trigger = function(time) {
+	this.setup();
+
+	this.osc.frequency.setValueAtTime(this.bf, time);
+	this.gain.gain.setValueAtTime(1, time);
+
+	//this.osc.frequency.exponentialRampToValueAtTime(0.01, time + 1);
+	this.gain.gain.exponentialRampToValueAtTime(0.01, time + 1);
+
+	this.osc.start(time);
+
+	this.osc.stop(time + 1);
+};
+
+var base = 174; // 432
+var kick1 = new Kick(context, base);
+var kick2 = new Kick(context, base + 7.83);
+var now = context.currentTime + 1;
+
+/*
+for (var k = 0; k < 4; k++) {
+	kick1.trigger(now);
+	kick2.trigger(now);
+	now += 2;
+}
+*/
+
+
+function trigger (time) {
+	kick1.trigger (time);
+	kick2.trigger (time);
+}
+
+function divideMeasure (time, measureLength, note) {
+	var d = measureLength / note;
+	var t = time + measureLength;
+	for (var n = 0; n < note; n++)
+		trigger (t + n * d);
+}
+
+function polyRhythm (time, measureLength, notes) {
+	for (var i = 0; i < notes.length; i++)
+		divideMeasure (time, measureLength, notes[i]);
+}
+
+var measureLength = 8;
+
+for (var c = 1; c <= 4; c++) {
+	polyRhythm (now, measureLength, [6, 5]);
+	now += measureLength;
+}
+now++;
+
+for (var c = 1; c <= 4; c++) {
+	polyRhythm (now, measureLength, [5, 4]);
+	now += measureLength;
+}
+now++;
+
+for (var c = 1; c <= 4; c++) {
+	polyRhythm (now, measureLength, [3, 2]);
+	now += measureLength;
+}
+now++;
+
+for (var c = 1; c <= 4; c++) {
+	polyRhythm (now, measureLength, [8, 5]);
+	now += measureLength;
+}
+now++;
+
+for (var c = 1; c <= 4; c++) {
+	polyRhythm (now, measureLength, [5, 3]);
+	now += measureLength;
+}
+now++;
+
+
+
+
+
+
+
+
+</script>
+
+
+<script>
+
+try {
+
+// one context per document
+var context = new (window.AudioContext || window.webkitAudioContext)();
+
+function Note (baseFrequency, ratio) {
+	this.baseFrequency = baseFrequency;
+	this.ratio = ratio;
+	
+	var osc = context.createOscillator(); // instantiate an oscillator
+	var vol = context.createGain ();
+	osc.type = 'sine'; // this is the default - also square, sawtooth, triangle
+	osc.frequency.value = baseFrequency * ratio; // Hz
+	vol.gain.value = 0;
+	osc.connect(context.destination); // connect it to the destination
+	osc.start(); // start the oscillator
+	//osc.stop(context.currentTime + 2); // stop 2 seconds after the current time
+	
+	this.osc = osc;
+	this.vol = vol;
+}
+
+function playChord (chord, scale) {
+	for (var i = 0; i < chord.length; i++) {
+		var note = scale[chord[1] - 1];
+		note.vol.gain.value = 1;
+	}
+}
+
+// TODO use odd-limit for chord intervals
+// can change baseFrequency according to prime-limit
+var intervals = {
+	"perfect unison" : 1/1,
+	"minor second"   : 16 / 15,
+	"major second"   : 9 / 8,
+	"minor third"    : 6 / 5;
+	"major third"    : 5 / 4;
+	"perfect fourth" : 4 / 3;
+	"perfect fifth"  : 3 / 2;
+	"minor sixth"    : 8 / 5;
+	"major sixth"    : 5 / 3;
+	"minor seventh"  : 16 / 9;
+	"major seventh"  : 15 / 8;
+	"octave"         : 2 / 1;
+};
+
+var baseFrequency = 432;
+var scale = [
+	new Note (baseFrequency, intervals["perfect unison"]),
+	new Note (baseFrequency, intervals["minor second"]),
+	new Note (baseFrequency, intervals["major second"]),
+	new Note (baseFrequency, intervals["minor third"]),
+	new Note (baseFrequency, intervals["major third"]),
+	new Note (baseFrequency, intervals["perfect fourth"]),
+	new Note (baseFrequency, intervals["perfect fifth"]),
+	new Note (baseFrequency, intervals["minor sixth"]),
+	new Note (baseFrequency, intervals["major sixth"]),
+	new Note (baseFrequency, intervals["minor seventh"]),
+	new Note (baseFrequency, intervals["major seventh"]),
+	new Note (baseFrequency, intervals["octave"]),
+];
+
+var majorChord = [1, 3, 5];
+
+
+
+playChord (majorChord, scale);
+} catch (e) { alert (e) }
+
+</script>
