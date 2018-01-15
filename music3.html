@@ -1,0 +1,221 @@
+
+
+<script>
+function euclideanRhythm (onNotes, totalNotes) {
+
+  var groups = [];
+  for (var i = 0; i < totalNotes; i++) groups.push([Number(i < onNotes)]);
+
+  var l;
+  while (l = groups.length - 1) {
+    var start = 0, first = groups[0];
+    while (start < l && compareArrays(first, groups[start])) start++;
+    if (start === l) break;
+
+    var end = l, last = groups[l];
+    while (end > 0 && compareArrays(last, groups[end])) end--;
+    if (end === 0) break;
+
+    var count = Math.min(start, l - end);
+    groups = groups
+      .slice(0, count)
+      .map(function (group, i) { return group.concat(groups[l - i]); })
+      .concat(groups.slice(count, -count));
+  }
+  return [].concat.apply([], groups);
+
+};
+
+function compareArrays (a, b) {
+  // TODO: optimize
+  return JSON.stringify(a) === JSON.stringify(b);
+};
+
+
+
+</script>
+
+
+<script>
+var measureLength = 2; // seconds
+var measures = 4;
+
+var context = new AudioContext();
+
+function Kick(context, freq, duration) {
+	this.context = context;
+	this.freq = freq;
+	this.duration = duration;
+}
+
+Kick.prototype.setup = function() {
+	this.osc = this.context.createOscillator();
+	this.gain = this.context.createGain();
+	this.osc.connect(this.gain);
+	this.gain.connect(this.context.destination);
+};
+
+Kick.prototype.trigger = function(time) {
+	this.setup();
+
+	this.osc.frequency.setValueAtTime(this.freq, time);
+	this.gain.gain.setValueAtTime(1, time);
+
+	//this.osc.frequency.exponentialRampToValueAtTime(0.01, time + this.duration);
+	this.gain.gain.exponentialRampToValueAtTime(0.01, time + this.duration);
+
+	this.osc.start(time);
+
+	this.osc.stop(time + this.duration);
+};
+
+
+
+	// TODO this algorithm seems borked
+	function euclid (nbeat, nnote) {
+		if (nnote < 0) { nnote = 0; }
+		if (nbeat < 0) { nbeat = 0; }
+		if (nnote > nbeat) {
+			var tmp = nnote;
+			nnote   = nbeat;
+			nbeat   = tmp;
+		}
+		if (nbeat == 0) { return []; }
+		var rests = nbeat - nnote;
+		var result = new Array (nnote);
+		var i;
+		for (i = 0; i < nnote; i+=1){
+			result[i] = 1;
+		}
+		var pivot = 1;
+		var interval = 2;
+		while (rests > 0) {
+			if (pivot > result.length) {
+				pivot = 1;
+				interval +=1;
+			}
+			result.splice (pivot, 0, 0);
+			pivot += interval;
+			rests -=1;
+		}
+		return result;
+	}
+
+
+	function Pattern (nbeat, nnote, mode) {
+		/* TODO rotate euclid by mode */
+		//this.euclid = euclid (nbeat, nnote);
+		this.euclid = euclideanRhythm (nnote, nbeat);
+		//alert (this.euclid);
+	}
+	
+	
+	function Line (divisions, nnotes, mode, freq) {
+		this.duration = measureLength / divisions;
+		this.pattern = new Pattern (divisions * measures, nnotes, mode);
+		this.kick = new Kick (context, freq, this.duration);
+	}	
+	Line.prototype.play = function (time) {
+		var i;
+		for (i = 0; i < this.pattern.euclid.length; i+=1) {
+			if (this.pattern.euclid[i]){
+				this.kick.trigger (time);
+			}
+			time += this.duration;
+		}
+	};
+
+
+try {
+	//var bf = 432;
+	var bf = 432;
+	var line1 = new Line (4, 13, 2, bf * 1 / 1);
+	var line2 = new Line (3,  7, 5, bf * 3 / 2);
+	var line3 = new Line (2,  5, 0, bf * 5 / 4);
+	
+	var now = context.currentTime;
+	now++;
+	
+	var i;
+	
+	line1.play (now);
+	now += measureLength * measures;
+	line2.play (now);
+	now += measureLength * measures;
+	
+	line1.play (now);
+	now += measureLength * measures;
+	line3.play (now);
+	now += measureLength * measures;
+	
+	line2.play (now);
+	now += measureLength * measures;
+	line3.play (now);
+	now += measureLength * measures;
+	
+	line1.play (now);
+	now += measureLength * measures;
+	line2.play (now);
+	now += measureLength * measures;
+	
+	for (i = 1; i <= 2; i++) {
+		line1.play (now);
+		line2.play (now);
+		now += measureLength * measures;
+	}
+	for (i = 1; i <= 2; i++) {
+		line1.play (now);
+		line3.play (now);
+		now += measureLength * measures;
+	}
+	for (i = 1; i <= 2; i++) {
+		line2.play (now);
+		line3.play (now);
+		now += measureLength * measures;
+	}
+	for (i = 1; i <= 2; i++) {
+		line1.play (now);
+		line2.play (now);
+		now += measureLength * measures;
+	}
+	
+	for (i = 1; i <= 1; i++) {
+		line1.play (now);
+		line2.play (now);
+		line3.play (now);
+		now += measureLength * measures;
+	}
+	
+	line1.play (now);
+	now += measureLength * measures;
+	
+	for (i = 1; i <= 1; i++) {
+		line1.play (now);
+		line2.play (now);
+		line3.play (now);
+		now += measureLength * measures;
+	}
+	
+	line2.play (now);
+	now += measureLength * measures;
+	
+	for (i = 1; i <= 1; i++) {
+		line1.play (now);
+		line2.play (now);
+		line3.play (now);
+		now += measureLength * measures;
+	}
+	
+	line3.play (now);
+	now += measureLength * measures;
+	
+	for (i = 1; i <= 2; i++) {
+		line1.play (now);
+		line2.play (now);
+		line3.play (now);
+		now += measureLength * measures;
+	}
+	
+} catch (e) { alert (e) }
+
+</script>

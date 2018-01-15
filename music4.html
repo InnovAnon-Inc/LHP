@@ -1,0 +1,112 @@
+<script>
+var context = new AudioContext();
+
+function Kick(context, freq, duration) {
+	this.context = context;
+	this.freq = freq;
+	this.duration = duration;
+}
+
+Kick.prototype.setup = function() {
+	this.osc = this.context.createOscillator();
+	this.gain = this.context.createGain();
+	this.osc.connect(this.gain);
+	this.gain.connect(this.context.destination);
+};
+
+Kick.prototype.trigger = function(time) {
+	this.setup();
+
+	this.osc.frequency.setValueAtTime(this.freq, time);
+	this.gain.gain.setValueAtTime(1, time);
+
+	//this.osc.frequency.exponentialRampToValueAtTime(0.01, time + this.duration);
+	this.gain.gain.exponentialRampToValueAtTime(0.01, time + this.duration);
+
+	this.osc.start(time);
+
+	this.osc.stop(time + this.duration);
+};
+
+function Piano (bf, scale) {
+	this.bf = bf;
+	this.scale = scale;
+	this.kicks = new Array (scale.length);
+	var i;
+	for (i = 0; i < scale.length; i++) {
+		this.kicks[i] = new Kick (
+			context, bf * scale[i], 1);
+	}
+}
+Piano.prototype.trigger = function (time, chord) {
+	var i;
+	for (i = 0; i < chord.length; i++) {
+		this.kicks[chord[i]].trigger (time);
+	}
+};
+
+
+
+
+
+function equalTemperament (n) {
+	var scale = new Array (n);
+	var i;
+	for (i = 0; i < n; i++) {
+		scale[i] = Math.pow (2, i/n);
+	}
+	return scale;
+}
+
+var bf = 432;
+
+var scale1 = [1/1, 16/15, 9/8, 6/5, 5/4, 4/3, 7/5, 3/2,	8/5, 5/3, 16/9, 15/8];
+var scale2 = equalTemperament (scale1.length);
+
+var piano1 = new Piano (bf, scale1);
+var piano2 = new Piano (bf, scale2);
+
+
+
+
+
+
+// 2 2 1 2 2 2 1
+var mode = [0, 2, 4, 5, 7, 9, 11];
+/*
+function applyMode (scale, mode) {
+	var ret = new Array (mode.length);
+	var i;
+	for (i = 0; i < mode.length; i++) {
+		ret[i] = scale[mode[i]];
+	}
+	return ret;
+}
+*/
+
+
+var majorTriad = [1, 3, 5];
+
+function applyChord (mode, chord) {
+	var ret = new Array (chord.length);
+	var i;
+	for (i = 0; i < chord.length; i++) {
+		ret[i] = mode[chord[i] - 1];
+	}
+	return ret;
+}
+
+
+
+var now = context.currentTime;
+now++;
+
+
+var appliedChord = applyChord (mode, majorTriad);
+piano1.trigger (now, appliedChord);
+now++;
+piano2.trigger (now, appliedChord);
+now++;
+
+
+</script>

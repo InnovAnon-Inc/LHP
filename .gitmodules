@@ -2,3 +2,6 @@
 [submodule "ace-builds"]
 	path = ace-builds
 	url = https://github.com/ajaxorg/ace-builds.git
+[submodule "euclidean-rhythm"]
+	path = euclidean-rhythm
+	url = https://github.com/dbkaplun/euclidean-rhythm.git

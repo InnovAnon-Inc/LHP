@@ -1,17 +1,104 @@
+
+
+
+
+
+
+
+<div>
+	<h6>base frequency</h6>
+	<input id="bf" type="number" value="432">
+</div>
+
+<div>
+	<!-- select type: equal tempered, just, odd-limit, prime-limit, custom, etc -->
+	<h6>number of notes in scale</h6>
+	<input id="scale" type="number" value="12">
+	<h6>note 1 ratio</h6>
+	<input id="scale1" type="text" value="1/1">
+	<h6>note 2 ratio</h6>
+	<input id="scale2" type="text" value="16/15">
+	<!-- ... 1 - 12 -->
+</div>
+
+<div>
+	<h6></h6>
+	<input id="">
+</div>
+
+
+
+
+
+<!-- TODO info about heart rates -->
+<input id="tempo">
+
+<!-- TODO info about moods -->
+<input id="mode">
+
+<!-- TODO select subaudial note delivery mechanism :P
+     - monaural for single-channel
+     - binaural for headphones
+     - isochronic for single-channel
+     - tempo phase shifting for headphones -->
+
+<!-- TODO how to apply visual isochronic pulses? -->
+
+<!-- update visuals on beat,
+     show "important" visuals on skipped beats
+     (i.e., show yantra and display kali subliminally) -->
+
+
+
+
+
 <canvas width="200" height="200">
 </canvas>
 
 <script>
-var baseFrequency;
+	
+var baseFrequency = document.getElementById ('bf').value;
 var scale = new Array (12);
 var mode  = new Array (7);
 
 /*
 var chords = [
-	[1, 3, 5],
-	[1, 3, 5, 7],
+	[1, 3, 5], // major
+	[1, 3, 5, 7], // seventh
+	[1, 3, 6] // minor ?
 ];
 */
+
+/*
+var extendedChordForms ...
+
+*/
+
+// need basic chord progression
+// add more intervals to basic chords... how?
+// generate melody from within those extended arpeggios
+
+// melody-driven approach?
+// generate melody from within scale and basic chord arpeggio
+// when hitting a scale note that's not in the chord,
+// add that interval to the extended chords
+// then back to the harmony-driven approach
+
+// each "line":
+// given a measure, make n divisions
+// 
+
+
+
+function Player (measureLengths, ) {
+	this.measureLengths = measureLengths;
+}
+
+
+
+// all lines share measures of length n1, n2, n3, etc
+// each line divides measures differently to get its beats (i.e., different time siggies)
+// 
 
 </script>
 
