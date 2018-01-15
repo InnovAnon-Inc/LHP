@@ -125,9 +125,7 @@ var addFourth = majorTriad.concat ([4]);
 var addSixth = majorTriad.concat ([6]);
 var sixNine = majorTriad.concat ([6, 9]);
 var sevenSix = majorTriad.concat ([6, 7]);
-var chords = [majorTriad, majorSeventh,
-	addNine, addFourth, addSixth,
-	sixNine, sevenSix];
+var chords = [majorTriad];
 
 function applyChord (mode, chord) {
 	var ret = new Array (chord.length);
@@ -147,7 +145,23 @@ try {
 
 var k;
 var modeTemp = constructMode (dmode, 0, scale1.length);
+/*
+for (k = 0; k < dmode.length; k++) {
+	var mode = constructMode (dmode, modeTemp[k], scale1.length);
 
+	for (i = 1; i <= dmode.length; i++) {
+		var appliedNote1 = applyChord (mode, [i]);
+		piano1.trigger (now, appliedNote1);
+		now++;
+	}
+
+	for (i = 1; i <= dmode.length; i++) {
+		var appliedNote2 = applyChord (mode, [i]);
+		piano2.trigger (now, appliedNote2);
+		now++;
+	}
+}
+*/
 for (k = 0; k < dmode.length; k++) {
 	var mode = constructMode (dmode, modeTemp[k], scale1.length);
 
@@ -156,8 +170,8 @@ for (k = 0; k < dmode.length; k++) {
 	
 		piano1.trigger (now, appliedChord);
 		now++;
-		//piano2.trigger (now, appliedChord);
-		//now++;
+		piano2.trigger (now, appliedChord);
+		now++;
 	}
 }
 }catch (e) { alert(e)}

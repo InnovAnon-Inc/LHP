@@ -151,14 +151,18 @@ var modeTemp = constructMode (dmode, 0, scale1.length);
 for (k = 0; k < dmode.length; k++) {
 	var mode = constructMode (dmode, modeTemp[k], scale1.length);
 
-	for (i = 0; i < chords.length; i++) {
-		var appliedChord = applyChord (mode, chords[i]);
-	
-		piano1.trigger (now, appliedChord);
+	for (i = 1; i <= dmode.length; i++) {
+		var appliedNote1 = applyChord (mode, [i]);
+		piano1.trigger (now, appliedNote1);
 		now++;
-		//piano2.trigger (now, appliedChord);
-		//now++;
+	}
+
+	for (i = 1; i <= dmode.length; i++) {
+		var appliedNote2 = applyChord (mode, [i]);
+		piano2.trigger (now, appliedNote2);
+		now++;
 	}
 }
+
 }catch (e) { alert(e)}
 </script>
