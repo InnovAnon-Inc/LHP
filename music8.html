@@ -1,0 +1,231 @@
+<canvas id="canvas1">
+</canvas>
+<canvas id="canvas2">
+</canvas>
+
+<script>
+var context = new AudioContext();
+
+function Kick(context, freq, duration) {
+	this.context = context;
+	this.freq = freq;
+	this.duration = duration;
+}
+
+Kick.prototype.setup = function() {
+	this.osc = this.context.createOscillator();
+	this.gain = this.context.createGain();
+	this.osc.connect(this.gain);
+	this.gain.connect(this.context.destination);
+};
+
+Kick.prototype.trigger = function(time) {
+	this.setup();
+
+	this.osc.frequency.setValueAtTime(this.freq, time);
+	this.gain.gain.setValueAtTime(1, time);
+
+	//this.osc.frequency.exponentialRampToValueAtTime(0.01, time + this.duration);
+	this.gain.gain.exponentialRampToValueAtTime(0.01, time + this.duration);
+
+	this.osc.start(time);
+
+	this.osc.stop(time + this.duration);
+};
+
+function Piano (bf, scale) {
+	this.bf = bf;
+	this.scale = scale;
+	this.kicks = new Array (scale.length);
+	var i;
+	for (i = 0; i < scale.length; i++) {
+		this.kicks[i] = new Kick (
+			context, bf * scale[i], 1);
+	}
+}
+Piano.prototype.trigger = function (time, chord) {
+	var i;
+	for (i = 0; i < chord.length; i++) {
+		this.kicks[chord[i]].trigger (time);
+	}
+};
+
+
+
+
+
+function equalTemperament (n) {
+	var scale = new Array (n);
+	var i;
+	for (i = 0; i < n; i++) {
+		scale[i] = Math.pow (2, i/n);
+	}
+	return scale;
+}
+
+var bf = 432;
+
+var scale1 = [1/1, 16/15, 9/8, 6/5, 5/4, 4/3, 7/5, 3/2,	8/5, 5/3, 16/9, 15/8];
+var scale2 = equalTemperament (scale1.length);
+
+
+
+
+function Simon (id) {
+	var canvas = document.getElementById ();
+	var context = canvas.getContext("2d");
+	
+	this.canvas = canvas;
+	this.context = context;
+}
+Simon.prototype.draw = function (cb) {
+	var canvas = this.canvas;
+	var context = this.context;
+	
+	context.clearRect (0, 0, canvas.width, canvas.height);
+	context.save ();
+	try {
+		context.scale (canvas.width / 2, canvas.height / 2); // scale to unit circle's cartesian coordinates
+		context.scale (1, -1); // reflect about x-axis
+		context.translate(1, -1); // reposition origin
+
+		context.fillStyle = "black";
+		
+		cb (canvas, context);
+	} catch (e) {
+		alert (e);
+		throw e;
+	} finally {
+		context.restore ();
+	}
+};
+
+function noteToPoint (note) {
+	var x = log (note) / log (2);
+	var theta = x * 2 * Math.PI;
+	return new Point (cos (theta), sin (theta));
+}
+
+
+
+
+
+
+
+
+
+
+
+
+scale1 = scale1.concat (scale1.map (function (x) { return x * 2; }));
+scale2 = scale2.concat (scale2.map (function (x) { return x * 2; }));
+
+var piano1 = new Piano (bf, scale1);
+var piano2 = new Piano (bf, scale2);
+
+var majorTriad      = [0, 4, 7];
+var augmentedTriad  = [0, 4, 8];
+var minorTriad      = [0, 3, 7];
+var diminishedTriad = [0, 3, 6];
+
+var diminishedSeventh     = diminishedTriad.concat ([9]);
+var halfDiminishedSeventh = diminishedTriad.concat ([10]);
+var minorSeventh          = minorTriad.concat ([10]);
+var majorMinorSeventh     = minorTriad.concat ([11]);
+var augmentedSeventh      = augmentedTriad.concat ([10]);
+var augmentedMajorSeventh = augmentedTriad.concat ([11]);
+var dominantSeventh       = majorTriad.concat ([10]);
+var majorSeventh          = majorTriad.concat ([11]);
+
+var dominantNinth = dominantSeventh.concat ([14]);
+//var dominantEleventh = dominantSeventh.concat ([14, 17]);
+var dominantEleventh = [0, 7, 14, 17];
+//var dominantThirteenth = dominantSeventh.concat ([14, 17, 21]);
+var dominantThirteenth = dominantSeventh.concat ([14, 21]);
+
+var chords = [
+	majorTriad,
+	augmentedTriad,
+	minorTriad,
+	diminishedTriad,
+
+	diminishedSeventh, halfDiminishedSeventh,
+	minorSeventh, majorMinorSeventh,
+	augmentedSeventh, augmentedMajorSeventh,
+	dominantSeventh, majorSeventh,
+	
+	dominantNinth, dominantEleventh, dominantThirteenth,
+];
+
+
+
+
+
+
+
+
+
+
+
+
+function getIntervals (chord) {
+	// TODO return array of arrays
+}
+
+function applyChord (scale, chord) {
+	var ret = new Array (chord.length);
+	var i;
+	for (i = 0; i < chord.length; i++) {
+		ret[i] = scale[chord[i]];
+	}
+	return ret;
+}
+
+function chordPoints (appliedChord) {
+	var arr = new Array (appliedInterval.length);
+	var i;
+	for (i = 0; i < arr.length; i++) {
+		var theta = appliedInterval[i];
+		arr[i] = new Point (cos (theta), sin (theta));
+	}
+	return arr;
+}
+
+function intervalPoints (appliedInterval) {
+	var center = new Point (0, 0);
+	var arr = chordPoints (appliedInterval);
+	return [center].concat (arr);
+}
+
+var simon1 = new Simon ('canvas1');
+var simon2 = new Simon ('canvas2');
+
+
+
+
+
+
+
+
+
+
+
+/*
+var now = context.currentTime;
+now++;
+
+try {
+
+var k;
+
+	for (i = 0; i < chords.length; i++) {
+		piano1.trigger (now, chords[i]);
+		now++;
+		//piano2.trigger (now, chords[i]);
+		//now++;
+	}
+
+}catch (e) { alert(e)}
+*/
+</script>
+
