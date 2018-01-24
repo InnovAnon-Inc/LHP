@@ -1,0 +1,221 @@
+.container {
+  width: 500px;
+  height: 500px;
+  position: relative;
+  
+  background-image: url("https://s10.postimg.org/umloozyy1/Kali_Yantra.jpg");
+  background-size: 100% auto;
+  background-position: center;
+}
+.navi, .infoi {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+.infoi {
+  z-index: 10;
+}
+
+img {
+  max-width: 100%;
+  width: auto;
+  max-height: 100%;
+  height: auto;
+  /*object-fit: cover;*/
+}
+
+.img {
+	overflow: hidden;
+}
+
+.rotate {
+	/*width:  70px;
+	height: 70px;
+	margin: 15px 15px;*/
+	/*width:  calc (50% * 1.41421356237px);
+    height: calc (50% * 1.41421356237px);
+    margin: calc (calc (100% - calc (50% * 1.41421356237px)) / 2);*/
+	/*background-color: white;*/
+	animation-name: rotate;
+	animation-iteration-count: infinite;
+	animation-play-state: play;
+	animation-duration: 1s;
+	
+	/*border-width: 1px;
+	border-color: red;
+	border-style: solid;*/
+	
+	
+}
+@keyframes rotate {
+	from {
+		transform: rotate(0deg);
+	}
+	10% { transform: rotate(36deg); }
+	20% { transform: rotate(72deg); }
+	30% { transform: rotate(108deg); }
+	40% { transform: rotate(144deg); }
+	50% { transform: rotate(180deg); }
+	60% { transform: rotate(216deg); }
+	70% { transform: rotate(252deg); }
+	80% { transform: rotate(288deg); }
+	90% { transform: rotate(324deg); }
+	to {
+		transform: rotate(360deg);
+	}
+}
+.scale {
+	/*width: 100px;
+    height: 100px;*/
+    /*width:  auto;
+    height: auto;*/
+	/*background-color: black;*/
+	
+	/*background-image: url("https://s10.postimg.org/umloozyy1/Kali_Yantra.jpg");*/
+	/*background-size: 100% 100%;
+	background-position: center center;*/
+	
+	animation-name: scale;
+	animation-iteration-count: infinite;
+	animation-play-state: play;
+	animation-duration: 7s;
+	
+	border-width: 1px;
+	border-color: white;
+	border-style: solid;
+}
+@keyframes scale {
+	from { transform: scale(1,1); }
+	25% { transform: scale(1,-1); }
+	50% { transform: scale(-1,-1); }
+	75% { transform: scale(-1,1); }
+	to { transform: scale(1,1); }
+}
+
+
+
+
+
+
+.scale2 {
+	/*width: 100px;
+    height: 100px;*/
+    /*width:  auto;
+    height: auto;*/
+	/*background-color: black;*/
+	
+	/*background-image: url("https://s10.postimg.org/umloozyy1/Kali_Yantra.jpg");*/
+	/*background-size: 100% 100%;
+	background-position: center center;*/
+	
+	animation-name: scale2;
+	animation-iteration-count: infinite;
+	animation-play-state: play;
+	animation-duration: 4s;
+	
+	border-width: 1px;
+	border-color: red;
+	border-style: solid;
+}
+@keyframes scale2 {
+	from { transform: scale(1,-1);  }
+	25%  { transform: scale(1,1); }
+	50%  { transform: scale(-1,1);  }
+	75%  { transform: scale(-1,-1);   }
+	to   { transform: scale(1,-1); }
+}
+
+
+
+
+
+
+.left {
+	float: left;
+}
+
+.right {
+	float: right;
+}
+
+.inner {
+  display: table;
+  margin: 0 auto;
+}
+
+.hard-to-see, h1, h2, h3, h4, h5, h6 {
+	background-color: black;
+	color: green;
+	border-width: 1px;
+	border-color: red;
+	border-style: solid;
+}
+
+h1, h2, h3, h4, h5, h6 {
+	text-align: center;
+}
+
+
+
+
+/*
+.aum, .krim1, .hum1, .hrim1, .daksine, .kalike, .krim2 .hum2, .hrim2, .svaha {
+	animation-name: mantra;
+	animation-iteration-count: infinite;
+	animation-play-state: play;
+}
+
+@keyframes mantra {
+	from { color: green }
+	50%  { color: red }
+	to   { color: green }
+}
+
+.aum {
+	animation-duration: 1s;
+}
+
+.krim1 {
+	animation-duration: 3s;
+}
+
+.hum1 {
+	animation-duration: 5s;
+}
+
+.hrim1 {
+	animation-duration: 5s;
+	animation-delay: 3s;
+}
+
+.daksine {
+	animation-duration: 7s;
+}
+
+.kalike {
+	animation-duration: 7s;
+	animation-delay: 3s;
+}
+
+.krim2 {
+	animation-duration: 3s;
+	animation-delay: 1s;
+}
+
+.hum2 {
+	animation-duration: 5s;
+	animation-delay: 2s;
+}
+
+.hrim2 {
+	animation-duration: 5s;
+	animation-delay: 4s;
+}
+
+.svaha {
+	animation-duration: 7s;
+	animation-delay: 6s;
+}
+*/
