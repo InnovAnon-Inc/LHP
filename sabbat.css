@@ -1,3 +1,7 @@
+body {
+  background-color: black;
+}
+
 .container {
   width: 500px;
   height: 500px;
@@ -219,3 +223,20 @@ h1, h2, h3, h4, h5, h6 {
 	animation-delay: 6s;
 }
 */
+
+
+.fade {
+  background-image: url("https://s10.postimg.org/umloozyy1/Kali_Yantra.jpg");
+  background-size: 100% auto;
+  background-position: center;
+  
+  animation-name: fade;
+  animation-iteration-count: infinite;
+  animation-play-state: play;
+  animation-duration: 1s;
+}
+
+@keyframes fade {
+	from { opacity: 0.0 }
+	to   { opacity: 1.0 }
+}

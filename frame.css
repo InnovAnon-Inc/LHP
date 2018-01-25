@@ -1,0 +1,408 @@
+body {
+	background-color: black;
+	width: 100%;
+	height: 100%;
+}
+
+
+
+
+
+
+.up, .down, .left, .right {
+	position: absolute;
+	background-color: white;
+	
+	background-image: url("https://s10.postimg.org/umloozyy1/Kali_Yantra.jpg");
+	background-repeat: repeat;
+	
+	overflow: hidden;
+}
+
+.up, .down {
+	height: 16px;
+	width: 100%;
+	left: 0;
+	background-size: auto 100%;
+}
+
+.up {
+	top: 0;
+}
+
+.down {
+	bottom: 0;
+}
+
+.left, .right {
+	width: 16px;
+	height: 100%;
+	top: 0;
+	background-size: 100% auto;
+}
+
+.right {
+	right: 0;
+}
+
+.left {
+	left: 0;
+}
+
+
+
+.slide-x, .slide-y {
+	animation-iteration-count: infinite;
+	animation-play-state: play;
+	animation-duration: 13s;
+	animation-direction: alternate;
+	
+	position: absolute;
+	
+	width:  16px;
+	height: 16px;
+	
+	/*background-color: black;*/
+	background-image: url("https://s10.postimg.org/umloozyy1/Kali_Yantra.jpg");
+	background-size: 100% 100%;
+}
+
+.slide-x {
+	animation-name: slide-x;
+	top: 0;
+}
+
+@keyframes slide-x {
+	from { left:   0%; }
+	 1%  { left:   1%; }
+	 2%  { left:   2%; }
+	 3%  { left:   3%; }
+	 4%  { left:   4%; }
+	 5%  { left:   5%; }
+	 6%  { left:   6%; }
+	 7%  { left:   7%; }
+	 8%  { left:   8%; }
+	 9%  { left:   9%; }
+	10%  { left:  10%; }
+	11%  { left:  11%; }
+	12%  { left:  12%; }
+	13%  { left:  13%; }
+	14%  { left:  14%; }
+	15%  { left:  15%; }
+	16%  { left:  16%; }
+	17%  { left:  17%; }
+	18%  { left:  18%; }
+	19%  { left:  19%; }
+	20%  { left:  20%; }
+	21%  { left:  21%; }
+	22%  { left:  22%; }
+	23%  { left:  23%; }
+	24%  { left:  24%; }
+	25%  { left:  25%; }
+	26%  { left:  26%; }
+	27%  { left:  27%; }
+	28%  { left:  28%; }
+	29%  { left:  29%; }
+	30%  { left:  30%; }
+	31%  { left:  31%; }
+	32%  { left:  32%; }
+	33%  { left:  33%; }
+	34%  { left:  34%; }
+	35%  { left:  35%; }
+	36%  { left:  36%; }
+	37%  { left:  37%; }
+	38%  { left:  38%; }
+	39%  { left:  39%; }
+	40%  { left:  40%; }
+	41%  { left:  41%; }
+	42%  { left:  42%; }
+	43%  { left:  43%; }
+	44%  { left:  44%; }
+	45%  { left:  45%; }
+	46%  { left:  46%; }
+	47%  { left:  47%; }
+	48%  { left:  48%; }
+	49%  { left:  49%; }
+	50%  { left:  50%; }
+	51%  { left:  51%; }
+	52%  { left:  52%; }
+	53%  { left:  53%; }
+	54%  { left:  54%; }
+	55%  { left:  55%; }
+	56%  { left:  56%; }
+	57%  { left:  57%; }
+	58%  { left:  58%; }
+	59%  { left:  59%; }
+	60%  { left:  60%; }
+	61%  { left:  61%; }
+	62%  { left:  62%; }
+	63%  { left:  63%; }
+	64%  { left:  64%; }
+	65%  { left:  65%; }
+	66%  { left:  66%; }
+	67%  { left:  67%; }
+	68%  { left:  68%; }
+	69%  { left:  69%; }
+	70%  { left:  70%; }
+	71%  { left:  71%; }
+	72%  { left:  72%; }
+	73%  { left:  73%; }
+	74%  { left:  74%; }
+	75%  { left:  75%; }
+	76%  { left:  76%; }
+	77%  { left:  77%; }
+	78%  { left:  78%; }
+	79%  { left:  79%; }
+	80%  { left:  80%; }
+	81%  { left:  81%; }
+	82%  { left:  82%; }
+	83%  { left:  83%; }
+	84%  { left:  84%; }
+	85%  { left:  85%; }
+	86%  { left:  86%; }
+	87%  { left:  87%; }
+	88%  { left:  88%; }
+	89%  { left:  89%; }
+	90%  { left:  90%; }
+	91%  { left:  91%; }
+	92%  { left:  92%; }
+	93%  { left:  93%; }
+	94%  { left:  94%; }
+	95%  { left:  95%; }
+	96%  { left:  96%; }
+	97%  { left:  97%; }
+	98%  { left:  98%; }
+	99%  { left:  99%; }
+	to   { left: 100%; }
+}
+
+.slide-y {
+	animation-name: slide-y;
+	left: 0;
+}
+
+@keyframes slide-y {
+	from { top:   0%; }
+	 1%  { top:   1%; }
+	 2%  { top:   2%; }
+	 3%  { top:   3%; }
+	 4%  { top:   4%; }
+	 5%  { top:   5%; }
+	 6%  { top:   6%; }
+	 7%  { top:   7%; }
+	 8%  { top:   8%; }
+	 9%  { top:   9%; }
+	10%  { top:  10%; }
+	11%  { top:  11%; }
+	12%  { top:  12%; }
+	13%  { top:  13%; }
+	14%  { top:  14%; }
+	15%  { top:  15%; }
+	16%  { top:  16%; }
+	17%  { top:  17%; }
+	18%  { top:  18%; }
+	19%  { top:  19%; }
+	20%  { top:  20%; }
+	21%  { top:  21%; }
+	22%  { top:  22%; }
+	23%  { top:  23%; }
+	24%  { top:  24%; }
+	25%  { top:  25%; }
+	26%  { top:  26%; }
+	27%  { top:  27%; }
+	28%  { top:  28%; }
+	29%  { top:  29%; }
+	30%  { top:  30%; }
+	31%  { top:  31%; }
+	32%  { top:  32%; }
+	33%  { top:  33%; }
+	34%  { top:  34%; }
+	35%  { top:  35%; }
+	36%  { top:  36%; }
+	37%  { top:  37%; }
+	38%  { top:  38%; }
+	39%  { top:  39%; }
+	40%  { top:  40%; }
+	41%  { top:  41%; }
+	42%  { top:  42%; }
+	43%  { top:  43%; }
+	44%  { top:  44%; }
+	45%  { top:  45%; }
+	46%  { top:  46%; }
+	47%  { top:  47%; }
+	48%  { top:  48%; }
+	49%  { top:  49%; }
+	50%  { top:  50%; }
+	51%  { top:  51%; }
+	52%  { top:  52%; }
+	53%  { top:  53%; }
+	54%  { top:  54%; }
+	55%  { top:  55%; }
+	56%  { top:  56%; }
+	57%  { top:  57%; }
+	58%  { top:  58%; }
+	59%  { top:  59%; }
+	60%  { top:  60%; }
+	61%  { top:  61%; }
+	62%  { top:  62%; }
+	63%  { top:  63%; }
+	64%  { top:  64%; }
+	65%  { top:  65%; }
+	66%  { top:  66%; }
+	67%  { top:  67%; }
+	68%  { top:  68%; }
+	69%  { top:  69%; }
+	70%  { top:  70%; }
+	71%  { top:  71%; }
+	72%  { top:  72%; }
+	73%  { top:  73%; }
+	74%  { top:  74%; }
+	75%  { top:  75%; }
+	76%  { top:  76%; }
+	77%  { top:  77%; }
+	78%  { top:  78%; }
+	79%  { top:  79%; }
+	80%  { top:  80%; }
+	81%  { top:  81%; }
+	82%  { top:  82%; }
+	83%  { top:  83%; }
+	84%  { top:  84%; }
+	85%  { top:  85%; }
+	86%  { top:  86%; }
+	87%  { top:  87%; }
+	88%  { top:  88%; }
+	89%  { top:  89%; }
+	90%  { top:  90%; }
+	91%  { top:  91%; }
+	92%  { top:  92%; }
+	93%  { top:  93%; }
+	94%  { top:  94%; }
+	95%  { top:  95%; }
+	96%  { top:  96%; }
+	97%  { top:  97%; }
+	98%  { top:  98%; }
+	99%  { top:  99%; }
+	to   { top: 100%; }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.rotate {
+	width:  70%;
+	height: 70%;
+	margin: 15% 15%;
+	/*width:  calc (50% * 1.41421356237px);
+    height: calc (50% * 1.41421356237px);
+    margin: calc (calc (100% - calc (50% * 1.41421356237px)) / 2);*/
+	background-color: white;
+	animation-name: rotate;
+	animation-iteration-count: infinite;
+	animation-play-state: play;
+	animation-duration: 1s;
+	
+	border-width: 1px;
+	border-color: red;
+	border-style: solid;
+	
+	
+}
+@keyframes rotate {
+	from {
+		transform: rotate(0deg);
+	}
+	10% { transform: rotate(36deg); }
+	20% { transform: rotate(72deg); }
+	30% { transform: rotate(108deg); }
+	40% { transform: rotate(144deg); }
+	50% { transform: rotate(180deg); }
+	60% { transform: rotate(216deg); }
+	70% { transform: rotate(252deg); }
+	80% { transform: rotate(288deg); }
+	90% { transform: rotate(324deg); }
+	to {
+		transform: rotate(360deg);
+	}
+}
+.scale {
+	width: 100%;
+    height: 100%;
+    /*width:  auto;
+    height: auto;*/
+	background-color: black;
+	
+	background-image: url("https://s10.postimg.org/umloozyy1/Kali_Yantra.jpg");
+	background-size: 100% 100%;
+	/*background-position: center center;*/
+	
+	animation-name: scale;
+	animation-iteration-count: infinite;
+	animation-play-state: play;
+	animation-duration: 7s;
+	
+	border-width: 1px;
+	border-color: red;
+	border-style: solid;
+}
+@keyframes scale {
+	from { transform: scale(1,1); }
+	25% { transform: scale(1,-1); }
+	50% { transform: scale(-1,-1); }
+	75% { transform: scale(-1,1); }
+	to { transform: scale(1,1); }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.shiva {
+	background-image: url("https://s10.postimg.org/a00nejwq1/PKRRF.jpg");
+	background-size: contain;
+	/*max-width: 100%;
+	width: auto;
+	max-height: 100%;
+	height: auto;*/
+	/*width: auto;
+	height: 100%;
+	margin: 0 auto;*/
+	width:  100%;
+	height: 100%;
+	background-size: auto 100%;
+	background-position: center center;
+	background-repeat: no-repeat no-repeat;
+}
