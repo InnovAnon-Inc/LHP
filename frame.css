@@ -86,7 +86,7 @@ html, body {
 .slide-x, .slide-y {
 	animation-iteration-count: infinite;
 	animation-play-state: play;
-	animation-duration: 23s;
+	/*animation-duration: 23s;*/
 	animation-direction: alternate;
 	
 	position: absolute;
@@ -101,6 +101,7 @@ html, body {
 
 .slide-x {
 	animation-name: slide-x;
+	animation-duration: 31s;
 	top: 0;
 }
 
@@ -210,6 +211,7 @@ html, body {
 
 .slide-y {
 	animation-name: slide-y;
+	animation-duration: 23s;
 	left: 0;
 }
 
@@ -464,10 +466,10 @@ html, body {
     height: 100%;
     /*width:  auto;
     height: auto;*/
-	background-color: black;
+	/*background-color: black;*/
 	
-	background-image: url("https://s10.postimg.org/umloozyy1/Kali_Yantra.jpg");
-	background-size: 100% 100%;
+	/*background-image: url("https://s10.postimg.org/umloozyy1/Kali_Yantra.jpg");
+	background-size: 100% 100%;*/
 	/*background-position: center center;*/
 	
 	animation-name: scale;
@@ -480,11 +482,11 @@ html, body {
 	border-style: solid;
 }
 @keyframes scale {
-	from { transform: scale(1,1); }
-	25% { transform: scale(1,-1); }
-	50% { transform: scale(-1,-1); }
-	75% { transform: scale(-1,1); }
-	to { transform: scale(1,1); }
+	from { transform: scale(1,1);   }
+	25%  { transform: scale(1,-1);  }
+	50%  { transform: scale(-1,-1); }
+	75%  { transform: scale(-1,1);  }
+	to   { transform: scale(1,1);   }
 }
 
 
@@ -520,7 +522,8 @@ html, body {
 	margin: 0 auto;*/
 	width:  100%;
 	height: 100%;
-	background-size: auto 100%;
+	/*background-size: auto 100%;*/
+	background-size: 100% 100%;
 	background-position: center center;
 	background-repeat: no-repeat no-repeat;
 }
@@ -595,4 +598,89 @@ html, body {
 	position: absolute;
 	top:  0;
 	left: 0;
+}
+
+
+
+
+
+
+.expand {
+	background-image: url("https://s10.postimg.org/umloozyy1/Kali_Yantra.jpg");
+	/*background-size: 100% 100%;*/
+	background-position: center center;
+	background-repeat: repeat;
+	
+	width:      100%;
+	height:     100%;
+	
+	animation-name: expand;
+	animation-iteration-count: infinite;
+	animation-play-state: play;
+	animation-duration: 11s;
+	/*animation-direction: alternate;*/
+}
+
+@keyframes expand {
+	/*from { background-size:     1px     1px; }
+	 1%  { background-size:     4px     4px; }*/
+	from { background-size:     4px     4px; }
+	10%  { background-size:     8px     8px; }
+	20%  { background-size:    12px    12px; }
+	30%  { background-size:    20px    20px; }
+	40%  { background-size:    33px    33px; }
+	45%  { background-size:    54px    54px; }
+	50%  { background-size:    88px    88px; }
+	55%  { background-size:   143px   143px; }
+	60%  { background-size:   232px   232px; }
+	65%  { background-size:   375px   375px; }
+	70%  { background-size:   608px   608px; }
+	75%  { background-size:   983px   983px; }
+	80%  { background-size:  1592px  1592px; }
+	85%  { background-size:  2575px  2575px; }
+	90%  { background-size:  4168px  4168px; }
+	95%  { background-size:  6743px  6743px; }
+	to   { background-size: 10912px 10912px; }
+}
+
+
+
+.layer {
+	width:      100%;
+	height:     100%;
+	min-height: 100%;
+	
+	position: absolute;
+	top:  0;
+	left: 0;
+}
+
+.fade {
+	width:      100%;
+	height:     100%;
+	min-height: 100%;
+
+	animation-name: fade2;
+	animation-iteration-count: infinite;
+	animation-play-state: play;
+	animation-duration: 5s;
+	animation-direction: alternate;
+}
+
+@keyframes fade2 {
+	from { opacity: 0.0 }
+	 1%  { opacity: 0.1 }
+	50%  { opacity: 0.5 }
+	99%  { opacity: 0.9 }
+	to   { opacity: 1.0 }
+}
+
+.yantra {
+	background-image: url("https://s10.postimg.org/umloozyy1/Kali_Yantra.jpg");
+	background-size: 100% 100%;
+	background-position: center center;
+	background-repeat: repeat;
+	
+	width:      100%;
+	height:     100%;
 }
