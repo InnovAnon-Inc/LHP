@@ -15,9 +15,40 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 	<link rel="stylesheet" href="index.css" type="text/css">
+	<link rel="stylesheet" href="new_index.css" type="text/css">
 </head>
 
 <body>
+	<div class="container2">
+		<!--
+		<div class="layer">
+			<div style="width: 100%; height: 100%; opacity: 0.1;">
+				<div class="scale">
+					<div class="rotate">
+						<div class="shiva2"></div>
+					</div>
+			   </div>
+		   </div>
+		</div>
+		-->
+		
+		<div class="layer" style="overflow: hidden">
+			<div class="shrink-y">
+			<div class="yantra" style="background-size: auto 100%; opacity: 0.5"></div>
+			</div>
+		</div>
+		
+		<div class="layer" style="overflow: hidden">
+			<div class="shrink-x">
+			<div class="yantra" style="background-size: 100% auto; opacity: 0.5"></div>
+			</div>
+		</div>
+		
+		<div class="layer">
+	
+	
+	
+	
 	<div class="wrapper">
 		
 		<noscript class="hard-to-see">JavaScript enables a more featureful experience.</noscript> <!-- :( -->
@@ -38,7 +69,8 @@
 								<div class="rotate">
 									<!-- link to production site -->
 									<!-- TODO skip this link when switching links -->
-									<a href="https://innovanon-inc.github.io/LHP/"><img
+									<a id="go-button"
+									   href="https://innovanon-inc.github.io/LHP/"><img
 									   src="https://s10.postimg.org/a00nejwq1/PKRRF.jpg"
 									   alt="Shiva Tandava"
 									   style="width: 100%; height: 100%"></a>
@@ -58,7 +90,7 @@
 					</a>,
 					<a id="inc-link" target="_blank"
 					   href="https://spofga.org/ten_commandments/2006/feb/church_info.php"><abbr title="(Ministries)">Inc.</abbr></a>
-					<a id="pdl-link" target="_blank" href="LICENSE">Proprietary</a>
+					<a id="pdl-link" target="_blank" href="license.html">Proprietary</a>
 					</h1>
 					<h2 class="hard-to-see"><abbr title="Landing/Home Page">LHP</abbr></h2>
 				</div>				
@@ -130,6 +162,14 @@
 		<!-- - Mantra -->
 		<!-- - Footer -->
 		
+		
+		
+		
+		
+		
+		
+		
+		
 			
 		
 		
@@ -171,9 +211,9 @@
 			</section>
 			
 			<section class="main">
-				<iframe id="main-section">Main Section</iframe>
-				<!-- TODO drop down menu with all IDs,
-				     specifying which element to replace with the desired content -->
+				<div class="resize-div" style="width: 100px; height: 100px">
+					<iframe class="resize-iframe" id="main-section">Main Section</iframe>
+				</div>
 			</section>
 			
 			<aside style="float: right">
@@ -329,6 +369,11 @@
 					function show (url) {
 						var mainSection = document.getElementById ('main-section');
 						mainSection.src = url;
+						
+						var goButton = document.getElementById ('go-button');
+						goButton.target = "_blank";
+						goButton.href   = url;
+						
 						return false;
 					}
 					
@@ -357,13 +402,19 @@
 						}
 					}
 					try {
-					//switchLink ('about-link');
-					//switchLink ('inc-link');
-					//switchLink ('pdl-link');
+					switchLink ('about-link');
+					switchLink ('inc-link');
+					switchLink ('pdl-link');
 					
 					//switchAllLinks ();
 					} catch (e) { alert (e); }
 				</script>
+				
+				
+				
+				
+		</div>		
+	</div>
 </body>
 <!-- Aum
      Kreem Kreem Kreem Hoom Hoom Hreem Hreem Daksine Kalike
