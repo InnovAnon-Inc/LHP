@@ -84,15 +84,15 @@
 				<!-- TODO remove link IDs? -->
 				<div style="display: inline-block">
 					<h1 class="hard-to-see">
-					<a id="about-link" target="_blank"
-					   href="about.html">
+					<a id="innovanon-link" target="_blank"
+					   href="innovations_anonymous.html">
 					<abbr title="Innovations Anonymous">InnovAnon</abbr>
 					</a>,
 					<a id="inc-link" target="_blank"
 					   href="https://spofga.org/ten_commandments/2006/feb/church_info.php"><abbr title="(Ministries)">Inc.</abbr></a>
 					<a id="pdl-link" target="_blank" href="license.html">Proprietary</a>
 					</h1>
-					<h2 class="hard-to-see"><abbr title="Landing/Home Page">LHP</abbr></h2>
+					<h2 class="hard-to-see"><a id="lhp-link" href="https://innovanon-inc.github.io/LHP/"><abbr title="Landing/Home Page">LHP</abbr></a></h2>
 				</div>				
 			</header>
 			
@@ -402,9 +402,10 @@
 						}
 					}
 					try {
-					switchLink ('about-link');
+					switchLink ('innovanon-link');
 					switchLink ('inc-link');
 					switchLink ('pdl-link');
+					switchLink ('lhp-link');
 					
 					//switchAllLinks ();
 					} catch (e) { alert (e); }
