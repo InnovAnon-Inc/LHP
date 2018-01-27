@@ -116,12 +116,13 @@
 			<!--<nav class="row">
 				<details class="column4">-->
 				<details class="column4">
-					<summary><h3 class="hard-to-see"><a target="_blank" href="about">I'm New</a></h3></summary>
+					<summary><h3 class="hard-to-see"><a id="new-link" target="_blank" href="basics/index.html">I'm New</a></h3></summary>
 					<ul class="hard-to-see dropdown-content">
-					<li><a target="_blank" href="kali.html">Who is Kali?</a></li>
-					<li><a target="_blank" href="about.html">Who is InnovAnon?</a></li>
-					<li><a target="_blank" href="HoA/index.html">Who is the HoA?</a></li>
-					<li><a target="_blank" href="order.html">Who is<abbr title="(redacted)"> </abbr>?</a></li>
+					<li><a id="kali-link" target="_blank" href="kali.html">Who is Kali?</a></li>
+					<li><a id="about-link" target="_blank" href="about.html"><abbr title="Innovations Anonymous">InnovAnon</abbr></a></li>
+					<li><a id="about2-link" target="_blank" href="innovanon_inc.html"><abbr title="Innovations Anonymous">InnovAnon</abbr>, <abbr title="(Ministries)">Inc.</abbr></a></li>
+					<li><a target="_blank" href="https://www.facebook.com/groups/336050180115743/"><abbr title="House of Asgrithia">HoA</abbr></a></li>
+					<li><a target="_blank" href="https://www.facebook.com/groups/1794476480792405/"><abbr title="(redacted)">Order</abbr></a></li>
 					</ul>
 				</details>
 				<details class="column4">
@@ -406,6 +407,10 @@
 					switchLink ('inc-link');
 					switchLink ('pdl-link');
 					switchLink ('lhp-link');
+					switchLink ('new-link');
+					switchLink ('kali-link');
+					switchLink ('about-link');
+					switchLink ('about2-link');
 					
 					//switchAllLinks ();
 					} catch (e) { alert (e); }
