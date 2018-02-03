@@ -304,7 +304,36 @@ try {
 	}
 	*/
 	
-	//var progressions = new Array (scale.length);
+	/*
+	var chords = new Array (scale.length);
+	var c;
+	for (c = 0; c < chords.length; c++) {
+		chords[c] = [
+			applyChord (majorChord     (root + roots[0]), bf);
+			applyChord (minorChord     (root + roots[1]), bf);
+			applyChord (minor7Chord    (root + roots[2]), bf);
+			applyChord (majorChord     (root + roots[3]), bf);
+			applyChord (dominant7Chord (root + roots[4]), bf);
+			applyChord (minorChord     (root + roots[5]), bf);
+		];
+	}
+	*/
+	
+	
+	
+	var progressions = new Array (scale.length);
+	for (p = root = 0; p < scale.length; p++) {
+		var chordI    = applyChord (majorChord     (root + roots[0]), bf);
+		var chordii   = applyChord (minorChord     (root + roots[1]), bf);
+		var chordiii7 = applyChord (minor7Chord    (root + roots[2]), bf);
+		var chordIV   = applyChord (majorChord     (root + roots[3]), bf);
+		var chordV7   = applyChord (dominant7Chord (root + roots[4]), bf);
+		var chordvi   = applyChord (minorChord     (root + roots[5]), bf);
+		var progression = [chordii, chordI, chordV7, chordvi, chordiii7, chordIV, chordI, chordii, chordV7, chordI, chordIV, chordiii7, chordvi];
+		progressions[p] = progression;
+		root += 5;
+	}
+		
 	var lp = [
 		new Array (scale.length),
 		new Array (scale.length),
@@ -316,6 +345,26 @@ try {
 		//new Array (scale.length),
 		//new Array (scale.length)
 	];
+	
+	function transformChords (progression, r) {
+		var ret = new Array (progression.length);
+		var c;
+		for (c = 0; c < progression.length; c++) {
+			ret[c] = progression[c];
+			ret[c] = ret[c].slice ();
+			ret[c] = ret[c].rotate (-r);
+		}
+		return ret;
+	}
+	
+	var i;
+	for (i = 0; i < lp.length; i++) {
+		for (p = 0; p < lp[i].length; p++) {
+			lp[i][p] = transformChords (progressions[p], i);
+		}
+	}
+	
+	/*
 	var p, root;
 	for (p = root = 0; p < scale.length; p++) {
 		var chordI    = applyChord (majorChord     (root + roots[0]), bf);
@@ -325,6 +374,13 @@ try {
 		var chordV7   = applyChord (dominant7Chord (root + roots[4]), bf);
 		var chordvi   = applyChord (minorChord     (root + roots[5]), bf);
 		var progression = [chordii, chordI, chordV7, chordvi, chordiii7, chordIV, chordI, chordii, chordV7, chordI, chordIV, chordiii7, chordvi];
+		
+		var progression = [chordii, chordI, chordV7, chordvi, chordiii7, chordIV, chordI, chordii, chordV7, chordI, chordIV, chordiii7, chordvi];
+		lp[0][p] = progression;
+		
+		
+		
+		var ccc = progression
 		//progressions[p] = progression;
 		lp[0][p] = progression.slice (); progression.rotate (-1);
 		lp[1][p] = progression.slice (); progression.rotate (-1);
@@ -337,7 +393,7 @@ try {
 		//lp[8][p] = progression;//.slice (); progression.rotate (-1);
 		root += 5;
 	}
-	
+	*/
 	var total, p, c;
 	p = 0;
 	//var root = 0;
