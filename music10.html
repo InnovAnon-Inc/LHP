@@ -210,12 +210,14 @@ try {
 	
 	var roots = [0, 2, 4, 5, 7, 9];
 	
+	/*
 	var chordI    = applyChord (majorChord (0), bf);
 	var chordii   = applyChord (minorChord (2), bf);
 	var chordiii7 = applyChord (minor7Chord (4), bf);
 	var chordIV   = applyChord (majorChord (5), bf);
 	var chordV7   = applyChord (dominant7Chord (7), bf);
 	var chordvi   = applyChord (minorChord (9), bf);
+	*/
 	
 	/*
 	var chordI    = [bf * scale[0], bf * scale[ 4], bf * scale[ 7]]; // C
@@ -225,7 +227,7 @@ try {
 	var chordV7   = [bf * scale[7], bf * scale[11], bf * scale[ 2], bf * scale[5]]; // G7
 	var chordvi   = [bf * scale[9], bf * scale[ 0], bf * scale[ 4]]; // Am
 	*/
-	var progression = [chordii, chordI, chordV7, chordvi, chordiii7, chordIV, chordI, chordii, chordV7, chordI, chordIV, chordiii7, chordvi];
+	//var progression = [chordii, chordI, chordV7, chordvi, chordiii7, chordIV, chordI, chordii, chordV7, chordI, chordIV, chordiii7, chordvi];
 	/*
 	chordI    = [bf * scale[ 7], bf * scale[11], bf * scale[ 2]]; // G
 	chordii   = [bf * scale[ 9], bf * scale[ 0], bf * scale[ 4]]; // Am
@@ -261,10 +263,10 @@ try {
 		}
 	}
 	*/
-	var total;
-	var root = 0;
-	var m    = 1;
-	for (total = 1; total <= 59 * 60; total++) {
+	
+	var progressions = new Array (scale.length);
+	var p, root;
+	for (p = root = 0; p < scale.length; p++) {
 		var chordI    = applyChord (majorChord     (root + roots[0]), bf);
 		var chordii   = applyChord (minorChord     (root + roots[1]), bf);
 		var chordiii7 = applyChord (minor7Chord    (root + roots[2]), bf);
@@ -272,6 +274,24 @@ try {
 		var chordV7   = applyChord (dominant7Chord (root + roots[4]), bf);
 		var chordvi   = applyChord (minorChord     (root + roots[5]), bf);
 		var progression = [chordii, chordI, chordV7, chordvi, chordiii7, chordIV, chordI, chordii, chordV7, chordI, chordIV, chordiii7, chordvi];
+		progressions[p] = progression;
+		root += 5;
+	}
+	
+	var total;
+	//var root = 0;
+	var m = 1;
+	for (total = 1; total <= (5 * 3 * 2 - 1) * progressions.length; total++) {
+		/*
+		var chordI    = applyChord (majorChord     (root + roots[0]), bf);
+		var chordii   = applyChord (minorChord     (root + roots[1]), bf);
+		var chordiii7 = applyChord (minor7Chord    (root + roots[2]), bf);
+		var chordIV   = applyChord (majorChord     (root + roots[3]), bf);
+		var chordV7   = applyChord (dominant7Chord (root + roots[4]), bf);
+		var chordvi   = applyChord (minorChord     (root + roots[5]), bf);
+		var progression = [chordii, chordI, chordV7, chordvi, chordiii7, chordIV, chordI, chordii, chordV7, chordI, chordIV, chordiii7, chordvi];
+		*/
+		progression = progressions[total % progressions.length];
 		var c;
 		for (c = 0; c < progression.length; c++) {
 			if (m % 5 != 0)
@@ -286,8 +306,8 @@ try {
 			if (m == 5 * 3 * 2) m = 1;
 		}
 		
-		root += 5;
-		if (root >= scale.length) root -= scale.length;
+		//root += 5;
+		//if (root >= scale.length) root -= scale.length;
 	}
 /*	
 	var m, c, r;
