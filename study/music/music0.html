@@ -253,7 +253,8 @@ try {
 	//var line3 = new Line (5, 5 * measures - 1, 0, chordI);
 	//var line4 = new Line (7, 7 * measures / 2 + 1, 0, chordI);
 	//var line4 = new Line (4, 4 * measures / 2 + 1, 0, chordI);
-	var line4 = new Line (4, 4 * measures /*- 1*/, 0, chordI);
+	//var line4 = new Line (4, 4 * measures /*- 1*/, 0, chordI);
+	var line4 = new Line (3, 3 * measures /*- 1*/, 0, chordI);
 	//var line4 = new Line (2, 2 * measures / 2 + 0, 0, chordI);
 	//var line4 = new Line (5, 5 * measures / 2 - 1, 0, chordI);
 	//var line4 = new Line (3, 3 * measures / 2 - 1, 0, chordI);
@@ -335,6 +336,7 @@ try {
 	}
 	
 	var total, p, c;
+	p = 0;
 	//var root = 0;
 	var m = 1;
 	var M = 7 * 5 * 3 * 2;
@@ -343,7 +345,7 @@ try {
 	var mLm = measureLength * measures;
 	//for (total = 1; total <= /*(5 * 3 * 2 - 1 -28) **/ progressions.length; total++) {
 	//for (total = 1; total <= /*(5 * 3 * 2 - 1 -28) **/ scale.length; total++) {
-	for (total = 0; total <= /*(5 * 3 * 2 - 1 -28) **/ scale.length * 2; total++) {
+	for (total =  0; total <= /*(5 * 3 * 2 - 1 -28) **/ scale.length * 2; total++) {
 	//total = 0;
 	//while (true) {
 		/*
@@ -357,7 +359,7 @@ try {
 		*/
 		//progression = progressions[total % progressions.length];
 		//var p = total % scale.length;
-		p = mod (scale.length, total);
+		//p = mod (scale.length, total);
 		//var p = total;
 		//for (c = 0; c < progression.length; c++) {
 		for (c = 0; c < lp[0][p].length; c++) {
@@ -395,6 +397,9 @@ try {
 		
 		//total++;
 		//if (total == scale.length) total = 0;
+		
+		p++;
+		if (p == scale.length) p = 0;
 	}
 /*	
 	var m, c, r;
