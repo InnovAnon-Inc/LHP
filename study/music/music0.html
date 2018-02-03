@@ -344,13 +344,13 @@ try {
 		var c;
 		//for (c = 0; c < progression.length; c++) {
 		for (c = 0; c < lp[0][p].length; c++) {
-			if (m % 13 != 0)
+			if (m %  7 != 0)
 				//line1.play (now, progression[c].slice ().rotate (0));
 				line1.play (now, lp[0][p][c]);
 			if (m % 11 != 0)
 				//line2.play (now, progression[c].slice ().rotate (-1));
 				line2.play (now, lp[1][p][c]);
-			if (m %  7 != 0)
+			if (m % 13 != 0)
 				//line3.play (now, progression[c].slice ().rotate (-2));
 				line3.play (now, lp[2][p][c]);
 			if (m %  5 != 0)
