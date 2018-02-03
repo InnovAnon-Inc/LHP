@@ -309,7 +309,7 @@ try {
 		var p = total % scale.length;
 		var c;
 		//for (c = 0; c < progression.length; c++) {
-		for (c = 0; c < scale.length; c++) {
+		for (c = 0; c < lp[0][p].length; c++) {
 			if (m % 2 != 0)
 				//line1.play (now, progression[c].slice ().rotate (0));
 				line1.play (now, lp[0][p][c]);
