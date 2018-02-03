@@ -243,6 +243,7 @@ try {
 	now++;
 
 	var root;
+	/*
 	for (root = 0; root < 60; root += 5) {
 		var chordI    = applyChord (majorChord     (root + roots[0]), bf);
 		var chordii   = applyChord (minorChord     (root + roots[1]), bf);
@@ -258,6 +259,35 @@ try {
 			line3.play (now, progression[c]);
 			now += measureLength * measures;
 		}
+	}
+	*/
+	var total;
+	var root = 0;
+	var m    = 1;
+	for (total = 1; total <= 59 * 60; total++) {
+		var chordI    = applyChord (majorChord     (root + roots[0]), bf);
+		var chordii   = applyChord (minorChord     (root + roots[1]), bf);
+		var chordiii7 = applyChord (minor7Chord    (root + roots[2]), bf);
+		var chordIV   = applyChord (majorChord     (root + roots[3]), bf);
+		var chordV7   = applyChord (dominant7Chord (root + roots[4]), bf);
+		var chordvi   = applyChord (minorChord     (root + roots[5]), bf);
+		var progression = [chordii, chordI, chordV7, chordvi, chordiii7, chordIV, chordI, chordii, chordV7, chordI, chordIV, chordiii7, chordvi];
+		var c;
+		for (c = 0; c < progression.length; c++) {
+			if (m % 5 != 0)
+				line1.play (now, progression[c]);
+			if (m % 3 != 0)
+				line2.play (now, progression[c]);
+			if (m % 2 != 0)
+				line3.play (now, progression[c]);
+			now += measureLength * measures;
+		}
+		
+		root += 5;
+		if (root >= scale.length) root -= scale.length;
+		
+		m++;
+		if (m == 5 * 3 * 2) m = 1;
 	}
 /*	
 	var m, c, r;
