@@ -331,7 +331,7 @@ try {
 		root += 5;
 	}
 	
-	var total;
+	var total, p, c;
 	//var root = 0;
 	var m = 1;
 	//var M = 7 * 5 * 3 * 2;
@@ -339,7 +339,10 @@ try {
 	var M = 23 * 19 * 17 * 13 * 11 * 7 * 5 * 3 * 2;
 	var mLm = measureLength * measures;
 	//for (total = 1; total <= /*(5 * 3 * 2 - 1 -28) **/ progressions.length; total++) {
-	for (total = 1; total <= /*(5 * 3 * 2 - 1 -28) **/ scale.length; total++) {
+	//for (total = 1; total <= /*(5 * 3 * 2 - 1 -28) **/ scale.length; total++) {
+	for (total = 0; total < /*(5 * 3 * 2 - 1 -28) **/ scale.length; total++) {
+	//total = 0;
+	//while (true) {
 		/*
 		var chordI    = applyChord (majorChord     (root + roots[0]), bf);
 		var chordii   = applyChord (minorChord     (root + roots[1]), bf);
@@ -350,8 +353,9 @@ try {
 		var progression = [chordii, chordI, chordV7, chordvi, chordiii7, chordIV, chordI, chordii, chordV7, chordI, chordIV, chordiii7, chordvi];
 		*/
 		//progression = progressions[total % progressions.length];
-		var p = total % scale.length;
-		var c;
+		//var p = total % scale.length;
+		p = mod (scale.length, total);
+		//var p = total;
 		//for (c = 0; c < progression.length; c++) {
 		for (c = 0; c < lp[0][p].length; c++) {
 			if (m % 23 != 0)
@@ -381,6 +385,9 @@ try {
 		
 		//root += 5;
 		//if (root >= scale.length) root -= scale.length;
+		
+		//total++;
+		//if (total == scale.length) total = 0;
 	}
 /*	
 	var m, c, r;
