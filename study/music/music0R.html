@@ -38,7 +38,8 @@ function compareArrays (a, b) {
 
 <script>
 var measureLength = 2; // seconds
-var measures = 1;
+//var measures = 1;
+var measures = 2;
 
 var context = new AudioContext();
 
@@ -237,10 +238,11 @@ try {
 	chordvi   = [bf * scale[ 4], bf * scale[ 7], bf * scale[11]]; // Em
 	var progression2 = [chordii, chordI, chordV7, chordvi, chordiii7, chordIV, chordI, chordii, chordV7, chordI, chordIV, chordiii7, chordvi];
 	*/
-	var line1 = new Line (2, 2 * measures, 0, chordI);
-	var line2 = new Line (3, 3 * measures, 0, chordI);
-	var line3 = new Line (5, 5 * measures, 0, chordI);
-	var line4 = new Line (2, 2 * measures, 0, chordI);
+	var line1 = new Line (2, 2 * measures / 2 + 1, 0, chordI);
+	var line2 = new Line (3, 3 * measures / 2 + 1, 0, chordI);
+	var line3 = new Line (5, 5 * measures / 2 + 1, 0, chordI);
+	//var line4 = new Line (7, 7 * measures / 2 + 1, 0, chordI);
+	var line4 = new Line (2, 2 * measures / 2 + 0, 0, chordI);
 	
 	var now = context.currentTime;
 	now += 10;
