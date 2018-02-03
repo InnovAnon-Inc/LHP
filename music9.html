@@ -42,9 +42,10 @@ var measures = 4;
 
 var context = new AudioContext();
 
-function Kick(context, freq, duration) {
+function Kick(context, freqs, duration) {
 	this.context = context;
-	this.freq = freq;
+	this.freqs = freqs;
+	this.i = 0;
 	this.duration = duration;
 }
 
@@ -55,10 +56,19 @@ Kick.prototype.setup = function() {
 	this.gain.connect(this.context.destination);
 };
 
+Kick.prototype.getFreq = function () {
+	var ret = this.i;
+	this.i++;
+	if (this.i == this.freqs.length)
+		this.i = 0;
+	return this.freqs[ret];
+}
+
 Kick.prototype.trigger = function(time) {
 	this.setup();
 
-	this.osc.frequency.setValueAtTime(this.freq, time);
+	var freq = this.getFreq ();
+	this.osc.frequency.setValueAtTime(freq, time);
 	this.gain.gain.setValueAtTime(1, time);
 
 	//this.osc.frequency.exponentialRampToValueAtTime(0.01, time + this.duration);
@@ -110,10 +120,10 @@ Kick.prototype.trigger = function(time) {
 	}
 	
 	
-	function Line (divisions, nnotes, mode, freq) {
+	function Line (divisions, nnotes, mode, freqs) {
 		this.duration = measureLength / divisions;
 		this.pattern = new Pattern (divisions * measures, nnotes, mode);
-		this.kick = new Kick (context, freq, this.duration);
+		this.kick = new Kick (context, freqs, this.duration);
 	}	
 	Line.prototype.play = function (time) {
 		var i;
@@ -126,13 +136,30 @@ Kick.prototype.trigger = function(time) {
 	};
 
 
+
+Array.prototype.rotate = (function() {
+    var unshift = Array.prototype.unshift,
+        splice = Array.prototype.splice;
+
+    return function(count) {
+        var len = this.length >>> 0,
+            count = count >> 0;
+
+        unshift.apply(this, splice.call(this, count % len, len));
+        return this;
+    };
+})();
+
+
+
 try {
-	//var bf = 432;
 	var bf = 432;
-	//var line1 = new Line (4, 13, 2, bf * 1 / 1);
-	var line1 = new Line (5, 13, 2, bf * 1 / 1);
-	var line2 = new Line (3,  7, 5, bf * 3 / 2);
-	var line3 = new Line (2,  5, 0, bf * 5 / 4);
+	var chord = [bf * 1/1, bf * 5/4, bf * 3/2];
+	var line1 = new Line (5, 13, 2, chord.slice ());
+	chord.rotate ();
+	var line2 = new Line (3,  7, 5, chord.slice ());
+	chord.rotate ();
+	var line3 = new Line (2,  5, 0, chord.slice ());
 	
 	var now = context.currentTime;
 	now++;
