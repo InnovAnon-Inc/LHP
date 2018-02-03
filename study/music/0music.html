@@ -1,0 +1,409 @@
+
+
+<script>
+function euclideanRhythm (onNotes, totalNotes) {
+
+  var groups = [];
+  for (var i = 0; i < totalNotes; i++) groups.push([Number(i < onNotes)]);
+
+  var l;
+  while (l = groups.length - 1) {
+    var start = 0, first = groups[0];
+    while (start < l && compareArrays(first, groups[start])) start++;
+    if (start === l) break;
+
+    var end = l, last = groups[l];
+    while (end > 0 && compareArrays(last, groups[end])) end--;
+    if (end === 0) break;
+
+    var count = Math.min(start, l - end);
+    groups = groups
+      .slice(0, count)
+      .map(function (group, i) { return group.concat(groups[l - i]); })
+      .concat(groups.slice(count, -count));
+  }
+  return [].concat.apply([], groups);
+
+};
+
+function compareArrays (a, b) {
+  // TODO: optimize
+  return JSON.stringify(a) === JSON.stringify(b);
+};
+
+
+
+</script>
+
+
+<script>
+var measureLength = 2; // seconds
+var measures = 1;
+
+var context = new AudioContext();
+
+function Kick(context, freqs, duration) {
+	this.context = context;
+	this.freqs = freqs;
+	this.i = 0;
+	this.duration = duration;
+}
+
+Kick.prototype.setup = function() {
+	this.osc = this.context.createOscillator();
+	this.gain = this.context.createGain();
+	this.osc.connect(this.gain);
+	this.gain.connect(this.context.destination);
+};
+
+Kick.prototype.getFreq = function () {
+	var ret = this.i;
+	this.i++;
+	if (this.i == this.freqs.length)
+		this.i = 0;
+	return this.freqs[ret];
+}
+
+Kick.prototype.trigger = function(time) {
+	this.setup();
+
+	var freq = this.getFreq ();
+	this.osc.frequency.setValueAtTime(freq, time);
+	this.gain.gain.setValueAtTime(1, time);
+
+	//this.osc.frequency.exponentialRampToValueAtTime(0.01, time + this.duration);
+	this.gain.gain.exponentialRampToValueAtTime(0.01, time + this.duration);
+
+	this.osc.start(time);
+
+	this.osc.stop(time + this.duration);
+};
+
+
+
+	// TODO this algorithm seems borked
+	function euclid (nbeat, nnote) {
+		if (nnote < 0) { nnote = 0; }
+		if (nbeat < 0) { nbeat = 0; }
+		if (nnote > nbeat) {
+			var tmp = nnote;
+			nnote   = nbeat;
+			nbeat   = tmp;
+		}
+		if (nbeat == 0) { return []; }
+		var rests = nbeat - nnote;
+		var result = new Array (nnote);
+		var i;
+		for (i = 0; i < nnote; i+=1){
+			result[i] = 1;
+		}
+		var pivot = 1;
+		var interval = 2;
+		while (rests > 0) {
+			if (pivot > result.length) {
+				pivot = 1;
+				interval +=1;
+			}
+			result.splice (pivot, 0, 0);
+			pivot += interval;
+			rests -=1;
+		}
+		return result;
+	}
+
+
+	function Pattern (nbeat, nnote, mode) {
+		/* TODO rotate euclid by mode */
+		//this.euclid = euclid (nbeat, nnote);
+		this.euclid = euclideanRhythm (nnote, nbeat);
+		//alert (this.euclid);
+	}
+	
+	
+	function Line (divisions, nnotes, mode, freqs) {
+		this.duration = measureLength / divisions;
+		this.pattern = new Pattern (divisions * measures, nnotes, mode);
+		this.kick = new Kick (context, freqs, this.duration);
+	}	
+	Line.prototype.play = function (time, chord) {
+		this.kick.freqs = chord;
+		this.kick.i     = 0;
+		var i;
+		for (i = 0; i < this.pattern.euclid.length; i+=1) {
+			if (this.pattern.euclid[i]){
+				this.kick.trigger (time);
+			}
+			time += this.duration;
+		}
+	};
+
+
+
+Array.prototype.rotate = (function() {
+    var unshift = Array.prototype.unshift,
+        splice = Array.prototype.splice;
+
+    return function(count) {
+        var len = this.length >>> 0,
+            count = count >> 0;
+
+        unshift.apply(this, splice.call(this, count % len, len));
+        return this;
+    };
+})();
+
+
+
+try {
+	var bf = 432;
+	//              0      1    2    3    4    5    6    7    8    9    10    11
+	//              C     C#    D   D#    E    F   F#    G   G#    A    A#     B
+	var scale = [1/1, 16/15, 9/8, 6/5, 5/4, 4/3, 7/5, 3/2,	8/5, 5/3, 16/9, 15/8];
+	function mod(m, n) {
+        return ((n % m) + m) % m;
+	}
+	function majorChord (root) {
+		return [
+			scale[mod (scale.length, (root + 0))],
+			scale[mod (scale.length, (root + 8))],
+			scale[mod (scale.length, (root + 5))]
+		];
+	}
+	function major7Chord (root) {
+		return [
+			scale[mod (scale.length, (root +  0))],
+			scale[mod (scale.length, (root +  8))],
+			scale[mod (scale.length, (root +  5))],
+			scale[mod (scale.length, (root +  1))]
+		];
+	}
+	function dominant7Chord (root) {
+		return [
+			scale[mod (scale.length, (root +  0))],
+			scale[mod (scale.length, (root +  8))],
+			scale[mod (scale.length, (root +  5))],
+			scale[mod (scale.length, (root +  2))]
+		];
+	}
+	function minorChord (root) {
+		return [
+			scale[mod (scale.length, (root + 0))],
+			scale[mod (scale.length, (root + 9))],
+			scale[mod (scale.length, (root + 5))]
+		];
+	}
+	function minor7Chord (root) {
+		return [
+			scale[mod (scale.length, (root +  0))],
+			scale[mod (scale.length, (root +  9))],
+			scale[mod (scale.length, (root +  5))],
+			scale[mod (scale.length, (root +  2))]
+		];
+	}
+	function applyChord (chord, bf) {
+		var ret = new Array (chord.length);
+		var i;
+		for (i = 0; i < chord.length; i++)
+			ret[i] = bf * chord[i];
+		return ret;
+	}
+	
+	var roots = [0, 2, 4, 5, 7, 9];
+	
+	/*
+	var chordI    = applyChord (majorChord (0), bf);
+	var chordii   = applyChord (minorChord (2), bf);
+	var chordiii7 = applyChord (minor7Chord (4), bf);
+	var chordIV   = applyChord (majorChord (5), bf);
+	var chordV7   = applyChord (dominant7Chord (7), bf);
+	var chordvi   = applyChord (minorChord (9), bf);
+	*/
+	
+	/*
+	var chordI    = [bf * scale[0], bf * scale[ 4], bf * scale[ 7]]; // C
+	var chordii   = [bf * scale[2], bf * scale[ 5], bf * scale[ 9]]; // Dm
+	var chordiii7 = [bf * scale[4], bf * scale[ 7], bf * scale[11], bf * scale[2]]; // Em7
+	var chordIV   = [bf * scale[5], bf * scale[ 9], bf * scale[ 0]]; // F
+	var chordV7   = [bf * scale[7], bf * scale[11], bf * scale[ 2], bf * scale[5]]; // G7
+	var chordvi   = [bf * scale[9], bf * scale[ 0], bf * scale[ 4]]; // Am
+	*/
+	//var progression = [chordii, chordI, chordV7, chordvi, chordiii7, chordIV, chordI, chordii, chordV7, chordI, chordIV, chordiii7, chordvi];
+	/*
+	chordI    = [bf * scale[ 7], bf * scale[11], bf * scale[ 2]]; // G
+	chordii   = [bf * scale[ 9], bf * scale[ 0], bf * scale[ 4]]; // Am
+	chordiii7 = [bf * scale[11], bf * scale[ 2], bf * scale[ 6], bf * scale[9]]; // Bm7
+	chordIV   = [bf * scale[ 0], bf * scale[ 4], bf * scale[ 7]]; // C
+	chordV7   = [bf * scale[ 2], bf * scale[ 6], bf * scale[ 9], bf * scale[0]]; // D7
+	chordvi   = [bf * scale[ 4], bf * scale[ 7], bf * scale[11]]; // Em
+	var progression2 = [chordii, chordI, chordV7, chordvi, chordiii7, chordIV, chordI, chordii, chordV7, chordI, chordIV, chordiii7, chordvi];
+	*/
+	var line1 = new Line (5, 5 * measures, 0, chordI);
+	var line2 = new Line (3, 3 * measures, 0, chordI);
+	var line3 = new Line (2, 2 * measures, 0, chordI);
+	
+	var now = context.currentTime;
+	now++;
+
+	var root;
+	/*
+	for (root = 0; root < 60; root += 5) {
+		var chordI    = applyChord (majorChord     (root + roots[0]), bf);
+		var chordii   = applyChord (minorChord     (root + roots[1]), bf);
+		var chordiii7 = applyChord (minor7Chord    (root + roots[2]), bf);
+		var chordIV   = applyChord (majorChord     (root + roots[3]), bf);
+		var chordV7   = applyChord (dominant7Chord (root + roots[4]), bf);
+		var chordvi   = applyChord (minorChord     (root + roots[5]), bf);
+		var progression = [chordii, chordI, chordV7, chordvi, chordiii7, chordIV, chordI, chordii, chordV7, chordI, chordIV, chordiii7, chordvi];
+		var c;
+		for (c = 0; c < progression.length; c++) {
+			line1.play (now, progression[c]);
+			line2.play (now, progression[c]);
+			line3.play (now, progression[c]);
+			now += measureLength * measures;
+		}
+	}
+	*/
+	
+	var progressions = new Array (scale.length);
+	var p, root;
+	for (p = root = 0; p < scale.length; p++) {
+		var chordI    = applyChord (majorChord     (root + roots[0]), bf);
+		var chordii   = applyChord (minorChord     (root + roots[1]), bf);
+		var chordiii7 = applyChord (minor7Chord    (root + roots[2]), bf);
+		var chordIV   = applyChord (majorChord     (root + roots[3]), bf);
+		var chordV7   = applyChord (dominant7Chord (root + roots[4]), bf);
+		var chordvi   = applyChord (minorChord     (root + roots[5]), bf);
+		//var progression = [chordii, chordI,    chordV7, chordvi, chordiii7, chordIV, chordI, chordii, chordV7,   chordI,  chordIV, chordiii7, chordvi];
+		  var progression = [chordvi, chordiii7, chordIV, chordI,  chordV7,   chordii, chordI, chordIV, chordiii7, chordvi, chordV7, chordI,    chordii];
+		progressions[p] = progression;
+		//root += 5;
+		root += 7;
+	}
+	
+	var total;
+	//var root = 0;
+	var m = 1;
+	for (total = 1; total <= (5 * 3 * 2 - 1 -28) * progressions.length; total++) {
+		/*
+		var chordI    = applyChord (majorChord     (root + roots[0]), bf);
+		var chordii   = applyChord (minorChord     (root + roots[1]), bf);
+		var chordiii7 = applyChord (minor7Chord    (root + roots[2]), bf);
+		var chordIV   = applyChord (majorChord     (root + roots[3]), bf);
+		var chordV7   = applyChord (dominant7Chord (root + roots[4]), bf);
+		var chordvi   = applyChord (minorChord     (root + roots[5]), bf);
+		var progression = [chordii, chordI, chordV7, chordvi, chordiii7, chordIV, chordI, chordii, chordV7, chordI, chordIV, chordiii7, chordvi];
+		*/
+		progression = progressions[total % progressions.length];
+		var c;
+		for (c = 0; c < progression.length; c++) {
+			if (m % 5 != 0)
+				line1.play (now, progression[c]);
+			if (m % 3 != 0)
+				line2.play (now, progression[c]);
+			if (m % 2 != 0)
+				line3.play (now, progression[c]);
+			now += measureLength * measures;
+			
+			m++;
+			if (m == 5 * 3 * 2) m = 1;
+		}
+		
+		//root += 5;
+		//if (root >= scale.length) root -= scale.length;
+	}
+/*	
+	var m, c, r;
+
+	for (c = 0; c < progression.length; c++) {
+		line1.play (now, progression[c]);
+		line2.play (now, progression[c]);
+		line3.play (now, progression[c]);
+		now += measureLength * measures;
+	}
+	for (c = 0; c < progression2.length; c++) {
+		line1.play (now, progression2[c]);
+		line2.play (now, progression2[c]);
+		line3.play (now, progression2[c]);
+		now += measureLength * measures;
+	}
+*/
+/*	
+	for (r = 1; r <= 4; r++) {
+	for (m = c = 0; m < 5 * 3 * 2; m++) {
+		if (m % 5 != 0)
+			line1.play (now, progression[c]);
+		if (m % 3 != 0)
+			line2.play (now, progression[c]);
+		if (m % 2 != 0)
+			line3.play (now, progression[c]);
+		now += measureLength * measures;
+			
+		c++;
+		if (c == progression.length) c = 0;
+	}
+	}
+*/
+
+	/*
+	var lines = [line1, line2, line3];
+	var linescombo = [
+		[line1], [line2], [line1, line2],
+		[line1], [line3], [line1, line3],
+		[line2], [line3], [line2, line3],
+		[line1, line2], [line1, line2, line3],
+		[line1, line3], [line1, line2, line3],
+		[line2, line3], [line1, line2, line3]];
+	var linescombo = [
+		[line1, line2, line3],
+		[line1, line2], [line1, line2, line3], [line1],
+		[line1, line3], [line1, line2, line3], [line2],
+		[line2, line3], [line1, line2, line3], [line3]];
+	
+	var c, l, t;
+	for (c = l = t = 0; t < progression.length * linescombo.length; t++) {
+		var L;
+		for (L = 0; L < linescombo[l].length; L++) {
+			linescombo[l][L].play (now, progression[c]);
+		}
+		now += measureLength * measures;
+		
+		c++;
+		if (c == progression.length) c = 0;
+		l++;
+		if (l == linescombo.length) l = 0;
+	}
+	*/
+	
+	/*
+	var i, j;
+	for (j = 0; j < lines.length; j++) {
+		for (i = 0; i < progression.length; i++) {
+			lines[j].play (now, progression[i]);
+			now += measureLength * measures;
+		}
+	}
+	for (i = 0; i < progression.length; i++) {
+		line1.play (now, progression[i]);
+		line2.play (now, progression[i]);
+		now += measureLength * measures;
+	}
+	for (i = 0; i < progression.length; i++) {
+		line1.play (now, progression[i]);
+		line3.play (now, progression[i]);
+		now += measureLength * measures;
+	}
+	for (i = 0; i < progression.length; i++) {
+		line2.play (now, progression[i]);
+		line3.play (now, progression[i]);
+		now += measureLength * measures;
+	}
+	for (i = 0; i < progression.length; i++) {
+		for (j = 0; j < lines.length; j++) {
+			lines[j].play (now, progression[i]);
+		}
+		now += measureLength * measures;
+	}
+	*/
+} catch (e) { alert (e) }
+
+</script>
