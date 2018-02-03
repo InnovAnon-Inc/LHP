@@ -75,11 +75,11 @@ Kick.prototype.trigger = function(time) {
 	this.gain.gain.setValueAtTime(1/9, time);
 
 	//this.osc.frequency.exponentialRampToValueAtTime(0.01, time + this.duration);
-	this.gain.gain.exponentialRampToValueAtTime(0.01, time + this.duration);
+	this.gain.gain.exponentialRampToValueAtTime(0.01, time + this.duration/2);
 
 	this.osc.start(time);
 
-	this.osc.stop(time + this.duration);
+	this.osc.stop(time + this.duration/2);
 };
 
 
