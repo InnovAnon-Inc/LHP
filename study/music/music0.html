@@ -286,9 +286,12 @@ try {
 		new Line (2, Math.floor (2 * measures - 0), 0, chordI),
 		new Line (3, Math.floor (3 * measures - 0), 0, chordI),
 		new Line (5, Math.floor (5 * measures - 0), 0, chordI),
-		new Line (2, Math.floor (2 * measures / 1), 0, chordI),
-		new Line (3, Math.floor (3 * measures / 1), 0, chordI),
-		new Line (5, Math.floor (5 * measures / 1), 0, chordI),
+		new Line (2, Math.floor (2 * measures - 1), 1, chordI),
+		new Line (3, Math.floor (3 * measures - 2), 2, chordI),
+		new Line (5, Math.floor (5 * measures - 3), 3, chordI),
+		//new Line (2, Math.floor (2 * measures / 1), 0, chordI),
+		//new Line (3, Math.floor (3 * measures / 1), 0, chordI),
+		//new Line (5, Math.floor (5 * measures / 1), 0, chordI),
 	];
 	
 	var now = context.currentTime;
