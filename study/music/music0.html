@@ -252,8 +252,8 @@ try {
 	var line3 = new Line (5, 5 * measures /*- 1*/, 0, chordI);
 	//var line3 = new Line (5, 5 * measures - 1, 0, chordI);
 	//var line4 = new Line (7, 7 * measures / 2 + 1, 0, chordI);
-	//var line4 = new Line (4, 4 * measures / 2 + 1, 0, chordI);
-	var line4 = new Line (4, 4 * measures /*- 1*/, 0, chordI);
+	var line4 = new Line (4, 4 * measures / 2 + 1, 0, chordI);
+	//var line4 = new Line (4, 4 * measures /*- 1*/, 0, chordI);
 	//var line4 = new Line (3, 3 * measures /*- 1*/, 0, chordI);
 	//var line4 = new Line (2, 2 * measures / 2 + 0, 0, chordI);
 	//var line4 = new Line (5, 5 * measures / 2 - 1, 0, chordI);
@@ -262,6 +262,7 @@ try {
 	//var tmp = 2 * measures / 2 - 1;
 	//if (tmp < 1) tmp = 1;
 	//var line4 = new Line (2, tmp, 0, chordI);
+	var line5 = new Line (4, 4 * measures / 2 - 1, 0, chordI);
 	//var line5 = new Line (3, 3 * measures / 2 + 0, 0, chordI);
 	//var line5 = new Line (6, 6 * measures / 2 + 1, 0, chordI);
 	//var line5 = new Line (5, 5 * measures / 2 + 1, 0, chordI);
@@ -307,7 +308,7 @@ try {
 		new Array (scale.length),
 		new Array (scale.length),
 		new Array (scale.length),
-		//new Array (scale.length),
+		new Array (scale.length),
 		//new Array (scale.length),
 		//new Array (scale.length),
 		//new Array (scale.length),
@@ -327,7 +328,7 @@ try {
 		lp[1][p] = progression.slice (); progression.rotate (-1);
 		lp[2][p] = progression.slice (); progression.rotate (-1);
 		lp[3][p] = progression.slice (); progression.rotate (-1);
-		//lp[4][p] = progression.slice (); progression.rotate (-1);
+		lp[4][p] = progression.slice (); progression.rotate (-1);
 		//lp[5][p] = progression.slice (); progression.rotate (-1);
 		//lp[6][p] = progression.slice (); progression.rotate (-1);
 		//lp[7][p] = progression.slice (); progression.rotate (-1);
@@ -339,8 +340,8 @@ try {
 	p = 0;
 	//var root = 0;
 	var m = 1;
-	var M = 7 * 5 * 3 * 2;
-	//var M = 11 * 7 * 5 * 3 * 2;
+	//var M = 7 * 5 * 3 * 2;
+	var M = 11 * 7 * 5 * 3 * 2;
 	//var M = 23 * 19 * 17 * 13 * 11 * 7 * 5 * 3 * 2;
 	var mLm = measureLength * measures;
 	//for (total = 1; total <= /*(5 * 3 * 2 - 1 -28) **/ progressions.length; total++) {
@@ -364,23 +365,24 @@ try {
 		//for (c = 0; c < progression.length; c++) {
 		for (c = 0; c < lp[0][p].length; c++) {
 			//if (m % 23 != 0)
-			if (m % 7 != 0)
+			if (m % 11 != 0)
 				//line1.play (now, progression[c].slice ().rotate (0));
 				line1.play (now, lp[0][p][c]);
 			//if (m % 19 != 0)
-			if (m % 5 != 0)
+			if (m % 7 != 0)
 				//line2.play (now, progression[c].slice ().rotate (-1));
 				line2.play (now, lp[1][p][c]);
 			//if (m % 17 != 0)
-			if (m % 3 != 0)
+			if (m % 5 != 0)
 				//line3.play (now, progression[c].slice ().rotate (-2));
 				line3.play (now, lp[2][p][c]);
 			//if (m % 13 != 0)
-			if (m % 2 != 0)
+			if (m % 3 != 0)
 				//line4.play (now, progression[c].slice ().rotate (-3));
 				line4.play (now, lp[3][p][c]);
 			//if (m % 11 != 0)
-			//	line5.play (now, lp[4][p][c]);
+			if (m % 2 != 0)
+				line5.play (now, lp[4][p][c]);
 			//if (m %  7 != 0)
 			//	line6.play (now, lp[5][p][c]);
 			//if (m %  5 != 0) line7.play (now, lp[6][p][c]);
