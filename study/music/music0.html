@@ -295,11 +295,11 @@ try {
 		var c;
 		for (c = 0; c < progression.length; c++) {
 			if (m % 5 != 0)
-				line1.play (now, progression[c]);
+				line1.play (now, progression[c].slice ().rotate (-2));
 			if (m % 3 != 0)
-				line2.play (now, progression[c]);
+				line2.play (now, progression[c].slice ().rotate (-1));
 			if (m % 2 != 0)
-				line3.play (now, progression[c]);
+				line3.play (now, progression[c].slice ().rotate (0));
 			now += measureLength * measures;
 			
 			m++;
