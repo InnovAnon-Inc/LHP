@@ -39,8 +39,8 @@ function compareArrays (a, b) {
 <script>
 var measureLength = 2; // seconds
 //var measureLength = 3; // seconds
-var measures = 1;
-//var measures = 2;
+//var measures = 1;
+var measures = 2;
 
 var context = new AudioContext();
 
@@ -289,12 +289,11 @@ try {
 		new Line (2, 2 * measures / 2, 1, chordI),
 		new Line (3, 3 * measures / 2, 1, chordI),
 		new Line (5, 5 * measures / 2, 1, chordI),
-		
-		new Line (4, 4 * measures / 4, 3, chordI)
 	];
 	
 	var now = context.currentTime;
-	now += 10;
+	//now += 10;
+	now++;
 
 	var root;
 	/*
