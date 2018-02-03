@@ -156,10 +156,8 @@ try {
 	var bf = 432;
 	var chord = [bf * 1/1, bf * 5/4, bf * 3/2];
 	var line1 = new Line (5, 13, 2, chord.slice ());
-	chord.rotate ();
-	var line2 = new Line (3,  7, 5, chord.slice ());
-	chord.rotate ();
-	var line3 = new Line (2,  5, 0, chord.slice ());
+	var line2 = new Line (3,  7, 5, chord.rotate (-1).slice ());
+	var line3 = new Line (2,  5, 0, chord.rotate (-1).slice ());
 	
 	var now = context.currentTime;
 	now++;
