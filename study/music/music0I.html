@@ -338,13 +338,29 @@ try {
 	}
 	*/
 	
+	function product(input){
+ if (toString.call(input) !== "[object Array]")
+    return false;
+  
+         var total   =   1;
+  
+       for(var i=0;i<input.length;i++){
+               if(isNaN(input[i])){
+                 continue;
+               }
+                total   *=  Number(input[i]);
+            }
+          return total;
+        }
+	
 	var total, p, c;
 	p = 0;
 	var primes = [2, 3, 5, 7, 11, 13, 17, 19, 23];
 	//var root = 0;
 	var m = 1;
 	//var M = 7 * 5 * 3 * 2;
-	var M = 11 * 7 * 5 * 3 * 2;
+	//var M = 11 * 7 * 5 * 3 * 2;
+	var M = product (primes.slice (0, lines.length));
 	//var M = 23 * 19 * 17 * 13 * 11 * 7 * 5 * 3 * 2;
 	var mLm = measureLength * measures;
 	//for (total = 1; total <= /*(5 * 3 * 2 - 1 -28) **/ progressions.length; total++) {
