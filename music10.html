@@ -281,13 +281,13 @@ try {
 			if (m % 2 != 0)
 				line3.play (now, progression[c]);
 			now += measureLength * measures;
+			
+			m++;
+			if (m == 5 * 3 * 2) m = 1;
 		}
 		
 		root += 5;
 		if (root >= scale.length) root -= scale.length;
-		
-		m++;
-		if (m == 5 * 3 * 2) m = 1;
 	}
 /*	
 	var m, c, r;
