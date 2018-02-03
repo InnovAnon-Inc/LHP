@@ -369,7 +369,7 @@ try {
 		for (c = 0; c < lp[0][p].length; c++) {
 				for (lll = 0; lll < lines.length; lll++) {
 					if (m % primes[primes.length - lll - 1] != 0)
-						lines[lll].play (now, lp[0][p][c]);
+						lines[lll].play (now, lp[lll][p][c]);
 				}
 				now += mLm;
 				
