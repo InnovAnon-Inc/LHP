@@ -243,16 +243,16 @@ try {
 	var progression2 = [chordii, chordI, chordV7, chordvi, chordiii7, chordIV, chordI, chordii, chordV7, chordI, chordIV, chordiii7, chordvi];
 	*/
 	//var line1 = new Line (2, 2 * measures / 2 + 1, 0, chordI);
-	var line1 = new Line (2, 2 * measures /*- 1*/, 0, chordI);
+	//var line1 = new Line (2, 2 * measures /*- 1*/, 0, chordI);
 	//var line1 = new Line (2, 2 * measures - 1, 0, chordI);
 	//var line2 = new Line (3, 3 * measures / 2 + 1, 0, chordI);
-	var line2 = new Line (3, 3 * measures /*- 1*/, 0, chordI);
+	//var line2 = new Line (3, 3 * measures /*- 1*/, 0, chordI);
 	//var line2 = new Line (3, 3 * measures - 1, 0, chordI);
 	//var line3 = new Line (5, 5 * measures / 2 + 1, 0, chordI);
-	var line3 = new Line (5, 5 * measures /*- 1*/, 0, chordI);
+	//var line3 = new Line (5, 5 * measures /*- 1*/, 0, chordI);
 	//var line3 = new Line (5, 5 * measures - 1, 0, chordI);
 	//var line4 = new Line (7, 7 * measures / 2 + 1, 0, chordI);
-	var line4 = new Line (7, 7 * measures / 2, 0, chordI);
+	//var line4 = new Line (7, 7 * measures / 2, 0, chordI);
 	//var line4 = new Line (4, 4 * measures / 2 + 1, 0, chordI);
 	//var line4 = new Line (4, 4 * measures /*- 1*/, 0, chordI);
 	//var line4 = new Line (3, 3 * measures /*- 1*/, 0, chordI);
@@ -281,7 +281,14 @@ try {
 	//var line8 = new Line (3, 3 * measures / 2 + 1, 0, chordI);
 	//var line9 = new Line (2, 2 * measures / 2 + 1, 0, chordI);
 	//var line7 = new Line (4, 4 * measures - 1, 0, chordI);
-	var lines = [line1, line2, line3, line4];
+	//var lines = [line1, line2, line3, line4];
+	var lines = [
+	new Line (2, 2 * measures, 0, chordI),
+	new Line (3, 3 * measures - 1, 3, chordI),
+	new Line (5, 5 * measures - 1, 4, chordI),
+	new Line (3, 3 * measures / 2, 1, chordI),
+	new Line (5, 5 * measures / 2, 2, chordI),
+	];
 	
 	var now = context.currentTime;
 	now += 10;
