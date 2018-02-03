@@ -354,25 +354,25 @@ try {
 		var c;
 		//for (c = 0; c < progression.length; c++) {
 		for (c = 0; c < lp[0][p].length; c++) {
-			if (m %  7 != 0)
+			if (m % 23 != 0)
 				//line1.play (now, progression[c].slice ().rotate (0));
 				line1.play (now, lp[0][p][c]);
-			if (m % 11 != 0)
+			if (m % 19 != 0)
 				//line2.play (now, progression[c].slice ().rotate (-1));
 				line2.play (now, lp[1][p][c]);
-			if (m % 13 != 0)
+			if (m % 17 != 0)
 				//line3.play (now, progression[c].slice ().rotate (-2));
 				line3.play (now, lp[2][p][c]);
-			if (m %  5 != 0)
+			if (m % 13 != 0)
 				//line4.play (now, progression[c].slice ().rotate (-3));
 				line4.play (now, lp[3][p][c]);
-			if (m %  3 != 0)
+			if (m % 11 != 0)
 				line5.play (now, lp[4][p][c]);
-			if (m %  2 != 0)
+			if (m %  7 != 0)
 				line6.play (now, lp[5][p][c]);
-			if (m % 17 != 0) line7.play (now, lp[6][p][c]);
-			if (m % 19 != 0) line8.play (now, lp[7][p][c]);
-			if (m % 23 != 0) line9.play (now, lp[8][p][c]);
+			if (m %  5 != 0) line7.play (now, lp[6][p][c]);
+			if (m %  3 != 0) line8.play (now, lp[7][p][c]);
+			if (m %  2 != 0) line9.play (now, lp[8][p][c]);
 			now += mLm;
 			
 			m++;
