@@ -16,7 +16,14 @@ h1, h2, h3, h4, h5, h6 {
 	text-align: center;
 }
 
-
+a:link {
+    color: darkred;
+}
+/*
+a:visited {
+    color: magenta;
+}
+*/
 
 
 
