@@ -283,7 +283,7 @@ try {
 
 		var m = 1;
 		m += this.lp[0][0].length * (this.scale.length * 1) * I;
-		if (m >= this.M) m = m % this.M;
+		if (m > this.M) m = m % this.M + 1;
 	
 		for (total =  0; total < this.scale.length * 1; total++) {
 		
