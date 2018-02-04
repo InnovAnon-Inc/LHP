@@ -1,4 +1,4 @@
-<script>
+
 function euclideanRhythm (onNotes, totalNotes) {
 
   var groups = [];
