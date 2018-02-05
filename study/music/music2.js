@@ -140,46 +140,25 @@ Kick.prototype.setup = function() {
 	this.osc.connect(this.gain);
 	this.gain.connect(this.context.destination);
 };
-/*
-Kick.prototype.getFreq = function () {
-	this.i = this.i % this.freqs.length;
-	var ret = this.freqs[this.i];
-	this.i++;
-	return ret;
-}
-
-Kick.prototype.setFreqs = function (freqs) {
-	this.freqs = freqs;
-	//this.i = 0;
-};
-*/
 Kick.prototype.getFreq = function () {
 	return this.freq * this.harmonic;
 };
 Kick.prototype.trigger = function(time) {
 	this.setup();
 
-	//var freq = this.getFreq ();
-	//this.osc.frequency.setValueAtTime(freq, time);
 	this.osc.frequency.setValueAtTime(this.getFreq (), time);
-	//this.gain.gain.setValueAtTime(1, time);
-	//this.gain.gain.setValueAtTime(.1, time);
+	
 	this.gain.gain.setValueAtTime(this.maxGain, time);
-
 	this.gain.gain.exponentialRampToValueAtTime(this.maxGain / 1000, time + this.duration);
-	//this.gain.gain.exponentialRampToValueAtTime(0.01, time + this.duration);
-	//this.gain.gain.exponentialRampToValueAtTime(0.001, time + this.duration);
-	//this.gain.gain.exponentialRampToValueAtTime(0.0001, time + this.duration);
 
 	this.osc.start(time);
-
 	this.osc.stop(time + this.duration);
 };
 
 function Piano (context, duration) {
 	var h = 6;
 	this.kicks = new Array (1 + h * 2);
-	var g = .01;
+	var g = .001;
 	this.kicks[0] = new Kick (context, duration, g, 1);
 	var i;
 	var p = 2;
@@ -211,35 +190,6 @@ Piano.prototype.trigger = function(time) {
 
 
 
-// TODO this algorithm seems borked
-function euclid (nbeat, nnote) {
-	if (nnote < 0) { nnote = 0; }
-	if (nbeat < 0) { nbeat = 0; }
-	if (nnote > nbeat) {
-		var tmp = nnote;
-		nnote   = nbeat;
-		nbeat   = tmp;
-	}
-	if (nbeat == 0) { return []; }
-	var rests = nbeat - nnote;
-	var result = new Array (nnote);
-	var i;
-	for (i = 0; i < nnote; i+=1){
-		result[i] = 1;
-	}
-	var pivot = 1;
-	var interval = 2;
-	while (rests > 0) {
-		if (pivot > result.length) {
-			pivot = 1;
-			interval +=1;
-		}
-		result.splice (pivot, 0, 0);
-		pivot += interval;
-		rests -=1;
-	}
-	return result;
-}
 
 
 function Pattern (nbeat, nnote, mode) {
@@ -253,18 +203,13 @@ function Pattern (nbeat, nnote, mode) {
 function Line (measureLength, measures, divisions, nnotes, mode) {
 	this.duration = measureLength / divisions;
 	this.pattern = new Pattern (divisions * measures, nnotes, mode);
-	//this.kick = new Kick (context, this.duration);
 	this.piano = new Piano (context, this.duration);
 }	
 Line.prototype.play = function (time, chord) {
-	//this.kick.freqs = chord;
-	//this.kick.i     = 0;
-	//this.kick.setFreqs (chord);
 	this.piano.setFreqs (chord);
 	var i;
 	for (i = 0; i < this.pattern.euclid.length; i+=1) {
 		if (this.pattern.euclid[i]){
-			//this.kick.trigger (time);
 			this.piano.trigger (time);
 		}
 		time += this.duration;
