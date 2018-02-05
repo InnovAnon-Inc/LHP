@@ -93,15 +93,17 @@ function applyChord (chord, bf) {
 }
 
 function transformChords (progression, r, pulses, skip) {
-	var ret = new Array (pulses);
+	var ret = new Array (progression.length);
 	var c;
 	for (c = 0; c < progression.length; c++) {
+		ret[c] = new Array (pulses);
+		
 		var temp = progression[c].slice ();
-		temp = temp.rotate (r)
+		temp = temp.rotate (r);
 		
 		var p, P;
 		for (p = P = 0; p < pulses; p++, P += skip) {
-			ret[p] = temp[P % pulses];
+			ret[c][p] = temp[P % temp.length];
 		}
 	}
 	return ret;
@@ -138,16 +140,15 @@ Kick.prototype.setup = function() {
 };
 
 Kick.prototype.getFreq = function () {
-	var ret = this.i;
+	this.i = this.i % this.freqs.length;
+	var ret = this.freqs[this.i];
 	this.i++;
-	if (this.i == this.freqs.length)
-		this.i = 0;
-	return this.freqs[ret];
+	return ret;
 }
 
 Kick.prototype.setFreqs = function (freqs) {
 	this.freqs = freqs;
-	this.i = 0;
+	//this.i = 0;
 }
 
 Kick.prototype.trigger = function(time) {
@@ -229,11 +230,12 @@ Line.prototype.play = function (time, chord) {
 function Song (context) {
 try{
 		var measureLength = 2;
-		var measures = 2;
+		var measures = 1;
 		var bf = 432;
 		this.scale = [1/1, 16/15, 9/8, 6/5, 5/4, 4/3, 7/5, 3/2,	8/5, 5/3, 16/9, 15/8];
 		var roots = [0, 2, 4, 5, 7, 9];
-		var pulses = [1, 2, 3, 4, 5, 6];
+		//var pulses  = [1, 2, 3, 4, 5, 6];
+		var pulses  = [8, 2, 3, 4, 5, 6];
 		var pulsesP = [8, 2, 3, 4, 5, 6];
 		this.lines = [
 			new Line (measureLength, measures, pulses[0], pulses[0] * measures, 0),
@@ -270,25 +272,25 @@ try{
 			root += 5;
 		}
 		
-		this.lp = new Array (this.lines.length);
+		this.lp  = new Array (this.lines.length);
 		this.lpP = new Array (this.linesP.length);
 		
 		var i;
 		for (i = 0; i < this.lp.length; i++) {
 			this.lp[i] = new Array (this.scale.length);
 			for (p = 0; p < this.lp[i].length; p++) {
-				this.lp[i][p] = transformChords (progressions[p], i, pulses[i], i);
+				this.lp[i][p] = transformChords (progressions[p], i, pulses[i], i + 1);
 			}
 		}
 		for (i = 0; i < this.lpP.length; i++) {
 			this.lpP[i] = new Array (this.scale.length);
 			for (p = 0; p < this.lpP[i].length; p++) {
-				this.lpP[i][p] = transformChords (progressions[p], i, pulsesP[i], i);
+				this.lpP[i][p] = transformChords (progressions[p], i, pulsesP[i], i + 1);
 			}
 		}
 		
 		this.primes = [2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43];
-		this.M = product (this.primes.slice (0, this.lines.length));
+		this.M  = product (this.primes.slice (0, this.lines.length));
 		this.MP = product (this.primes.slice (0, this.linesP.length));
 		this.mLm = measureLength * measures;
 		
