@@ -250,12 +250,12 @@ try{
 		this.linesP = [
 			new Line (measureLength, measures, pulsesP[0], pulsesP[0] * measures / 2 + 1, pulsesP[0] * measures / 3 + 1),
 		
-			new Line (measureLength, measures, pulsesP[1], pulsesP[1] * measures / 2 + 1, pulsesP[1] * measures / 3 + 1),
-			new Line (measureLength, measures, pulsesP[2], pulsesP[2] * measures / 2 + 1, pulsesP[2] * measures / 3 + 1),
-			new Line (measureLength, measures, pulsesP[3], pulsesP[3] * measures / 2 + 1, pulsesP[3] * measures / 3 + 1),
+			new Line (measureLength, measures, pulsesP[1], pulsesP[1] * measures / 2 + 1, pulsesP[1] * measures / 3 + 2),
+			new Line (measureLength, measures, pulsesP[2], pulsesP[2] * measures / 2 + 1, pulsesP[2] * measures / 3 + 3),
+			new Line (measureLength, measures, pulsesP[3], pulsesP[3] * measures / 2 + 1, pulsesP[3] * measures / 3 + 4),
 			
-			new Line (measureLength, measures, pulsesP[4], pulsesP[4] * measures / 2 + 1, pulsesP[4] * measures / 3 + 1),
-			new Line (measureLength, measures, pulsesP[5], pulsesP[5] * measures / 2 + 1, pulsesP[5] * measures / 3 + 1),
+			new Line (measureLength, measures, pulsesP[4], pulsesP[4] * measures / 2 + 1, pulsesP[4] * measures / 3 + 5),
+			new Line (measureLength, measures, pulsesP[5], pulsesP[5] * measures / 2 + 1, pulsesP[5] * measures / 3 + 6),
 		];
 	
 		var root, p;
