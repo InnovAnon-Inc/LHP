@@ -84,7 +84,7 @@ function minor7Chord (scale, root) {
 		scale[mod (scale.length, (root + 10))]
 	];
 }
-function diminishedChord (scale, root) {
+function dimChord (scale, root) {
 	return [
 		scale[mod (scale.length, (root +  0))],
 		scale[mod (scale.length, (root +  3))],
