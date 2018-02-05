@@ -280,8 +280,6 @@ Line.prototype.play = function (time, chord) {
 
 
 
-alert ('test A');
-
 
 
 
@@ -391,8 +389,6 @@ try {
 	
 	
 
-	alert ('test B');
-	
 	
 	
 	
@@ -493,5 +489,4 @@ try {
 } catch (e) { alert (e) }
 	};
 	
-	alert ('test');
 
