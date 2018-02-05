@@ -276,6 +276,7 @@ Line.prototype.play = function (time, chord) {
 
 function Song (context) {
 try{
+		this.context = context;
 		var measureLength = 2 * 60 / 40;
 		var measures = 1;
 		var bf = 432;
