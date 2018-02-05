@@ -387,6 +387,7 @@ try {
 		var mLm = this.mLm;
 		var M = this.M;
 		var scale = this.scale;
+		var context = this.context;
 		function cycle2 (c, p) {
 			var lll;
 			//var count = 0;
@@ -434,7 +435,8 @@ try {
 				p++;
 				if (p == scale.length) p = 0;
 			}
-			setTimeout(function () { cycle2 (c, p); }, mLm * 900);
+			
+			setTimeout(function () { cycle2 (c, p); }, Math.min (0, now - context.currentTime - 100));
 		}
 		function cycle () {
 		
