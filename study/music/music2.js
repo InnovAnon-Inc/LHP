@@ -158,7 +158,7 @@ Kick.prototype.trigger = function(time) {
 function Piano (context, duration) {
 	var h = 6;
 	this.kicks = new Array (1 + h * 2);
-	var g = .01;
+	var g = .05;
 	this.kicks[0] = new Kick (context, duration, g, 1);
 	var i;
 	var p = 2;
@@ -197,6 +197,7 @@ function Pattern (nbeat, nnote, mode) {
 	//this.euclid = euclid (nbeat, nnote);
 	this.euclid = euclideanRhythm (nnote, nbeat);
 	//alert (this.euclid);
+	alert (this.euclid + " " + nbeat + " " + nnote + " " + mode);
 }
 	
 	
