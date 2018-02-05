@@ -229,6 +229,8 @@ try{
 		this.scale = [1/1, 16/15, 9/8, 6/5, 5/4, 4/3, 7/5, 3/2,	8/5, 5/3, 16/9, 15/8];
 		var roots = [0, 2, 4, 5, 7, 9];
 		this.lines = [
+			new Line (measureLength, measures, 1, 1 * measures, 0),
+			
 			new Line (measureLength, measures, 2, 2 * measures, 0),
 			new Line (measureLength, measures, 3, 3 * measures, 0),
 			new Line (measureLength, measures, 4, 4 * measures, 0),
@@ -237,6 +239,8 @@ try{
 			new Line (measureLength, measures, 6, 6 * measures, 0),
 		];
 		this.linesP = [
+			new Line (measureLength, measures, 8, 8 * measures / 2, 8 * measures / 2 / 2),
+		
 			new Line (measureLength, measures, 2, 2 * measures / 2, 2 * measures / 2 / 2),
 			new Line (measureLength, measures, 3, 3 * measures / 2, 3 * measures / 2 / 2),
 			new Line (measureLength, measures, 4, 4 * measures / 2, 4 * measures / 2 / 2),
@@ -291,9 +295,9 @@ try {
 	  p = 0;
 	  k = 0;
 
-		var m = 1;
+		var m = 0;
 		m += this.lp[0][0].length * (this.scale.length * 1) * I;
-		//if (m > this.M) m = m % this.M + 1;
+		if (m > this.M) m = m % this.M;
 	
 		for (total =  0; total < this.scale.length * 1; total++) {
 		
@@ -305,25 +309,25 @@ try {
 						count++;
 					}
 				}
-				if (count > 1) {
+				if (count >= 3) {
 					for (lll = 0; lll < this.lines.length; lll++) {
 						if (m % this.primes[this.lines.length - lll - 1] == 0)
 							this.lines[lll].play (now, this.lp[lll][p][c]);
 					}
 				} else {
 						for (lll = 0; lll < this.linesP.length; lll++) {
-							if (k % this.primes[this.linesP.length - lll - 1] != 0) {
+							if (m % this.primes[this.linesP.length - lll - 1] != 0) {
 								this.linesP[lll].play (now, this.lpP[lll][p][c]);
 							}
 						}
-						k++;
-						if (k == this.MP) k = 0;
+						//k++;
+						//if (k == this.MP) k = 0;
 				}
 		
 				now += this.mLm;
 				
 				m++;
-				//if (m == this.M) m = 1;
+				if (m == this.M) m = 0;
 			}
 			
 			p++;
