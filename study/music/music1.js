@@ -230,13 +230,13 @@ Line.prototype.play = function (time, chord) {
 function Song (context) {
 try{
 		var measureLength = 2;
-		var measures = 2;
+		var measures = 1;
 		var bf = 432;
 		this.scale = [1/1, 16/15, 9/8, 6/5, 5/4, 4/3, 7/5, 3/2,	8/5, 5/3, 16/9, 15/8];
 		var roots = [0, 2, 4, 5, 7, 9];
 		//var pulses  = [1, 2, 3, 4, 5, 6];
-		var pulsesP  = [1, 2, 3, 5, 1, 2, 3, 4, 5];
-		var pulses   = [2, 3, 4, 5, 2, 4, 3, 5, 2];
+		var pulsesP  = [1, 2, 3, 4, 5, 1, 2, 3, 4, 5, 1, 2];
+		var pulses   = [4, 3, 5, 2, 4, 3, 5, 2, 4, 3, 5, 2];
 		this.linesP = [
 			new Line (measureLength, measures, pulses[0], pulses[0] * measures, 0),
 			
@@ -246,6 +246,11 @@ try{
 			
 			new Line (measureLength, measures, pulses[4], pulses[4] * measures, 0),
 			new Line (measureLength, measures, pulses[5], pulses[5] * measures, 0),
+			
+			new Line (measureLength, measures, pulses[6], pulses[6] * measures, 0),
+			new Line (measureLength, measures, pulses[7], pulses[7] * measures, 0),
+			new Line (measureLength, measures, pulses[8], pulses[8] * measures, 0),
+			new Line (measureLength, measures, pulses[9], pulses[9] * measures, 0),
 		];
 		this.lines = [
 			new Line (measureLength, measures, pulsesP[0], pulsesP[0] * measures / 2 + 1, pulsesP[0] * measures / 3 + 1),
@@ -257,9 +262,10 @@ try{
 			new Line (measureLength, measures, pulsesP[4], pulsesP[4] * measures / 2 + 1, pulsesP[4] * measures / 3 + 5),
 			new Line (measureLength, measures, pulsesP[5], pulsesP[5] * measures / 2 + 1, pulsesP[5] * measures / 3 + 6),
 			
-			new Line (measureLength, measures, pulsesP[6], pulsesP[6] * measures / 2 + 1, pulsesP[6] * measures / 3 + 7),
-			new Line (measureLength, measures, pulsesP[7], pulsesP[7] * measures / 2 + 1, pulsesP[7] * measures / 3 + 8),
-			new Line (measureLength, measures, pulsesP[8], pulsesP[8] * measures / 2 + 1, pulsesP[8] * measures / 3 + 9),
+			new Line (measureLength, measures, pulsesP[6], pulsesP[6] * measures / 2 + 1, pulsesP[6] * measures / 3 +  7),
+			new Line (measureLength, measures, pulsesP[7], pulsesP[7] * measures / 2 + 1, pulsesP[7] * measures / 3 +  8),
+			new Line (measureLength, measures, pulsesP[8], pulsesP[8] * measures / 2 + 1, pulsesP[8] * measures / 3 +  9),
+			new Line (measureLength, measures, pulsesP[9], pulsesP[9] * measures / 2 + 1, pulsesP[8] * measures / 3 + 10),
 		];
 	
 		var root, p;
