@@ -155,7 +155,7 @@ Kick.prototype.setFreqs = function (freqs) {
 */
 Kick.prototype.getFreq = function () {
 	return this.freq * this.harmonic;
-}
+};
 Kick.prototype.trigger = function(time) {
 	this.setup();
 
@@ -174,7 +174,7 @@ Kick.prototype.trigger = function(time) {
 };
 
 function Piano (context, duration) {
-	var h = 1;
+	var h = 5;
 	this.kicks = new Array (1 + h * 2);
 	var g = .1;
 	this.kicks[0] = new Kick (context, duration, g, 1);
