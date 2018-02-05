@@ -234,9 +234,20 @@ try{
 		var bf = 432;
 		this.scale = [1/1, 16/15, 9/8, 6/5, 5/4, 4/3, 7/5, 3/2,	8/5, 5/3, 16/9, 15/8];
 		var roots = [0, 2, 4, 5, 7, 9];
-		//var pulses  = [1, 2, 3, 4, 5, 6];
-		var pulses  = [1, 2, 3, 4, 5, 1, 2, 3, 4, 5, 1, 2];
-		var pulsesP = [4, 3, 5, 2, 4, 3, 5, 2, 4, 3, 5, 2];
+		//var pulses  = [1, 2, 3, 4, 5, 1, 2, 3, 4, 5, 1, 2];
+		//var pulsesP = [4, 3, 5, 2, 4, 3, 5, 2, 4, 3, 5, 2];
+		var pulsesP = [1, 2, 3, 4, 5, 1, 2, 3, 4, 5, 1, 2];
+		var pulses  = [4, 3, 5, 2, 4, 3, 5, 2, 4, 3, 5, 2];
+		this.lines  = new Array (pulses.length);
+		this.linesP = new Array (pulsesP.length);
+		var pl;
+		for (pl = 0; pl < pulses.length; pl++)
+			//this.lines[pl] = new Line (measureLength, measures, pulses[pl], pulses[pl] * measures, 0);
+			this.lines[pl] = new Line (measureLength, measures, pulses[pl], pulses[pl] * measures / 2 + 1, pulses[pl] * measures / 3 + pl + 1);
+		for (pl = 0; pl < pulsesP.length; pl++)
+			//this.linesP[pl] = new Line (measureLength, measures, pulsesP[pl], pulsesP[pl] * measures / 2 + 1, pulsesP[pl] * measures / 3 + pl + 1);
+			this.linesP[pl] = new Line (measureLength, measures, pulsesP[pl], pulsesP[pl] * measures, 0);
+		/*
 		this.lines = [
 			new Line (measureLength, measures, pulses[0], pulses[0] * measures, 0),
 			
@@ -267,8 +278,7 @@ try{
 			new Line (measureLength, measures, pulsesP[8], pulsesP[8] * measures / 2 + 1, pulsesP[8] * measures / 3 +  9),
 			new Line (measureLength, measures, pulsesP[9], pulsesP[9] * measures / 2 + 1, pulsesP[8] * measures / 3 + 10),
 		];
-		var tmp = pulses; pulsesP = pulses; pulses = tmp;
-		this.lines = tmp; this.linesP = this.lines; this.lines = tmp;
+		*/
 	
 		var root, p;
 		var progressions = new Array (this.scale.length);
