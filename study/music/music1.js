@@ -92,12 +92,17 @@ function applyChord (chord, bf) {
 	return ret;
 }
 
-function transformChords (progression, r) {
-	var ret = new Array (progression.length);
+function transformChords (progression, r, pulses, skip) {
+	var ret = new Array (pulses);
 	var c;
 	for (c = 0; c < progression.length; c++) {
-		ret[c] = progression[c].slice ();
-		ret[c] = ret[c].rotate (r);
+		var temp = progression[c].slice ();
+		temp = temp.rotate (r)
+		
+		var p, P;
+		for (p = P = 0; p < pulses; p++, P += skip) {
+			ret[p] = temp[P % pulses];
+		}
 	}
 	return ret;
 }
@@ -228,25 +233,27 @@ try{
 		var bf = 432;
 		this.scale = [1/1, 16/15, 9/8, 6/5, 5/4, 4/3, 7/5, 3/2,	8/5, 5/3, 16/9, 15/8];
 		var roots = [0, 2, 4, 5, 7, 9];
+		var pulses = [1, 2, 3, 4, 5, 6];
+		var pulsesP = [8, 2, 3, 4, 5, 6];
 		this.lines = [
-			new Line (measureLength, measures, 1, 1 * measures, 0),
+			new Line (measureLength, measures, pulses[0], pulses[0] * measures, 0),
 			
-			new Line (measureLength, measures, 2, 2 * measures, 0),
-			new Line (measureLength, measures, 3, 3 * measures, 0),
-			new Line (measureLength, measures, 4, 4 * measures, 0),
+			new Line (measureLength, measures, pulses[1], pulses[1] * measures, 0),
+			new Line (measureLength, measures, pulses[2], pulses[2] * measures, 0),
+			new Line (measureLength, measures, pulses[3], pulses[3] * measures, 0),
 			
-			new Line (measureLength, measures, 5, 5 * measures, 0),
-			new Line (measureLength, measures, 6, 6 * measures, 0),
+			new Line (measureLength, measures, pulses[4], pulses[4] * measures, 0),
+			new Line (measureLength, measures, pulses[5], pulses[5] * measures, 0),
 		];
 		this.linesP = [
-			new Line (measureLength, measures, 8, 8 * measures / 2 + 1, 8 * measures / 3),
+			new Line (measureLength, measures, pulsesP[0], pulsesP[0] * measures / 2 + 1, 8 * measures / 3),
 		
-			new Line (measureLength, measures, 2, 2 * measures / 2 + 1, 2 * measures / 3),
-			new Line (measureLength, measures, 3, 3 * measures / 2 + 1, 3 * measures / 3),
-			new Line (measureLength, measures, 4, 4 * measures / 2 + 1, 4 * measures / 3),
+			new Line (measureLength, measures, pulsesP[1], pulsesP[1] * measures / 2 + 1, 2 * measures / 3),
+			new Line (measureLength, measures, pulsesP[2], pulsesP[2] * measures / 2 + 1, 3 * measures / 3),
+			new Line (measureLength, measures, pulsesP[3], pulsesP[3] * measures / 2 + 1, 4 * measures / 3),
 			
-			new Line (measureLength, measures, 5, 5 * measures / 2 + 1, 5 * measures / 3),
-			new Line (measureLength, measures, 6, 6 * measures / 2 + 1, 6 * measures / 3),
+			new Line (measureLength, measures, pulsesP[4], pulsesP[4] * measures / 2 + 1, 5 * measures / 3),
+			new Line (measureLength, measures, pulsesP[5], pulsesP[5] * measures / 2 + 1, 6 * measures / 3),
 		];
 	
 		var root, p;
@@ -270,13 +277,13 @@ try{
 		for (i = 0; i < this.lp.length; i++) {
 			this.lp[i] = new Array (this.scale.length);
 			for (p = 0; p < this.lp[i].length; p++) {
-				this.lp[i][p] = transformChords (progressions[p], i);
+				this.lp[i][p] = transformChords (progressions[p], i, pulses[i], i);
 			}
 		}
 		for (i = 0; i < this.lpP.length; i++) {
 			this.lpP[i] = new Array (this.scale.length);
 			for (p = 0; p < this.lpP[i].length; p++) {
-				this.lpP[i][p] = transformChords (progressions[p], i);
+				this.lpP[i][p] = transformChords (progressions[p], i, pulsesP[i], i);
 			}
 		}
 		
