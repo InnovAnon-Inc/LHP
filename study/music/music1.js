@@ -230,7 +230,7 @@ Line.prototype.play = function (time, chord) {
 function Song (context) {
 try{
 		var measureLength = 60 / 40;
-		var measures = 2;
+		var measures = 1;
 		var bf = 432;
 		this.scale = [1/1, 16/15, 9/8, 6/5, 5/4, 4/3, 7/5, 3/2,	8/5, 5/3, 16/9, 15/8];
 		var roots = [0, 2, 4, 5, 7, 9];
