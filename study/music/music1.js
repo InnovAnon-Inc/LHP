@@ -309,7 +309,7 @@ try {
 						count++;
 					}
 				}
-				if (count >= 3) {
+				if (count >= 4) {
 					for (lll = 0; lll < this.lines.length; lll++) {
 						if (m % this.primes[this.lines.length - lll - 1] == 0)
 							this.lines[lll].play (now, this.lp[lll][p][c]);
