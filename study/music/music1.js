@@ -239,14 +239,14 @@ try{
 			new Line (measureLength, measures, 6, 6 * measures, 0),
 		];
 		this.linesP = [
-			new Line (measureLength, measures, 8, 8 * measures / 2, 8 * measures / 2 / 2),
+			new Line (measureLength, measures, 8, 8 * measures / 2 + 1, 8 * measures / 3),
 		
-			new Line (measureLength, measures, 2, 2 * measures / 2, 2 * measures / 2 / 2),
-			new Line (measureLength, measures, 3, 3 * measures / 2, 3 * measures / 2 / 2),
-			new Line (measureLength, measures, 4, 4 * measures / 2, 4 * measures / 2 / 2),
+			new Line (measureLength, measures, 2, 2 * measures / 2 + 1, 2 * measures / 3),
+			new Line (measureLength, measures, 3, 3 * measures / 2 + 1, 3 * measures / 3),
+			new Line (measureLength, measures, 4, 4 * measures / 2 + 1, 4 * measures / 3),
 			
-			new Line (measureLength, measures, 5, 5 * measures / 2, 5 * measures / 2 / 2),
-			new Line (measureLength, measures, 6, 6 * measures / 2, 6 * measures / 2 / 2),
+			new Line (measureLength, measures, 5, 5 * measures / 2 + 1, 5 * measures / 3),
+			new Line (measureLength, measures, 6, 6 * measures / 2 + 1, 6 * measures / 3),
 		];
 	
 		var root, p;
