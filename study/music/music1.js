@@ -244,7 +244,7 @@ try{
 		for (pl = 0; pl < pulses.length; pl++)
 			this.lines[pl] = new Line (measureLength, measures, pulses[pl], pulses[pl] * measures, 0);
 		for (pl = 0; pl < pulsesP.length; pl++)
-			this.linesP[pl] = new Line (measureLength, measures, pulsesP[pl], pulsesP[pl] * measures / 2 + 1, pulsesP[pl] * measures / 3 + pl + 1);
+			this.linesP[pl] = new Line (measureLength, measures, pulsesP[pl], pulsesP[pl] * measures * 2 / 3 + 1, pulsesP[pl] * measures / 3 + pl + 1);
 		/*
 		this.lines = [
 			new Line (measureLength, measures, pulses[0], pulses[0] * measures, 0),
@@ -305,7 +305,7 @@ try{
 		for (i = 0; i < this.lpP.length; i++) {
 			this.lpP[i] = new Array (this.scale.length);
 			for (p = 0; p < this.lpP[i].length; p++) {
-				this.lpP[i][p] = transformChords (progressions[p], i, pulsesP[i], 2* i + 1);
+				this.lpP[i][p] = transformChords (progressions[p], i, pulsesP[i], 2 * i + 1);
 			}
 		}
 		
@@ -320,13 +320,14 @@ try{
 	
     Song.prototype.play = function (now, I) {
 try {
-      var total, p, c, lll;
-	  p = 0;
+      //var total, p, c, lll;
+	  var p = 0;
 	  //var k = 1;
 
 		//var m = 1;
-		var m = 0;
-		m += this.lp[0][0].length * (this.scale.length * 1) * I;
+		//var m = 0;
+		//m += this.lp[0][0].length * (this.scale.length * 1) * I;
+		var m = I;
 		//if (m > this.M) m = m % this.M + 1;
 		//if (m > this.M) m = m % this.M;
 	
@@ -340,6 +341,7 @@ try {
 		var M = this.M;
 		var scale = this.scale;
 		function cycle2 (c, p) {
+			var lll;
 			//var count = 0;
 			//var P = true;
 			/*
