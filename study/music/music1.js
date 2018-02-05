@@ -372,7 +372,7 @@ try {
 						lines[lll].play (now, lp[lll][p][c]);
 				}
 				for (lll = 0; lll < linesP.length; lll++) {
-					if (m % primes[linesP.length - lll - 1] != 0)
+					if (m % primes[linesP.length - lll - 1] == 0)
 						linesP[lll].play (now, lpP[lll][p][c]);
 				}
 		
