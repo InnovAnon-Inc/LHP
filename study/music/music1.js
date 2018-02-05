@@ -236,7 +236,7 @@ try{
 		var roots = [0, 2, 4, 5, 7, 9];
 		//var pulses  = [1, 2, 3, 4, 5, 6];
 		var pulsesP  = [1, 2, 3, 5, 1, 2, 3, 4, 5];
-		var pulses = [2, 3, 4, 5, 2, 4, 5];
+		var pulses   = [2, 3, 4, 5, 2, 4, 3, 5, 2];
 		this.linesP = [
 			new Line (measureLength, measures, pulses[0], pulses[0] * measures, 0),
 			
@@ -256,6 +256,10 @@ try{
 			
 			new Line (measureLength, measures, pulsesP[4], pulsesP[4] * measures / 2 + 1, pulsesP[4] * measures / 3 + 5),
 			new Line (measureLength, measures, pulsesP[5], pulsesP[5] * measures / 2 + 1, pulsesP[5] * measures / 3 + 6),
+			
+			new Line (measureLength, measures, pulsesP[6], pulsesP[6] * measures / 2 + 1, pulsesP[6] * measures / 3 + 7),
+			new Line (measureLength, measures, pulsesP[7], pulsesP[7] * measures / 2 + 1, pulsesP[7] * measures / 3 + 8),
+			new Line (measureLength, measures, pulsesP[8], pulsesP[8] * measures / 2 + 1, pulsesP[8] * measures / 3 + 9),
 		];
 	
 		var root, p;
