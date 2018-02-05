@@ -1,0 +1,20 @@
+<html>
+<head>
+	
+<script src="music3.js"></script>
+<script>
+	var context = new AudioContext();
+	var now = context.currentTime;
+	now++;
+	
+	var measureLength = 8 * 40 / 60;
+	var pulses  = [1, 5,  7, 11, 13,  7, 11,  5];
+	var pulsesP = [5, 7, 11, 13,  5, 13,  7, 11];
+	//var pulsesP = [783, 783, 783, 783];
+	//var pulsesP = [7.83, 7.83, 7.83, 7.83];
+	var s = new Song (context, measureLength, pulses, pulsesP);
+	s.play (now, Math.floor (Math.random () * Number.MAX_SAFE_INTEGER));
+</script>
+
+</head>
+</html>
