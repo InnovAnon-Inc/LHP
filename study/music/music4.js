@@ -289,6 +289,7 @@ try{
 } catch (e) { alert (e) }
 	}
 	Song1.prototype.play = function (now, I) {
+try {
 		var p = this.p;
 		var c = this.c;
 		
@@ -319,6 +320,7 @@ try{
 			
 			this.c = c;
 			this.p = p;
+} catch (e) { alert (e) }
 	};
 	
 	
@@ -396,6 +398,7 @@ try{
 } catch (e) { alert (e) }
 	}
 	Song2.prototype.play = function (now, I) {
+try {
 		var p = this.p;
 		var c = this.c;
 		
@@ -426,4 +429,5 @@ try{
 			
 			this.c = c;
 			this.p = p;
+} catch (e) { alert (e) }
 	};
