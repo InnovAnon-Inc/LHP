@@ -176,7 +176,7 @@ try{
 		
 } catch (e) { alert (e) }
 	}
-	Song2.prototype.play = function (now, I) {
+	Song2.prototype.play = function (now, m) {
 try {
 		var p = this.p;
 		var c = this.c;
