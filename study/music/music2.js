@@ -284,7 +284,7 @@ try{
 		var roots = [0, 2, 4, 5, 7, 9];
 		//var pulses  = [1, 2, 3, 4, 5, 1, 2, 3, 4, 5, 1, 2];
 		//var pulsesP = [4, 3, 5, 2, 4, 3, 5, 2, 4, 3, 5, 2];
-		var pulses  = [8, 7, 6, 4, 3, 2, 1];
+		var pulses  = [1, 2, 3, 4, 6, 7, 8];
 		var pulsesP = [7, 4, 7, 6, 7, 8];
 		this.lines  = new Array (pulses.length);
 		this.linesP = new Array (pulsesP.length);
@@ -293,38 +293,7 @@ try{
 			this.lines[pl] = new Line (measureLength, measures, pulses[pl], pulses[pl] * measures, 0);
 		for (pl = 0; pl < pulsesP.length; pl++)
 			this.linesP[pl] = new Line (measureLength, measures, pulsesP[pl], pulsesP[pl] * measures * 2 / 3 + 1, pulsesP[pl] * measures / 2 + pl + 1);
-		/*
-		this.lines = [
-			new Line (measureLength, measures, pulses[0], pulses[0] * measures, 0),
-			
-			new Line (measureLength, measures, pulses[1], pulses[1] * measures, 0),
-			new Line (measureLength, measures, pulses[2], pulses[2] * measures, 0),
-			new Line (measureLength, measures, pulses[3], pulses[3] * measures, 0),
-			
-			new Line (measureLength, measures, pulses[4], pulses[4] * measures, 0),
-			new Line (measureLength, measures, pulses[5], pulses[5] * measures, 0),
-			
-			new Line (measureLength, measures, pulses[6], pulses[6] * measures, 0),
-			new Line (measureLength, measures, pulses[7], pulses[7] * measures, 0),
-			new Line (measureLength, measures, pulses[8], pulses[8] * measures, 0),
-			new Line (measureLength, measures, pulses[9], pulses[9] * measures, 0),
-		];
-		this.linesP = [
-			new Line (measureLength, measures, pulsesP[0], pulsesP[0] * measures / 2 + 1, pulsesP[0] * measures / 3 + 1),
 		
-			new Line (measureLength, measures, pulsesP[1], pulsesP[1] * measures / 2 + 1, pulsesP[1] * measures / 3 + 2),
-			new Line (measureLength, measures, pulsesP[2], pulsesP[2] * measures / 2 + 1, pulsesP[2] * measures / 3 + 3),
-			new Line (measureLength, measures, pulsesP[3], pulsesP[3] * measures / 2 + 1, pulsesP[3] * measures / 3 + 4),
-			
-			new Line (measureLength, measures, pulsesP[4], pulsesP[4] * measures / 2 + 1, pulsesP[4] * measures / 3 + 5),
-			new Line (measureLength, measures, pulsesP[5], pulsesP[5] * measures / 2 + 1, pulsesP[5] * measures / 3 + 6),
-			
-			new Line (measureLength, measures, pulsesP[6], pulsesP[6] * measures / 2 + 1, pulsesP[6] * measures / 3 +  7),
-			new Line (measureLength, measures, pulsesP[7], pulsesP[7] * measures / 2 + 1, pulsesP[7] * measures / 3 +  8),
-			new Line (measureLength, measures, pulsesP[8], pulsesP[8] * measures / 2 + 1, pulsesP[8] * measures / 3 +  9),
-			new Line (measureLength, measures, pulsesP[9], pulsesP[9] * measures / 2 + 1, pulsesP[8] * measures / 3 + 10),
-		];
-		*/
 	
 		this.progressionLength = 13;
 		var root, p;
@@ -392,31 +361,8 @@ try {
 		var M = this.M;
 		var scale = this.scale;
 		var context = this.context;
-		function cycle2 () {
+		function cycle () {
 			var lll;
-			//var count = 0;
-			//var P = true;
-			/*
-			for (lll = 0; lll < lines.length; lll++) {
-				if (m % primes[lines.length - lll - 1] != 0) {
-					count++;
-				}
-			}
-			if (count >= 4) {
-				for (lll = 0; lll < lines.length; lll++) {
-					if (m % primes[lines.length - lll - 1] != 0)
-						lines[lll].play (now, lp[lll][p][c]);
-				}
-			} else {
-					for (lll = 0; lll < linesP.length; lll++) {
-						if (m % primes[linesP.length - lll - 1] == 0) {
-							linesP[lll].play (now, lpP[lll][p][c]);
-						}
-					}
-					//k++;
-					//if (k == this.MP) k = 0;
-			}
-			*/
 			for (lll = 0; lll < lines.length; lll++) {
 				if (m % primes[lines.length - lll - 1] == 0)
 					lines[lll].play (now, lp[lll][p][c]);
@@ -440,63 +386,7 @@ try {
 				if (p == scale.length) p = 0;
 			}
 			
-			//setTimeout(cycle2, Math.max (0, (now - context.currentTime) * 1000 - 10));
-			setTimeout(cycle2, Math.max (0, (now - context.currentTime) * 1000 - 100));
-		}
-		function cycle () {
-		
-			//for (c = 0; c < lp[0][p].length; c++) {
-				//var count = 0;
-				//var P = true;
-				/*
-				for (lll = 0; lll < lines.length; lll++) {
-					if (m % primes[lines.length - lll - 1] != 0) {
-						count++;
-					}
-				}
-				if (count >= 4) {
-					for (lll = 0; lll < lines.length; lll++) {
-						if (m % primes[lines.length - lll - 1] != 0)
-							lines[lll].play (now, lp[lll][p][c]);
-					}
-				} else {
-						for (lll = 0; lll < linesP.length; lll++) {
-							if (m % primes[linesP.length - lll - 1] == 0) {
-								linesP[lll].play (now, lpP[lll][p][c]);
-							}
-						}
-						//k++;
-						//if (k == this.MP) k = 0;
-				}
-				*/
-				/*
-				for (lll = 0; lll < linesP.length; lll++) {
-					if (m % primes[linesP.length - lll - 1] != 0)
-						linesP[lll].play (now, lpP[lll][p][c]);
-				}
-				for (lll = 0; lll < lines.length; lll++) {
-					if (m % primes[lines.length - lll - 1] == 0)
-						lines[lll].play (now, lp[lll][p][c]);
-				}
-		
-				now += mLm;
-				
-				m++;
-				if (m == M) m = 1;
-				//if (m == M) m = 0;
-			}*/
-			
-			
-			//p++;
-			//if (p == scale.length) p = 0;
-			
-			//setTimeout(cycle, mLm * lp[0][p].length * 999);
-			
-			//while (true) {
-				//setTimeout(cycle2, Math.max (0, now + mLm - context.currentTime - 1000));
-				//setTimeout(cycle2, Math.max (0, (now + mLm - context.currentTime) * 1000 - 1000));
-			//}
-			cycle2 ();
+			setTimeout(cycle, Math.max (0, (now - context.currentTime) * 1000 - 100));
 		}
 		cycle ();
 } catch (e) { alert (e) }
