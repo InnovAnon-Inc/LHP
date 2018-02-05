@@ -10,7 +10,7 @@ try {
 	now++;
 	
 	var measureLength1 = 3 / 4 * 60 / 40;
-	var measureLength2 = 1 / 1 * 60 / 40;
+	var measureLength2 = 4 / 4 * 60 / 40;
 	var pulses1  = [1, 1, 1];
 	var pulsesP1 = [1, 1, 1];
 	var pulses2  = [1, 1, 1];
@@ -31,7 +31,7 @@ try {
 		
 		s1.play (now + measureLength1 * 3, I);
 		
-		now += measureLength1 * measureLength2;
+		now += 12 / 4 * 60 / 40;
 	
 		setTimeout(cycle, Math.max (0, (now - context.currentTime) * 1000 - 100));
 	}
