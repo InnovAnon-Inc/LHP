@@ -351,7 +351,7 @@ try {
 			p++;
 			if (p == scale.length) p = 0;
 			
-			setTimeout(cycle, mLm * lp[0][p].length);
+			setTimeout(cycle, mLm * lp[0][p].length * 999);
 		}
 		cycle ();
 } catch (e) { alert (e) }
