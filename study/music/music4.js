@@ -296,7 +296,7 @@ function SongA (context, measureLength, pulses, pulsesP) {
 		var measures = 1;
 		var bf = 432;
 		this.scale = [1/1, 16/15, 9/8, 6/5, 5/4, 4/3, 7/5, 3/2,	8/5, 5/3, 16/9, 15/8];
-		var roots = [0, 2, 4, 5, 7, 9];
+		var roots = [0, 2, 4, 5, 7, 9, 11];
 		this.lines  = new Array (pulses.length);
 		this.linesP = new Array (pulsesP.length);
 		var pl;
@@ -311,9 +311,9 @@ function SongA (context, measureLength, pulses, pulsesP) {
 		for (p = root = 0; p < this.scale.length; p++, root += 5) {
 			var chordI    = applyChord (majorChord     (this.scale, root + roots[0]), bf);
 			var chordii   = applyChord (minorChord     (this.scale, root + roots[1]), bf);
-			var chordiii  = applyChord (minorChord     (this.scale, root + roots[2]), bf);
+			//var chordiii  = applyChord (minorChord     (this.scale, root + roots[2]), bf);
 			//var chordiii7 = applyChord (minor7Chord    (this.scale, root + roots[2]), bf);
-			var chordIV   = applyChord (majorChord     (this.scale, root + roots[3]), bf);
+			//var chordIV   = applyChord (majorChord     (this.scale, root + roots[3]), bf);
 			var chordV    = applyChord (majorChord     (this.scale, root + roots[4]), bf);
 			//var chordV7   = applyChord (dominant7Chord (this.scale, root + roots[4]), bf);
 			var chordvi   = applyChord (minorChord     (this.scale, root + roots[5]), bf);
@@ -404,7 +404,7 @@ try{
 		var measures = 1;
 		var bf = 432;
 		this.scale = [1/1, 16/15, 9/8, 6/5, 5/4, 4/3, 7/5, 3/2,	8/5, 5/3, 16/9, 15/8];
-		var roots = [0, 2, 4, 5, 7, 9];
+		var roots = [0, 2, 4, 5, 7, 9, 11];
 		this.lines  = new Array (pulses.length);
 		this.linesP = new Array (pulsesP.length);
 		var pl;
@@ -418,15 +418,15 @@ try{
 		var root, p;
 		var progressions = new Array (this.scale.length);
 		for (p = root = 0; p < this.scale.length; p++, root += 5) {
-			var chordI    = applyChord (majorChord     (this.scale, root + roots[0]), bf);
-			var chordii   = applyChord (minorChord     (this.scale, root + roots[1]), bf);
+			//var chordI    = applyChord (majorChord     (this.scale, root + roots[0]), bf);
+			//var chordii   = applyChord (minorChord     (this.scale, root + roots[1]), bf);
 			var chordiii  = applyChord (minorChord     (this.scale, root + roots[2]), bf);
 			//var chordiii7 = applyChord (minor7Chord    (this.scale, root + roots[2]), bf);
 			var chordIV   = applyChord (majorChord     (this.scale, root + roots[3]), bf);
-			var chordV    = applyChord (majorChord     (this.scale, root + roots[4]), bf);
+			//var chordV    = applyChord (majorChord     (this.scale, root + roots[4]), bf);
 			//var chordV7   = applyChord (dominant7Chord (this.scale, root + roots[4]), bf);
-			var chordvi   = applyChord (minorChord     (this.scale, root + roots[5]), bf);
-			var chordviid = applyChord (dimChord (this.scale, root + roots[6], bf);
+			//var chordvi   = applyChord (minorChord     (this.scale, root + roots[5]), bf);
+			var chordviid = applyChord (dimChord       (this.scale, root + roots[6], bf);
 			var progression = [chordiii, chordviid, chordIV];
 			//var progression = [chordiii, chordIV];
 			progressions[p] = progression;
