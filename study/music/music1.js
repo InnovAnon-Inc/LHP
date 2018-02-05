@@ -487,7 +487,7 @@ try {
 			//setTimeout(cycle, mLm * lp[0][p].length * 999);
 			
 			while (true) {
-				setTimeout(cycle2, Math.max (0, now + mLM - context.currentTime - 1000));
+				setTimeout(cycle2, Math.max (0, now + mLm - context.currentTime - 1000));
 			}
 		}
 		cycle ();
