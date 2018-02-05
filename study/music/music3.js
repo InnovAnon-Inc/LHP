@@ -222,7 +222,7 @@ Line.prototype.play = function (time, chord) {
 
 
 
-function Song (context) {
+function Song (context, pulses, pulsesP) {
 try{
 		this.context = context;
 		var measureLength = 3 * 60 / 40;
@@ -230,8 +230,6 @@ try{
 		var bf = 432;
 		this.scale = [1/1, 16/15, 9/8, 6/5, 5/4, 4/3, 7/5, 3/2,	8/5, 5/3, 16/9, 15/8];
 		var roots = [0, 2, 4, 5, 7, 9];
-		var pulses  = [8, 4, 8, 6, 8, 3];
-		var pulsesP = [6, 8, 3, 8, 4, 8];
 		this.lines  = new Array (pulses.length);
 		this.linesP = new Array (pulsesP.length);
 		var pl;

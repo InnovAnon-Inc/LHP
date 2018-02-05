@@ -7,7 +7,9 @@
 	var now = context.currentTime;
 	now++;
 	
-	var s = new Song (context);
+	var pulses  = [8, 4, 8, 6, 8, 3];
+	var pulsesP = [6, 8, 3, 8, 4, 8];
+	var s = new Song (context, pulses, pulsesP);
 	s.play (now, Math.floor (Math.random () * Number.MAX_SAFE_INTEGER));
 </script>
 
