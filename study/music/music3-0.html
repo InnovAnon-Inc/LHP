@@ -1,0 +1,15 @@
+<html>
+<head>
+	
+<script src="music3.js"></script>
+<script>
+	var context = new AudioContext();
+	var now = context.currentTime;
+	now++;
+	
+	var s = new Song (context);
+	s.play (now, Math.floor (Math.random () * Number.MAX_SAFE_INTEGER));
+</script>
+
+</head>
+</html>
