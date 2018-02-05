@@ -23,19 +23,20 @@ try {
 	var pulsesP2 = [2, 1, 3]
 	var s1 = new SongA (context, measureLength1, pulses1, pulsesP1);
 	var s2 = new Song2 (context, measureLength2, pulses2, pulsesP2);
-	var I = Math.floor (Math.random () * Number.MAX_SAFE_INTEGER);
+	var I1 = Math.floor (Math.random () * Number.MAX_SAFE_INTEGER);
+	var I2 = I1;
 	
 	function cycle () {
-		s1.play (now + measureLength1 * 0, I);
-		s2.play (now + measureLength2 * 0, I);
+		s1.play (now + measureLength1 * 0, I1++);
+		s2.play (now + measureLength2 * 0, I2++);
 		
-		s1.play (now + measureLength1 * 1, I);
-		s2.play (now + measureLength2 * 1, I);
+		s1.play (now + measureLength1 * 1, I1++);
+		s2.play (now + measureLength2 * 1, I2++);
 		
-		s1.play (now + measureLength1 * 2, I);
-		s2.play (now + measureLength2 * 2, I);
+		s1.play (now + measureLength1 * 2, I1++);
+		s2.play (now + measureLength2 * 2, I2++);
 		
-		s1.play (now + measureLength1 * 3, I);
+		s1.play (now + measureLength1 * 3, I1++);
 		
 		now += 12 / den * tempo;
 	
