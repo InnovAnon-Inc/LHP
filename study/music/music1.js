@@ -436,7 +436,7 @@ try {
 				if (p == scale.length) p = 0;
 			}
 			
-			setTimeout(function () { cycle2 (c, p); }, Math.min (0, now - context.currentTime - 100));
+			setTimeout(function () { cycle2 (c, p); }, Math.min (0, now - context.currentTime - 500));
 		}
 		function cycle () {
 		
