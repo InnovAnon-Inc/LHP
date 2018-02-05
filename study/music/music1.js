@@ -237,7 +237,7 @@ try{
 		//var pulses  = [1, 2, 3, 4, 5, 6];
 		var pulses  = [1, 2, 3, 5, 1, 2, 3, 4, 5];
 		var pulsesP = [2, 3, 4, 5, 2, 4, 5];
-		this.lines = [
+		this.linesP = [
 			new Line (measureLength, measures, pulses[0], pulses[0] * measures, 0),
 			
 			new Line (measureLength, measures, pulses[1], pulses[1] * measures, 0),
@@ -247,7 +247,7 @@ try{
 			new Line (measureLength, measures, pulses[4], pulses[4] * measures, 0),
 			new Line (measureLength, measures, pulses[5], pulses[5] * measures, 0),
 		];
-		this.linesP = [
+		this.lines = [
 			new Line (measureLength, measures, pulsesP[0], pulsesP[0] * measures / 2 + 1, pulsesP[0] * measures / 3 + 1),
 		
 			new Line (measureLength, measures, pulsesP[1], pulsesP[1] * measures / 2 + 1, pulsesP[1] * measures / 3 + 2),
