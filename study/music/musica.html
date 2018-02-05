@@ -33,15 +33,15 @@ try {
 	function cycle () {
 		s1.play (now + measureLength1 * 0, I1++);
 		s2.play (now + measureLength2 * 0, I2++);
-		setTimeout(cycle, Math.max (0, Math.floor (now + 3 / den * tempo - context.currentTime) * 1000 - 100));
+		//setTimeout(cycle, Math.max (0, Math.floor (now + 3 / den * tempo - context.currentTime) * 1000 - 100));
 		
 		s1.play (now + measureLength1 * 1, I1++);
 		s2.play (now + measureLength2 * 1, I2++);
-		setTimeout(cycle, Math.max (0, Math.floor (now + 6 / den * tempo - context.currentTime) * 1000 - 100));
+		//setTimeout(cycle, Math.max (0, Math.floor (now + 6 / den * tempo - context.currentTime) * 1000 - 100));
 		
 		s1.play (now + measureLength1 * 2, I1++);
 		s2.play (now + measureLength2 * 2, I2++);
-		setTimeout(cycle, Math.max (0, Math.floor (now + 9 / den * tempo - context.currentTime) * 1000 - 100));
+		//setTimeout(cycle, Math.max (0, Math.floor (now + 9 / den * tempo - context.currentTime) * 1000 - 100));
 		
 		s1.play (now + measureLength1 * 3, I1++);
 		
