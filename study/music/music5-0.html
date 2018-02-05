@@ -7,9 +7,10 @@
 	var now = context.currentTime;
 	now++;
 	
-	var measureLength = 100;
+	var measureLength = 1;
 	var pulses  = [1, 1, 1, 1];
-	var pulsesP = [783, 783, 783, 783];
+	//var pulsesP = [783, 783, 783, 783];
+	var pulsesP = [7.83, 7.83, 7.83, 7.83];
 	var s = new Song (context, measureLength, pulses, pulsesP);
 	s.play (now, Math.floor (Math.random () * Number.MAX_SAFE_INTEGER));
 </script>
