@@ -125,11 +125,13 @@ function product(input){
 }
         
     	
-function Kick(context, duration) {
+function Kick(context, duration, maxGain, harmonic) {
 	this.context = context;
 	//this.freqs = freqs;
-	this.i = 0;
+	//this.i = 0;
 	this.duration = duration;
+	this.maxGain = maxGain;
+	this.harmonic = harmonic;
 }
 
 Kick.prototype.setup = function() {
@@ -138,7 +140,7 @@ Kick.prototype.setup = function() {
 	this.osc.connect(this.gain);
 	this.gain.connect(this.context.destination);
 };
-
+/*
 Kick.prototype.getFreq = function () {
 	this.i = this.i % this.freqs.length;
 	var ret = this.freqs[this.i];
@@ -149,21 +151,59 @@ Kick.prototype.getFreq = function () {
 Kick.prototype.setFreqs = function (freqs) {
 	this.freqs = freqs;
 	//this.i = 0;
+};
+*/
+Kick.prototype.getFreq = function () {
+	return this.freq * this.harmonic;
 }
-
 Kick.prototype.trigger = function(time) {
 	this.setup();
 
-	var freq = this.getFreq ();
-	this.osc.frequency.setValueAtTime(freq, time);
+	//var freq = this.getFreq ();
+	//this.osc.frequency.setValueAtTime(freq, time);
+	this.osc.frequency.setValueAtTime(this.getFreq (), time);
 	//this.gain.gain.setValueAtTime(1, time);
-	this.gain.gain.setValueAtTime(.1, time);
+	//this.gain.gain.setValueAtTime(.1, time);
+	this.gain.gain.setValueAtTime(this.maxGain, time);
 
 	this.gain.gain.exponentialRampToValueAtTime(0.01, time + this.duration);
 
 	this.osc.start(time);
 
 	this.osc.stop(time + this.duration);
+};
+
+function Piano (context, duration) {
+	var h = 5;
+	this.kicks = new Array (1 + h * 2);
+	var g = .1;
+	this.kicks[0] = new Kick (context, duration, g, 1);
+	var i;
+	var p = 2;
+	for (i = 1; i <= h; i++, p *= 2) {
+		this.kicks[1 + i * 2 + 0] = new Kick (context, duration, g / p, p);
+		this.kicks[1 + i * 2 + 1] = new Kick (context, duration, g / p, 1 / p);
+	}
+	
+	this.i = 0;
+}
+Piano.prototype.getFreq = function () {
+	this.i = this.i % this.freqs.length;
+	var ret = this.freqs[this.i];
+	this.i++;
+	return ret;
+}
+Piano.prototype.setFreqs = function (freqs) {
+	this.freqs = freqs;
+	//this.i = 0;
+};
+Piano.prototype.trigger = function(time) {
+	var freq = this.getFreq ();
+	var i;
+	for (i = 0; i < this.kicks.length; i++) {
+		this.kicks[i].freq = freq;
+		this.kicks[i].trigger (time);
+	}
 };
 
 
@@ -210,16 +250,19 @@ function Pattern (nbeat, nnote, mode) {
 function Line (measureLength, measures, divisions, nnotes, mode) {
 	this.duration = measureLength / divisions;
 	this.pattern = new Pattern (divisions * measures, nnotes, mode);
-	this.kick = new Kick (context, this.duration);
+	//this.kick = new Kick (context, this.duration);
+	this.piano = new Piano (context, this.duration);
 }	
 Line.prototype.play = function (time, chord) {
 	//this.kick.freqs = chord;
 	//this.kick.i     = 0;
-	this.kick.setFreqs (chord);
+	//this.kick.setFreqs (chord);
+	this.piano.setFreqs (chord);
 	var i;
 	for (i = 0; i < this.pattern.euclid.length; i+=1) {
 		if (this.pattern.euclid[i]){
-			this.kick.trigger (time);
+			//this.kick.trigger (time);
+			this.piano.trigger (time);
 		}
 		time += this.duration;
 	}
