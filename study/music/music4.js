@@ -84,6 +84,13 @@ function minor7Chord (scale, root) {
 		scale[mod (scale.length, (root + 10))]
 	];
 }
+function diminishedChord (scale, root) {
+	return [
+		scale[mod (scale.length, (root +  0))],
+		scale[mod (scale.length, (root +  3))],
+		scale[mod (scale.length, (root +  6))]
+	];
+}
 function applyChord (chord, bf) {
 	var ret = new Array (chord.length);
 	var i;
@@ -222,7 +229,7 @@ Line.prototype.play = function (time, chord) {
 
 
 
-function Song (context, measureLength, pulses, pulsesP) {
+function Song1 (context, measureLength, pulses, pulsesP) {
 try{
 		this.context = context;
 		var measures = 1;
@@ -248,7 +255,8 @@ try{
 			var chordIV   = applyChord (majorChord     (this.scale, root + roots[3]), bf);
 			var chordV7   = applyChord (dominant7Chord (this.scale, root + roots[4]), bf);
 			var chordvi   = applyChord (minorChord     (this.scale, root + roots[5]), bf);
-			var progression = [chordii, chordI, chordV7, chordvi, chordiii7, chordIV, chordI, chordii, chordV7, chordI, chordIV, chordiii7, chordvi];
+			var chordviid = applyChord (diminishedChord (this.scale, root + roots[6], bf);
+			var progression = [chordI, chordV, chordii, chordvi];
 			progressions[p] = progression;
 			root += 5;
 		}
@@ -280,7 +288,7 @@ try{
 		
 } catch (e) { alert (e) }
 	}
-	Song.prototype.play2 = function (now, I) {
+	Song1.prototype.play = function (now, I) {
 		var p = this.p;
 		var c = this.c;
 		
@@ -315,32 +323,83 @@ try{
 	
 	
 	
-    Song.prototype.play = function (now, I) {
-try {
-      //var total, p, c, lll;
-	  var p = 0;
-	  var c = 0;
-	  //var k = 1;
-
-		//var m = 1;
-		//var m = 0;
-		//m += this.lp[0][0].length * (this.scale.length * 1) * I;
-		var m = I;
-		//if (m > this.M) m = m % this.M + 1;
-		//if (m > this.M) m = m % this.M;
 	
-		//for (total =  0; total < this.scale.length * 1; total++) {
-		var lp = this.lp;
-		var lpP = this.lpP;
-		var primes = this.primes;
-		var lines = this.lines;
-		var linesP = this.linesP;
-		var mLm = this.mLm;
-		var progressionLength = this.progressionLength;
-		var M = this.M;
-		var scale = this.scale;
-		var context = this.context;
-		function cycle () {
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	function Song2 (context, measureLength, pulses, pulsesP) {
+try{
+		this.context = context;
+		var measures = 1;
+		var bf = 432;
+		this.scale = [1/1, 16/15, 9/8, 6/5, 5/4, 4/3, 7/5, 3/2,	8/5, 5/3, 16/9, 15/8];
+		var roots = [0, 2, 4, 5, 7, 9];
+		this.lines  = new Array (pulses.length);
+		this.linesP = new Array (pulsesP.length);
+		var pl;
+		for (pl = 0; pl < pulses.length; pl++)
+			this.lines[pl]  = new Line (measureLength, measures, pulses[pl],  pulses[pl]  * measures * 1 / 2 + 1, pulsesP[pl] * measures / 3 + pl + 1);
+		for (pl = 0; pl < pulsesP.length; pl++)
+			this.linesP[pl] = new Line (measureLength, measures, pulsesP[pl], pulsesP[pl] * measures * 2 / 3 + 1, pulsesP[pl] * measures / 2 + pl + 1);
+		
+	
+		this.progressionLength = 13;
+		var root, p;
+		var progressions = new Array (this.scale.length);
+		for (p = root = 0; p < this.scale.length; p++) {
+			var chordI    = applyChord (majorChord     (this.scale, root + roots[0]), bf);
+			var chordii   = applyChord (minorChord     (this.scale, root + roots[1]), bf);
+			var chordiii7 = applyChord (minor7Chord    (this.scale, root + roots[2]), bf);
+			var chordIV   = applyChord (majorChord     (this.scale, root + roots[3]), bf);
+			var chordV7   = applyChord (dominant7Chord (this.scale, root + roots[4]), bf);
+			var chordvi   = applyChord (minorChord     (this.scale, root + roots[5]), bf);
+			var chordviid = applyChord (diminishedChord (this.scale, root + roots[6], bf);
+			var progression = [chordiii, chordviiid, chordIV];
+			progressions[p] = progression;
+			root += 5;
+		}
+		
+		this.lp  = new Array (this.lines.length);
+		this.lpP = new Array (this.linesP.length);
+		
+		var i;
+		for (i = 0; i < this.lp.length; i++) {
+			this.lp[i] = new Array (this.scale.length);
+			for (p = 0; p < this.lp[i].length; p++) {
+				this.lp[i][p] = transformChords (progressions[p], i, pulses[i], i + 0);
+			}
+		}
+		for (i = 0; i < this.lpP.length; i++) {
+			this.lpP[i] = new Array (this.scale.length);
+			for (p = 0; p < this.lpP[i].length; p++) {
+				this.lpP[i][p] = transformChords (progressions[p], i, pulsesP[i], 2 * i + 1);
+			}
+		}
+		
+		this.primes = [2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47, 53, 59, 61];
+		this.M  = product (this.primes.slice (0, this.lines.length));
+		this.MP = product (this.primes.slice (0, this.linesP.length));
+		this.mLm = measureLength * measures;
+		
+		this.p = 0;
+		this.c = 0;
+		
+} catch (e) { alert (e) }
+	}
+	Song2.prototype.play = function (now, I) {
+		var p = this.p;
+		var c = this.c;
+		
+		
 			var lll;
 			for (lll = 0; lll < lines.length; lll++) {
 				if (m % primes[lines.length - lll - 1] == 0)
@@ -365,9 +424,6 @@ try {
 				if (p == scale.length) p = 0;
 			}
 			
-			setTimeout(cycle, Math.max (0, (now - context.currentTime) * 1000 - 100));
-		}
-		cycle ();
-} catch (e) { alert (e) }
+			this.c = c;
+			this.p = p;
 	};
-	
