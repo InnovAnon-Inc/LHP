@@ -302,11 +302,11 @@ try{
 try {
       var total, p, c, lll, k;
 	  p = 0;
-	  k = 0;
+	  k = 1;
 
-		var m = 0;
+		var m = 1;
 		m += this.lp[0][0].length * (this.scale.length * 1) * I;
-		if (m > this.M) m = m % this.M;
+		if (m > this.M) m = m % this.M + 1;
 	
 		for (total =  0; total < this.scale.length * 1; total++) {
 		
@@ -336,7 +336,7 @@ try {
 				now += this.mLm;
 				
 				m++;
-				if (m == this.M) m = 0;
+				if (m == this.M) m = 1;
 			}
 			
 			p++;
