@@ -236,17 +236,15 @@ try{
 		var roots = [0, 2, 4, 5, 7, 9];
 		//var pulses  = [1, 2, 3, 4, 5, 1, 2, 3, 4, 5, 1, 2];
 		//var pulsesP = [4, 3, 5, 2, 4, 3, 5, 2, 4, 3, 5, 2];
-		var pulsesP = [1, 2, 3, 4, 5, 4, 3, 2, 1];
-		var pulses  = [4, 3, 2, 5, 2, 3, 4];
+		var pulses  = [1, 2, 3, 5, 4, 3, 2, 1];
+		var pulsesP = [4, 3, 2, 5, 2, 3, 4];
 		this.lines  = new Array (pulses.length);
 		this.linesP = new Array (pulsesP.length);
 		var pl;
 		for (pl = 0; pl < pulses.length; pl++)
-			//this.lines[pl] = new Line (measureLength, measures, pulses[pl], pulses[pl] * measures, 0);
-			this.lines[pl] = new Line (measureLength, measures, pulses[pl], pulses[pl] * measures / 2 + 1, pulses[pl] * measures / 3 + pl + 1);
+			this.lines[pl] = new Line (measureLength, measures, pulses[pl], pulses[pl] * measures, 0);
 		for (pl = 0; pl < pulsesP.length; pl++)
-			//this.linesP[pl] = new Line (measureLength, measures, pulsesP[pl], pulsesP[pl] * measures / 2 + 1, pulsesP[pl] * measures / 3 + pl + 1);
-			this.linesP[pl] = new Line (measureLength, measures, pulsesP[pl], pulsesP[pl] * measures, 0);
+			this.linesP[pl] = new Line (measureLength, measures, pulsesP[pl], pulsesP[pl] * measures / 2 + 1, pulsesP[pl] * measures / 3 + pl + 1);
 		/*
 		this.lines = [
 			new Line (measureLength, measures, pulses[0], pulses[0] * measures, 0),
@@ -367,13 +365,13 @@ try {
 						//if (k == this.MP) k = 0;
 				}
 				*/
-				for (lll = 0; lll < lines.length; lll++) {
-					if (m % primes[lines.length - lll - 1] != 0)
-						lines[lll].play (now, lp[lll][p][c]);
-				}
 				for (lll = 0; lll < linesP.length; lll++) {
-					if (m % primes[linesP.length - lll - 1] == 0)
+					if (m % primes[linesP.length - lll - 1] != 0)
 						linesP[lll].play (now, lpP[lll][p][c]);
+				}
+				for (lll = 0; lll < lines.length; lll++) {
+					if (m % primes[lines.length - lll - 1] == 0)
+						lines[lll].play (now, lp[lll][p][c]);
 				}
 		
 				now += mLm;
