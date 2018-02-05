@@ -166,7 +166,7 @@ Kick.prototype.trigger = function(time) {
 	//this.gain.gain.setValueAtTime(.1, time);
 	this.gain.gain.setValueAtTime(this.maxGain, time);
 
-	this.gain.gain.exponentialRampToValueAtTime(this.maxGain / 100, time + this.duration);
+	this.gain.gain.exponentialRampToValueAtTime(this.maxGain / 1000, time + this.duration);
 	//this.gain.gain.exponentialRampToValueAtTime(0.01, time + this.duration);
 	//this.gain.gain.exponentialRampToValueAtTime(0.001, time + this.duration);
 	//this.gain.gain.exponentialRampToValueAtTime(0.0001, time + this.duration);
@@ -179,7 +179,7 @@ Kick.prototype.trigger = function(time) {
 function Piano (context, duration) {
 	var h = 6;
 	this.kicks = new Array (1 + h * 2);
-	var g = .1;
+	var g = .01;
 	this.kicks[0] = new Kick (context, duration, g, 1);
 	var i;
 	var p = 2;
