@@ -193,11 +193,13 @@ Piano.prototype.trigger = function(time) {
 
 
 function Pattern (nbeat, nnote, mode) {
+	nbeat = Math.max (1, Math.floor (nbeat));
+	nnote = Math.max (1, Math.floor (nnote));
+	mode  = Math.floor (mode);
 	/* TODO rotate euclid by mode */
 	//this.euclid = euclid (nbeat, nnote);
 	this.euclid = euclideanRhythm (nnote, nbeat);
-	//alert (this.euclid);
-	alert (this.euclid + " " + nbeat + " " + nnote + " " + mode);
+	this.euclid = this.euclid.rotate (mode);
 }
 	
 	
