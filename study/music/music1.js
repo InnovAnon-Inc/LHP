@@ -437,6 +437,8 @@ try {
 				p++;
 				if (p == scale.length) p = 0;
 			}
+			
+			setTimeout(cycle2, Math.max (0, (now - context.currentTime) * 1000 - 1000));
 		}
 		function cycle () {
 		
@@ -487,10 +489,11 @@ try {
 			
 			//setTimeout(cycle, mLm * lp[0][p].length * 999);
 			
-			while (true) {
+			//while (true) {
 				//setTimeout(cycle2, Math.max (0, now + mLm - context.currentTime - 1000));
-				setTimeout(cycle2, Math.max (0, (now + mLm - context.currentTime) * 1000));
-			}
+				//setTimeout(cycle2, Math.max (0, (now + mLm - context.currentTime) * 1000 - 1000));
+			//}
+			cycle2 ();
 		}
 		cycle ();
 } catch (e) { alert (e) }
