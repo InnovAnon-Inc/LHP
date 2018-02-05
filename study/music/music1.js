@@ -309,41 +309,49 @@ try {
 		if (m > this.M) m = m % this.M + 1;
 	
 		//for (total =  0; total < this.scale.length * 1; total++) {
+		var lp = this.lp;
+		var lpP = this.lpP;
+		var primes = this.primes;
+		var lines = this.lines;
+		var linesP = this.linesP;
+		var mLm = this.mLm;
+		var M = this.M;
+		var scale = this.scale;
 		function cycle () {
 		
-			for (c = 0; c < this.lp[0][p].length; c++) {
+			for (c = 0; c < lp[0][p].length; c++) {
 				var count = 0;
 				var P = true;
-				for (lll = 0; lll < this.lines.length; lll++) {
-					if (m % this.primes[this.lines.length - lll - 1] == 0) {
+				for (lll = 0; lll < lines.length; lll++) {
+					if (m % primes[lines.length - lll - 1] == 0) {
 						count++;
 					}
 				}
 				if (count >= 4) {
-					for (lll = 0; lll < this.lines.length; lll++) {
-						if (m % this.primes[this.lines.length - lll - 1] == 0)
-							this.lines[lll].play (now, this.lp[lll][p][c]);
+					for (lll = 0; lll < lines.length; lll++) {
+						if (m % primes[lines.length - lll - 1] == 0)
+							lines[lll].play (now, lp[lll][p][c]);
 					}
 				} else {
-						for (lll = 0; lll < this.linesP.length; lll++) {
-							if (m % this.primes[this.linesP.length - lll - 1] != 0) {
-								this.linesP[lll].play (now, this.lpP[lll][p][c]);
+						for (lll = 0; lll < linesP.length; lll++) {
+							if (m % primes[linesP.length - lll - 1] != 0) {
+								linesP[lll].play (now, lpP[lll][p][c]);
 							}
 						}
 						//k++;
 						//if (k == this.MP) k = 0;
 				}
 		
-				now += this.mLm;
+				now += mLm;
 				
 				m++;
-				if (m == this.M) m = 1;
+				if (m == M) m = 1;
 			}
 			
 			p++;
-			if (p == this.scale.length) p = 0;
+			if (p == scale.length) p = 0;
 			
-			setTimeout(cycle, this.mLm * this.lp[0][p].length);
+			setTimeout(cycle, mLm * lp[0][p].length);
 		}
 		cycle ();
 } catch (e) { alert (e) }
