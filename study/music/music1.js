@@ -307,7 +307,7 @@ try{
 		for (i = 0; i < this.lpP.length; i++) {
 			this.lpP[i] = new Array (this.scale.length);
 			for (p = 0; p < this.lpP[i].length; p++) {
-				this.lpP[i][p] = transformChords (progressions[p], i, pulsesP[i], i + 0);
+				this.lpP[i][p] = transformChords (progressions[p], i, pulsesP[i], 2* i + 1);
 			}
 		}
 		
