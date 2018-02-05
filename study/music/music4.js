@@ -321,7 +321,7 @@ function SongA (context, measureLength, pulses, pulsesP) {
 			var progression = [chordI, chordV, chordii, chordvi];
 			progressions[p] = progression;
 		}
-		/*
+		
 		this.lp  = new Array (this.lines.length);
 		this.lpP = new Array (this.linesP.length);
 		
@@ -346,7 +346,7 @@ function SongA (context, measureLength, pulses, pulsesP) {
 		
 		this.p = 0;
 		this.c = 0;
-		*/
+		
 
 	}
 	
