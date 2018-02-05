@@ -251,8 +251,10 @@ try{
 		for (p = root = 0; p < this.scale.length; p++) {
 			var chordI    = applyChord (majorChord     (this.scale, root + roots[0]), bf);
 			var chordii   = applyChord (minorChord     (this.scale, root + roots[1]), bf);
+			var chordiii  = applyChord (minorChord     (this.scale, root + roots[2]), bf);
 			var chordiii7 = applyChord (minor7Chord    (this.scale, root + roots[2]), bf);
 			var chordIV   = applyChord (majorChord     (this.scale, root + roots[3]), bf);
+			var chordV    = applyChord (majorChord     (this.scale, root + roots[4]), bf);
 			var chordV7   = applyChord (dominant7Chord (this.scale, root + roots[4]), bf);
 			var chordvi   = applyChord (minorChord     (this.scale, root + roots[5]), bf);
 			var chordviid = applyChord (diminishedChord (this.scale, root + roots[6], bf);
@@ -360,8 +362,10 @@ try{
 		for (p = root = 0; p < this.scale.length; p++) {
 			var chordI    = applyChord (majorChord     (this.scale, root + roots[0]), bf);
 			var chordii   = applyChord (minorChord     (this.scale, root + roots[1]), bf);
+			var chordiii  = applyChord (minorChord     (this.scale, root + roots[2]), bf);
 			var chordiii7 = applyChord (minor7Chord    (this.scale, root + roots[2]), bf);
 			var chordIV   = applyChord (majorChord     (this.scale, root + roots[3]), bf);
+			var chordV    = applyChord (majorChord     (this.scale, root + roots[4]), bf);
 			var chordV7   = applyChord (dominant7Chord (this.scale, root + roots[4]), bf);
 			var chordvi   = applyChord (minorChord     (this.scale, root + roots[5]), bf);
 			var chordviid = applyChord (diminishedChord (this.scale, root + roots[6], bf);
