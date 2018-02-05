@@ -163,8 +163,8 @@ Kick.prototype.trigger = function(time) {
 	//this.osc.frequency.setValueAtTime(freq, time);
 	this.osc.frequency.setValueAtTime(this.getFreq (), time);
 	//this.gain.gain.setValueAtTime(1, time);
-	//this.gain.gain.setValueAtTime(.1, time);
-	this.gain.gain.setValueAtTime(this.maxGain, time);
+	this.gain.gain.setValueAtTime(.1, time);
+	//this.gain.gain.setValueAtTime(this.maxGain, time);
 
 	//this.gain.gain.exponentialRampToValueAtTime(0.01, time + this.duration);
 	this.gain.gain.exponentialRampToValueAtTime(0.001, time + this.duration);
@@ -177,7 +177,7 @@ Kick.prototype.trigger = function(time) {
 function Piano (context, duration) {
 	var h = 3;
 	this.kicks = new Array (1 + h * 2);
-	var g = .01;
+	var g = .1;
 	this.kicks[0] = new Kick (context, duration, g, 1);
 	var i;
 	var p = 2;
