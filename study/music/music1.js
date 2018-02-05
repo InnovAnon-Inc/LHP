@@ -279,13 +279,13 @@ try{
 		for (i = 0; i < this.lp.length; i++) {
 			this.lp[i] = new Array (this.scale.length);
 			for (p = 0; p < this.lp[i].length; p++) {
-				this.lp[i][p] = transformChords (progressions[p], i, pulses[i], i + 1);
+				this.lp[i][p] = transformChords (progressions[p], i, pulses[i], i + 0);
 			}
 		}
 		for (i = 0; i < this.lpP.length; i++) {
 			this.lpP[i] = new Array (this.scale.length);
 			for (p = 0; p < this.lpP[i].length; p++) {
-				this.lpP[i][p] = transformChords (progressions[p], i, pulsesP[i], i + 1);
+				this.lpP[i][p] = transformChords (progressions[p], i, pulsesP[i], i + 0);
 			}
 		}
 		
