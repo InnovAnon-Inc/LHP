@@ -232,8 +232,8 @@ try{
 		var roots = [0, 2, 4, 5, 7, 9];
 		//var pulses  = [1, 2, 3, 4, 5, 1, 2, 3, 4, 5, 1, 2];
 		//var pulsesP = [4, 3, 5, 2, 4, 3, 5, 2, 4, 3, 5, 2];
-		var pulses  = [1, 2, 3, 4, 6, 7, 8];
-		var pulsesP = [7, 4, 7, 6, 7, 8, 7, 4, 7, 6, 7, 8];
+		var pulses  = [4, 7, 3, 7, 2, 7];
+		var pulsesP = [7, 6, 7, 4, 7];
 		this.lines  = new Array (pulses.length);
 		this.linesP = new Array (pulsesP.length);
 		var pl;
