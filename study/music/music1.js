@@ -308,7 +308,8 @@ try {
 		m += this.lp[0][0].length * (this.scale.length * 1) * I;
 		if (m > this.M) m = m % this.M + 1;
 	
-		for (total =  0; total < this.scale.length * 1; total++) {
+		//for (total =  0; total < this.scale.length * 1; total++) {
+		function cycle () {
 		
 			for (c = 0; c < this.lp[0][p].length; c++) {
 				var count = 0;
@@ -341,7 +342,10 @@ try {
 			
 			p++;
 			if (p == this.scale.length) p = 0;
+			
+			setTimeout(cycle, this.mLm * this.lp[0][p].length);
 		}
+		cycle ();
 } catch (e) { alert (e) }
 	};
 	
