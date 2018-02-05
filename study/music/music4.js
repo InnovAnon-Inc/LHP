@@ -63,10 +63,18 @@ function SongA (context, measureLength, pulses, pulsesP) {
 	}
 	
 	
-	SongA.prototype.play = function (now, I) {
+	SongA.prototype.play = function (now, m) {
 try {
 		var p = this.p;
 		var c = this.c;
+		var lines = this.lines;
+		var primes = this.primes;
+		var lp = this.lp;
+		var linesP = this.linesP;
+		var lpP = this.lpP;
+		var mLm = this.mLm;
+		var scale = this.scale;
+		var progressionLength = this.progressionLength;
 		
 		
 			var lll;
@@ -172,6 +180,16 @@ try{
 try {
 		var p = this.p;
 		var c = this.c;
+		var p = this.p;
+		var c = this.c;
+		var lines = this.lines;
+		var primes = this.primes;
+		var lp = this.lp;
+		var linesP = this.linesP;
+		var lpP = this.lpP;
+		var mLm = this.mLm;
+		var scale = this.scale;
+		var progressionLength = this.progressionLength;
 		
 		
 			var lll;
