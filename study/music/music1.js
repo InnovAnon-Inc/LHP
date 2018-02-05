@@ -244,7 +244,7 @@ try{
 		for (pl = 0; pl < pulses.length; pl++)
 			this.lines[pl] = new Line (measureLength, measures, pulses[pl], pulses[pl] * measures, 0);
 		for (pl = 0; pl < pulsesP.length; pl++)
-			this.linesP[pl] = new Line (measureLength, measures, pulsesP[pl], pulsesP[pl] * measures * 2 / 3 + 1, pulsesP[pl] * measures / 3 + pl + 1);
+			this.linesP[pl] = new Line (measureLength, measures, pulsesP[pl], pulsesP[pl] * measures * 2 / 3 + 1, pulsesP[pl] * measures / 2 + pl + 1);
 		/*
 		this.lines = [
 			new Line (measureLength, measures, pulses[0], pulses[0] * measures, 0),
