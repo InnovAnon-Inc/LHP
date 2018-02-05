@@ -350,10 +350,8 @@ function SongA (context, measureLength, pulses, pulsesP) {
 
 	}
 	
-	alert ('test');
 	
-	/*
-	Song1.prototype.play = function (now, I) {
+	SongA.prototype.play = function (now, I) {
 try {
 		var p = this.p;
 		var c = this.c;
@@ -387,8 +385,6 @@ try {
 			this.p = p;
 } catch (e) { alert (e) }
 	};
-	*/
-	
 	
 	
 	
@@ -402,7 +398,6 @@ try {
 	
 	
 	
-	/*
 	function Song2 (context, measureLength, pulses, pulsesP) {
 try{
 		this.context = context;
@@ -419,10 +414,10 @@ try{
 			this.linesP[pl] = new Line (measureLength, measures, pulsesP[pl], pulsesP[pl] * measures * 2 / 3 + 1, pulsesP[pl] * measures / 2 + pl + 1);
 		
 	
-		this.progressionLength = 13;
+		this.progressionLength = 3;
 		var root, p;
 		var progressions = new Array (this.scale.length);
-		for (p = root = 0; p < this.scale.length; p++) {
+		for (p = root = 0; p < this.scale.length; p++, root += 5) {
 			var chordI    = applyChord (majorChord     (this.scale, root + roots[0]), bf);
 			var chordii   = applyChord (minorChord     (this.scale, root + roots[1]), bf);
 			var chordiii  = applyChord (minorChord     (this.scale, root + roots[2]), bf);
@@ -431,10 +426,10 @@ try{
 			var chordV    = applyChord (majorChord     (this.scale, root + roots[4]), bf);
 			//var chordV7   = applyChord (dominant7Chord (this.scale, root + roots[4]), bf);
 			var chordvi   = applyChord (minorChord     (this.scale, root + roots[5]), bf);
-			var chordviid = applyChord (diminishedChord (this.scale, root + roots[6], bf);
-			var progression = [chordiii, chordviid, chordIV];
+			//var chordviid = applyChord (diminishedChord (this.scale, root + roots[6], bf);
+			//var progression = [chordiii, chordviid, chordIV];
+			var progression = [chordiii, chordIV];
 			progressions[p] = progression;
-			root += 5;
 		}
 		
 		this.lp  = new Array (this.lines.length);
@@ -498,4 +493,5 @@ try {
 			this.p = p;
 } catch (e) { alert (e) }
 	};
-*/
+	
+	alert ('test');
