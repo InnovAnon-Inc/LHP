@@ -434,7 +434,7 @@ try {
 				p++;
 				if (p == scale.length) p = 0;
 			}
-			setTimeout(function () { cycle2 (c, p); }, mLm * 999);
+			setTimeout(function () { cycle2 (c, p); }, mLm * 900);
 		}
 		function cycle () {
 		
