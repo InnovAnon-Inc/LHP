@@ -326,11 +326,11 @@ try {
 	  p = 0;
 	  //var k = 1;
 
-		//var m = 1;
-		var m = 0;
+		var m = 1;
+		//var m = 0;
 		m += this.lp[0][0].length * (this.scale.length * 1) * I;
-		//if (m > this.M) m = m % this.M + 1;
-		if (m > this.M) m = m % this.M;
+		if (m > this.M) m = m % this.M + 1;
+		//if (m > this.M) m = m % this.M;
 	
 		//for (total =  0; total < this.scale.length * 1; total++) {
 		var lp = this.lp;
@@ -379,8 +379,8 @@ try {
 				now += mLm;
 				
 				m++;
-				//if (m == M) m = 1;
-				if (m == M) m = 0;
+				if (m == M) m = 1;
+				//if (m == M) m = 0;
 			}
 			
 			p++;
