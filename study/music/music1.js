@@ -438,7 +438,7 @@ try {
 				if (p == scale.length) p = 0;
 			}
 			
-			setTimeout(cycle2, Math.max (0, (now - context.currentTime) * 1000 - 1000));
+			setTimeout(cycle2, Math.max (0, (now - context.currentTime) * 1000 - 100));
 		}
 		function cycle () {
 		
