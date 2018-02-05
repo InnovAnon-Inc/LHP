@@ -314,18 +314,18 @@ try {
 				var count = 0;
 				var P = true;
 				for (lll = 0; lll < this.lines.length; lll++) {
-					if (m % this.primes[this.lines.length - lll - 1] != 0) {
+					if (m % this.primes[this.lines.length - lll - 1] == 0) {
 						count++;
 					}
 				}
 				if (count >= 4) {
 					for (lll = 0; lll < this.lines.length; lll++) {
-						if (m % this.primes[this.lines.length - lll - 1] != 0)
+						if (m % this.primes[this.lines.length - lll - 1] == 0)
 							this.lines[lll].play (now, this.lp[lll][p][c]);
 					}
 				} else {
 						for (lll = 0; lll < this.linesP.length; lll++) {
-							if (m % this.primes[this.linesP.length - lll - 1] == 0) {
+							if (m % this.primes[this.linesP.length - lll - 1] != 0) {
 								this.linesP[lll].play (now, this.lpP[lll][p][c]);
 							}
 						}
