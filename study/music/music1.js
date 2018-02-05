@@ -183,8 +183,8 @@ function Piano (context, duration) {
 	var i;
 	var p = 2;
 	for (i = 0; i < h; i++, p *= 2) {
-		this.kicks[1 + i * 2 + 0] = new Kick (context, duration, g / p, i + 1);
-		this.kicks[1 + i * 2 + 1] = new Kick (context, duration, g / p, 1 / (i + 1));
+		this.kicks[1 + i * 2 + 0] = new Kick (context, duration, g / p, i + 2);
+		this.kicks[1 + i * 2 + 1] = new Kick (context, duration, g / p, 1 / (i + 2));
 	}
 	
 	this.i = 0;
