@@ -369,6 +369,7 @@ try{
 try {
       //var total, p, c, lll;
 	  var p = 0;
+	  var c = 0;
 	  //var k = 1;
 
 		//var m = 1;
@@ -388,7 +389,7 @@ try {
 		var M = this.M;
 		var scale = this.scale;
 		var context = this.context;
-		function cycle2 (c, p) {
+		function cycle2 () {
 			var lll;
 			//var count = 0;
 			//var P = true;
@@ -435,8 +436,6 @@ try {
 				p++;
 				if (p == scale.length) p = 0;
 			}
-			
-			setTimeout(function () { cycle2 (c, p); }, Math.max (0, now - context.currentTime - 1000));
 		}
 		function cycle () {
 		
@@ -487,7 +486,9 @@ try {
 			
 			//setTimeout(cycle, mLm * lp[0][p].length * 999);
 			
-			cycle2 (0, p);
+			while (true) {
+				setTimeout(cycle2, Math.max (0, now + mLM - context.currentTime - 1000));
+			}
 		}
 		cycle ();
 } catch (e) { alert (e) }
