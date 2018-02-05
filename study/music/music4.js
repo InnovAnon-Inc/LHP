@@ -317,7 +317,7 @@ function SongA (context, measureLength, pulses, pulsesP) {
 			var chordV    = applyChord (majorChord     (this.scale, root + roots[4]), bf);
 			//var chordV7   = applyChord (dominant7Chord (this.scale, root + roots[4]), bf);
 			var chordvi   = applyChord (minorChord     (this.scale, root + roots[5]), bf);
-			//var chordviid = applyChord (diminishedChord (this.scale, root + roots[6], bf);
+			//var chordviid = applyChord (diminishedChord (this.scale, root + roots[6]), bf);
 			var progression = [chordI, chordV, chordii, chordvi];
 			progressions[p] = progression;
 		}
@@ -426,9 +426,8 @@ try{
 			//var chordV    = applyChord (majorChord     (this.scale, root + roots[4]), bf);
 			//var chordV7   = applyChord (dominant7Chord (this.scale, root + roots[4]), bf);
 			//var chordvi   = applyChord (minorChord     (this.scale, root + roots[5]), bf);
-			var chordviid = applyChord (dimChord       (this.scale, root + roots[6], bf);
+			var chordviid = applyChord (dimChord       (this.scale, root + roots[6]), bf);
 			var progression = [chordiii, chordviid, chordIV];
-			//var progression = [chordiii, chordIV];
 			progressions[p] = progression;
 		}
 		
@@ -495,3 +494,4 @@ try {
 	};
 	
 	alert ('test');
+
