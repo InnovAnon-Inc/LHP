@@ -326,6 +326,7 @@ try{
 		];
 		*/
 	
+		this.progressionLength = 13;
 		var root, p;
 		var progressions = new Array (this.scale.length);
 		for (p = root = 0; p < this.scale.length; p++) {
@@ -387,6 +388,7 @@ try {
 		var lines = this.lines;
 		var linesP = this.linesP;
 		var mLm = this.mLm;
+		var progressionLength = this.progressionLength;
 		var M = this.M;
 		var scale = this.scale;
 		var context = this.context;
@@ -431,14 +433,15 @@ try {
 			//if (m == M) m = 0;
 			
 			c++;
-			if (c == lp[0][p].length) {
+			if (c == progressionLength) {
 				c = 0;
 				
 				p++;
 				if (p == scale.length) p = 0;
 			}
 			
-			setTimeout(cycle2, Math.max (0, (now - context.currentTime) * 1000 - 10));
+			//setTimeout(cycle2, Math.max (0, (now - context.currentTime) * 1000 - 10));
+			setTimeout(cycle2, Math.max (0, (now - context.currentTime) * 1000 - 100));
 		}
 		function cycle () {
 		
