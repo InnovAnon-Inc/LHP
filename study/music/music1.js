@@ -248,14 +248,14 @@ try{
 			new Line (measureLength, measures, pulses[5], pulses[5] * measures, 0),
 		];
 		this.linesP = [
-			new Line (measureLength, measures, pulsesP[0], pulsesP[0] * measures / 2 + 1, 8 * measures / 3),
+			new Line (measureLength, measures, pulsesP[0], pulsesP[0] * measures / 2 + 1, pulsesP[0] * measures / 3),
 		
-			new Line (measureLength, measures, pulsesP[1], pulsesP[1] * measures / 2 + 1, 2 * measures / 3),
-			new Line (measureLength, measures, pulsesP[2], pulsesP[2] * measures / 2 + 1, 3 * measures / 3),
-			new Line (measureLength, measures, pulsesP[3], pulsesP[3] * measures / 2 + 1, 4 * measures / 3),
+			new Line (measureLength, measures, pulsesP[1], pulsesP[1] * measures / 2 + 1, pulsesP[1] * measures / 3),
+			new Line (measureLength, measures, pulsesP[2], pulsesP[2] * measures / 2 + 1, pulsesP[2] * measures / 3),
+			new Line (measureLength, measures, pulsesP[3], pulsesP[3] * measures / 2 + 1, pulsesP[3] * measures / 3),
 			
-			new Line (measureLength, measures, pulsesP[4], pulsesP[4] * measures / 2 + 1, 5 * measures / 3),
-			new Line (measureLength, measures, pulsesP[5], pulsesP[5] * measures / 2 + 1, 6 * measures / 3),
+			new Line (measureLength, measures, pulsesP[4], pulsesP[4] * measures / 2 + 1, pulsesP[4] * measures / 3),
+			new Line (measureLength, measures, pulsesP[5], pulsesP[5] * measures / 2 + 1, pulsesP[5] * measures / 3),
 		];
 	
 		var root, p;
