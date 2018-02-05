@@ -236,8 +236,8 @@ try{
 		var roots = [0, 2, 4, 5, 7, 9];
 		//var pulses  = [1, 2, 3, 4, 5, 1, 2, 3, 4, 5, 1, 2];
 		//var pulsesP = [4, 3, 5, 2, 4, 3, 5, 2, 4, 3, 5, 2];
-		var pulsesP = [1, 2, 3, 4, 5, 1, 2, 3, 4, 5, 1, 2];
-		var pulses  = [4, 3, 5, 2, 4, 3, 5, 2, 4, 3, 5, 2];
+		var pulsesP = [1, 2, 3, 4, 5, 1, 2, 3, 4, 5];
+		var pulses  = [4, 3, 5, 2, 4, 3, 5, 2, 4, 3];
 		this.lines  = new Array (pulses.length);
 		this.linesP = new Array (pulsesP.length);
 		var pl;
@@ -322,13 +322,15 @@ try{
 	
     Song.prototype.play = function (now, I) {
 try {
-      var total, p, c, lll, k;
+      var total, p, c, lll;
 	  p = 0;
-	  k = 1;
+	  //var k = 1;
 
-		var m = 1;
+		//var m = 1;
+		var m = 0;
 		m += this.lp[0][0].length * (this.scale.length * 1) * I;
-		if (m > this.M) m = m % this.M + 1;
+		//if (m > this.M) m = m % this.M + 1;
+		if (m > this.M) m = m % this.M;
 	
 		//for (total =  0; total < this.scale.length * 1; total++) {
 		var lp = this.lp;
@@ -342,8 +344,9 @@ try {
 		function cycle () {
 		
 			for (c = 0; c < lp[0][p].length; c++) {
-				var count = 0;
-				var P = true;
+				//var count = 0;
+				//var P = true;
+				/*
 				for (lll = 0; lll < lines.length; lll++) {
 					if (m % primes[lines.length - lll - 1] != 0) {
 						count++;
@@ -363,11 +366,21 @@ try {
 						//k++;
 						//if (k == this.MP) k = 0;
 				}
+				*/
+				for (lll = 0; lll < lines.length; lll++) {
+					if (m % primes[lines.length - lll - 1] != 0)
+						lines[lll].play (now, lp[lll][p][c]);
+				}
+				for (lll = 0; lll < linesP.length; lll++) {
+					if (m % primes[linesP.length - lll - 1] != 0)
+						linesP[lll].play (now, lpP[lll][p][c]);
+				}
 		
 				now += mLm;
 				
 				m++;
-				if (m == M) m = 1;
+				//if (m == M) m = 1;
+				if (m == M) m = 0;
 			}
 			
 			p++;
