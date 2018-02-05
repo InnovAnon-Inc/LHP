@@ -158,7 +158,7 @@ Kick.prototype.trigger = function(time) {
 function Piano (context, duration) {
 	var h = 6;
 	this.kicks = new Array (1 + h * 2);
-	var g = .001;
+	var g = .01;
 	this.kicks[0] = new Kick (context, duration, g, 1);
 	var i;
 	var p = 2;
