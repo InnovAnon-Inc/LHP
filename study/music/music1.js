@@ -234,9 +234,9 @@ try{
 		var bf = 432;
 		this.scale = [1/1, 16/15, 9/8, 6/5, 5/4, 4/3, 7/5, 3/2,	8/5, 5/3, 16/9, 15/8];
 		var roots = [0, 2, 4, 5, 7, 9];
-		var pulses  = [1, 2, 3, 4, 5, 6];
-		//var pulses  = [8, 2, 3, 4, 5, 6];
-		var pulsesP = [8, 2, 3, 4, 5, 6];
+		//var pulses  = [1, 2, 3, 4, 5, 6];
+		var pulses  = [1, 2, 3, 5, 1, 2, 3, 4, 5];
+		var pulsesP = [8, 3, 4, 5, 6, 8, 4, 5, 6];
 		this.lines = [
 			new Line (measureLength, measures, pulses[0], pulses[0] * measures, 0),
 			
