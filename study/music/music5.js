@@ -314,7 +314,7 @@ try{
 			progression = [].concat (...permute (progression));*/
 			//var progression = [chordi, chordII, chordIIIa, chordivd, chordV, chordvid, chordvii];
 			var progression = [
-				chordV,   chordvii,  chordII,   chordivd,  chordvid,
+				chordV,   chordvii,  chordivd,  chordvid,
 				chordi, chordivd,  chordvii, chordIIIa, chordvid,  chordII,   chordV,
 				chordi, chordV,    chordII,  chordvid,  chordIIIa, chordvii,  chordivd,
 				chordi, chordvid,  chordivd, chordII,   chordvii,  chordV,    chordIIIa,
