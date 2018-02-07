@@ -317,7 +317,7 @@ try{
 			*/
 			/*var progression = [chordi, chordII, chordIIIa, chordIV, chordvd, chordvid, chordvii];
 			progression = [].concat (...permute (progression));*/
-			//var progression = [chordi, chordII, chordIIIa, chordivd, chordV, chordvid, chordvii];
+			var progression = [chordi, chordII, chordIIIa, chordivd, chordV, chordvid, chordvii];
 			/*
 			var progression = [
 				chordV, chordvii,  chordII,  chordivd,  chordvid,
@@ -328,7 +328,7 @@ try{
 			];
 			*/
 			//var progression = [chordi, chordV, chordII, chordvid, chordIIIa, chordvii, chordivd, chordi];
-			var progression = [chordi, chordIIIa, chordV, chordvii, chordII, chordivd, chordvid, chordi];
+			//var progression = [chordi, chordIIIa, chordV, chordvii, chordII, chordivd, chordvid, chordi];
 			//var progression = [
 			//	chordII, chordvid, chordvd, chordIIIa, chordvii, chordIV, chordi,
 			//	chordIV, chordIIIa, ];
