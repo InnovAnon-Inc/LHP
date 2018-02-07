@@ -305,15 +305,17 @@ try{
 			var chordi    = applyChord (minorChord     (this.scale, root + roots[0]), bf);
 			var chordII   = applyChord (majorChord     (this.scale, root + roots[1]), bf);
 			var chordIIIa = applyChord (augmentedChord (this.scale, root + roots[2]), bf);
-			var chordIV   = applyChord (majorChord     (this.scale, root + roots[3]), bf);
-			var chordvd   = applyChord (diminishedChord(this.scale, root + roots[4]), bf);
+			var chordIV   = applyChord (diminishedChord     (this.scale, root + roots[3]), bf);
+			var chordvd   = applyChord (majorChord(this.scale, root + roots[4]), bf);
 			var chordvid  = applyChord (diminishedChord(this.scale, root + roots[5]), bf);
 			var chordvii  = applyChord (minorChord     (this.scale, root + roots[6]), bf);
 			//var progression = [chordii, chordI, chordV7, chordvi, chordiii7, chordIV, chordI, chordii, chordV7, chordI, chordIV, chordiii7, chordvi];
 			/*var progression = [chordi, chordII, chordIIIa, chordIV, chordvd, chordvid, chordvii];
 			progression = [].concat (...permute (progression));*/
 			//var progression = [chordi, chordII, chordIIIa, chordIV, chordvd, chordvid, chordvii];
-			var progression = [chordII, chordvid, chordvd, chordIIIa, chordvii, chordIV];
+			var progression = [
+				chordII, chordvid, chordvd, chordIIIa, chordvii, chordIV, chordi,
+				chordIV, chordIIIa, ];
 			
 			progressions[p] = progression;
 			root += 5;
