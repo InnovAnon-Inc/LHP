@@ -327,7 +327,8 @@ try{
 				chordi, chordvii,  chordvid, chordV,    chordivd,  chordIIIa, chordII,
 			];
 			*/
-			var progression = [chordi, chordV, chordII, chordvid, chordIIIa, chordvii, chordvid, chordi];
+			var progression = [chordi, chordV, chordII, chordvid, chordIIIa, chordvii, chordivd, chordi];
+			//var progression = [chordi, chordIIIa, chordV, chordvii, chordII, chordivd, chordvid, chordi];
 			//var progression = [
 			//	chordII, chordvid, chordvd, chordIIIa, chordvii, chordIV, chordi,
 			//	chordIV, chordIIIa, ];
