@@ -312,7 +312,12 @@ try{
 			//var progression = [chordii, chordI, chordV7, chordvi, chordiii7, chordIV, chordI, chordii, chordV7, chordI, chordIV, chordiii7, chordvi];
 			/*var progression = [chordi, chordII, chordIIIa, chordIV, chordvd, chordvid, chordvii];
 			progression = [].concat (...permute (progression));*/
-			var progression = [chordi, chordII, chordIIIa, chordIV, chordvd, chordvid, chordvii];
+			//var progression = [chordi, chordII, chordIIIa, chordIV, chordvd, chordvid, chordvii];
+			var progression = [
+			chordvid, chordIIIa, chordvd, chordvii, chordII, chordi, chordvii,
+			chordvid, chordIIIa, chordi, chordvii, chordvid, chordvd, chordIV,
+			chordvid, chordIIIa, chordvii, chordvid, chordvd, chordIV, chordvd,
+			chordvid, chordIIIa, chordi, chordvii, chordvid, chordvd, chordIV];
 			
 			progressions[p] = progression;
 			root += 5;
