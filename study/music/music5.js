@@ -298,7 +298,7 @@ try{
 			this.linesP[pl] = new Line (measureLength, measures, pulsesP[pl], pulsesP[pl] * measures * 2 / 3 + 1, pulsesP[pl] * measures / 2 + pl + 1);
 		
 	
-		this.progressionLength = 13;
+		//this.progressionLength = 13;
 		var root, p;
 		var progressions = new Array (this.scale.length);
 		for (p = root = 0; p < this.scale.length; p++) {
@@ -316,6 +316,7 @@ try{
 			//var progression = [
 			//	chordII, chordvid, chordvd, chordIIIa, chordvii, chordIV, chordi,
 			//	chordIV, chordIIIa, ];
+			this.progressionLength = progression.length;
 			
 			progressions[p] = progression;
 			root += 5;
