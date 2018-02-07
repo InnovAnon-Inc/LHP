@@ -8,8 +8,8 @@
 	now++;
 	
 	var measureLength = 2 * 40 / 60;
-	var pulses  = [2, 1, 5, 5, 2, 1];
-	var pulsesP = [5, 2, 1, 2, 1, 5];
+	var pulses  = [2, 5, 1];
+	var pulsesP = [5, 2, 1];
 	var s = new Song (context, measureLength, pulses, pulsesP);
 	s.play (now, Math.floor (Math.random () * Number.MAX_SAFE_INTEGER));
 </script>
