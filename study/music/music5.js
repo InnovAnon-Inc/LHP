@@ -253,7 +253,7 @@ const permutator = (inputArr) => {
  permute(inputArr)
 
  return result;
-};
+}
 
 
 
