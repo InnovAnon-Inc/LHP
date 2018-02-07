@@ -310,8 +310,9 @@ try{
 			var chordvid  = applyChord (diminishedChord(this.scale, root + roots[5]), bf);
 			var chordvii  = applyChord (minorChord     (this.scale, root + roots[6]), bf);
 			//var progression = [chordii, chordI, chordV7, chordvi, chordiii7, chordIV, chordI, chordii, chordV7, chordI, chordIV, chordiii7, chordvi];
+			/*var progression = [chordi, chordII, chordIIIa, chordIV, chordvd, chordvid, chordvii];
+			progression = [].concat (...permute (progression));*/
 			var progression = [chordi, chordII, chordIIIa, chordIV, chordvd, chordvid, chordvii];
-			progression = [].concat (...permute (progression));
 			
 			progressions[p] = progression;
 			root += 5;
@@ -384,6 +385,7 @@ try {
       //var total, p, c, lll;
 	  var p = 0;
 	  var c = 0;
+	  var rotAmt = 1;
 	  //var k = 1;
 
 		//var m = 1;
@@ -408,11 +410,11 @@ try {
 			var lll;
 			for (lll = 0; lll < lines.length; lll++) {
 				if (m % primes[lines.length - lll - 1] == 0)
-					lines[lll].play (now, lp[lll][p][c]);
+					lines[lll].play (now, lp[lll][p][(c * rotAmt) % progressionLength]);
 			}
 			for (lll = 0; lll < linesP.length; lll++) {
 				if (m % primes[linesP.length - lll - 1] != 0)
-					linesP[lll].play (now, lpP[lll][p][c]);
+					linesP[lll].play (now, lpP[lll][p][(c * rotAmt) % progressionLength]);
 			}
 	
 			now += mLm;
@@ -425,6 +427,7 @@ try {
 			if (c == progressionLength) {
 				c = 0;
 				
+				rotAmt++;
 				p++;
 				if (p == scale.length) p = 0;
 			}
