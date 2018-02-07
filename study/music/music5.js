@@ -254,6 +254,28 @@ const permutator = (inputArr) => {
 
  return result;
 }
+function permute(permutation) {
+  var length = permutation.length,
+      result = [permutation.slice()],
+      c = new Array(length).fill(0),
+      i = 1, k, p;
+
+  while (i < length) {
+    if (c[i] < i) {
+      k = i % 2 && c[i];
+      p = permutation[i];
+      permutation[i] = permutation[k];
+      permutation[k] = p;
+      ++c[i];
+      i = 1;
+      result.push(permutation.slice());
+    } else {
+      c[i] = 0;
+      ++i;
+    }
+  }
+  return result;
+}
 
 
 
@@ -287,7 +309,8 @@ try{
 			var chordvii  = applyChord (minorChord     (this.scale, root + roots[5]), bf);
 			//var progression = [chordii, chordI, chordV7, chordvi, chordiii7, chordIV, chordI, chordii, chordV7, chordI, chordIV, chordiii7, chordvi];
 			var progression = [chordi, chordII, chordIIIa, chordIV, chordvd, chordvid, chordvii];
-			progression = Array.concat (permutator (progression));
+			progression = Array.concat (permute (progression));
+			
 			progressions[p] = progression;
 			root += 5;
 		}
