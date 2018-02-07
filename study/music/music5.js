@@ -309,7 +309,7 @@ try{
 			var chordvii  = applyChord (minorChord     (this.scale, root + roots[5]), bf);
 			//var progression = [chordii, chordI, chordV7, chordvi, chordiii7, chordIV, chordI, chordii, chordV7, chordI, chordIV, chordiii7, chordvi];
 			var progression = [chordi, chordII, chordIIIa, chordIV, chordvd, chordvid, chordvii];
-			progression = Array.concat (permute (progression));
+			progression = permute (progression);
 			
 			progressions[p] = progression;
 			root += 5;
