@@ -310,9 +310,13 @@ try{
 			var chordvid  = applyChord (diminishedChord(this.scale, root + roots[5]), bf);
 			var chordvii  = applyChord (minorChord     (this.scale, root + roots[6]), bf);
 			//var progression = [chordii, chordI, chordV7, chordvi, chordiii7, chordIV, chordI, chordii, chordV7, chordI, chordIV, chordiii7, chordvi];
+			var progression = [chordII, chordi, chordV, chordvid, chordIIIa,
+			chordivd, chordi, chordII, chordV, chordi, chordivd, chordIIIa,
+			chordvid];
 			/*var progression = [chordi, chordII, chordIIIa, chordIV, chordvd, chordvid, chordvii];
 			progression = [].concat (...permute (progression));*/
 			//var progression = [chordi, chordII, chordIIIa, chordivd, chordV, chordvid, chordvii];
+			/*
 			var progression = [
 				chordV, chordvii,  chordII,  chordivd,  chordvid,
 				chordi, chordivd,  chordvii, chordIIIa, chordvid,  chordII,   chordV,
@@ -320,6 +324,7 @@ try{
 				chordi, chordvid,  chordivd, chordII,   chordvii,  chordV,    chordIIIa,
 				chordi, chordvii,  chordvid, chordV,    chordivd,  chordIIIa, chordII,
 			];
+			*/
 			//var progression = [
 			//	chordII, chordvid, chordvd, chordIIIa, chordvii, chordIV, chordi,
 			//	chordIV, chordIIIa, ];
