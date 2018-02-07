@@ -432,10 +432,13 @@ try {
 			if (c == progressionLength) {
 				c = 0;
 				
-				rotAmt++;
-				if (rotAmt % progressionLength == 0) rotAmt++;
 				p++;
-				if (p == scale.length) p = 0;
+				if (p == scale.length) {
+					p = 0;
+					
+					rotAmt++;
+					if (rotAmt % progressionLength == 0) rotAmt++;
+				}
 			}
 			
 			setTimeout(cycle, Math.max (0, (now - context.currentTime) * 1000 - 100));
