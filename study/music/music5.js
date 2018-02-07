@@ -160,7 +160,8 @@ Kick.prototype.getFreq = function () {
 Kick.prototype.trigger = function(time) {
 	this.setup();
 
-	this.osc.frequency.setValueAtTime(this.getFreq (), time);
+	var freq = this.getFreq ();
+	this.osc.frequency.setValueAtTime(freq, time);
 	
 	this.gain.gain.setValueAtTime(this.maxGain, time);
 	this.gain.gain.exponentialRampToValueAtTime(this.maxGain / 100, time + this.duration);
@@ -234,7 +235,7 @@ Line.prototype.play = function (time, chord) {
 };
 
 
-
+/*
 const permutator = (inputArr) => {
   let result = [];
 
@@ -254,6 +255,7 @@ const permutator = (inputArr) => {
 
  return result;
 }
+*/
 function permute(permutation) {
   var length = permutation.length,
       result = [permutation.slice()],
@@ -306,10 +308,10 @@ try{
 			var chordIV   = applyChord (majorChord     (this.scale, root + roots[3]), bf);
 			var chordvd   = applyChord (diminishedChord(this.scale, root + roots[4]), bf);
 			var chordvid  = applyChord (diminishedChord(this.scale, root + roots[5]), bf);
-			var chordvii  = applyChord (minorChord     (this.scale, root + roots[5]), bf);
+			var chordvii  = applyChord (minorChord     (this.scale, root + roots[6]), bf);
 			//var progression = [chordii, chordI, chordV7, chordvi, chordiii7, chordIV, chordI, chordii, chordV7, chordI, chordIV, chordiii7, chordvi];
 			var progression = [chordi, chordII, chordIIIa, chordIV, chordvd, chordvid, chordvii];
-			progression = permute (progression);
+			progression = [].concat (...permute (progression));
 			
 			progressions[p] = progression;
 			root += 5;
