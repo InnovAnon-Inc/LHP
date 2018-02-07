@@ -316,6 +316,7 @@ try{
 			//var progression = [
 			//	chordII, chordvid, chordvd, chordIIIa, chordvii, chordIV, chordi,
 			//	chordIV, chordIIIa, ];
+			
 			this.progressionLength = progression.length;
 			
 			progressions[p] = progression;
@@ -432,6 +433,7 @@ try {
 				c = 0;
 				
 				rotAmt++;
+				if (rotAmt % progressionLength == 0) rotAmt++;
 				p++;
 				if (p == scale.length) p = 0;
 			}
