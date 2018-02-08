@@ -37,6 +37,8 @@ try {
 		context, bf, scale, octaves, octave + 0, gain, richness);
 	var piano2   = new Piano2 (
 		context, bf, scale, octaves, octave + 1, gain, richness);
+	var piano3   = new Piano2 (
+		context, bf, scale, octaves, octave - 1, gain, richness);
 		
 	//var modes = [0, 2, 4, 5, 7, 9, 11];
 	//var key, mode, note;
@@ -44,6 +46,7 @@ try {
 	
 	var rhythm1 = new Rhythm (13, 8, 4);
 	var rhythm2 = new Rhythm (13, 9, 5);
+	var rhythm3 = new Rhythm (13, 7, 3);
 
 	var t = 1, r, b = 0;
 	function cycle () {
@@ -56,6 +59,8 @@ try {
 				piano1.trigger (now, chordI, t);
 			if (rhythm2.beat ())
 				piano2.trigger (now, chordI, t);
+			if (rhythm3.beat ())
+				piano3.trigger (now, chordI, t);
 			now += t;
 		}
 		for (r = 1; r <= 3; r++, b++) {
@@ -63,6 +68,8 @@ try {
 				piano1.trigger (now, chordIV, t);
 			if (rhythm2.beat ())
 				piano2.trigger (now, chordIV, t);
+			if (rhythm3.beat ())
+				piano3.trigger (now, chordIV, t);
 			now += t;
 		}
 		for (r = 1; r <= 3; r++, b++) {
@@ -70,6 +77,8 @@ try {
 				piano1.trigger (now, chordV, t);
 			if (rhythm2.beat ())
 				piano2.trigger (now, chordV, t);
+			if (rhythm3.beat ())
+				piano3.trigger (now, chordV, t);
 			now += t;
 		}
 		for (r = 1; r <= 3; r++, b++) {
@@ -77,6 +86,8 @@ try {
 				piano1.trigger (now, chordIV, t);
 			if (rhythm2.beat ())
 				piano2.trigger (now, chordIV, t);
+			if (rhythm3.beat ())
+				piano3.trigger (now, chordIV, t);
 			now += t;
 		}
 		
