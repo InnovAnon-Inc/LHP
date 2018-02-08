@@ -5,6 +5,7 @@
 <script src="lib/note.js"></script>
 <script src="lib/piano.js"></script>
 <script src="lib/piano2.js"></script>
+<script src="lib/rhythm.js"></script>
 
 <script src="music7.js"></script>
 <script>
@@ -34,6 +35,12 @@ try {
 	var richness = 5;
 	var piano    = new Piano2 (
 		context, bf, scale, octaves, octave, gain, richness);
+		
+	//var modes = [0, 2, 4, 5, 7, 9, 11];
+	//var key, mode, note;
+	//[(note + key + mode) % scale.length]
+	
+	var rhythm = new Rhythm (12, 7, 5);
 
 	var t = 1;
 	function cycle () {
