@@ -52,25 +52,21 @@ try {
 			if (rhythm.beat ())
 				piano.trigger (now, chordI, t);
 			now += t;
-			alert (rhythm.isPulse ());
 		}
 		for (r = 1; r <= 3; r++, b++) {
 			if (rhythm.beat ())
 				piano.trigger (now, chordIV, t);
 			now += t;
-			alert (rhythm.isPulse ());
 		}
 		for (r = 1; r <= 3; r++, b++) {
 			if (rhythm.beat ())
 				piano.trigger (now, chordV, t);
 			now += t;
-			alert (rhythm.isPulse ());
 		}
 		for (r = 1; r <= 3; r++, b++) {
 			if (rhythm.beat ())
 				piano.trigger (now, chordIV, t);
 			now += t;
-			alert (rhythm.isPulse ());
 		}
 		
 		setTimeout(cycle, Math.max (0, Math.floor (now - context.currentTime) * 1000 - 100));
