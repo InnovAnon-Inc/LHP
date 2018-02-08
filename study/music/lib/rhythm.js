@@ -46,14 +46,16 @@ function Rhythm (nbeat, npulse, mode) {
 	this.euclid = euclideanRhythm (nbeat, npulse).rotate (mode);
 	this.i = 0;
 }
-Rhythm.prototype.next () {
+
+Rhythm.prototype.next = function () {
 	this.i = (this.i + 1) % this.euclid.length;
 };
-Rhythm.prototype.isPulse () {
+Rhythm.prototype.isPulse = function () {
 	return this.euclid[this.i];
 };
-Rhythm.prototype.beat () {
+Rhythm.prototype.beat = function () {
 	var ret = this.isPulse ();
 	this.next ();
 	return ret;
 };
+
