@@ -13,7 +13,6 @@ function applyScale (baseFreq, scale, octaves, octave) {
 
 function Piano2 (context, bf, scale, octaves, octave, gain, richness) {
 	var notes = applyScale (bf, scale, octaves, octave);
-	alert (notes);
 	this.piano = new Piano (context, notes, gain, richness);
 }
 Piano2.prototype.trigger = function(time, freqs, duration) {
