@@ -1,6 +1,9 @@
 <html>
 <head>
 	
+<script src="lib/kick.js"></script>
+<script src="lib/note.js"></script>
+<script src="lib/piano.js"></script>
 <script src="music7.js"></script>
 <script>
 	/*
@@ -14,6 +17,19 @@
 	var s = new Song (context, measureLength, pulses, pulsesP);
 	s.play (now, Math.floor (Math.random () * Number.MAX_SAFE_INTEGER));
 	*/
+	var context = new AudioContext();
+	var now = context.currentTime;
+	now++;
+
+	var bf    = 432;
+	var scale = [];
+	var as = applyScale (bf, scale, 0);
+	var p = new Piano (context, as, .1, 5);
+
+	chordI = [0, 4, 7];
+	piano.setFreqs (chordI);
+	piano.setDuration (1);
+	piano.trigger (now);
 </script>
 
 </head>

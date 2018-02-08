@@ -1,78 +1,8 @@
-function Kick(context, freq, maxGain, harmonic) {
-	this.context = context;
-	this.freq = freq * harmonic;
-	this.maxGain = maxGain;
-	this.harmonic = harmonic;
-}
-Kick.prototype.setup = function() {
-	this.osc = this.context.createOscillator();
-	this.gain = this.context.createGain();
-	this.osc.connect(this.gain);
-	this.gain.connect(this.context.destination);
-};
-Kick.prototype.setDuration = function (duration) {
-	this.duration = duration;
-};
-Kick.prototyp.getDuration = function () {
-	return this.duration;
-};
-Kick.prototype.trigger = function(time) {
-	var duration = this.getDuration ();
-	this.setup();
 
-	this.osc.frequency.setValueAtTime(this.freq, time);
-	
-	this.gain.gain.setValueAtTime(this.maxGain, time);
-	this.gain.gain.exponentialRampToValueAtTime(this.maxGain / 100, time + duration);
 
-	this.osc.start(time);
-	this.osc.stop(time + duration);
-};
 
-function Note (context, freq, gain, richness) {
-	var h = richness;
-	this.kicks = new Array (1 + h * 2);
-	var g = gain;
-	this.kicks[0] = new Kick (context, freq, g, 1);
-	var i;
-	for (i = 0; i < h; i++) {
-		g /= 2;
-		var hGain   = g;
-		var hFactor = i + 2;
-		this.kicks[1 + i * 2 + 0] = new Kick (context, freq, hGain, hFactor / 1);
-		this.kicks[1 + i * 2 + 1] = new Kick (context, freq, hGain, 1 / hFactor);
-	}
-}
-Note.prototype.setDuration = function (duration) {
-	for (i = 0; i < this.kicks.length; i++)
-		this.kicks[i].setDuration (duration);
-};
-Note.prototype.trigger = function(time) {
-	var i;
-	for (i = 0; i < this.kicks.length; i++)
-		this.kicks[i].trigger (time);
-};
 
-function Piano (context, notes, gain, richness) {
-	//this.bf = bf;
-	this.notes = new Array (notes.length);
-	var i;
-	for (i = 0; i < notes.length; i++)
-		this.notes[i] = new Note (context, notes[i], gain, richness);
-}
-Piano.prototype.setFreqs = function (freqs) {
-	this.freqs = freqs;
-};
-Piano.prototype.setDuration = function (duration) {
-	for (i = 0; i < freqs.length; i++)
-		this.notes[freqs[i]].setDuration (duration);
-};
-Piano.prototype.trigger = function(time) {
-	var freq = this.getFreqs ();
-	var i;
-	for (i = 0; i < freqs.length; i++)
-		this.notes[freqs[i]].trigger (time);
-};
+
 
 function applyScale (baseFreq, scale, octave) {
 	var ret = new Array (scale.length);
@@ -82,19 +12,7 @@ function applyScale (baseFreq, scale, octave) {
 	return applyScale;
 }
 
-var context = new AudioContext();
-var now = context.currentTime;
-now++;
 
-var bf    = 432;
-var scale = [];
-var as = applyScale (bf, scale, 0);
-var p = new Piano (context, as, .1, 5);
-
-chordI = [0, 4, 7];
-piano.setFreqs (chordI);
-piano.setDuration (1);
-piano.trigger (now);
 
 
 
