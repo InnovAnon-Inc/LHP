@@ -42,19 +42,27 @@ try {
 	
 	var rhythm = new Rhythm (12, 7, 5);
 
-	var t = 1;
+	var t = 1, r, b = 0;
 	function cycle () {
 		var chordI = [0, 4, 7];
-		piano.trigger (now, chordI, t);
-		now += t;
-		
 		var chordIV = [5, 9, 12];
-		piano.trigger (now, chordIV, t);
-		now += t;
+		var chordV = [7, 11, 14];
 		
-		chordV = [7, 11, 14];
-		piano.trigger (now, chordV, t);
-		now += t;
+		for (r = 1; r <= 4; r++, b++) {
+			if (rhythm.beat ())
+				piano.trigger (now, chordI, t);
+			now += t;
+		}
+		for (r = 1; r <= 4; r++, b++) {
+			if (rhythm.beat ())
+				piano.trigger (now, chordIV, t);
+			now += t;
+		}
+		for (r = 1; r <= 4; r++, b++) {
+			if (rhythm.beat ())
+				piano.trigger (now, chordV, t);
+			now += t;
+		}
 		
 		setTimeout(cycle, Math.max (0, Math.floor (now - context.currentTime) * 1000 - 100));
 	}
