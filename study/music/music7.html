@@ -40,7 +40,7 @@ try {
 	//var key, mode, note;
 	//[(note + key + mode) % scale.length]
 	
-	//var rhythm = new Rhythm (12, 7, 5);
+	var rhythm = new Rhythm (12, 7, 5);
 
 	var t = 1, r, b = 0;
 	function cycle () {
@@ -49,17 +49,17 @@ try {
 		var chordV  = [7, 11, 14];
 		
 		for (r = 1; r <= 4; r++, b++) {
-			//if (rhythm.beat ())
+			if (rhythm.beat ())
 				piano.trigger (now, chordI, t);
 			now += t;
 		}
 		for (r = 1; r <= 4; r++, b++) {
-			//if (rhythm.beat ())
+			if (rhythm.beat ())
 				piano.trigger (now, chordIV, t);
 			now += t;
 		}
 		for (r = 1; r <= 4; r++, b++) {
-			//if (rhythm.beat ())
+			if (rhythm.beat ())
 				piano.trigger (now, chordV, t);
 			now += t;
 		}
