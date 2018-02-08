@@ -48,19 +48,24 @@ try {
 		var chordIV = [5,  9, 12];
 		var chordV  = [7, 11, 14];
 		
-		for (r = 1; r <= 4; r++, b++) {
+		for (r = 1; r <= 3; r++, b++) {
 			if (rhythm.beat ())
 				piano.trigger (now, chordI, t);
 			now += t;
 		}
-		for (r = 1; r <= 4; r++, b++) {
+		for (r = 1; r <= 3; r++, b++) {
 			if (rhythm.beat ())
 				piano.trigger (now, chordIV, t);
 			now += t;
 		}
-		for (r = 1; r <= 4; r++, b++) {
+		for (r = 1; r <= 3; r++, b++) {
 			if (rhythm.beat ())
 				piano.trigger (now, chordV, t);
+			now += t;
+		}
+		for (r = 1; r <= 3; r++, b++) {
+			if (rhythm.beat ())
+				piano.trigger (now, chordIV, t);
 			now += t;
 		}
 		
