@@ -19,12 +19,12 @@ function euclideanRhythm (onNotes, totalNotes) {
       .concat(groups.slice(count, -count));
   }
   return [].concat.apply([], groups);
-};
+}
 
 function compareArrays (a, b) {
   // TODO: optimize
   return JSON.stringify(a) === JSON.stringify(b);
-};
+}
 
 Array.prototype.rotate = (function() {
     var unshift = Array.prototype.unshift,
@@ -43,7 +43,7 @@ function Rhythm (nbeat, npulse, mode) {
 	//nbeat  = Math.max (1, Math.floor (nbeat));
 	//npulse = Math.max (1, Math.floor (npulse));
 	//mode  = Math.floor (mode);
-	this.euclid = euclideanRhythm (nnote, npulse).rotate (mode);
+	this.euclid = euclideanRhythm (nbeat, npulse).rotate (mode);
 	this.i = 0;
 }
 Rhythm.prototype.next () {
