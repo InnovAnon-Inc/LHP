@@ -37,18 +37,18 @@ try {
 
 	var cnt;
 	for (cnt = 1; cnt <= 4; cnt++) {
-	var chordI = [0, 4, 7];
-	piano.trigger (now, chordI, 3);
-	now += 3;
-	
-	var chordIV = [5, 9, 0];
-	piano.trigger (now, chordIV, 3);
-	now += 3;
-	
-	chordV = [7, 11, 2];
-	piano.trigger (now, chordV, 3);
-	now += 3;
-}
+		var chordI = [0, 4, 7];
+		piano.trigger (now, chordI, 3);
+		now += 3;
+		
+		var chordIV = [5, 9, 0];
+		piano.trigger (now, chordIV, 3);
+		now += 3;
+		
+		chordV = [7, 11, 2];
+		piano.trigger (now, chordV, 3);
+		now += 3;
+	}
 } catch (e) { alert (e) }
 </script>
 
