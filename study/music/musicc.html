@@ -30,8 +30,8 @@ try {
 	var I2 = I1;
 	
 	function cycle () {
-		s1.play (now + measureLength, I1++);
-		s2.play (now + measureLength + measureLength / 2, I2++);
+		s1.play (now, I1++);
+		s2.play (now + measureLength / 2, I2++);
 		
 		now += measureLength;
 	
