@@ -7,7 +7,6 @@ function Piano (context, notes, gain, richness) {
 		this.notes[i] = new Note (context, notes[i], gain, richness);
 }
 Piano.prototype.trigger = function(time, freqs, duration) {
-	var freqs = this.getFreqs ();
 	var i;
 	for (i = 0; i < freqs.length; i++)
 		this.notes[freqs[i]].trigger (time, duration);

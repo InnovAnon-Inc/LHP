@@ -36,9 +36,7 @@ try {
 		context, bf, scale, octaves, octave, gain, richness);
 
 	chordI = [0, 4, 7];
-	piano.setFreqs (chordI);
-	piano.setDuration (1);
-	piano.trigger (now);
+	piano.trigger (now, chordI, 1);
 } catch (e) { alert (e) }
 </script>
 
