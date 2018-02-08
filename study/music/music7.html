@@ -35,9 +35,8 @@ try {
 	var piano    = new Piano2 (
 		context, bf, scale, octaves, octave, gain, richness);
 
-	var cnt;
 	var t = 1;
-	for (cnt = 1; cnt <= 4; cnt++) {
+	function cycle () {
 		var chordI = [0, 4, 7];
 		piano.trigger (now, chordI, t);
 		now += t;
@@ -49,7 +48,10 @@ try {
 		chordV = [7, 11, 14];
 		piano.trigger (now, chordV, t);
 		now += t;
+		
+		setTimeout(cycle, Math.max (0, Math.floor (now - context.currentTime) * 1000 - 100));
 	}
+	cycle ();
 } catch (e) { alert (e) }
 </script>
 
