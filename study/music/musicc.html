@@ -1,0 +1,45 @@
+<html>
+<head>
+
+<script src="musiclib.js"></script>
+<script src="music4.js"></script>
+<script>
+try {
+	var context = new AudioContext();
+	var now = context.currentTime;
+	now++;
+	
+	var den = 1;
+	var tempo = 60 / 40;
+	var measureLength = 4 / den * tempo;
+	var pulses1  = [1, 3, 1, 2];
+	var pulsesP1 = [2, 2, 3, 3];
+	//var pulses2  = [2, 1, 3, 1];
+	//var pulsesP2 = [3, 3, 2, 2];
+	//var pulses1  = [1, 3, 2];
+	//var pulsesP1 = [2, 1, 3]
+	//var pulses2  = [3, 2, 1];
+	//var pulsesP2 = [2, 1, 3]
+	var pulses2  = [1, 2, 1, 3];
+	var pulsesP2 = [3, 3, 2, 2];
+	//var pulses2  = [3, 1, 2, 1];
+	//var pulsesP2 = [2, 2, 3, 3];
+	var s1 = new SongA (context, measureLength, pulses1, pulsesP1);
+	var s2 = new Song2 (context, measureLength, pulses2, pulsesP2);
+	var I1 = Math.floor (Math.random () * Number.MAX_SAFE_INTEGER);
+	var I2 = I1;
+	
+	function cycle () {
+		s1.play (now + measureLength, I1++);
+		s2.play (now + measureLength + measureLength / 2, I2++);
+		
+		now += measureLength;
+	
+		setTimeout(cycle, Math.max (0, Math.floor (now - context.currentTime) * 1000 - 100));
+	}
+	cycle ();
+} catch (e) { alert (e) }
+</script>
+
+</head>
+</html>
