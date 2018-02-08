@@ -4,7 +4,7 @@ function applyScale (baseFreq, scale, octaves, octave) {
 	var ret = new Array (scale.length * octaves);
 	var i, j, k;
 	for (i = k = 0; i < octaves; i++) {
-		var bf = baseFreq = * Math.pow (2, octave + i);
+		var bf = baseFreq * Math.pow (2, octave + i);
 		for (j = 0; j < scale.length; j++, k++)
 			ret[k] = bf * scale[j];
 	}

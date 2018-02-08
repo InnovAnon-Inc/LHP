@@ -50,7 +50,7 @@ Rhythm.prototype.next () {
 	this.i = (this.i + 1) % this.euclid.length;
 };
 Rhythm.prototype.isPulse () {
-	return this.euclid[i];
+	return this.euclid[this.i];
 };
 Rhythm.prototype.beat () {
 	var ret = this.isPulse ();
