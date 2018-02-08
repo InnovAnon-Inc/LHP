@@ -36,18 +36,19 @@ try {
 		context, bf, scale, octaves, octave, gain, richness);
 
 	var cnt;
+	var t = 1;
 	for (cnt = 1; cnt <= 4; cnt++) {
 		var chordI = [0, 4, 7];
-		piano.trigger (now, chordI, 3);
-		now += 3;
+		piano.trigger (now, chordI, t);
+		now += t;
 		
 		var chordIV = [5, 9, 0];
-		piano.trigger (now, chordIV, 3);
-		now += 3;
+		piano.trigger (now, chordIV, t);
+		now += t;
 		
 		chordV = [7, 11, 2];
-		piano.trigger (now, chordV, 3);
-		now += 3;
+		piano.trigger (now, chordV, t);
+		now += t;
 	}
 } catch (e) { alert (e) }
 </script>
