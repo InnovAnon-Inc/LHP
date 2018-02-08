@@ -10,18 +10,10 @@ Kick.prototype.setup = function() {
 	this.osc.connect(this.gain);
 	this.gain.connect(this.context.destination);
 };
-Kick.prototype.setDuration = function (duration) {
-	this.duration = duration;
-};
-Kick.prototyp.getDuration = function () {
-	return this.duration;
-};
-Kick.prototype.trigger = function(time) {
-	var duration = this.getDuration ();
+Kick.prototype.trigger = function(time, duration) {
 	this.setup();
 
 	this.osc.frequency.setValueAtTime(this.freq, time);
-	
 	this.gain.gain.setValueAtTime(this.maxGain, time);
 	this.gain.gain.exponentialRampToValueAtTime(this.maxGain / 100, time + duration);
 

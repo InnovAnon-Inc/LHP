@@ -14,12 +14,8 @@ function Note (context, freq, gain, richness) {
 		this.kicks[1 + i * 2 + 1] = new Kick (context, freq, hGain, 1 / hFactor);
 	}
 }
-Note.prototype.setDuration = function (duration) {
-	for (i = 0; i < this.kicks.length; i++)
-		this.kicks[i].setDuration (duration);
-};
-Note.prototype.trigger = function(time) {
+Note.prototype.trigger = function(time, duration) {
 	var i;
 	for (i = 0; i < this.kicks.length; i++)
-		this.kicks[i].trigger (time);
+		this.kicks[i].trigger (time, duration);
 };

@@ -4,12 +4,15 @@
 
 
 
+
+
+
 function applyScale (baseFreq, scale, octave) {
 	var ret = new Array (scale.length);
 	var i;
 	for (i = 0; i < ret.length; i++)
 		ret[i] = baseFreq * Math.pow (2, octave) * scale[i];
-	return applyScale;
+	return ret;
 }
 
 
@@ -23,7 +26,7 @@ function applyScale (baseFreq, scale, octave) {
 
 
 
-
+/*
 
 
 function euclideanRhythm (onNotes, totalNotes) {
@@ -177,8 +180,6 @@ function Pattern (nbeat, nnote, mode) {
 	nbeat = Math.max (1, Math.floor (nbeat));
 	nnote = Math.max (1, Math.floor (nnote));
 	mode  = Math.floor (mode);
-	/* TODO rotate euclid by mode */
-	//this.euclid = euclid (nbeat, nnote);
 	this.euclid = euclideanRhythm (nnote, nbeat);
 	this.euclid = this.euclid.rotate (mode);
 }
@@ -202,3 +203,4 @@ Line.prototype.play = function (time, chord) {
 
 
 
+*/
