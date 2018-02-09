@@ -114,7 +114,7 @@ try {
 		var ret = new Array (chord.length);
 		var i;
 		for (i = 0; i < chord.length; i++)
-			ret[i] = subscale[chord[i]];
+			ret[i] = subscale[chord[i] % subscale.length];
 		return ret;
 	}
 	
