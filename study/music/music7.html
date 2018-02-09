@@ -115,7 +115,11 @@ try {
 	var magnitudes = [ 1,  0, 1, 1,  0];
 	
 	var melody1 = new Melody (subscale, 0, directions, magnitudes);
+	directions = directions.slice ().rotate (1);
+	magnitudes = magnitudes.slice ().rotate (1);
 	var melody2 = new Melody (subscale, 1, directions, magnitudes);
+	directions = directions.slice ().rotate (1);
+	magnitudes = magnitudes.slice ().rotate (1);
 	var melody3 = new Melody (subscale, 2, directions, magnitudes);
 	
 	function getChord (chord) {
