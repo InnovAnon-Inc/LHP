@@ -117,12 +117,10 @@ try {
 		for (r = 1; r <= 3; r++, b++) {
 			if (rhythm1.beat ()) {
 				note = melody1.next (chordI, r == 1);
-				alert (note);
 				piano1.trigger (now, [note], t);
 			}
 			if (rhythm2.beat ()) {
 				note = melody2.next (chordI, r == 1);
-				alert (note);
 				piano2.trigger (now, [note], t);
 			}
 			if (rhythm3.beat ()) {
