@@ -130,7 +130,7 @@ try {
 		return ret;
 	}
 	
-	var t = 1, r, b = 0;
+	var t = 1, r, b = 0, m = 0;
 	function cycle () {
 		// TODO get chords from subscale
 		var chordI  = [0 + 0, 2 + 0, 4 + 0];
@@ -139,77 +139,78 @@ try {
 		var note;
 		
 		for (r = 1; r <= 3; r++, b++) {
-			if (b % 1 == 0 && rhythm0.beat ())
+			if (m % 1 == 0 && rhythm0.beat ())
 			//if (r == 1)
 				piano0.trigger (now, getChord (chordI), t);
-			if (b % 2 == 0 && rhythm1.beat ()) {
+			if (m % 2 == 0 && rhythm1.beat ()) {
 				note = melody1.next (chordI, r == 1);
 				piano1.trigger (now, [note], t);
 			}
-			if (b % 3 == 0 && rhythm2.beat ()) {
+			if (m % 3 == 0 && rhythm2.beat ()) {
 				note = melody2.next (chordI, r == 1);
 				piano2.trigger (now, [note], t);
 			}
-			if (b % 5 == 0 && rhythm3.beat ()) {
+			if (m % 5 == 0 && rhythm3.beat ()) {
 				note = melody3.next (chordI, r == 1);
 				piano3.trigger (now, [note], t);
 			}
 			now += t;
 		}
 		for (r = 1; r <= 3; r++, b++) {
-			if (b % 1 == 0 && rhythm0.beat ())
+			if (m % 1 == 0 && rhythm0.beat ())
 			//if (r == 1)
 				piano0.trigger (now, getChord (chordIV), t);
-			if (b % 2 == 0 && rhythm1.beat ()) {
+			if (m % 2 == 0 && rhythm1.beat ()) {
 				note = melody1.next (chordIV, r == 1);
 				piano1.trigger (now, [note], t);
 			}
-			if (b % 3 == 0 && rhythm2.beat ()) {
+			if (m % 3 == 0 && rhythm2.beat ()) {
 				note = melody2.next (chordIV, r == 1);
 				piano2.trigger (now, [note], t);
 			}
-			if (b % 5 == 0 && rhythm3.beat ()) {
+			if (m % 5 == 0 && rhythm3.beat ()) {
 				note = melody3.next (chordIV, r == 1);
 				piano3.trigger (now, [note], t);
 			}
 			now += t;
 		}
 		for (r = 1; r <= 3; r++, b++) {
-			if (b % 1 == 0 && rhythm0.beat ())
+			if (m % 1 == 0 && rhythm0.beat ())
 			//if (r == 1)
 				piano0.trigger (now, getChord (chordV), t);
-			if (b % 2 == 0 && rhythm1.beat ()) {
+			if (m % 2 == 0 && rhythm1.beat ()) {
 				note = melody1.next (chordV, r == 1);
 				piano1.trigger (now, [note], t);
 			}
-			if (b % 3 == 0 && rhythm2.beat ()) {
+			if (m % 3 == 0 && rhythm2.beat ()) {
 				note = melody2.next (chordV, r == 1);
 				piano2.trigger (now, [note], t);
 			}
-			if (b % 5 == 0 && rhythm3.beat ()) {
+			if (m % 5 == 0 && rhythm3.beat ()) {
 				note = melody3.next (chordV, r == 1);
 				piano3.trigger (now, [note], t);
 			}
 			now += t;
 		}
 		for (r = 1; r <= 3; r++, b++) {
-			if (b % 1 == 0 && rhythm0.beat ())
+			if (m % 1 == 0 && rhythm0.beat ())
 			//if (r == 1)
 				piano0.trigger (now, getChord (chordIV), t);
-			if (b % 2 == 0 && rhythm1.beat ()) {
+			if (m % 2 == 0 && rhythm1.beat ()) {
 				note = melody1.next (chordIV, r == 1);
 				piano1.trigger (now, [note], t);
 			}
-			if (b % 3 == 0 && rhythm2.beat ()) {
+			if (m % 3 == 0 && rhythm2.beat ()) {
 				note = melody2.next (chordIV, r == 1);
 				piano2.trigger (now, [note], t);
 			}
-			if (b % 5 == 0 && rhythm3.beat ()) {
+			if (m % 5 == 0 && rhythm3.beat ()) {
 				note = melody3.next (chordIV, r == 1);
 				piano3.trigger (now, [note], t);
 			}
 			now += t;
 		}
+		m++;
 		
 		setTimeout(cycle, Math.max (0, Math.floor (now - context.currentTime) * 1000 - 100));
 	}
