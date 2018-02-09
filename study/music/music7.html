@@ -100,7 +100,7 @@ try {
 	function getScale (scale, modes, mode) {
 		var ret = new Array (scale.length);
 		var i, sum;
-		for (i = sum = 0; i < Ret.length; i++) {
+		for (i = sum = 0; i < ret.length; i++) {
 			ret[i] = scale[sum % scale.length];
 			sum += modes[(i + mode) % modes.length];
 		}
