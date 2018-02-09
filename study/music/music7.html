@@ -110,6 +110,14 @@ try {
 	var melody2 = new Melody (subscale, 1, directions, magnitudes);
 	var melody3 = new Melody (subscale, 2, directions, magnitudes);
 	
+	function getChord (chord) {
+		var ret = new Array (chord.length);
+		var i;
+		for (i = 0; i < chord.length; i++)
+			ret[i] = subscale[chord[i]];
+		return ret;
+	}
+	
 	var t = 1, r, b = 0;
 	function cycle () {
 		// TODO get chords from subscale
@@ -120,7 +128,7 @@ try {
 		
 		for (r = 1; r <= 3; r++, b++) {
 			if (rhythm0.beat ())
-				piano0.trigger (now, chordI, t);
+				piano0.trigger (now, getChord (chordI), t);
 			if (rhythm1.beat ()) {
 				note = melody1.next (chordI, r == 1);
 				piano1.trigger (now, [note], t);
@@ -137,7 +145,7 @@ try {
 		}
 		for (r = 1; r <= 3; r++, b++) {
 			if (rhythm0.beat ())
-				piano0.trigger (now, chordIV, t);
+				piano0.trigger (now, getChord (chordIV), t);
 			if (rhythm1.beat ()) {
 				note = melody1.next (chordIV, r == 1);
 				piano1.trigger (now, [note], t);
@@ -154,7 +162,7 @@ try {
 		}
 		for (r = 1; r <= 3; r++, b++) {
 			if (rhythm0.beat ())
-				piano0.trigger (now, chordV, t);
+				piano0.trigger (now, getChord (chordV), t);
 			if (rhythm1.beat ()) {
 				note = melody1.next (chordV, r == 1);
 				piano1.trigger (now, [note], t);
@@ -171,7 +179,7 @@ try {
 		}
 		for (r = 1; r <= 3; r++, b++) {
 			if (rhythm0.beat ())
-				piano0.trigger (now, chordIV, t);
+				piano0.trigger (now, getChord (chordIV), t);
 			if (rhythm1.beat ()) {
 				note = melody1.next (chordIV, r == 1);
 				piano1.trigger (now, [note], t);
