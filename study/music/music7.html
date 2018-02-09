@@ -48,6 +48,15 @@ try {
 	var rhythm2 = new Rhythm (17, 7, 1);
 	var rhythm3 = new Rhythm (11, 7, 2);
 	
+	function includes (chord, note, scale) {
+		var i;
+		var m = note % scale.length;
+		for (i = 0; i < chord.length; i++)
+			if (chord[i] % scale.length == m)
+				return true;
+		return false;
+	}
+	
 	function Melody (scale, start, directions, magnitudes) {
 		this.scale      = scale;
 		this.directions = directions;
@@ -71,7 +80,7 @@ try {
 			next = (prev + direction * magnitude) % scale.length;
 			//if (chord !== undefined) {
 			if (modulate) {
-				while (! chord.includes (next))
+				while (! includes (chord, next, scale))
 					next = (next + direction) % scale.length;
 			}
 		}
@@ -106,10 +115,12 @@ try {
 		for (r = 1; r <= 3; r++, b++) {
 			if (rhythm1.beat ()) {
 				note = melody1.next (chordI, r == 1);
+				alert (note);
 				piano1.trigger (now, [note], t);
 			}
 			if (rhythm2.beat ()) {
 				note = melody2.next (chordI, r == 1);
+				alert (note);
 				piano2.trigger (now, [note], t);
 			}
 			if (rhythm3.beat ()) {
