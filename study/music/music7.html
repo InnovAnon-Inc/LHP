@@ -48,19 +48,6 @@ try {
 	var rhythm2 = new Rhythm (17, 7, 1);
 	var rhythm3 = new Rhythm (11, 7, 2);
 	
-	var modes = [2, 2, 1, 2, 2, 2, 1];
-	var subscale = [scale[0],
-		scale[0 + modes[0]], scale[0 + modes[1]], scale[0 + modes[2]],
-		scale[0 + modes[3]], scale[0 + modes[4]], scale[0 + modes[5]],
-		scale[0 + modes[6]]];
-	
-	var melody1 = new Melody (subscale, 0, directions, magnitudes);
-	var melody2 = new Melody (subscale, 1, directions, magnitudes);
-	var melody3 = new Melody (subscale, 2, directions, magnitudes);
-	
-	var directions = [-1, -1, 1, 1, -1, 1];
-	var magnitudes = [ 1,  0, 1, 1,  0];
-	
 	function Melody (scale, start, directions, magnitudes) {
 		this.scale      = scale;
 		this.directions = directions;
@@ -95,7 +82,20 @@ try {
 		this.prev = next;
 		return next;
 	};
-
+	
+	var modes = [2, 2, 1, 2, 2, 2, 1];
+	var subscale = [scale[0],
+		scale[0 + modes[0]], scale[0 + modes[1]], scale[0 + modes[2]],
+		scale[0 + modes[3]], scale[0 + modes[4]], scale[0 + modes[5]],
+		scale[0 + modes[6]]];
+	
+	var directions = [-1, -1, 1, 1, -1, 1];
+	var magnitudes = [ 1,  0, 1, 1,  0];
+	
+	var melody1 = new Melody (subscale, 0, directions, magnitudes);
+	var melody2 = new Melody (subscale, 1, directions, magnitudes);
+	var melody3 = new Melody (subscale, 2, directions, magnitudes);
+	
 	var t = 1, r, b = 0;
 	function cycle () {
 		var chordI  = [0 + 0, 2 + 0, 4 + 0];
