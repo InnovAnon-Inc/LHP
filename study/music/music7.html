@@ -152,8 +152,8 @@ try {
 			now += t;
 		}
 		for (r = 1; r <= 3; r++, b++) {
-			//if (rhythm0.beat ())
-			//	piano0.trigger (now, getChord (chordIV), t);
+			if (rhythm0.beat ())
+				piano0.trigger (now, getChord (chordIV), t);
 			if (rhythm1.beat ()) {
 				note = melody1.next (chordIV, r == 1);
 				piano1.trigger (now, [note], t);
@@ -169,8 +169,8 @@ try {
 			now += t;
 		}
 		for (r = 1; r <= 3; r++, b++) {
-			//if (rhythm0.beat ())
-			//	piano0.trigger (now, getChord (chordV), t);
+			if (rhythm0.beat ())
+				piano0.trigger (now, getChord (chordV), t);
 			if (rhythm1.beat ()) {
 				note = melody1.next (chordV, r == 1);
 				piano1.trigger (now, [note], t);
@@ -186,8 +186,8 @@ try {
 			now += t;
 		}
 		for (r = 1; r <= 3; r++, b++) {
-			//if (rhythm0.beat ())
-			//	piano0.trigger (now, getChord (chordIV), t);
+			if (rhythm0.beat ())
+				piano0.trigger (now, getChord (chordIV), t);
 			if (rhythm1.beat ()) {
 				note = melody1.next (chordIV, r == 1);
 				piano1.trigger (now, [note], t);
