@@ -78,10 +78,12 @@ try {
 			next = chord[this.start % chord.length];
 		else {
 			next = (prev + direction * magnitude) % scale.length;
+			if (next < 0) next += scale.length;
 			//if (chord !== undefined) {
 			if (modulate) {
 				while (! includes (chord, next, scale))
 					next = (next + direction) % scale.length;
+					if (next < 0) next += scale.length;
 			}
 		}
 		
