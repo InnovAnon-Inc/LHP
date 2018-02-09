@@ -48,76 +48,116 @@ try {
 	var rhythm2 = new Rhythm (17, 7, 1);
 	var rhythm3 = new Rhythm (11, 7, 2);
 	
-	var directions = [-1, -1, 1, 1, -1, 1];
-	var magnitudes = [1, 1, 0];
+	var modes = [2, 2, 1, 2, 2, 2, 1];
+	var subscale = [scale[0], scale[0 + modes[0], scale[0 + modes[1]], ...];
 	
-	function Melody (scale, directions, magnitudes) {
+	var melody1 = new Melody (subscale, 0, directions, magnitudes);
+	var melody2 = new Melody (subscale, 1, directions, magnitudes);
+	var melody3 = new Melody (subscale, 2, directions, magnitudes);
+	
+	var directions = [-1, -1, 1, 1, -1, 1];
+	var magnitudes = [ 1,  0, 1, 1,  0];
+	
+	function Melody (scale, start, directions, magnitudes) {
 		this.scale      = scale;
 		this.directions = directions;
 		this.magnitudes = magnitudes;
 		this.d = 0;
 		this.m = 0;
+		this.start = start;
 	}
-	Melody.prototype.next = function (chord) {
-		var prev = this.prev;
+	Melody.prototype.next = function (chord, modulate) {
+		var scale = this.scale;
+		
 		var direction = this.directions[this.d];
 		var magnitude = this.magnitudes[this.m];
 		
-		if (chord is undefined) {
-			nextNote (prev, direction, magnitude);
-			// prev + direction * magnitude;
-		} else {
-			if (prev is undefined) {
-				
-			} else {
-				// find a note in chord in direction with at least magnitude
+		var prev = this.prev;
+		var next;
+		
+		if (prev === undefined)
+			next = chord[this.start % chord.length];
+		else {
+			next = (prev + direction * magnitude) % scale.length;
+			//if (chord !== undefined) {
+			if (modulate) {
+				while (! chord.contains (next))
+					next = (next + direction) % scale.length;
 			}
 		}
 		
 		this.d = (this.d + 1) % this.directions.length;
 		this.m = (this.m + 1) % this.magnitudes.length;
-	}
+		
+		this.prev = next;
+		return next;
+	};
 
 	var t = 1, r, b = 0;
 	function cycle () {
 		var chordI  = [0,  4,  7];
 		var chordIV = [5,  9, 12];
 		var chordV  = [7, 11, 14];
+		var note;
 		
 		for (r = 1; r <= 3; r++, b++) {
-			if (rhythm1.beat ())
-				piano1.trigger (now, chordI, t);
-			if (rhythm2.beat ())
-				piano2.trigger (now, chordI, t);
-			if (rhythm3.beat ())
-				piano3.trigger (now, chordI, t);
+			if (rhythm1.beat ()) {
+				note = melody1.next (chordI, r == 1);
+				piano1.trigger (now, [note], t);
+			}
+			if (rhythm2.beat ()) {
+				note = melody2.next (chordI, r == 1);
+				piano2.trigger (now, [note], t);
+			}
+			if (rhythm3.beat ()) {
+				note = melody3.next (chordI, r == 1);
+				piano3.trigger (now, [note], t);
+			}
 			now += t;
 		}
 		for (r = 1; r <= 3; r++, b++) {
-			if (rhythm1.beat ())
-				piano1.trigger (now, chordIV, t);
-			if (rhythm2.beat ())
-				piano2.trigger (now, chordIV, t);
-			if (rhythm3.beat ())
-				piano3.trigger (now, chordIV, t);
+			if (rhythm1.beat ()) {
+				note = melody1.next (chordIV, r == 1);
+				piano1.trigger (now, [note], t);
+			}
+			if (rhythm2.beat ()) {
+				note = melody2.next (chordIV, r == 1);
+				piano2.trigger (now, [note], t);
+			}
+			if (rhythm3.beat ()) {
+				note = melody3.next (chordIV, r == 1);
+				piano3.trigger (now, [note], t);
+			}
 			now += t;
 		}
 		for (r = 1; r <= 3; r++, b++) {
-			if (rhythm1.beat ())
-				piano1.trigger (now, chordV, t);
-			if (rhythm2.beat ())
-				piano2.trigger (now, chordV, t);
-			if (rhythm3.beat ())
-				piano3.trigger (now, chordV, t);
+			if (rhythm1.beat ()) {
+				note = melody1.next (chordV, r == 1);
+				piano1.trigger (now, [note], t);
+			}
+			if (rhythm2.beat ()) {
+				note = melody2.next (chordV, r == 1);
+				piano2.trigger (now, [note], t);
+			}
+			if (rhythm3.beat ()) {
+				note = melody3.next (chordV, r == 1);
+				piano3.trigger (now, [note], t);
+			}
 			now += t;
 		}
 		for (r = 1; r <= 3; r++, b++) {
-			if (rhythm1.beat ())
-				piano1.trigger (now, chordIV, t);
-			if (rhythm2.beat ())
-				piano2.trigger (now, chordIV, t);
-			if (rhythm3.beat ())
-				piano3.trigger (now, chordIV, t);
+			if (rhythm1.beat ()) {
+				note = melody1.next (chordIV, r == 1);
+				piano1.trigger (now, [note], t);
+			}
+			if (rhythm2.beat ()) {
+				note = melody2.next (chordIV, r == 1);
+				piano2.trigger (now, [note], t);
+			}
+			if (rhythm3.beat ()) {
+				note = melody3.next (chordIV, r == 1);
+				piano3.trigger (now, [note], t);
+			}
 			now += t;
 		}
 		
