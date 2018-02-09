@@ -33,6 +33,8 @@ try {
 	var octave   = 0;
 	var gain     = .1;
 	var richness = 5;
+	var piano0   = new Piano2 (
+		context, bf, scale, octaves, octave + 0, gain, richness);
 	var piano1   = new Piano2 (
 		context, bf, scale, octaves, octave + 0, gain, richness);
 	var piano2   = new Piano2 (
@@ -44,6 +46,7 @@ try {
 	//var key, mode, note;
 	//[(note + key + mode) % scale.length]
 	
+	var rhythm0 = new Rhythm (12, 7, 5);
 	var rhythm1 = new Rhythm (13, 7, 0);
 	var rhythm2 = new Rhythm (17, 7, 1);
 	var rhythm3 = new Rhythm (11, 7, 2);
@@ -115,6 +118,8 @@ try {
 		var note;
 		
 		for (r = 1; r <= 3; r++, b++) {
+			if (rhythm0.beat ())
+				piano0.trigger (note, chordI, t);
 			if (rhythm1.beat ()) {
 				note = melody1.next (chordI, r == 1);
 				piano1.trigger (now, [note], t);
@@ -130,6 +135,8 @@ try {
 			now += t;
 		}
 		for (r = 1; r <= 3; r++, b++) {
+			if (rhythm0.beat ())
+				piano0.trigger (note, chordIV, t);
 			if (rhythm1.beat ()) {
 				note = melody1.next (chordIV, r == 1);
 				piano1.trigger (now, [note], t);
@@ -145,6 +152,8 @@ try {
 			now += t;
 		}
 		for (r = 1; r <= 3; r++, b++) {
+			if (rhythm0.beat ())
+				piano0.trigger (note, chordV, t);
 			if (rhythm1.beat ()) {
 				note = melody1.next (chordV, r == 1);
 				piano1.trigger (now, [note], t);
@@ -160,6 +169,8 @@ try {
 			now += t;
 		}
 		for (r = 1; r <= 3; r++, b++) {
+			if (rhythm0.beat ())
+				piano0.trigger (note, chordIV, t);
 			if (rhythm1.beat ()) {
 				note = melody1.next (chordIV, r == 1);
 				piano1.trigger (now, [note], t);
