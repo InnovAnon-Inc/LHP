@@ -144,8 +144,7 @@ try {
 		var note;
 		
 		for (r = 1; r <= 3; r++, b++) {
-			if (play0 && m % 1 == 0 && rhythm0.beat ())
-			//if (r == 1)
+			if (play0 && m % 1 == 0 && r == 1 && rhythm0.beat ())
 				piano0.trigger (now, getChord (chordI), t);
 			if (play1 && m % 2 == 0 && rhythm1.beat ()) {
 				note = melody1.next (chordI, r == 1);
@@ -162,8 +161,7 @@ try {
 			now += t;
 		}
 		for (r = 1; r <= 3; r++, b++) {
-			if (play0 && m % 1 == 0 && rhythm0.beat ())
-			//if (r == 1)
+			if (play0 && m % 1 == 0 && r == 1 && rhythm0.beat ())
 				piano0.trigger (now, getChord (chordIV), t);
 			if (play1 && m % 2 == 0 && rhythm1.beat ()) {
 				note = melody1.next (chordIV, r == 1);
@@ -180,8 +178,7 @@ try {
 			now += t;
 		}
 		for (r = 1; r <= 3; r++, b++) {
-			if (play0 && m % 1 == 0 && rhythm0.beat ())
-			//if (r == 1)
+			if (play0 && m % 1 == 0 && r == 1 && rhythm0.beat ())
 				piano0.trigger (now, getChord (chordV), t);
 			if (play1 && m % 2 == 0 && rhythm1.beat ()) {
 				note = melody1.next (chordV, r == 1);
@@ -198,8 +195,7 @@ try {
 			now += t;
 		}
 		for (r = 1; r <= 3; r++, b++) {
-			if (play0 && m % 1 == 0 && rhythm0.beat ())
-			//if (r == 1)
+			if (play0 && m % 1 == 0 && r == 1 && rhythm0.beat ())
 				piano0.trigger (now, getChord (chordIV), t);
 			if (play1 && m % 2 == 0 && rhythm1.beat ()) {
 				note = melody1.next (chordIV, r == 1);
