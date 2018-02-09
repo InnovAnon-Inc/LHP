@@ -71,7 +71,7 @@ try {
 			next = (prev + direction * magnitude) % scale.length;
 			//if (chord !== undefined) {
 			if (modulate) {
-				while (! chord.contains (next))
+				while (! chord.includes (next))
 					next = (next + direction) % scale.length;
 			}
 		}
