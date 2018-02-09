@@ -97,11 +97,18 @@ try {
 		return next;
 	};
 	
+	function getScale (scale, modes, mode) {
+		var ret = new Array (scale.length);
+		var i, sum;
+		for (i = sum = 0; i < Ret.length; i++) {
+			ret[i] = scale[sum % scale.length];
+			sum += modes[(i + mode) % modes.length];
+		}
+		return ret;
+	}
+	
 	var modes = [2, 2, 1, 2, 2, 2, 1];
-	var subscale = [scale[0],
-		scale[0 + modes[0]], scale[0 + modes[1]], scale[0 + modes[2]],
-		scale[0 + modes[3]], scale[0 + modes[4]], scale[0 + modes[5]],
-		scale[0 + modes[6]]];
+	var subscale = getScale (scale, modes, 0);
 	
 	var directions = [-1, -1, 1, 1, -1, 1];
 	var magnitudes = [ 1,  0, 1, 1,  0];
@@ -115,6 +122,7 @@ try {
 		var i;
 		for (i = 0; i < chord.length; i++)
 			ret[i] = subscale[chord[i] % subscale.length];
+		alert (ret + " " + chord);
 		return ret;
 	}
 	
