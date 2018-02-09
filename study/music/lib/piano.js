@@ -10,6 +10,7 @@ Piano.prototype.trigger = function(time, freqs, duration) {
 	var i;
 	for (i = 0; i < freqs.length; i++) {
 		if (freqs[i] < 0) alert (freqs);
+		alert (this.notes + " " + freqs[i] + " " + (freqs[i] % this.notes.length));
 		this.notes[freqs[i] % this.notes.length].trigger (time, duration);
 	}
 };

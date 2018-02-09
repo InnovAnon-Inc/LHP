@@ -102,7 +102,7 @@ try {
 		var ret = new Array (scale.length);
 		var i, sum;
 		for (i = sum = 0; i < ret.length; i++) {
-			ret[i] = scale[sum % scale.length];
+			ret[i] = sum % scale.length;
 			sum += modes[(i + mode) % modes.length];
 		}
 		return ret;
@@ -123,7 +123,6 @@ try {
 		var i;
 		for (i = 0; i < chord.length; i++)
 			ret[i] = subscale[chord[i] % subscale.length];
-		alert (ret + " " + chord);
 		return ret;
 	}
 	
@@ -136,8 +135,8 @@ try {
 		var note;
 		
 		for (r = 1; r <= 3; r++, b++) {
-			//if (rhythm0.beat ())
-			//	piano0.trigger (now, getChord (chordI), t);
+			if (rhythm0.beat ())
+				piano0.trigger (now, getChord (chordI), t);
 			if (rhythm1.beat ()) {
 				note = melody1.next (chordI, r == 1);
 				piano1.trigger (now, [note], t);
