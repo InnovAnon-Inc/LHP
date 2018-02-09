@@ -47,6 +47,36 @@ try {
 	var rhythm1 = new Rhythm (13, 7, 0);
 	var rhythm2 = new Rhythm (17, 7, 1);
 	var rhythm3 = new Rhythm (11, 7, 2);
+	
+	var directions = [-1, -1, 1, 1, -1, 1];
+	var magnitudes = [1, 1, 0];
+	
+	function Melody (scale, directions, magnitudes) {
+		this.scale      = scale;
+		this.directions = directions;
+		this.magnitudes = magnitudes;
+		this.d = 0;
+		this.m = 0;
+	}
+	Melody.prototype.next = function (chord) {
+		var prev = this.prev;
+		var direction = this.directions[this.d];
+		var magnitude = this.magnitudes[this.m];
+		
+		if (chord is undefined) {
+			nextNote (prev, direction, magnitude);
+			// prev + direction * magnitude;
+		} else {
+			if (prev is undefined) {
+				
+			} else {
+				// find a note in chord in direction with at least magnitude
+			}
+		}
+		
+		this.d = (this.d + 1) % this.directions.length;
+		this.m = (this.m + 1) % this.magnitudes.length;
+	}
 
 	var t = 1, r, b = 0;
 	function cycle () {
