@@ -43,16 +43,19 @@ try {
 		context, bf, scale, octaves, octave + 1, gain, richness);
 	var piano4   = new Piano2 (
 		context, bf, scale, octaves, octave - 1, gain, richness);
+	var piano5   = new Piano2 (
+		context, bf, scale, octaves, octave + 0, gain, richness);
 		
 	//var modes = [0, 2, 4, 5, 7, 9, 11];
 	//var key, mode, note;
 	//[(note + key + mode) % scale.length]
 	
-	var rhythm0 = new Rhythm (12, 7, 5);
-	var rhythm1 = new Rhythm (12, 5, 7);
-	var rhythm2 = new Rhythm (13, 7, 0);
-	var rhythm3 = new Rhythm (17, 7, 1);
-	var rhythm4 = new Rhythm (11, 7, 2);
+	var rhythm0 = new Rhythm (12,  7, 5);
+	var rhythm1 = new Rhythm (12,  5, 7);
+	var rhythm2 = new Rhythm (13,  7, 0);
+	var rhythm3 = new Rhythm (17,  7, 1);
+	var rhythm4 = new Rhythm (11,  7, 2);
+	var rhythm4 = new Rhythm (19, 13, 3);
 	
 	function includes (chord, note, scale) {
 		var i;
@@ -127,6 +130,9 @@ try {
 	directions = directions.slice ().rotate (1);
 	magnitudes = magnitudes.slice ().rotate (1);
 	var melody4 = new Melody (subscale, 3, directions, magnitudes);
+	directions = directions.slice ().rotate (1);
+	magnitudes = magnitudes.slice ().rotate (1);
+	var melody5 = new Melody (subscale, 4, directions, magnitudes);
 	
 	function getChord (chord) {
 		var ret = new Array (chord.length);
@@ -141,6 +147,7 @@ try {
 	var play2 = true;
 	var play3 = true;
 	var play4 = true;
+	var play5 = true;
 	
 	var t = 1, r, b = 0, m = 0;
 	function cycle () {
@@ -169,6 +176,10 @@ try {
 				note = melody4.next (chordI, r == 1);
 				piano4.trigger (now, [note], t);
 			}
+			if (play5 && m % 1 == 0 && rhythm5.beat ()) {
+				note = melody5.next (chordI, r == 1);
+				piano5.trigger (now, [note], t);
+			}
 			now += t;
 		}
 		if (play0 && rhythm0.beat ())
@@ -189,6 +200,10 @@ try {
 			if (play4 && m % 3 == 0 && rhythm4.beat ()) {
 				note = melody4.next (chordIV, r == 1);
 				piano4.trigger (now, [note], t);
+			}
+			if (play5 && m % 1 == 0 && rhythm5.beat ()) {
+				note = melody5.next (chordIV, r == 1);
+				piano5.trigger (now, [note], t);
 			}
 			now += t;
 		}
@@ -211,6 +226,10 @@ try {
 				note = melody4.next (chordV, r == 1);
 				piano4.trigger (now, [note], t);
 			}
+			if (play5 && m % 1 == 0 && rhythm5.beat ()) {
+				note = melody5.next (chordV, r == 1);
+				piano5.trigger (now, [note], t);
+			}
 			now += t;
 		}
 		if (play0 && rhythm0.beat ())
@@ -231,6 +250,10 @@ try {
 			if (play4 && m % 3 == 0 && rhythm4.beat ()) {
 				note = melody4.next (chordIV, r == 1);
 				piano4.trigger (now, [note], t);
+			}
+			if (play5 && m % 1 == 0 && rhythm5.beat ()) {
+				note = melody5.next (chordIV, r == 1);
+				piano5.trigger (now, [note], t);
 			}
 			now += t;
 		}
