@@ -194,8 +194,8 @@ try {
 		var um  = new UndulatingMotion (2,  1, this.subscale.length);
 		var pm  = new PendulumMotion  (1,  1, this.subscale.length, 3);
 		var cm  = new CascadingMotion  (1, -1, 3, this.subscale.length, 4);
-		var motions = [alm, dlm, um, pm, cm];
-		//var motions = [cm];
+		//var motions = [alm, dlm, um, pm, cm];
+		var motions = [cm];
 		return motions;
 	}
 	
@@ -215,10 +215,10 @@ try {
 	
 	var play0 = true;
 	var play1 = true;
-	var play2 = false;
-	var play3 = false;
-	var play4 = false;
-	var play5 = false;
+	var play2 = true;
+	var play3 = true;
+	var play4 = true;
+	var play5 = true;
 	
 	// TODO get chords from subscale
 	var chordI  = [0 + 0, 2 + 0, 4 + 0];
