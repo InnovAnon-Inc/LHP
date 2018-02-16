@@ -1,0 +1,37 @@
+<!--
+<html>
+<head>
+	
+<script src="music1.js"></script>
+<script>
+	var context = new AudioContext();
+	var now = context.currentTime;
+	now++;
+	
+	var s = new Song (context);
+	s.play (now, Math.floor (Math.random () * Number.MAX_SAFE_INTEGER));
+</script>
+
+</head>
+</html>
+-->
+<html>
+<head>
+	
+<script src="music8.js"></script>
+<script>
+	var context = new AudioContext();
+	var now = context.currentTime;
+	now++;
+	
+	var measureLength = 2 * 60 / 40;
+	//var pulses  = [1, 5, 2, 5, 3, 5, 4, 5, 6, 5];
+	//var pulsesP = [5, 6, 5, 4, 5, 3, 5, 6, 5, 4, 5, 3];
+	var pulses  = [1, 2, 3, 4, 6];
+	var pulsesP = [6, 4, 3, 2, 1];
+	var s = new Song (context, measureLength, pulses, pulsesP);
+	s.play (now, Math.floor (Math.random () * Number.MAX_SAFE_INTEGER));
+</script>
+
+</head>
+</html>
