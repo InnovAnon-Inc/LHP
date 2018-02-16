@@ -77,6 +77,7 @@ try {
 	LinearMotion.prototype.getNext = function () {
 		try {
 		var ret = (this.start + this.direction * this.step) % this.scaleLength;
+		if (ret < 0) ret += this.scaleLength;
 		this.start = ret;
 		return ret;
 		} catch (e) { alert (e); }
@@ -92,6 +93,7 @@ try {
 	UndulatingMotion.prototype.getNext = function () {
 		try {
 		var ret = (this.start + this.direction * this.step) % this.scaleLength;
+		if (ret < 0) ret += this.scaleLength;
 		this.direction *= -1;
 		this.start = ret;
 		return ret;
@@ -110,6 +112,7 @@ try {
 	PendulumMotion.prototype.getNext = function () {
 		try {
 		var ret = (this.start + this.direction * this.step) % this.scaleLength;
+		if (ret < 0) ret += this.scaleLength;
 		this.n++;
 		if (this.n == this.nnote) {
 			this.n = 0;
@@ -135,6 +138,7 @@ try {
 		var ret;
 		if (this.n == -1) ret = this.start;
 		else ret = (this.start + this.direction * this.step) % this.scaleLength;
+		if (ret < 0) ret += this.scaleLength;
 		this.n++;
 		if (this.n == this.nnote) {
 			this.n = -1;
@@ -154,7 +158,20 @@ try {
 		this.L = 0;
 		this.start = start;
 	}
-	Melody.prototype.next = function (chord, modulate) {
+	Melody.prototype.modulate = function (chord) {
+try {
+		var motion = this.motions[this.m];
+		var ll = this.lengths[this.l];
+		
+		var next;
+
+		next = chord[this.start % chord.length];
+		motion.setStartNote (next);
+		
+		this.prev = next;
+} catch (e) { alert (e); }
+	};
+	Melody.prototype.next = function () {
 try {
 		var scale = this.scale;
 		
@@ -164,14 +181,14 @@ try {
 		var prev = this.prev;
 		var next;
 		
-		if (prev === undefined)
-			next = chord[this.start % chord.length];
-		else if (modulate)
-			next = chord[this.start % chord.length];
-		else {
+		//if (prev === undefined)
+		//	next = chord[this.start % chord.length];
+		//else if (modulate)
+		//	next = chord[this.start % chord.length];
+		//else {
 			motion.setStartNote (prev);
 			next = motion.getNext ();
-		}
+		//}
 		
 		this.L++;
 		if (this.L == ll) {
@@ -247,29 +264,36 @@ try {
 		if (play0 && rhythm0.beat ())
 			piano0.trigger (now, getChord (chord), t);
 		for (r = 1; r <= 3; r++, b++) {
+			if (r == 1) {
+				melody1.modulate (chord);
+				melody2.modulate (chord);
+				melody3.modulate (chord);
+				melody4.modulate (chord);
+				melody5.modulate (chord);
+			}
 			//if (play1 && m % 2 != 0 && rhythm1.beat ()) {
 			if (play1 && rhythm1.beat ()) {
-				note = melody1.next (chord, r == 1);
+				note = melody1.next ();
 				piano1.trigger (now, [note], t);
 			}
 			//if (play2 && m % 3 != 0 && rhythm2.beat ()) {
 			if (play2 && rhythm2.beat ()) {
-				note = melody2.next (chord, r == 1);
+				note = melody2.next ();
 				piano2.trigger (now, [note], t);
 			}
 			//if (play3 && m % 2 == 0 && rhythm3.beat ()) {
 			if (play3 && rhythm3.beat ()) {
-				note = melody3.next (chord, r == 1);
+				note = melody3.next ();
 				piano3.trigger (now, [note], t);
 			}
 			//if (play4 && m % 3 == 0 && rhythm4.beat ()) {
 			if (play4 && rhythm4.beat ()) {
-				note = melody4.next (chord, r == 1);
+				note = melody4.next ();
 				piano4.trigger (now, [note], t);
 			}
 			//if (play5 && m % 1 == 0 && rhythm5.beat ()) {
 			if (play5 && rhythm5.beat ()) {
-				note = melody5.next (chord, r == 1);
+				note = melody5.next ();
 				piano5.trigger (now, [note], t);
 			}
 			now += t;
