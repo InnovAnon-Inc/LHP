@@ -193,7 +193,7 @@ try {
 		var dlm = new LinearMotion        (2, -1, this.subscale.length);
 		var um  = new UndulatingMotion (2,  1, this.subscale.length);
 		var pm  = new PendulumMotion  (1,  1, this.subscale.length, 3);
-		var cm  = new CascadingMotion  (1,  1, 2, this.subscale.length, 4);
+		var cm  = new CascadingMotion  (1, -1, 2, this.subscale.length, 4);
 		//var motions = [alm, dlm, um, pm, cm];
 		var motions = [cm];
 		return motions;
