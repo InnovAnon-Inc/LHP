@@ -235,7 +235,7 @@ try{
 		var measures = 1;
 		var bf = 432;
 		this.scale = [1/1, 16/15, 9/8, 6/5, 5/4, 4/3, 7/5, 3/2,	8/5, 5/3, 16/9, 15/8];
-		var roots = [0, 2, 4, 5, 7, 9];
+		var roots = [0, 2, 4, 5, 7, 9, 11];
 		this.lines  = new Array (pulses.length);
 		this.linesP = new Array (pulsesP.length);
 		var pl;
