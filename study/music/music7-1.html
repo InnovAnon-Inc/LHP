@@ -74,7 +74,7 @@ try {
 	LinearMotion.prototype.setStartNote = function (note) {
 		this.start = note;
 	};
-	LinearMotion.prototype.getNext () {
+	LinearMotion.prototype.getNext = function () {
 		var ret = (this.start + this.direction * this.step) % this.scaleLength;
 		this.start = ret;
 		return ret;
@@ -87,7 +87,7 @@ try {
 	UndulatingMotion.prototype.setStartNote = function (note) {
 		this.start = note;
 	};
-	UndulatingMotion.prototype.getNext () {
+	UndulatingMotion.prototype.getNext = function () {
 		var ret = (this.start + this.direction * this.step) % this.scaleLength;
 		this.direction *= -1;
 		this.start = ret;
@@ -103,7 +103,7 @@ try {
 	PendulumMotion.prototype.setStartNote = function (note) {
 		this.start = note;
 	};
-	PendulumMotion.prototype.getNext () {
+	PendulumMotion.prototype.getNext = function () {
 		var ret = (this.start + this.direction * this.step) % this.scaleLength;
 		this.n++;
 		if (this.n == this.nnote) {
@@ -124,7 +124,7 @@ try {
 	CascadingMotion.prototype.setStartNote = function (note) {
 		this.start = note;
 	};
-	CascadingMotion.prototype.getNext () {
+	CascadingMotion.prototype.getNext = function () {
 		var ret;
 		if (this.n == -1) ret = this.start;
 		else ret = (this.start + this.direction * this.step) % this.scaleLength;
