@@ -225,12 +225,17 @@ try {
 		//var motions = [cm];
 		return motions;
 	}
+	var alm = new LinearMotion        (1,  1, this.subscale.length);
+	var dlm = new LinearMotion        (2, -1, this.subscale.length);
+	var um  = new UndulatingMotion (2,  1, this.subscale.length);
+	var pm  = new PendulumMotion  (1,  1, this.subscale.length, 3);
+	var cm  = new CascadingMotion  (1, -1, 3, this.subscale.length, 4);
 	
-	var melody1 = new Melody (subscale, 0, getMotions (), [3, 4, 5]);
-	var melody2 = new Melody (subscale, 1, getMotions (), [5, 7, 9]);
-	var melody3 = new Melody (subscale, 2, getMotions (), [4, 6, 8]);
-	var melody4 = new Melody (subscale, 3, getMotions (), [3, 5, 7, 9]);
-	var melody5 = new Melody (subscale, 4, getMotions (), [3, 6, 9, 12, 15]);
+	var melody1 = new Melody (subscale, 0, alm, [3, 4, 5]);
+	var melody2 = new Melody (subscale, 1, dlm, [5, 7, 9]);
+	var melody3 = new Melody (subscale, 2, um, [4, 6, 8]);
+	var melody4 = new Melody (subscale, 3, pm, [3, 5, 7, 9]);
+	var melody5 = new Melody (subscale, 4, cm, [3, 6, 9, 12, 15]);
 	
 	function getChord (chord) {
 		var ret = new Array (chord.length);
