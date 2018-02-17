@@ -250,7 +250,7 @@ try {
 	
 	var play0, play1, play2, play3, play4, play5;
 	play0 = play1 = play2 = true;
-	play3 = play4 = play5 = false;
+	play3 = play4 = play5 = true;
 	
 	// TODO get chords from subscale
 	var chordI  = [0 + 0, 2 + 0, 4 + 0];
@@ -274,28 +274,28 @@ try {
 				melody4.modulate (chord);
 				melody5.modulate (chord);
 			}
-			//if (play1 && m % 2 != 0 && rhythm1.beat ()) {
-			if (play1 && rhythm1.beat ()) {
+			if (play1 && m % 2 != 0 && rhythm1.beat ()) {
+			//if (play1 && rhythm1.beat ()) {
 				note = melody1.next (r == 1);
 				piano1.trigger (now, [note], t);
 			}
-			//if (play2 && m % 3 != 0 && rhythm2.beat ()) {
-			if (play2 && rhythm2.beat ()) {
+			if (play2 && m % 3 != 0 && rhythm2.beat ()) {
+			//if (play2 && rhythm2.beat ()) {
 				note = melody2.next (r == 1);
 				piano2.trigger (now, [note], t);
 			}
-			//if (play3 && m % 2 == 0 && rhythm3.beat ()) {
-			if (play3 && rhythm3.beat ()) {
+			if (play3 && m % 2 == 0 && rhythm3.beat ()) {
+			//if (play3 && rhythm3.beat ()) {
 				note = melody3.next (r == 1);
 				piano3.trigger (now, [note], t);
 			}
-			//if (play4 && m % 3 == 0 && rhythm4.beat ()) {
-			if (play4 && rhythm4.beat ()) {
+			if (play4 && m % 3 == 0 && rhythm4.beat ()) {
+			//if (play4 && rhythm4.beat ()) {
 				note = melody4.next (r == 1);
 				piano4.trigger (now, [note], t);
 			}
-			//if (play5 && m % 1 == 0 && rhythm5.beat ()) {
-			if (play5 && rhythm5.beat ()) {
+			if (play5 && m % 1 == 0 && rhythm5.beat ()) {
+			//if (play5 && rhythm5.beat ()) {
 				note = melody5.next (r == 1);
 				piano5.trigger (now, [note], t);
 			}
