@@ -143,6 +143,7 @@ try {
 		if (this.n == this.nnote) {
 			this.n = -1;
 			this.start = (this.start - this.direction * this.step2) % this.scaleLength;
+			if (this.start < 0) this.start += this.scaleLength;
 		} else
 			this.start = ret;
 		return ret;
@@ -185,7 +186,8 @@ try {
 		//	next = chord[this.start % chord.length];
 		//else if (modulate)
 		if (modulate)
-			next = chord[this.start % chord.length];
+			//next = chord[this.start % chord.length];
+			next = motion.start;
 		else {
 			motion.setStartNote (prev);
 			next = motion.getNext ();
