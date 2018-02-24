@@ -16,6 +16,55 @@
 
 	<link rel="stylesheet" href="index.css" type="text/css">
 	<link rel="stylesheet" href="new_index.css" type="text/css">
+	
+		
+	<style>
+/*div {
+	float: left;
+	width: auto;
+}*/
+	
+.column {
+	/*display: inline-block;*/
+	float: left;
+	/*max-width: 50%;*/
+	width: auto;
+}
+
+/*.label .field .labelled {
+	display: inline-block;
+}*/
+
+.label { display: inline-block; }
+.field { display: inline-block; }
+
+.row:after {
+	content: "";
+	display: table;
+	clear: both;
+	max-width: 100%;
+}
+
+.labelled {
+	border-width: 1px;
+	border-color: red;
+	border-style: solid;
+}
+
+/*
+.column {
+	border-width: 1px;
+	border-color: black;
+	border-style: solid;
+}
+
+.row {
+	border-width: 1px;
+	border-color: grey;
+	border-style: solid;
+}
+*/
+</style>
 </head>
 
 <body>
@@ -34,6 +83,83 @@ Select any number of job titles and modifiers
 pertaining to the roles and responsibilities
 which you would like to undertake on behalf of InnovAnon, Inc.
 </p>
+
+<!-- every person has body, mind and soul
+       every person has eating, sleeping, shitting, sanatan dharma and an art
+       a person cannot buy or sell or trade for anything inherent or eternal
+       cannot pay to eat or sleep and cannot charge likewise
+       cannot pay for someone to practice his art and cannot charge likewise
+       cannot sacrifice sleep for pay and cannot pay someone to do likewise -->
+<div class="row">
+<div class="column">
+	<div class="labelled">
+		<div class="label"><h6 class="hard-to-see">Commitment</h6></div>
+		<div class="field"><select class="hard-to-see" id="commitment">
+			<option selected value="part-time">Part-Time</option>
+			<option value="full-time">Full-Time</option>
+		</select></div>
+	</div>
+</div>
+<div class="column">
+	<div class="labelled">
+		<div class="label"><h6 class="hard-to-see">Experience</h6></div>
+		<div class="field"><select class="hard-to-see" id="experience">
+			<option value="junior">Junior</option>
+			<option selected value="associate">Associate</option>
+			<option value="senior">Senior</option>
+		</select></div>
+	</div>
+</div>
+<div class="column">
+	<div class="labelled">
+		<div class="label"><h6 class="hard-to-see">Position(s)</h6></div>
+		<div class="field"><select multiple class="hard-to-see" id="positions">
+			<option selected value="code">Code-Monk</option>
+			<option value="it">IT-Monk</option>
+			<option value="tutor">Tutoring-Monk</option>
+			<option value="langar">Langar-Monk</option>
+			<option value="gardener">Gardener-Monk</option>
+			<option value="ss">Applied Spiritual Scientist</option>
+			<option value="altar">Altar Attendant</option>
+			<option value="music">Music-Monk</option>
+			<option value="treasure">Treasurer-Monk</option>
+			<option value="driver">Driver-Monk</option>
+			<option value="flier">Flier-Monk</option>
+			<option value="outreach">Ecumenical Outreach Specialist</option>
+		</select></div>
+	</div>
+</div>
+<div class="column">
+	<div class="labelled">
+		<div class="label"><h6 class="hard-to-see">Rank</h6></div>
+		<div class="field"><select class="hard-to-see" id="rank">
+			<option selected value="devotee">Devotee</option>
+			<option value="apprentice">Associate</option>
+			<option value="priest">Priest</option>
+			<option value="hp">High Priest</option>
+		</select></div>
+	</div>
+</div>
+<div class="column">
+	<div class="labelled">
+		<div class="label"><h6 class="hard-to-see">Patron Deity</h6></div>
+		<div class="field"><select class="hard-to-see" id="deity">
+			<option value="cthulhu">Cthulhu</option>
+			<option selected value="kali">Kali Maa</option>
+			<option value="shiva">Lord Shiva</option>
+			<option value="baphomet">Lady Baphomet</option>
+		</select></div>
+	</div>
+</div>
+<div class="column">
+	<div class="labelled">
+		<div class="label"><h6 class="hard-to-see">Monastic Order</h6></div>
+		<div class="field"><select class="hard-to-see" id="order">
+			<option selected value="mediocrates">Grandmaster Mediocrates</option>
+		</select></div>
+	</div>
+</div>
+</div>
 
 <div class="row">
 	<div class="column2">
