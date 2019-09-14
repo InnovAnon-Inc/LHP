@@ -35,7 +35,7 @@
   </div>
 
   <div align="center">
-     <q style="background-color: black; color: green; display: inline-block">Once again, you've somehow managed to get it exactly wrong.<br>
+     <q id="textwall" style="background-color: black; color: green; display: inline-block">Once again, you've somehow managed to get it exactly wrong.<br>
         Your beliefs are precisely opposite of reality.<br>
         You have maximized the logical distance<br>
         between your ideas and the true nature of things.</q>
@@ -62,6 +62,9 @@
   }
 
   function myFunction() {
+    var textwall = document.getElementById("textwall")
+    textwall.innerText = textwall.textContent = "retard (70- IQ) : average (~100 IQ) :: average (~100 IQ) : genius (130+ IQ)"
+
     var iqObj = document.getElementById("iq")
     var demo  = document.getElementById("demo")
     if (!iqObj.checkValidity()) {
@@ -376,6 +379,8 @@
 
    var cnt2_text = document.createTextNode((jury.length - cnt) + " jurors are your intellectual superiors")
    demo.appendChild(cnt2_text)
+   demo.appendChild(document.createElement("br"))
+
    demo.appendChild(document.createElement("br"))
 
 
