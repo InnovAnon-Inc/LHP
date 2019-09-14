@@ -1,0 +1,200 @@
+1. Surgeon	234.1
+2. Physician	161.1
+3. Corporate executive	148.0
+4. Psychiatrist	147.7
+5. Dentist	140.0
+6. Orthodontist	131.2
+7. Podiatrist	129.1
+8. Judge	127.9
+9. Attorney	127.8
+10. Petroleum engineer	126.1
+11. Pharmacist	126.1
+12. Physicist	124.9
+13. Commercial airline pilot	124.9
+14. Astronomer	124.5
+15. Financial planner	122.8
+16. Nuclear engineer	121.1
+17. Optometrist	120.7
+18. Aerospace engineer	120.2
+19. Mathematician	119.8
+20. Public relations executive	118.1
+21. Economist	116.9
+22. Actuary	116.9
+23. Software engineer	116.9
+24. Meteorologist	116.0
+25. School principal	116.0
+26. Physician assistant	115.6
+27. Electrical engineer	115.2
+28. Web developer	115.2
+29. Construction foreman	114.8
+30. Geologist	114.4
+31. Veterinarian	114.4
+32. Computer systems analyst	112.7
+33. Mechanical engineer	112.6
+34. Civil engineer	112.2
+35. Industrial engineer	111.8
+36. Biologist	111.4
+37. Physical therapist	111.4
+38. Statistician	111.0
+39. Architect	111.0
+40. Computer programmer	110.1
+41. Occupational therapist	109.7
+42. Sociologist	109.7
+43. Chiropractor	108.9
+44. Chemist	108.9
+45. Stockbroker	108.6
+46. Dental hygienist	108.4
+47. Psychologist	108.0
+48. Speech pathologist	107.6
+49. Registered nurse	107.2
+50. Historian	106.8
+51. Technical writer	106.8
+52. Occupational safety/health inspector	106.7
+53. Audiologist	106.7
+54. Market research analyst	106.4
+55. Advertising account executive	106.3
+56. Fashion designer	106.0
+57. Philosopher	105.9
+58. Accountant	105.5
+59. Farmer	105.1
+60. Industrial designer	104.7
+61. Insurance underwriter	104.7
+62. Telephone installer and repairer	104.6
+63. Zoologist	104.2
+64. Communications equipment mechanic	103.8
+65. Loan officer	103.4
+66. Purchasing agent	103.4
+67. Engineering technician	103.4
+68. Medical technologist	103.4
+69. Author	103.0
+70. Undertaker	103.0
+71. Librarian	103.0
+72. Surveyor	103.0
+73. Railroad conductor	103.0
+74. Conservationist	102.9
+75. Anthropologist	102.5
+76. Vocational counselor	102.5
+77. Highway patrol officer	102.5
+78. Aircraft mechanic	102.5
+79. Respiratory therapist	102.5
+80. Dietitian	102.1
+81. Mail carrier	102.1
+82. Motion picture editor	101.8
+83. Sales representative	101.8
+84. Publication editor	101.7
+85. Archeologist	101.7
+86. Physiologist	101.7
+87. Stationary engineer	101.7
+88. Teacher	101.7
+89. Electrical equipment repairer	101.7
+90. Newscaster	101.4
+91. Tax examiner	100.9
+92. Buyer	100.9
+93. Police officer	100.9
+94. Actor	100.8
+95. Stenographer	100.5
+96. Museum curator	100.5
+97. Electrician	100.0
+98. Bricklayer	100.0
+99. Parole officer	100.0
+100. Paralegal assistant	100.0
+101. Tool-and-die maker	100.0
+102. Insurance agent	99.7
+103. Personnel recruiter	99.6
+104. Hotel manager	99.6
+105. Plumber	99.6
+106. Architectural drafter	99.6
+107. Firefighter	99.2
+108. Set designer	99.2
+109. Artist (fine art)	98.8
+110. Industrial machine repairer	98.7
+111. Advertising salesperson	98.4
+112. Clergy	98.4
+113. Sheet metal worker	97.5
+114. Heating and refrigeration mechanic	97.5
+115. Real estate agent	97.1
+116. Photojournalist	97.1
+117. Flight attendant	97.1
+118. Construction machinery operator	97.1
+119. Social worker	97.1
+120. Sewage plant operator	97.1
+121. Licensed practical nurse	97.0
+122. Stevedore	96.6
+123. Carpenter	96.6
+124. Corrections officer	96.6
+125. Choreographer	96.3
+126. Automobile body repairer	96.2
+127. Plasterer	96.2
+128. Office machine repairer	96.2
+129. Machinist	96.2
+130. Truck driver	96.2
+131. Carpet and tile installer	95.8
+132. Drywall applicator and finisher	95.8
+133. Computer service technician	95.8
+134. Nuclear decontamination technician	95.8
+135. Glazier	95.4
+136. Sailor	95.4
+137. Medical laboratory technician	95.4
+138. Automobile mechanic	95.0
+139. Dental laboratory technician	95.0
+140. Welder	94.9
+141. Newspaper reporter	94.6
+142. Jeweler	94.5
+143. Meter reader	94.5
+144. Roofer	94.5
+145. Bus driver	94.5
+146. Appliance repairer	94.5
+147. Painter	94.5
+148. Agricultural scientist	94.5
+149. Ironworker	94.5
+150. Machine tool operator	94.5
+151. Broadcast technician	94.2
+152. Piano tuner	94.1
+153. Musical instrument repairer	94.1
+154. Compositor/typesetter	94.1
+155. Optician	94.1
+156. Bookkeeper	94.1
+157. Typist	94.1
+158. Electrical technician	94.0
+159. Garbage collector	93.7
+160. Roustabout	93.7
+161. Dairy farmer	93.7
+162. Lumberjack	93.7
+163. Bookbinder	93.3
+164. Telephone operator	93.3
+165. Medical records technician	93.3
+166. Travel agent	93.3
+167. Drill-press operator	93.3
+168. Photographer	92.9
+169. Emergency medical technician	92.8
+170. Vending machine repairer	92.8
+171. Furniture upholsterer	92.8
+172. Forklift operator	92.8
+173. Medical secretary	92.8
+174. Construction worker	92.4
+175. Butcher	92.4
+176. Disc jockey	92.1
+177. Precision assembler	92.0
+178. Shipping and receiving clerk	92.0
+179. Automobile assembler	91.6
+180. Dressmaker	91.6
+181. Photographic process worker	91.2
+182. Receptionist	90.7
+183. Barber	90.3
+184. Guard	90.3
+185. Nurse’s aid	90.3
+186. Bank teller	90.3
+187. Cosmetologist	89.9
+188. Teacher’s aide	89.9
+189. Shoe maker and repairer	89.9
+190. Recreation worker	89.5
+191. Janitor	89.5
+192. Chauffeur	89.5
+193. Taxi driver	89.0
+194. Retail salesman	88.6
+195. Child care worker	88.2
+196. Maid	88.2
+197. Bartender	87.8
+198. Waiter	87.8
+199. Cashier	87.7
+200. Dishwasher	87.7
