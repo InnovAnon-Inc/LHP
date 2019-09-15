@@ -45,7 +45,7 @@
      <div style="flex: 50%">
         <div style="background-color: black; color: green; display: inline-block">
            <p id="demo">Input your IQ:</p>
-           <input id="iq" type="number" min="30" max="200" required>
+           <input id="iq" type="number" min="20" max="200" required>
            <button onclick="myFunction()">OK</button>
         </div>
      </div>
@@ -82,13 +82,87 @@
     // demo.appendChild(br)
     demo.appendChild(document.createElement("br"))
 
-    var cdf_ret           = cdfNormal(iqObj.value - 30, 100, 15)
-    var percentile_ret    = cdf_ret * 100
-    var retarded_text     = document.createTextNode(percentile_ret + "% of people would be retarded if your IQ were average.")
-    demo.appendChild(retarded_text)
-    // demo.appendChild(br)
+    if (iqObj.value >= 30) {
+       var cdf_ret           = cdfNormal(iqObj.value - 30, 100, 15)
+       var percentile_ret    = cdf_ret * 100
+       var retarded_text     = document.createTextNode(percentile_ret + "% of people would be retarded if your IQ were average.")
+       demo.appendChild(retarded_text)
+       // demo.appendChild(br)
+       demo.appendChild(document.createElement("br"))
+    }
     demo.appendChild(document.createElement("br"))
 
+
+
+    // http://www.psychologydiscussion.net/mental-retardation/4-levels-of-mental-retardation-psychology/2270
+    var ages = [
+       { title:    "Mild Mental Retardation",
+         iq_min:   55,
+         iq_max:   69,
+         age_min:   8,
+         age_max:  10,
+         text:     "One per cent of this category of mentally retarded requires institutional care. The rest of this group are able to complete their minimum education in special classes and they can somehow manage unskilled jobs... With special training and proper care they can be taught be self supporting and to earn their livelihood independently." },
+       { title:    "Moderate Retardation",
+         iq_min:   40,
+         iq_max:   54,
+         age_min:  5.7,
+         age_max:  8.2,
+         text:     "Though some of them may require institutionalization, they can manage to live safely under the protection of their family members. They are in-fact, trainable and are capable of learning simple routine jobs and moderately simple skills. Given proper training, treatment and sympathy, they can manage to earn their own livelihood and live independently in the society." },
+       { title:    "Severe Retardation",
+         iq_min:   25,
+         iq_max:   39,
+         age_min:  4,
+         age_max:  5.6,
+         text:     "The majority of them are permanently institutionalized and require constant care and attention." },
+       { title:    "Profound Mental Retardation",
+         iq_min:   20,
+         iq_max:   24,
+         age_min:   3,
+         age_max:   3,
+         text:     "They are completely incapable of looking after themselves. Thus, they require complete hospitalization, immense attention and personal care. They even cannot attend to their basic physical needs. They fail to learn even the simplest skills." }
+    ]
+
+    // var age_flag = 0
+    for (var age of ages) {
+       if (iqObj.value >= age.iq_min && iqObj.value <= age.iq_max) {
+          var age_text3 = document.createTextNode("You have " + age.title)
+          demo.appendChild(age_text3)
+          demo.appendChild(document.createElement("br"))
+
+          var age_text = document.createTextNode("Your mental age is within [" + age.age_min + ", " + age.age_max + "].")
+          demo.appendChild(age_text)
+          demo.appendChild(document.createElement("br"))
+
+          var age_text2 = document.createTextNode(age.text)
+          demo.appendChild(age_text2)
+          demo.appendChild(document.createElement("br"))
+
+          // age_flag = 1
+       }
+    }
+
+    // if (! age_flag && iqObj.value > 100) {
+    if (iqObj.value > 100) {
+       for (var age of ages) {
+          var iq_text = document.createTextNode("People with an IQ in [" + (iqObj.value - (100 - age.iq_min)) + ", " + (iqObj.value - (100 - age.iq_max)) + "], compared to you:")
+          demo.appendChild(iq_text)
+          demo.appendChild(document.createElement("br"))
+
+          var age_text3 = document.createTextNode("They have " + age.title)
+          demo.appendChild(age_text3)
+          demo.appendChild(document.createElement("br"))
+             
+          var age_text = document.createTextNode("Their mental age is within [" + age.age_min + ", " + age.age_max + "].")
+          demo.appendChild(age_text)
+          demo.appendChild(document.createElement("br"))
+   
+          var age_text2 = document.createTextNode(age.text)
+          demo.appendChild(age_text2)
+          demo.appendChild(document.createElement("br"))
+
+          demo.appendChild(document.createElement("br"))
+       }
+    }
     demo.appendChild(document.createElement("br"))
 
 
@@ -398,7 +472,8 @@
        var data = JSON.parse(this.response)
 
        if (request.status < 200 || request.status >= 400) {
-          demo.appendChild('error')
+          var error_text  = document.createTextNode('error')
+          demo.appendChild(error_text)
           return
        }
 
