@@ -1,0 +1,123 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+	<title>InnovAnon, Inc. Proprietary</title>
+	<link rel="icon" href="https://i.stack.imgur.com/PKRRF.jpg"> <!-- śivatāṇḍava -->
+	<link rel="stylesheet" type="text/css" href="music10.css">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta charset="utf-8">
+	<meta name="description" content="Sound Generator"> <!-- Καλλίστῃ -->
+	<meta name="keywords" content="InnovAnon,Innovations,Anonymous,Innovations Anonymous"
+	<meta name="author" content="InnovAnon, Inc.">
+</head>
+
+<body>
+	<header>
+	<div>
+	<!-- TODO logo -->
+	<h1><center>InnovAnon, Inc. Proprietary</center></h1>
+	<h2><center>Free Code for a Free World!</center></h2>
+	</div>
+	</header>
+
+	<section>
+	<nav>
+	<!-- TODO -->
+	<!-- <ul>
+	<li> --><a href="#">TODO</a><!-- </li>
+	<li><a href="#">TODO</a></li>
+	</ul> -->
+	</nav>
+
+	<article>
+	<div> <!-- main section -->
+	<noscript>JavaScript enables a more featureful experience.</noscript>
+	<canvas id="yantra" class="yantra"></canvas>   <!-- yantra -->
+
+	<details>
+	<summary>Sound Generator</summary>
+	<p>Our monks have engineered this system with the following goals in mind:</p>
+	<ul>
+	<li>browser-based for maximum portability</li>
+	<li>use solfeggio base frequencies</li>
+	<li>use Pythagorean tuning or just intonation</li>
+	<li>use colorful geometric diagrams to promote synesthesia</li>
+	<li>animated yantras for faster memorization</li>
+	<li>mantras to help attain mantra siddhi</li>
+	<li>brainwave entrainment, including binaural, monaural, isochronic or phasing</li>
+	<li>subliminal affirmations to help reprogram the subconscious mind</li>
+	</ul>
+	</details>
+	</div>
+
+	<div>
+
+	<!-- TODO add labels to all -->
+	<!-- TODO put technical canvases in small panel -->
+
+	<!-- TODO allow to select bf -->
+	<!-- <figure> -->
+	<form action="setBaseFrequency()">
+	<label for="bf_input">Base Frequency</label>
+	<input type="number" name="bf_input" id="bf_input" min="1" max="999" value="432"><!--<br>-->
+	<!-- <figcaption></figcaption>
+	</figure> -->
+	</form>
+	<canvas id="bf"></canvas>       <!-- base frequency sine graph -->
+	<form action="setTuning()">
+	<label for="tuning_input">Tuning</label>
+	<input type="?" name="tuning_input" id="tuning_input"><!--<br>-->
+	</form>
+	<canvas id="tuning"></canvas>   <!-- tuning or temperament comparison contellation overlay -->
+
+	<canvas id="scale"></canvas>    <!-- scale/mode constellation -->
+	<canvas id="scalen"></canvas>   <!-- scale/mode name -->
+	<canvas id="ichordn"></canvas>  <!-- inferior tetrachord or trichord name -->
+	<canvas id="schordn"></canvas>  <!-- superior tetrachord or trichord name -->
+
+	<canvas id="chord"></canvas>    <!-- current chord polygon -->
+	<canvas id="chordsm"></canvas>  <!-- current chord sheet music notation -->
+	<canvas id="chordia"></canvas>  <!-- current chord interval analysis -->
+	<canvas id="chordp"></canvas>   <!-- current chord as an object in 4-space,
+	                                     with each part being an axis,
+	                                     using the scale as the number line -->
+
+	<!-- TODO one for each part -->
+
+	<!-- TODO allow to select bpm and infrasound/binaural frequency -->
+	<canvas id="rhythm"></canvas>   <!-- current rhythm -->
+	<canvas id="rhythmt"></canvas>  <!-- tablature for current rhythm -->
+	<canvas id="melody"></canvas>   <!-- this part's melody constellation -->
+	<canvas id="melodysm"></canvas> <!-- this part's melody sheet music notation -->
+	<canvas id="melodyf"></canvas>  <!-- this part's frequency sine graph -->
+
+	<!-- TODO allow to select yantra/mantra -->
+	<!-- TODO allow to select animation -->
+	<!-- should be paired with audio mantra -->
+
+	</div>
+	</article>
+
+
+
+	<aside>
+	</aside>
+	</section>
+
+	<footer>
+	<!-- <hr /> -->
+	<p><center>Copyright (C) 2019. All rights reserved.</center></p>
+	</footer>
+
+	<!--<script>
+	window.onload = function() {
+		var element = document.createElement("script");
+		element.src = "music10.js";
+		document.body.appendChild(element);
+	};
+	</script>-->
+	<!-- TODO async -->
+	<script type="text/javascript" src="music10.js" defer></script>
+</body>
+</html>
