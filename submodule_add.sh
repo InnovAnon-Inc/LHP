@@ -3,7 +3,7 @@ set -ex
 
 # add a new submodule
 
-test $# -ne 0 || exit 1
+[[ $# -ne 0 ]] || exit 1
 
 for k in $@ ; do
 	git submodule add $k
